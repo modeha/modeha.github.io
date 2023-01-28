@@ -1,4 +1,686 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-01-27T22:09:18-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Monos</title><subtitle>Themed by ejjoo</subtitle><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2020/01/02/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2020-01-02T05:31:29-05:00</published><updated>2020-01-02T05:31:29-05:00</updated><id>http://localhost:4000/jekyll/update/2020/01/02/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2020/01/02/welcome-to-jekyll.html"><![CDATA[<h2 id="how-to-use-mathjax">How to use MathJax</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-01-27T22:15:47-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Monos</title><subtitle>Themed by ejjoo</subtitle><entry><title type="html">Milestone2</title><link href="http://localhost:4000/2022/11/07/Milestone2.html" rel="alternate" type="text/html" title="Milestone2" /><published>2022-11-07T00:00:00-05:00</published><updated>2022-11-07T00:00:00-05:00</updated><id>http://localhost:4000/2022/11/07/Milestone2</id><content type="html" xml:base="http://localhost:4000/2022/11/07/Milestone2.html"><![CDATA[<h1 id="table-of-contents">Table of contents</h1>
+<ol>
+  <li><a href="#Experiment-Tracking">Experiment Tracking</a></li>
+  <li><a href="#Feature-Engineering-I">Feature Engineering I</a></li>
+  <li><a href="#Baseline-Models">Baseline Models</a></li>
+  <li><a href="#Feature-Engineering-II">Feature Engineering II</a></li>
+  <li><a href="#Advanced-Models">Advanced Models</a></li>
+  <li><a href="#Give-it-your-best-shot">Give Best Shot</a></li>
+  <li><a href="#Evaluate-on-test-set">Evaluate on Test Set</a></li>
+  <li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+<h2 id="experiment-tracking-">Experiment Tracking <a name="Experiment-Tracking"></a></h2>
+<p>All the following experiments were carefully tracked using Comet ML. This is an important step that we took to make our experiments reproducible.</p>
+
+<h2 id="feature-engineering-i-">Feature Engineering I <a name="Feature-Engineering-I"></a></h2>
+
+<p align="center">
+<img src="/assets/figures/figure_1_Shot_Counts_by_Distance.png" />
+</p>
+
+<p align="center">
+<img src="/assets/figures/figure_2_Shot_Counts_by_Angle.png" />
+</p>
+<p align="center">
+<img src="/assets/figures/figure_3_jointplot_Distance_Angle.png" width="600" height="600" />
+</p>
+
+<p align="center">
+<img src="/assets/figures/figure_4_Goal_Rate_as_a_function_of_Distance.png" />
+</p>
+
+<h2 id="goal-rate-as-a-function-of-distance">Goal rate as a function of distance</h2>
+
+<p>First, there is a relationship between the distance and the probability of a goal, such as the probability of a goal is inversely proportional to distance when the distance is less than approximately 60 ft.</p>
+
+<p>Second, there is some (stochastic) probability of a goal with shots taken at approximately more than 60 feet which can be in some cases higher than for goals taken at about 60 feet.</p>
+<p align="center">
+<img src="/assets/figures/figure_5_Goal_Rate_as_a_function_of_Angle.png" />
+</p>
+
+<h2 id="goal-rate-as-a-function-of-angle">Goal Rate as a function of Angle</h2>
+
+<p>First, there is slightly more chance that a goal results in a goal when it is taken from in front of the goal, but only when the shot is taken at less than 90 degrees.</p>
+
+<p>Second, even though shots taken from in front of the goal (i.e. at an angle close to zero) are the most common, these are not the most successful in achieving a goal. The likelihood of a goal increases as a proportion to the angle, specifically when the angle is greater than approximately 90 degrees.</p>
+
+<p>Third and very importantly, the distribution is symmetric only in its middle part. There is a very clear asymmetry when comparing the extremities of the distribution. Specifically, shots taken at very high angles (approximately more than 150 degrees) are more likely to achieve a goal when taken from the side which corresponds to the right-hand side of the goalie. We need to bear in mind that most goalies are right-handed and hold their hockey sticks on the left side as all other players, and therefore their right side is relatively unprotected. This might explain why shots taken from the far-right-hand side of the goalie are much more likely to result in a goal.</p>
+
+<p align="center">
+<img src="/assets/figures/figure_6_Empty_net_or_not_as_a_function_of_Distance.png" />
+</p>
+<p>The distribution is coherent with domain-specific knowledge (i.e. that “it is incredibly rare to score a non-empty net goal on the opposing team from within your defensive zone”). Indeed, a few successful goals (in total, 795 goals for the complete seasons involved) were shot from more than 89 feet. Based on this, it seems that the features are correct, and we cannot find any events that have incorrect features.</p>
+
+<p>Note: Here, we indicate the approximate defense zone by a red shade, from 89 feet from the goal up to 180 feet. This is an approximation because the distance is measured from the goal and thus is not always calculated perpendicular to the central line.</p>
+
+<h2 id="baseline-models-">Baseline Models <a name="Baseline-Models"></a></h2>
+<p>Links to Various Logistic Models on Comet ML platform.</p>
+<ul>
+  <li><a href="https://www.comet.com/data-science-workspace/model-registry/linearmodel-angle">Logistic	model trained on angle</a></li>
+  <li><a href="https://www.comet.com/data-science-workspace/model-registry/linearmodel-distance">logistic model trained on distance</a></li>
+  <li><a href="https://www.comet.com/data-science-workspace/model-registry/linearmodel-angle-distance">logistic model trained on distance and angle</a></li>
+</ul>
+
+<p>The accuracy is 90% correctly predicted as compared total. However, accuracy is not the right metric to use in this setting because there is a high imbalance between goals and missed shots, in the order of 1:10. Indeed, we can see that from the classification report its clear that all the test data (validation data) has been predicted to be 0s (missed shots) as the output. Therefore, even though this model achieved 90% accuracy, it was not successful in predicting any goal. This is why accuracy is not the correct metric, and other metrics like ROC AUC should be used.</p>
+<p align="center">
+<img src="/assets/figures/Receiver_Operating_Characteristic_ROC_curves_and_the_AUC_metric.svg" />
+</p>
+<p>The model based on both distance and angle (<code class="highlighter-rouge">distance_angle</code>) and that based on distance alone (<code class="highlighter-rouge">distance</code>) are the two best models when considering the ROC AUC. Indeed, their area under the curve is the largest one (0.67964). In comparison, the two other models (<code class="highlighter-rouge">random_base_line</code> and the <code class="highlighter-rouge">angle</code> ones) are not distinguishable from random results, i.e. their ROC curve follows closely the bisector line.</p>
+<p align="center">
+<img src="/assets/figures/Goal_Rate.svg" />
+</p>
+<p>As expected, the highest percentiles observations (the observations that have the highest predicted probability of being a goal) have the highest proportion of goals; however only for the <code class="highlighter-rouge">distance_angle</code> and <code class="highlighter-rouge">distance_models</code>. More specifically, the proportion of goals raises to approximately 20% for the highest-percentile observations, while it gets close to 5% for the lowest-percentile observations. For the other two models, the proportion of goals is the same in all percentiles and is close to 10% which is the overall proportion of goals in any random sample from the dataset.</p>
+
+<p align="center">
+<img src="/assets/figures/Cumulative_of_goals.svg" />
+</p>
+<p>There is a non-linear relationship between the model probability percentile and the cumulative proportion of goals, but only for the <code class="highlighter-rouge">distance</code> and <code class="highlighter-rouge">distance_angle</code> curves. Specifically, for these two curves, the more the model probability percentile increases, the more the proportion increases, but the slope decreases. In comparison, the two other curves, show a close-to-linear relationship. 
+This difference in slope between models reflects the same finding as the previous graph, i.e. the highest percentiles observations have the highest proportion of goals only for the <code class="highlighter-rouge">distance_angle</code> and <code class="highlighter-rouge">distance_models</code>. In other words, these two models were successful in learning to predict goals.</p>
+<p align="center">
+<img src="/assets/figures/Calibration_Display.svg" />
+</p>
+<p>From the Calibration plot, we see that fraction of positive cases is always the same whatever the mean predicted probability is, for every four models tested. In all cases, the fraction of positive cases is equal to 1:10 which is the (approximate) overall ratio of goals as compared to all shots in the complete sample.</p>
+
+<p>This could induce us to think that all four models performed the same and that none of these models succeeded in predicting goals from the data. However, we need to take note that the calibration plot - like the accuracy metric - is not the most adequate way to evaluate a model when the predicted event is rare (in our case, 1:10). From the previous plots, we showed that the <code class="highlighter-rouge">distance_angle</code> and <code class="highlighter-rouge">distance</code> models show some success in predicting goals, which is not apparent from the calibration plot. This observation highlights the importance of choosing the correct metric and correct plots when evaluating a model.</p>
+
+<h2 id="feature-engineering-ii-">Feature Engineering II <a name="Feature-Engineering-II"></a></h2>
+<p>Here is a list and description of all features that we engineered:</p>
+
+<p>•	<code class="highlighter-rouge">distance</code>: distance (feet) between the event and the center of the net at which the shot is aimed.</p>
+
+<p>•	<code class="highlighter-rouge">angle</code>: angle (degrees) between the center line and the event. One can imagine this angle by putting himself in the position of the goalie: if the shot is taken from right in front, the angle is equal to zero.</p>
+
+<p>•	<code class="highlighter-rouge">empty_net</code>: shot was taken against a net without a goalie.</p>
+
+<p>•	<code class="highlighter-rouge">game_period</code>: period number during the game.</p>
+
+<p>•	<code class="highlighter-rouge">distance_from_last_event</code>: distance (feet) between the last event and the present event.</p>
+
+<p>•	<code class="highlighter-rouge">rebound</code>: whether this shot follows another shot.</p>
+
+<p>•<code class="highlighter-rouge">change_in_shot_angle</code>: difference (degrees) in angle between the present shot and the previous event, if this event was also a shot.</p>
+
+<p>•	<code class="highlighter-rouge">speed</code>: average speed (feet by second) of the puck between the last and the present shot.</p>
+
+<p>•<code class="highlighter-rouge">x_coordinate</code>: coordinate (feet) taken from the center of the ice.</p>
+
+<p>•<code class="highlighter-rouge">y_coordinate</code>: coordinate (feet) taken from the center of the ice.</p>
+
+<p>•<code class="highlighter-rouge">game_seconds</code>: time (seconds) as measured from the beginning of the game.</p>
+
+<p>•<code class="highlighter-rouge">shot_type</code>: type of shot, one-hot encoded into 8 indicator variables, i.e. Backhand, Deflected, Slap Shot, Snap Shot, Tip-In, Wrap-around, Wrist Shot, and NA.</p>
+
+<p>•<code class="highlighter-rouge">last_event_type</code>: type of the last event, one-hot encoded into 9 indicator variables, i.e. Blocket shot, Faceoff, Giveaway, Goal, Hit, Missed shot, Penalty, Shot, Takeaway.</p>
+
+<h2 id="link-to-the-filtered-data-frame">Link to the filtered data frame</h2>
+<p><a href="https://www.comet.com/data-science-workspace/feature-engineering/4c0f01b7384943c982a3df97199ca521?assetId=abcb65b8de4e4d4cb1d5158971681f77&amp;assetPath=dataframes&amp;experiment-tab=assets">filtered data frame</a></p>
+
+<h2 id="advanced-models-">Advanced Models <a name="Advanced-Models"></a></h2>
+<h3 id="best-xgboost-model">Best XGBoost Model</h3>
+
+<ul>
+  <li><a href="https://www.comet.com/data-science-workspace/model-registry/xgboost-feature-selection-class-weights">XGBoost model</a></li>
+</ul>
+
+<h3 id="hyperparameter-tuning-and-model-comparison">Hyperparameter Tuning and Model Comparison</h3>
+<p>In each experiment, we try to find the best possible values of hyperparameters utilizing a grid search. We split the train set into stratified 3-fold cross-validation and take mean performance to decide the best performing set of hyperparameters. As explained before, we have a class imbalance in our data, which is better captured by the <code class="highlighter-rouge">F1 Score</code> metric.</p>
+
+<p>To compare models based on their performance, we used the same train-validation split for all models. This guarantees that the performance metrics are obtained on the same dataset, therefore we can compare the model’s performance. Specifically train-validation split was an 80%-20% split obtained with random splitting, and we used the same for all models.</p>
+
+<h3 id="handling-class-imbalance">Handling Class Imbalance</h3>
+<p>We tried 2 methods to handle the huge class imbalance present in the data:</p>
+<ol>
+  <li>Class weighting the objective function:</li>
+</ol>
+
+<p>In this method, due to the nature of the algorithm, we employ gradient updates for parameter optimization. While aggregating the gradients over the samples, we apply weights to them based on the number of occurrences in training sets. We scale the gradients for the majority and minority classes to achieve balance.</p>
+<ol>
+  <li>ADASYN algorithm:</li>
+</ol>
+
+<p>In this method, we oversample the minority class so that we have enough samples to learn from. The new samples are generated synthetically.</p>
+
+<p>We compare the results from both this method for all 3 XGBoost configurations and found that we don’t find much difference in performance metrics(F1 Score). The results reported are from utilizing class weighting.</p>
+<h3 id="xgboost-classifier-trains-on-distance-and-angle">XGBoost classifier trains on distance and angle</h3>
+<p>First, we create XGBoost baseline to compare the logistic baseline, with just ‘distance’ and ‘angle’ as the features. To tackle the class imbalance problem, the Following are the hyper-parameters for grid search:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  {"learning_rate": [0.1, 0.3], "max_depth": [2, 4, 6], "n_estimators": [4, 6, 8, 10], "objective": ["binary:logistic"], "reg_alpha": [0.1, 1.0]}
+</code></pre></div></div>
+<p>We get the following hyper-parameters for the best estimator:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  {'learning_rate': 0.3, 'max_depth': 6, 'n_estimators': 6, 'objective': 'binary:logistic', 'reg_alpha': 1.0}
+</code></pre></div></div>
+<p><a href="https://www.comet.com/data-science-workspace/advanced-models/b2a2c89e56f34414aaadfe6a719c0887?experiment-tab=chart&amp;showOutliers=true&amp;smoothing=0&amp;transformY=smoothing&amp;xAxis=step">Link to the model experiment</a></p>
+
+<p>Here, we compare the performance of XGBoost based on features distance and angle, to that of a simple logistic regression trained using the same features. The ROC AUC=0.66892 obtained for the logistic regression was, while that obtained with XGBoost is ROC AUC= 0.708. We consider that there is no significant difference here between the performance of these two models. This is likely explained by the fact that they were trained on only two features, therefore the XGBoost does not have much advantage over the logistic model here.</p>
+
+<p align="center">
+<img src="/assets/figures/xgboost01.svg" />
+</p>
+<p align="center">
+<img src="/assets/figures/xgboost02.svg" />
+</p>
+<p align="center">
+<img src="/assets/figures/xgboost03.svg" />
+</p>
+<p align="center">
+<img src="/assets/figures/xgboost04.svg" />
+</p>
+
+<h2 id="xgboost-classifier-trains-on-all-features">XGBoost classifier trains on all features</h2>
+
+<p>Next, we use all the features as defined in the section feature engineering 2. We use the same configuration of training/validation split and grid search with cross-validation as the XGBoost baseline. As explained above, the <code class="highlighter-rouge">F1 Score</code> is used as a metric for selecting the best performing model. Following are the hyperparameters for hyperparameter tuning:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{"learning_rate": [0.3], "max_depth": [4, 6, 8], "n_estimators": [25, 45, 70, 100], "objective": ["binary:logistic"], "reg_alpha": [1.0], "reg_lambda": [1.0]}
+</code></pre></div></div>
+<p>We get the following configuration for the best estimator:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'learning_rate': 0.3, 'max_depth': 4, 'n_estimators': 45, 'objective': 'binary:logistic', 'reg_alpha': 1.0, 'reg_lambda': 1.0}
+</code></pre></div></div>
+
+<p><a href="https://www.comet.com/data-science-workspace/advanced-models/77f0015ccf7f45afba799b51603448fb?experiment-tab=chart&amp;showOutliers=true&amp;smoothing=0&amp;transformY=smoothing&amp;xAxis=step">Link to the model experiment</a></p>
+
+<h2 id="performance-of-the-model">Performance of the model</h2>
+<p>We notice a small improvement in the performance of the model when using all features (ROC AUC = 0.757) as compared to using only distance and angle (ROC AUC = 0.708).</p>
+<p align="center">
+<img src="/assets/figures/gb01.svg" />
+</p>
+<p align="center">
+<img src="/assets/figures/gb02.svg" />
+</p>
+<p align="center">
+<img src="/assets/figures/gb03.svg" />
+</p>
+<p align="center">
+<img src="/assets/figures/gb04.svg" />
+</p>
+
+<h2 id="feature-selection">Feature Selection</h2>
+
+<p>We used a range of methods of feature selection that cover all types: filter, wrapper, and embedded methods. Here, we discuss and compare the results of each method. For each method, we keep the 5 highest-scoring features; and at the end, we will compute the intersection and union between all sets of obtained features.</p>
+
+<p>Before starting feature selection, we notice that some features are correlated. Specifically, the angle is correlated with y_coordinate (r=0.84) and change_in_shot_angle, as well as rebound, are correlated with last_event_type_SHOT (because these variables were defined based on one another). This means that there is probably some redundant information in these variables that needs to be parsed using feature selection.</p>
+
+<p align="center">
+<img src="/assets/figures/Picture1.png" />
+</p>
+
+<h2 id="filter-methods">Filter Methods</h2>
+<p>We first used a variance threshold of 80%, thus removing all features that are either one or zero in more than 80% of the sample.</p>
+<p align="center">
+<img src="/assets/figures/fig01.jpeg" />
+</p>
+<p>Then, we decided to keep only the 5 features with the highest variance, to stay coherent with the general method for all feature selection methods. The 5 top-ranked features were: <code class="highlighter-rouge">['distance', 'angle', 'distance_from_last_event', 'x_coordinate', 'game_seconds']</code></p>
+
+<p>Then, we also used univariate feature selection while using 6 different criteria. That is, we used all the methods available in scikit-learn that can be used for a classification task and that accept both positive and negative inputs:</p>
+
+<p>•	ANOVA F-value between label/feature for classification tasks.</p>
+
+<p>•	Mutual information for a discrete target.</p>
+
+<p>•	Percentile of the highest scores.</p>
+
+<p>•	False positive rate test.</p>
+
+<p>•	Estimated false discovery rate.</p>
+
+<p>•	Family-wise error rate.</p>
+<p align="center">
+<img src="/assets/figures/fig02.jpeg" />
+</p>
+<p>The 5 top-ranked features (on average among methods) were:<code class="highlighter-rouge"> ['distance', 'empty_net', 'game_period', 'y_coordinate', 'shot_type_Wrist Shot']</code></p>
+
+<h2 id="wrapper-methods">Wrapper methods</h2>
+<p>We used both forward search and backward search using logistic regression, setting the number of features to select equal to 5. For these methods, we scaled all features because this was needed for the logistic regression to converge.</p>
+
+<p>Forward search resulted in these features: 
+<code class="highlighter-rouge">['distance', 'angle', 'empty_net', 'game_period', 'distance_from_last_event']</code></p>
+
+<p>Backward search: the model does not converge.</p>
+
+<h2 id="embedded-methods">Embedded methods</h2>
+<p>We evaluated the coefficients from l2-penalized logistic regression, as well as that of Linear Support Vector Classification. Note that we are interested in the magnitude, therefore in the absolute value of the coefficient. For these methods, we scaled all features because this was needed for the logistic regression to converge.</p>
+<p align="center">
+<img src="/assets/figures/fig03.jpeg" />
+</p>
+<p>For logistic regression, the 5 top-ranked features were: [<code class="highlighter-rouge">distance</code>, <code class="highlighter-rouge">empty_net</code>, <code class="highlighter-rouge">distance_from_last_event</code>, <code class="highlighter-rouge">speed</code>, <code class="highlighter-rouge">shot_type_Wrap-around</code>]
+For linear SVC, the 5 top-ranked features were: [<code class="highlighter-rouge">distance</code>, <code class="highlighter-rouge">empty_net</code>, <code class="highlighter-rouge">distance_from_last_event</code>, <code class="highlighter-rouge">speed</code>, <code class="highlighter-rouge">shot_type_Tip-In</code>]</p>
+
+<h2 id="shap-features">SHAP Features</h2>
+<p>We also use SHAP algorithm’s tree explainer which operates on adding a particular feature to a subset of features and assigns importance based on its contribution. We use all features XGBoost model to generate the Shapley values and in turn, get the feature importance. The following plot describes this:</p>
+<p align="center">
+<img src="/assets/figures/shap_values.png" />
+</p>
+
+<h2 id="summary-and-consensus-among-feature-selection-methods">Summary and consensus among feature selection methods</h2>
+
+<p>In summary, we used 2 filters (including 6 different univariate methods) plus wrapper two more embedded and SHAP for a total of six different methods. From these, we compute the intersection and union of sets of 5 top-ranked features from each method. We obtain:</p>
+
+<p>Intersection: [<code class="highlighter-rouge">distance</code>]</p>
+
+<p>Union: [<code class="highlighter-rouge">angle</code>, <code class="highlighter-rouge">distance_from_last_event</code>, <code class="highlighter-rouge">empty_net</code>, <code class="highlighter-rouge">shot_type_Wrap-around</code>, <code class="highlighter-rouge">y_coordinate</code>, <code class="highlighter-rouge">speed</code>, <code class="highlighter-rouge">distance</code>, <code class="highlighter-rouge">x_coordinate</code>, <code class="highlighter-rouge">game_period</code>, <code class="highlighter-rouge">shot_type_Tip-In</code>, <code class="highlighter-rouge">shot_type_Wrist Shot</code>, <code class="highlighter-rouge">game_seconds</code>]</p>
+
+<h2 id="xgboost-train-on-selected-features">XGBoost train on selected features</h2>
+<p><a href="https://www.comet.com/data-science-workspace/advanced-models/8824cd33f6aa4574886508b514cc6724?experiment-tab=chart&amp;showOutliers=true&amp;smoothing=0&amp;transformY=smoothing&amp;xAxis=step">Link to the model experiment</a></p>
+
+<p>We utilize the following hyper-parameter configuration for grid search:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{"learning_rate": [0.1, 0.4], "max_depth": [4, 6, 8], "n_estimators": [25, 35, 50, 70, 100], "objective": ["binary:logistic"], "reg_alpha": [1.0], "reg_lambda": [1.0]}
+</code></pre></div></div>
+
+<p>Performance of the model
+It is important to notice that the feature selection is achieved in improving the model performance. While the model with all features had a ROC AUC = 0.708, the model with fewer but rigorously selected features had a ROC AUC = 0.75. This reflects the fact that sometimes adding more features mostly adds more noise. This is an illustration of why feature selection is important.</p>
+<p align="center">
+<img src="/assets/figures/xgb01.svg" />
+</p>
+<p align="center">
+<img src="/assets/figures/xgb02.svg" />
+</p>
+<p align="center">
+<img src="/assets/figures/xgb03.svg" />
+</p>
+<p align="center">
+<img src="/assets/figures/xgb04.svg" />
+</p>
+<h2 id="give-best-shot-">Give Best Shot <a name="Give-it-your-best-shot"></a></h2>
+<p>We trained and evaluated a variety of different models. Considering that our dataset was unbalanced (goals represent 1/10 events), models were trained such as to obtain the best performance as measured by ROC-AUC.</p>
+
+<ol>
+  <li>K-nearest-neighbours</li>
+  <li>Random Forests</li>
+  <li>Decision trees</li>
+  <li>Neural Networks - which resulted in our Best Model</li>
+</ol>
+
+<p>We also used a variety of other approaches including stratified train-test split and k-fold cross-validation.</p>
+
+<p>At this point, we also went back to the feature selection section, and we improved the variety of our feature selection algorithm. We improved the general pipeline of our feature selection (see the relevant section) such as to include a variety of filter, embedded and wrapper methods, to achieve a consensus among these methods. We noted that different feature selection methods resulted in different sets of features, and we reasoned that these sets might have importance for different reasons. We thus used the union of all sets as the final set of features, to include all relevant information. Models were thus trained with the final set of features.</p>
+<p align="center">
+<img src="/assets/figures/md04.svg" />
+</p>
+<p align="center">
+<img src="/assets/figures/md03.svg" />
+</p>
+<p align="center">
+<img src="/assets/figures/md01.svg" />
+</p>
+<p align="center">
+<img src="/assets/figures/md02.svg" />
+</p>
+
+<p># k-nearest-neighbours
+We trained a kNN using Scikit-learn. We used Euclidean distance as a distance metric. We searched for the best hyperparameter i.e., the one that maximized the area under the ROC curve (ROC AUC), by iteratively training KNN while using different values of k = 1, 2, 3, …, 50.</p>
+
+<p>kNN resulted in high accuracy and a satisfying ROC AUC (AUC=0.71)). However, when we evaluated the confusion matrix, we noticed that there were very few events predicted to be goals: the model predicted most events to be missed shots, and therefore is not an adequate model for this data and setting where we aim to predict goals. We explain this observation by the imbalance of our dataset, in which Euclidean distance could not establish a space where a majority of points would be goals: in nearly all cases, the majority of points would still be missed shots, and therefore kNN nearly always predicted shots to be missed shots.</p>
+
+<h1 id="random-forests">Random Forests</h1>
+<p>We trained a Random Forest model using Scikit-learn. After some trials, we finally used the following hyperparameters: number of trees as 1,000 and Gini impurity as the criterium for the split.</p>
+
+<p>We got a ROC AUC = 0.72. However, like the kNN, when we evaluated the confusion matrix, we noticed that there were very few events predicted to be goals: the model predicted most events to be missed shots, and therefore is not an adequate model for this data and setting where we aim to predict goals.</p>
+
+<h1 id="decision-trees">Decision Trees</h1>
+<p>We trained a Decision Tree model using Scikit-learn. We selected hyperparameters using a randomized search.</p>
+
+<p>This model performed the worst among those tested here, as we got a ROC AUC = 0.65.</p>
+
+<h1 id="neural-networks-are-our-best-model">Neural Networks are our Best Model</h1>
+<p>Link of the model in Comet ML platform.</p>
+<ul>
+  <li><a href="https://www.comet.com/data-science-workspace/model-registry/neural-network-model">Neural Network Model</a></li>
+</ul>
+
+<p>We trained Neural Networks using PyTorch. After exploring a variety of loss functions and optimizers, we finally selected AdamW as an optimizer, and Cross Entropy as a loss function because it optimized model performance. The model was then trained iteratively using the settings available in PyTorch. Importantly, the main turnaround for increasing accuracy was introducing class weights in my loss function which will penalize more on the class which has a low no of data points hence giving more importance.</p>
+
+<p>The Neural Networks obtained the best ROC-AUC ex-aequo with the Random Forest (i.e. we consider AUC=0.72 to be not significantly different from that of Random Forest). However, we consider the Neural Networks to be our best model because the examination of the confusion matrix reveals a much better classification than for Random Forest.</p>
+
+<h2 id="evaluate-on-test-set-">Evaluate on Test Set <a name="Evaluate-on-test-set"></a></h2>
+
+<h2 id="regular-season">Regular season:</h2>
+
+<p>For the Regular Season, the model’s performed similarly in the final evaluation set as they did in the training set. The best model based on ROC-AUC was again the Neural Networks. All curves as well as ROC-AUC metrics are close to those observed during training for the same models. This confirms that our models were not over-fitted during training, as there don’t seem to be issues such as leakage or improper splitting that could have resulted in over-fitting.</p>
+<p align="center">
+<img src="/assets/figures/md05.svg" />
+</p>
+<p align="center">
+<img src="/assets/figures/md06.svg" />
+</p>
+<p align="center">
+<img src="/assets/figures/md07.svg" />
+</p>
+<p align="center">
+<img src="/assets/figures/md08.svg" />
+</p>
+
+<h2 id="playoffs">Playoffs:</h2>
+
+<p>For the Playoffs, there was a very interesting discrepancy between model performance in the training set and that observed here in the final evaluation set. Specifically, performance is lower in the final evaluation set than in the training test and for all models. This is likely explained by the fact that most observations in the training set were from the Regular Season: Playoffs represent only 6.4% (20280/315725) of all observations. Goals made during Playoffs are likely predicted by different parameters than those made during Regular Season, because of the context and rules. Therefore, the models were trained mostly to predict goals during the Regular Season and thus performed poorly when evaluated only during the Playoff season. Possible solutions to this problem would be to train specific models only for the Playoff season, or to better account for the effect of the season on how the season affects the predictive power of other variables.</p>
+
+<p>Finally, we note that in this case, XGBoost performs better than other models, with a ROC-AUC=0.61. This might be explained by the specificity of this model, i.e. its ensemble methodology and its ability to learn multiple weak models to build a strong robust model which is flexible in many scenarios.</p>
+<p align="center">
+<img src="/assets/figures/md09.svg" />
+</p>
+<p align="center">
+<img src="/assets/figures/md10.svg" />
+</p>
+<p align="center">
+<img src="/assets/figures/md11.svg" />
+</p>
+<p align="center">
+<img src="/assets/figures/md12.svg" />
+</p>
+
+<h2 id="conclusion-">Conclusion <a name="conclusion"></a></h2>
+
+<p>The present project is a good example of how sports data can be obtained from a publicly available API and made into a data format that can be used for advanced, interactive visualizations, as well as a variety of Machine Learning models.</p>
+
+<p>This project involved predicted a relatively rare (10%) event - goals. It illustrates how feature engineering, feature selection, and finally hyperparameter tuning and model selection can achieve a good model generalizability to the evaluation set. The fact that the generalizability was poor to the part of the evaluation set that represented the playoffs illustrates how it is important for the training set to be representative of the evaluation set in all aspects. This also illustrates how some models might have better generalizability in such a context (i.e. XGBoost).</p>
+
+<p>Some limitations of the present project involve the fact that we used a simple train-test split. The method that we used therefore did not permit us to assign a confidence interval to the performance metrics, such as to compare whether the performance of the models was significantly different from one another.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Table of contents Experiment Tracking Feature Engineering I Baseline Models Feature Engineering II Advanced Models Give Best Shot Evaluate on Test Set Conclusion]]></summary></entry><entry><title type="html">Milestone1</title><link href="http://localhost:4000/2022/10/11/Milestone1.html" rel="alternate" type="text/html" title="Milestone1" /><published>2022-10-11T00:00:00-04:00</published><updated>2022-10-11T00:00:00-04:00</updated><id>http://localhost:4000/2022/10/11/Milestone1</id><content type="html" xml:base="http://localhost:4000/2022/10/11/Milestone1.html"><![CDATA[<ul>
+  <li><a href="#introduction">Introduction</a>
+    <ul>
+      <li><a href="#motivation">Motivation</a></li>
+    </ul>
+  </li>
+  <li><a href="#installation">Installation</a>
+    <ul>
+      <li><a href="#setup-environment">Setup Environment</a></li>
+      <li><a href="#install-dependencies">Install Dependencies</a></li>
+    </ul>
+  </li>
+  <li><a href="#usage">Usage</a>
+    <ul>
+      <li><a href="#download-data">Download Data</a></li>
+      <li><a href="#run-interactive-debugging-tool">Run Interactive Debugging Tool</a></li>
+      <li><a href="#create-tidy-data-for-visualisation">Create Tidy Data for Visualisation</a></li>
+      <li><a href="#run-simple-visualisation">Run Simple Visualisation</a></li>
+      <li><a href="#run-advance-visualisation">Run Advance Visualisation</a></li>
+    </ul>
+  </li>
+  <li><a href="#project-structure">Project Structure</a></li>
+  <li><a href="#data-apis">Data APIs</a></li>
+  <li><a href="#data-insights">Data Insights</a>
+    <ul>
+      <li><a href="#data-extractions">Data Extractions</a></li>
+      <li><a href="#interactive-debugging-tool">Interactive Debugging Tool</a></li>
+      <li><a href="#simple-visualisations">Simple Visualisation</a></li>
+      <li><a href="#advanced-visualisations">Advance Visualisations</a></li>
+    </ul>
+  </li>
+  <li><a href="#conclusion">Conclusion</a></li>
+  <li><a href="#authors">Authors</a></li>
+</ul>
+
+<!--te-->
+
+<h1 id="introduction">Introduction</h1>
+
+<p>The National Hockey League (NHL) is a professional ice hockey league in North America. It comprises a total of 32 teams, of which 7 in Canada <a href="https://en.wikipedia.org/wiki/National_Hockey_League">EPL</a>, including the Montreal Canadien. Each year, the Stanley Cup playoffs selects the best team, which is awarded the Stanley Cup for the season. For example, The Montreal Canadien won the Stanley Cup 24 for 24 seasons, the last time in 1992-1993.</p>
+
+<p>The NHL makes publically available an API that features statistics including meta-data on each season, season standings, player statistics by season, and play-by-play data. This last format of data is the most thorough and it features important information for all events during each game, such as the players involved, location coordinates on the ice, and the type of event. The NHL API is a valuable source of fine-grained sports data that can be used in a number of tasks such as finding the features that predict goals, or those that predict players salaries.</p>
+
+<h2 id="motivation">Motivation</h2>
+
+<p>The purpose of this project is to provide a Python API for accessing NHL data, specifically, all the play-by-play informations. The reader will learn here how to download the NHL data for a given year, how to first visualize it, and then how to format it into a tidy data frame. This tidy data format will then be used for producing simple, as well as more advanced, interactive visualizations. At term, this data could also be used for a number of purpuses including machine learning, or other tasks at the reader’s will.</p>
+
+<h1 id="installation">Installation</h1>
+
+<h2 id="setup-environment">Setup Environment</h2>
+
+<ul>
+  <li>Git clone the <a href="https://github.com/amandalmia14/hockey-primer-1">repository</a></li>
+  <li>Make sure Python is installed on the system</li>
+  <li>Create a virtual environment / conda environment</li>
+</ul>
+
+<h2 id="install-dependencies">Install Dependencies</h2>
+
+<ul>
+  <li>Activate the environment and run <code class="highlighter-rouge">pip install -r requirement.txt</code> this will download all the dependencies related to
+this project.</li>
+</ul>
+
+<h1 id="usage">Usage</h1>
+
+<h2 id="download-data">Download Data</h2>
+<ul>
+  <li>The data for the NHL games are exposed out in the form of various APIs, the details of the APIs can be found over
+<a href="https://gitlab.com/dword4/nhlapi">here</a></li>
+  <li>Run the python script which resides at <code class="highlighter-rouge">modules/dataextraction/data_extraction.py</code>, this script will fetch the data 
+of the seasons starting from 2016 to 2020.</li>
+  <li>This will create a folder in your directory for the season which you want to download and two json files will be 
+appeared along with some other files which will be used later part of the project.
+    <ul>
+      <li><code class="highlighter-rouge">YYYY_regular_season.json</code></li>
+      <li><code class="highlighter-rouge">YYYY_playoffs.json</code></li>
+    </ul>
+
+    <p><br />
+<img src="/assets/figures/data_download.png" width="200" />
+<br /></p>
+  </li>
+</ul>
+
+<h2 id="run-interactive-debugging-tool">Run Interactive Debugging Tool</h2>
+<ul>
+  <li>Run the <code class="highlighter-rouge">jupyter notebook</code> locally inside the project folder</li>
+  <li>Navigate to the <code class="highlighter-rouge">notebook</code> folder</li>
+  <li>Run <code class="highlighter-rouge">3_interactive_debugging_tool.ipynb</code> file</li>
+</ul>
+
+<h2 id="create-tidy-data-for-visualisation">Create Tidy Data for Visualisation</h2>
+<ul>
+  <li>Run the python script which resides at <code class="highlighter-rouge">modules/dataretrival/data_retrival.py</code>, this script will creates the tidy data 
+and save the data into a pickle file for all the seasons starting from 2016 to 2020.</li>
+</ul>
+
+<h2 id="run-simple-visualisation">Run Simple Visualisation</h2>
+<ul>
+  <li>Run the <code class="highlighter-rouge">jupyter notebook</code> locally inside the project folder (Incase if jupyter notebook isn’t running)</li>
+  <li>Navigate to the <code class="highlighter-rouge">notebook</code> folder</li>
+  <li>Run <code class="highlighter-rouge">4_simple_visualizations.ipynb</code> file</li>
+</ul>
+
+<h2 id="run-advance-visualisation">Run Advance Visualisation</h2>
+<ul>
+  <li>Run the <code class="highlighter-rouge">jupyter notebook</code> locally inside the project folder (Incase if jupyter notebook isn’t running)</li>
+  <li>Navigate to the <code class="highlighter-rouge">notebook</code> folder</li>
+  <li>Run <code class="highlighter-rouge">7_interactive_figure.ipynb</code> file</li>
+</ul>
+
+<h1 id="project-structure">Project Structure</h1>
+
+<p>As seen in the above image, the project is divided into various parts,</p>
+
+<ul>
+  <li><code class="highlighter-rouge">data</code> - It contains all the NHL tournament data season wise, in each season we have two json files of regular season
+games and playoffs.</li>
+  <li><code class="highlighter-rouge">figures</code> - It contains all the data insights which we captured in this project.</li>
+  <li><code class="highlighter-rouge">modules</code> - For every action which we are performing in this project, are captured as modules, like data
+extractions, data retrieval (data parsing)</li>
+  <li><code class="highlighter-rouge">notebooks</code> - For all kinds of visualisations, insights of the data can be accessed through the notebooks.</li>
+  <li><code class="highlighter-rouge">constants.py</code> - As the name suggests, all the common functions and variables reside in this file.</li>
+</ul>
+
+<h1 id="data-apis">Data APIs</h1>
+
+<p>This project uses two APIs which were provided by the NHL :</p>
+
+<ul>
+  <li><code class="highlighter-rouge">GET_ALL_MATCHES_FOR_A_GIVEN_SEASON = "https://statsapi.web.nhl.com/api/v1/schedule?season=XXXX"</code>
+    <ul>
+      <li>This API fetch all the matches metadata for a given input season, using this API we are getting the map of
+Matches ID and the type of Match it is like <code class="highlighter-rouge">regular season or playoffs</code></li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">GET_ALL_DATA_FOR_A_GIVEN_MATCH = "https://statsapi.web.nhl.com/api/v1/game/XXXXXXXXXX/feed/live/"</code>
+    <ul>
+      <li>This API fetches all the data in a granular form for a given match id, where we gather the insights subsequently
+in
+the following tasks.</li>
+    </ul>
+  </li>
+  <li>In order to download a particular data for a season, update the file <code class="highlighter-rouge">modules\dataextraction\data_extraction.py</code> with
+the <code class="highlighter-rouge">year</code> variable (one can put multiple seasons to download as well)</li>
+  <li>Once the update is done, run <code class="highlighter-rouge">data_extraction.py</code> it will download the data and place it under a folder with the
+season
+year with two json files, with regular season games and playoffs respectively.</li>
+</ul>
+
+<h1 id="data-insights">Data Insights</h1>
+
+<h2 id="data-extractions">Data Extractions</h2>
+
+<p>The data available by the NHL API needs to be parsed and formatted in order to make more advanced data usages possible. In this regard, we select the relevant data out from the nested dictionnaries from the json file, and and we format a single tabular structure, i.e. 
+ a dataframe. Below is a glimpse of the tidy dataframe which will be used in further analyses.</p>
+
+<details>
+<summary>Tidy Data</summary>
+<img src="/assets/figures/df.png" />
+</details>
+
+<h3>How to get the number of players in each team</h3>
+<p>The first step would be to format a new tidy dataframe which would includes all types of events (not only the shots and goals, such as in the dataframe featured above), with events as rows and including datetime, eventType, periodType, penaltySeverity, penaltyMinutes, and team, as columns. The events would to be sorted in order of their occurrence in time during the game (datetime).</p>
+
+<p>We would then create an empty (np.nan) column for the number of players on ice, and program a loop to iterate over all event, while concatenating a list of player counts for each time, n_1 and n_2. At the beginning of the loop, and at the beginning of each period
+(each time the period of the event is not the same as the previous event), we re-initiate the parameters: n_1 = 6 (number of players in first team, including the goalie), n_2 = 6 (number of players in second team, including the goalie).</p>
+
+<p>Eight parameters would be set: penalty_player_A_team_1=None, end_time_of_penalty_for_player_A_team_1 = Datetime penalty_player_B_team_1 = None, and end_time_of_penalty_for_player_B_team_1=Datetime (as there can be a maximum of 2 players in penalty at the same time);and the four equivalent parameters for team 2.</p>
+
+<p>Then, as the loop iterater over all events, each time the eventTypeId == “PENALTY”, if “penaltySeverity”: “Minor” or “DoubleMinor”, the number of player in the team involved in the penalty (Team of the player that is penalized) would be substracted 1, the penalty_player would be set to the name the penalized player, and end_time_of_penalty parameter would be set to DateTime + penaltyMinutes. For subsequent events, as long as the penalty_player is not None, the datetime of the event would be compared to end_time_of_penalty, untill datetime &gt; end_time_of_penalty and then the number of player for that team would be added +1, as the player is back on ice.</p>
+
+<p>Note that for other types of penalty (e.g. misconduct), the number of player on the ice would not be updated as an immediate player replacement is allowed.</p>
+
+<h3>Engineering additionnal features </h3>
+<p>We would be interested in studying the impact of tackling and hitting on the chance of goals, both (1) at team-level (2 variables), (2) player-level (4 variables), and (3) total through the game (4 variables). Indeed, tackling and hitting has become an important part of hockey, often discussed by commentators, and highly represented in the data under “eventTypeId”: “HIT”.</p>
+
+<p>(1) We would first extract, for each shot event, variables at team-level that corresponds to the time (in minutes) between the shot and the last time a player of the team on which the shot was taken was hit. This would be done by iterating through all events in chronological order, initiating the time at as NaN at the beginning of each period, and updating the time at each time a hit happens, for each team. This would result in variables: time_since_last_hit_team_1 and time_since_last_hit_team_2.</p>
+
+<p>(2) Additionally, during the same iteration process, we would update four boolean variables with player-level information to note whether the hitter and the hittee from the last hit event were among the player involved in the shot (shooter, goalie or assist). This would result in variables: hitter_involved_team_1, hittee_involved_team_1, hitter_involved_team_2, hittee_involved_team_2.</p>
+
+<p>(3) Finally, to study the relationship between goals and the total number of hits in a game, we would extract 4 variables, during the same iteration process as above. These variables would be initiated at 0 at the beginning of the game, and updated at each hit event for each team and type of player involved (hitter or hittee). This would result in variables: n_hitter_team_1, n_hittee_team_1, n_hitter_team_2, n_hittee_team_2.</p>
+
+<h2 id="interactive-debugging-tool">Interactive Debugging Tool</h2>
+
+<details>
+<summary>Event locations for the season 2020</summary>
+     <h4>Insights</h4>
+     <img src="/assets/figures/idt.png" />
+</details>
+
+<h2 id="simple-visualisations">Simple Visualisations</h2>
+
+<details>
+<summary>Goals and missed shots, by shot type for season 2016-2017</summary>
+     <h4>Insights</h4>
+     The most dangerous types of shots for this 2016-2017 season are “deflected” (19.8% of success) followed by 
+     “tip-in” shots (17.9% of success). By “most dangerous”, we mean that these shots are the ones that end up the most 
+     frequently by a successful goal, as opposed to being missed. However, these are among the less frequent ones: 
+     there were only 806 “deflected” and 3,267 “tip-in” shots this season. On the contrary, the most common type of 
+     shots was by far the “wrist shot”, with a total of 38,056 shots of that type for this season.
+     <br />
+     <br />
+     We chose to illustrate this question with a barplot while overlaying the count of goals in blue overtop the total 
+     count of shots in orange (thus, total of both goals and other, missed shots), by type of shot. Even though there 
+     is a large difference between the most common and less common types of shots, we chose to plot the absolute numbers
+     and to keep the scale linear, because these are the most intuitive for the reader to understand the scale 
+     (the great number of goals involved in a same season) and not to be confused with too many percentages on the same 
+     figure. We chose to add annotations on top of bars for the percentage of goals over all shots, because 
+     these proportions could not be visually abstracted simply from the figure, and this was an intuitive way to 
+     illustrate them.
+     <img src="/assets/figures/figure_1_goals_by_shot_type_2016.png" />
+</details>
+
+<details>
+<summary>Proportion of goal by distance for seasons 2018, 2019, 2020</summary>
+     <h4>Insights</h4>
+     The proportion of goals over all shots increases overall exponentially as the distance diminishes, with a maximum 
+     proportion of goals &gt;25% when goals are shot at less than 5 feet from the goal. We also note a small, local maximum
+     at 75 to 80 feet. This distribution did not change significantly for seasons 2018-19 to 2020-21. This local 
+     maximum could suggest that there is another variable (e.g. shot type or other) that could underlie this 
+     distribution. 
+     <br />
+     <img src="/assets/figures/figure_2_goal_by_distance2020.png" />
+</details>
+
+<details>
+<summary>Proportion of goal by distance and shot type</summary>
+     <h4>Insights</h4>
+     We chose this figure after having considered and visualized different types of figures. First, we visualized 
+     violin plots of the distribution of goals and missed shots; however, these did not intuitively represent the 
+     chance (proportion) of goals over all shots per se, and the result was dependent on some assumption on the kernel 
+     size. We also experimented computing a logistic regression to predict goals from the distance category, which 
+     worked fine.
+     <br />
+     Finally, we chose to come back to the most simple and intuitive method, which is to bin the distance into 
+     categories, and plot the proportion of goals for each bin. We chose to divide the distance into equal bins (as 
+     opposed to percentiles or other kind of distribution), in order to be able to draw direct conclusion about the 
+     relationship of goals to the absolute value of distance by visualizing the figure. Overall, the most dangerous \
+     type of shot is the “tip-in” shot taken at a distance of less than 5 feet, followed closely by “back-hand” 
+     shots: more than 40% of these shots result in a goal. The relationship found in the previous questions, i.e. that 
+     the probability of a goal augments exponentially as the distance decreases, holds true overall for most types of 
+     shots. However, the “deflected” and “tip-in” shots have a second maximum between around 30 and 60 feet.
+     <br />
+     Importantly, the “back-hand” shot has a second maximum at about 80 feet, and the slap-shot has a second maximum at 
+     more than 90 feet. This could explain the small local maximum at that distance that we observed in the global 
+     distribution of all shots at the previous figure.
+     <br />
+     Finally, the curves are somewhat irregular, and adding more data (e.g. averaging through a few years) could add 
+     more smoothness in the results. Note that to have more smoothed curves and remove outliers which made interpretations difficult, we did not plot the 
+     points for which we had less than 10 total observations for that type of shot and at that distance in that season. 
+     <br />
+     <img src="/assets/figures/figure_3_goals_by_distance_and_shot_type2017.png" />
+</details>
+
+<h2 id="advanced-visualisations">Advanced Visualisations</h2>
+<p>Comparison of Colorado Avalanche avg shots between season 2016-2017 and 2020-2021<br />
+  Here, we compute the average shot rate per hour for each team and for each location on the ice, rounded to a square foot, as compared to the league average shot rate per hour for that same location in years 2016 to 2020, and normalized by the latter. Formally, we compute: 
+  ((team average shot rate per hour for location k) - (league average shot rate per hour for location k))/ (team average shot rate per hour for location k).
+   We then display the result for each square foot on the ice, as a heatmap overlayed on a figure of the hockey rink, for the offensive zone. The heatmap was smoothed using a gaussian filter with sigma=5. We plot independent figures the years 2016-17, 2018-2019, 2019-20 and 2020-21, with option to choose the team to display.</p>
+
+<p>Season 2016-2017</p>
+<iframe src="/assets/2016.html" onload="javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+&quot;px&quot;;}(this));" style="height:600px;width:200%;border:none;overflow:hidden;"></iframe>
+<p>Season 2018-2019</p>
+<iframe src="/assets/2018.html" onload="javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+&quot;px&quot;;}(this));" style="height:600px;width:200%;border:none;overflow:hidden;"></iframe>
+<p>Season 2019-2020</p>
+
+<iframe src="/assets/2019.html" onload="javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+&quot;px&quot;;}(this));" style="height:600px;width:200%;border:none;overflow:hidden;"></iframe>
+<p>Season 2020-2021</p>
+
+<iframe src="/assets/2020.html" onload="javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+&quot;px&quot;;}(this));" style="height:600px;width:200%;border:none;overflow:hidden;"></iframe>
+
+<h2 id="discuss-the-interpretation-of-the-figures">Discuss the interpretation of the figures</h2>
+
+<p>These figures display the excess shot rate per hour by ice location for the team and year, normalized by the league average for all teams and years (2016 to 2020). The excess shot rate is displayed as a proportion of the league average; it is important to look as the scale from the side colorbar before comparing the teams, because we chose to re-adjust the colorbar scale for each team for a better visualization.</p>
+
+<p>The visualization of these figures can help understand in which locations each team was more active in taking shoots as compared to the usual level of shot activity in that zone. This can reflect in part the strategy taken by the team during that season. This strategy could also be correlated with the success of that team during that season.</p>
+
+<p>We consulted the complete league standings on the NHL webside (https://www.nhl.com/standings/2016/league). We note that the Colorado Avalanche was ranked as the last team in the league for the 2016-2017 season, with as few as 48 points total. On the contrary, the Colorado Avalanche was ranked as first of the league for the 2020-2021, with 82 points total and winning the Stanley Cup. This does not directly reflect in the shot maps, since the shot map displays all shots, not only goals. For the 2016-2017 season, the shot map shows that the Colorado Avalanche were doing many shots in excess (up to 120% of the league average for some locations on the ice), specifically in the neutral zone face-off spots (especially left side), and also from the boards behind the goalie. This suggests that shooting from these areas was not successful in achieving goals.  On the contrary, for the 2020-2021 year, the shot map of the Colorado Avalanche shows a shot rate per hour overall closer to the team average, except that an excess of shots were taken from the zone near the referee crease (left side on the plot). This suggests that shooting from that area might have been a good strategy to achieve goals. However, these hypotheses would need to be confirmed in further work that could draw for example shot maps only for the shots that were successful in achieving goals.</p>
+
+<p>Here, we compare the Buffalo Sabres and the Tampa Bay Lightning, while considering that the latter ranked first (for total points) in 2018-2019 and won the Stanley Cup both for 2019-2020 and 2020-2021 seasons. As a comparison, the Buffalo Sabres has been struggling and ranked 27th, 25th and 31th (for total points) for those three years. We thus compare the shot maps of teams for these three years.</p>
+
+<p>The patterns reflected by shot maps for these years shows a clear difference, when focusing on the locations from where the shots were taken. We note that while the Tampa Bay Lightning has taken an excess of shots of the attacking zone (2018-19, and 2019-2020 seasons), and also from the boards just behind the goalie (2019-2020 and 2020-2021 season). On the contrary, the Buffalo Sabres were taking a number of shots close to the league average, and the only areas in which they were taking excesses of shots were further from the goal, for example, they were taking shots from near the referee crease or from close to the ice center.</p>
+
+<p>These comparisons suggest that some teams (here, the Tampa Bay Lightning) are more successful in winning when taking more shots from the attacking zone or from the boards behind the goalie, than other teams (here, the Buffalo Sabres) that took shots from further on the ice. Overall, it suggests that not only the excess of shots by itself, but the location of these shots, has an impact on the performance of the team.</p>
+
+<p>However, this does not give the complete picture. First, all the comparisons done here were done visually, that is, we did not conduct statistical testing nor predictive modelling assessments. Second, we considered only the excess shot rate per hour stratified by all locations on the ice, not whether these shots actually resulted in goals. This does not give us information on the proportion of each shot that achieved goals in each location. For example, we see that the Buffalo Sabres were taking many shots from a furthest distance, and this is associated with the fact that this team did poorly in that season, but we did not directly assess the mechanism involved in the relationship between the shots in question and their unsuccessful results. Finally, it is possible that some locations of shooting do not directly result in goals, but have a broader impact on the game, by either making later goals possible for the team involved or making this team vulnerable to shots by the other team.  Overall, these limitations highlight the necessity to be very careful when making causality or mechanistic assumptions from solely the visualization of data.</p>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>The present project is a good example of how sports data can be obtained from a publically available API, and made into a data format that can be used for advanced, interactive visualizations. Some limitations of the present work include that the conclusions drawn here from the data are based solely on data visualizations, and not yet on thorough predictive modelling. Further work could focus on using the formatted data for tasks such as feature selection and machine learning.</p>
+
+<h1 id="authors">Authors</h1>
+
+<p><strong>Vaibhav Jade:</strong> First year student of MSc. Computer Science at UdeM.</p>
+
+<p><strong>Mohsen Dehghani:</strong> Master’s degree in Optimization 2010-2013 and student of DESS in Machin learning at MILA 2022-2023. I start a master’s degree in Machin learning at MILA 2022-2023 love to show how to apply theoretical mathematical knowledge to real-life problems by using computer languages such as Java or Python.</p>
+
+<p><strong>Aman Dalmia:</strong> First year student of MSc. Computer Science at UdeM, have an interest in Information Retrieval and Natural Language Processing. <br />
+  <em>“Don’t create a problem statement for an available solution, rather work towards a solution for a given problem”</em></p>
+
+<p><strong>Raphaël Bourque:</strong> Graduated from Medicine, presently doing residency training in Psychiatry and at the Clinician Investigator Program, and studying at the MSc in Computationnal Medicine. My current research work is in Genetics (CHU Sainte-Justine), and I am very interested in the applications of data science and machine learning to evidence-based medical practice.</p>
+
+<p><em>(Names are in ascending order)</em></p>]]></content><author><name></name></author><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2020/01/02/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2020-01-02T05:31:29-05:00</published><updated>2020-01-02T05:31:29-05:00</updated><id>http://localhost:4000/jekyll/update/2020/01/02/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2020/01/02/welcome-to-jekyll.html"><![CDATA[<h2 id="how-to-use-mathjax">How to use MathJax</h2>
 
 <ul>
   <li>
