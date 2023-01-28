@@ -1,40 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-01-27T22:09:18-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Monos</title><subtitle>Themed by ejjoo</subtitle><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2020/01/02/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2020-01-02T05:31:29-05:00</published><updated>2020-01-02T05:31:29-05:00</updated><id>http://localhost:4000/jekyll/update/2020/01/02/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2020/01/02/welcome-to-jekyll.html"><![CDATA[<h2 id="how-to-use-mathjax">How to use MathJax</h2>
-
-<ul>
-  <li>
-    <p>In the <code class="highlighter-rouge">_config.yml</code>, add the following lines:
-markdown: kramdown</p>
-  </li>
-  <li>
-    <p>On the top of the posts that you’d like to add mathjax support, add the following line:
-usemathjax: true</p>
-  </li>
-  <li>
-    <p>Add these lines to <code class="highlighter-rouge">_includes/head.html</code>:
-<script type="text/javascript" async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
-</script></p>
-  </li>
-</ul>
-
-<p>You’ll find this post in your <code class="highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
-
-<h2 id="some-information-about-jekyll">Some information about Jekyll</h2>
-
-<p>Jekyll requires blog post files to be named according to the following format:</p>
-
-<p><code class="highlighter-rouge">YEAR-MONTH-DAY-title.MARKUP</code></p>
-
-<p>Where <code class="highlighter-rouge">YEAR</code> is a four-digit number, <code class="highlighter-rouge">MONTH</code> and <code class="highlighter-rouge">DAY</code> are both two-digit numbers, and <code class="highlighter-rouge">MARKUP</code> is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.</p>
-
-<p>Jekyll also offers powerful support for code snippets:</p>
-
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">print_hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
-  <span class="nb">puts</span> <span class="s2">"Hi, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>
-<span class="k">end</span>
-<span class="n">print_hi</span><span class="p">(</span><span class="s1">'Tom'</span><span class="p">)</span>
-<span class="c1"># =&gt; prints 'Hi, Tom' to STDOUT.</span></code></pre></figure>
-
-<p>Check out the <a href="https://jekyllrb.com/docs/home">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://talk.jekyllrb.com/">Jekyll Talk</a>.</p>]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[How to use MathJax]]></summary></entry><entry><title type="html">Deep Learning</title><link href="http://localhost:4000/sample/2020/01/02/Deep-Learning.html" rel="alternate" type="text/html" title="Deep Learning" /><published>2020-01-02T05:20:23-05:00</published><updated>2020-01-02T05:20:23-05:00</updated><id>http://localhost:4000/sample/2020/01/02/Deep-Learning</id><content type="html" xml:base="http://localhost:4000/sample/2020/01/02/Deep-Learning.html"><![CDATA[<h1 id="deep-learning-with-pytorch-step-by-step">Deep Learning with PyTorch Step-by-Step</h1>
+I"-(<h1 id="deep-learning-with-pytorch-step-by-step">Deep Learning with PyTorch Step-by-Step</h1>
 
 <p>In this blog, we will:</p>
 
@@ -147,4 +111,6 @@ descent</p>
 </span><span class="n">filename</span> <span class="o">=</span> <span class="n">YTID</span><span class="o">+</span><span class="s">".mp3"</span>
 <span class="n">download_audio</span><span class="p">(</span><span class="n">YTID</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
 <span class="c1">#cut_audio(TEST_DIR+'/4X3upUSL54I.mp3', 'cut_'+'4X3upUSL54I.mp3', 0.0, 10.0)
-</span></code></pre></div></div>]]></content><author><name></name></author><category term="sample" /><summary type="html"><![CDATA[Deep Learning with PyTorch Step-by-Step]]></summary></entry></feed>
+</span></code></pre></div></div>
+
+:ET
