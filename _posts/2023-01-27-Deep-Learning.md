@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Deep Learning"
-date: 2020-01-02 19:20:23 +0900
+date: 2023-01-28 08:20:23 +0900
 category: sample
 ---
 # Deep Learning with PyTorch Step-by-Step
