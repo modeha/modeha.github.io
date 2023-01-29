@@ -1,6 +1,12 @@
-I"-(<h1 id="deep-learning-with-pytorch-step-by-step">Deep Learning with PyTorch Step-by-Step</h1>
+I"�*<h1 id="deep-learning-with-pytorch-step-by-step">Deep Learning with PyTorch Step-by-Step</h1>
 
-<p>In this blog, we will:</p>
+<p>Most modern neural networks are trained using maximum likelihood. This means that the cost function is simply the negative log-likelihood, equivalently described as the cross-entropy between the training data and the model distribution. This
+cost function is given by [J(θ) = \log pmodel(y | x)]
+The specific form of the cost function changes from model to model, depending
+on the specific form of log pmodel. The expansion of the above equation typically
+yields some terms that do not depend on the model parameters and may be
+discarded. For example, if \(pmodel(y | x) = N(y; f(x; θ), I)\),then we recover the mean squared error cost,\(J(θ) = 1\)
+In this blog, we will:</p>
 
 <p>• define a simple linear regression model</p>
 

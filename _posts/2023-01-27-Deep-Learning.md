@@ -6,19 +6,22 @@ category: sample
 ---
 # Deep Learning with PyTorch Step-by-Step
 
+Most modern neural networks are trained using maximum likelihood. This means that the cost function is simply the negative log-likelihood, equivalently described as the cross-entropy between the training data and the model distribution. This cost function is given by
+ \[J(θ) = \log p_{model}(y | x)\]
+The specific form of the cost function changes from model to model, depending on the specific form of $$\log p_{model}$$ The expansion of the above equation typically yields some terms that do not depend on the model parameters and may be discarded. 
+For example, if $$p_{model}(y | x) = N(y; f(x; θ), I)$$,then we recover the mean squared error cost,
+\[J(θ) = 1\]
 
 In this blog, we will:
 
 • define a simple linear regression model
 
 • walk through every step of gradient descent: initializing parameters,
-performing a forward pass, computing errors and loss, computing gradients,
-and updating parameters
+performing a forward pass, computing errors and loss, computing gradients, and updating parameters
 
 • understand gradients using equations, code, and geometry
 
-• understand the difference between batch, mini-batch, and stochastic gradient
-descent
+• understand the difference between batch, mini-batch, and stochastic gradient descent
 
 • visualize the effects on the loss of using different learning rates
 

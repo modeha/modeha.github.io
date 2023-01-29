@@ -1,119 +1,22 @@
-<!DOCTYPE html>
-<html lang="en"><head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Deep Learning" /></head>
-<script type="text/javascript" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-
-<style>@import url(/public/css/syntax/monokai.css);</style>
-  <title>Deep Learning</title>
-  <!-- <link href="/public/css/bootstrap.min.css" rel="stylesheet"> -->
-
-  <link href="/public/css/style.css" rel="stylesheet">
-  <body>
-  	<div class="container"> 
-		<div class="sidebar">
-			<div class="sidebar-item sidebar-header">
-	<div class='sidebar-brand'>
-		<a href="/about/">Deep Learning</a>
-	</div>
-	<p class="lead">Mohsen Dehghani</p></div>
-
-<div class="sidebar-item sidebar-nav">
-	<ul class="nav">
-      <li class="nav-title">Pages</li>
-	  <li>
-	  	<a class="nav-item" href="/">Articles</a>
-	  </li>
-	  
-	  
-	    
-	  
-	    
-	      
-	        <li>
-	        	<a class="nav-item" href="/about/">
-	            	About
-	            </a>
-	        </li>
-	      
-	    
-	  
-	    
-	      
-	    
-	  
-	    
-	  
-	    
-	  
-	</ul>
-</div>
-
-<div class="sidebar-item sidebar-nav">
-  	<ul class="nav">
-			<li class="nav-title">Categories</li>
-	    
-	    <li>
-	    	<a class="nav-item" href="/category/#jekyll">
-				<span class="name">jekyll</span>
-				<span class="badge">1</span>
-	    	</a>
- 		</li>
-	    
-	    <li>
-	    	<a class="nav-item" href="/category/#update">
-				<span class="name">update</span>
-				<span class="badge">1</span>
-	    	</a>
- 		</li>
-	    
-	    <li>
-	    	<a class="nav-item" href="/category/#sample">
-				<span class="name">sample</span>
-				<span class="badge">1</span>
-	    	</a>
- 		</li>
-	    
-	  </nav>
-	</ul>
-</div>
-
-<div class="sidebar-item sidebar-footer">
-	<p>Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a></p>
-</div>
-		</div>
-		<div class="content">
-			<article class="post">
-	<header class="post-header">
-		<div class="post-title"> 
-			Deep Learning
-		</div>
-		<time class="post-date dt-published" datetime="2023-01-27T18:20:23-05:00" itemprop="datePublished">2023/01/27
-		</time>		
-	</header>
-
-	<div class="post-content">
-		<h1 id="deep-learning-with-pytorch-step-by-step">Deep Learning with PyTorch Step-by-Step</h1>
+I"�*<h1 id="deep-learning-with-pytorch-step-by-step">Deep Learning with PyTorch Step-by-Step</h1>
 
 <p>Most modern neural networks are trained using maximum likelihood. This means that the cost function is simply the negative log-likelihood, equivalently described as the cross-entropy between the training data and the model distribution. This cost function is given by
- [J(θ) = \log p_{model}(y | x)]
-The specific form of the cost function changes from model to model, depending on the specific form of \(\log p_{model}\) The expansion of the above equation typically yields some terms that do not depend on the model parameters and may be discarded. 
-For example, if \(p_{model}(y | x) = N(y; f(x; θ), I)\),then we recover the mean squared error cost,
-[J(θ) = 1]</p>
-
-<p>In this blog, we will:</p>
+ [J(θ) = \log pmodel(y | x)]
+The specific form of the cost function changes from model to model, depending on the specific form of log pmodel. The expansion of the above equation typically
+yields some terms that do not depend on the model parameters and may be
+discarded. For example, if \(pmodel(y | x) = N(y; f(x; θ), I)\),then we recover the mean squared error cost,\(J(θ) = 1\)
+In this blog, we will:</p>
 
 <p>• define a simple linear regression model</p>
 
 <p>• walk through every step of gradient descent: initializing parameters,
-performing a forward pass, computing errors and loss, computing gradients, and updating parameters</p>
+performing a forward pass, computing errors and loss, computing gradients,
+and updating parameters</p>
 
 <p>• understand gradients using equations, code, and geometry</p>
 
-<p>• understand the difference between batch, mini-batch, and stochastic gradient descent</p>
+<p>• understand the difference between batch, mini-batch, and stochastic gradient
+descent</p>
 
 <p>• visualize the effects on the loss of using different learning rates</p>
 
@@ -215,10 +118,4 @@ performing a forward pass, computing errors and loss, computing gradients, and u
 <span class="c1">#cut_audio(TEST_DIR+'/4X3upUSL54I.mp3', 'cut_'+'4X3upUSL54I.mp3', 0.0, 10.0)
 </span></code></pre></div></div>
 
-
-	</div>
-</article>
-		</div>
-	</div>
-  </body>
-</html>
+:ET
