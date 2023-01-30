@@ -97,12 +97,23 @@
 
 	<div class="post-content">
 		<h1 id="deep-learning-with-pytorch-step-by-step">Deep Learning with PyTorch Step-by-Step</h1>
+<h1 id="optimizer">Optimizer:</h1>
 
+<p>What if we had a whole lot of parameters using the computed gradients?
+We need to use one of PyTorch’s optimizers, like SGD, RMSprop, or Adam.
+There are many optimizers: SGD is the most basic of them, and Adam is one of the most popular.
+Different optimizers use different mechanics for updating the parameters, but they all achieve 
+the same goal through, literally, different paths.The following animation shows a loss surface,the paths traversed by some optimizers to achieve the minimum (represented by a star).</p>
+
+<p>Remember, the choice of mini-batch size influences the path of gradient descent, and so does the choice of an optimizer.</p>
+<p align="left">
+<img src="/assets/figures/opt2.gif" />
+</p>
 <p>Most modern neural networks are trained using maximum likelihood. This means that the cost function is simply the negative log-likelihood, equivalently described as the cross-entropy between the training data and the model distribution. This cost function is given by
- [J(θ) = \log p_{model}(y | x)]
+ \(J(θ) = \log p_{model}(y | x)\)
 The specific form of the cost function changes from model to model, depending on the specific form of \(\log p_{model}\) The expansion of the above equation typically yields some terms that do not depend on the model parameters and may be discarded. 
 For example, if \(p_{model}(y | x) = N(y; f(x; θ), I)\),then we recover the mean squared error cost,
-[J(θ) = 1]</p>
+\(J(θ) = 1\)</p>
 
 <p>In this blog, we will:</p>
 
@@ -119,7 +130,7 @@ performing a forward pass, computing errors and loss, computing gradients, and u
 
 <p>• understand the importance of standardizing / scaling features</p>
 
-<iframe src="/assets/Chapter00.html" onload="javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+&quot;px&quot;;}(this));" style="height:100px;width:65%;border:none;overflow:hidden;">
+<iframe src="/assets/Chapter00.html" onload="javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+&quot;px&quot;;}(this));" style="height:100px;width:90%;border:none;overflow:hidden;">
  </iframe>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
@@ -139,7 +150,9 @@ performing a forward pass, computing errors and loss, computing gradients, and u
 <span class="k">def</span> <span class="nf">download_audio</span><span class="p">(</span><span class="n">YTID</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
     <span class="s">"""
     Create a function that downloads the audio of the Youtube Video with a given ID
-    and saves it in the folder given by path. Download it as an mp3. If there is a problem downloading the file, handle the exception. If a file at `path` exists, the function should return without attempting to download it again.
+    and saves it in the folder given by path. Download it as an mp3. If there is a 
+    problem downloading the file, handle the exception. If a file at `path` exists, 
+    the function should return without attempting to download it again.
 
     ** Use the library youtube_dl: https://github.com/ytdl-org/youtube-dl/ **
     Args:
@@ -185,7 +198,8 @@ performing a forward pass, computing errors and loss, computing gradients, and u
 
 <span class="k">def</span> <span class="nf">cut_audio</span><span class="p">(</span><span class="n">in_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">out_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
     <span class="s">"""
-    Create a function that cuts the audio from in_path to only include the segment from start to end and saves it to out_path.
+    Create a function that cuts the audio from in_path to only include the segment 
+    from start to end and saves it to out_path.
 
     ** Use the ffmpeg library: https://github.com/kkroening/ffmpeg-python
     Args:
@@ -214,7 +228,6 @@ performing a forward pass, computing errors and loss, computing gradients, and u
 <span class="n">download_audio</span><span class="p">(</span><span class="n">YTID</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
 <span class="c1">#cut_audio(TEST_DIR+'/4X3upUSL54I.mp3', 'cut_'+'4X3upUSL54I.mp3', 0.0, 10.0)
 </span></code></pre></div></div>
-
 
 	</div>
 </article>

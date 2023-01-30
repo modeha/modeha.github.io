@@ -5,12 +5,23 @@ date: 2023-01-28 08:20:23 +0900
 category: sample
 ---
 # Deep Learning with PyTorch Step-by-Step
+#  Optimizer:
 
+What if we had a whole lot of parameters using the computed gradients?
+We need to use one of PyTorch’s optimizers, like SGD, RMSprop, or Adam.
+There are many optimizers: SGD is the most basic of them, and Adam is one of the most popular.
+Different optimizers use different mechanics for updating the parameters, but they all achieve 
+the same goal through, literally, different paths.The following animation shows a loss surface,the paths traversed by some optimizers to achieve the minimum (represented by a star).
+
+Remember, the choice of mini-batch size influences the path of gradient descent, and so does the choice of an optimizer.
+<p align="left">
+<img src="/assets/figures/opt2.gif"/>
+</p>
 Most modern neural networks are trained using maximum likelihood. This means that the cost function is simply the negative log-likelihood, equivalently described as the cross-entropy between the training data and the model distribution. This cost function is given by
- \[J(θ) = \log p_{model}(y | x)\]
+ $$J(θ) = \log p_{model}(y | x)$$
 The specific form of the cost function changes from model to model, depending on the specific form of $$\log p_{model}$$ The expansion of the above equation typically yields some terms that do not depend on the model parameters and may be discarded. 
 For example, if $$p_{model}(y | x) = N(y; f(x; θ), I)$$,then we recover the mean squared error cost,
-\[J(θ) = 1\]
+$$J(θ) = 1$$
 
 In this blog, we will:
 
@@ -29,7 +40,7 @@ performing a forward pass, computing errors and loss, computing gradients, and u
 
  <iframe src="/assets/Chapter00.html"
  onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));'
-   style="height:100px;width:65%;border:none;overflow:hidden;">
+   style="height:100px;width:90%;border:none;overflow:hidden;">
  </iframe>
 
 ```python
@@ -50,7 +61,9 @@ import sys
 def download_audio(YTID: str, path: str) -> None:
     """
     Create a function that downloads the audio of the Youtube Video with a given ID
-    and saves it in the folder given by path. Download it as an mp3. If there is a problem downloading the file, handle the exception. If a file at `path` exists, the function should return without attempting to download it again.
+    and saves it in the folder given by path. Download it as an mp3. If there is a 
+    problem downloading the file, handle the exception. If a file at `path` exists, 
+    the function should return without attempting to download it again.
 
     ** Use the library youtube_dl: https://github.com/ytdl-org/youtube-dl/ **
     Args:
@@ -96,7 +109,8 @@ def download_audio(YTID: str, path: str) -> None:
 
 def cut_audio(in_path: str, out_path: str, start: float, end: float) -> None:
     """
-    Create a function that cuts the audio from in_path to only include the segment from start to end and saves it to out_path.
+    Create a function that cuts the audio from in_path to only include the segment 
+    from start to end and saves it to out_path.
 
     ** Use the ffmpeg library: https://github.com/kkroening/ffmpeg-python
     Args:
@@ -126,4 +140,3 @@ filename = YTID+".mp3"
 download_audio(YTID, filename)
 #cut_audio(TEST_DIR+'/4X3upUSL54I.mp3', 'cut_'+'4X3upUSL54I.mp3', 0.0, 10.0)
 ```
- 
