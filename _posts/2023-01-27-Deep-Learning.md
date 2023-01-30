@@ -7,7 +7,6 @@ category: sample
 # Deep Learning with PyTorch Step-by-Step
 
 #  Optimizer:
-
 What if we had a whole lot of parameters using the computed gradients?
 We need to use one of PyTorch’s optimizers, like SGD, RMSprop, or Adam.
 There are many optimizers: SGD is the most basic of them, and Adam is one of the most popular.
