@@ -87,49 +87,36 @@
 		</div>
 		<div class="content">
 			<article class="post">
-  <header class="post-header home">
-    <div class="post-title">Articles</div>
-  </header>
+	<header class="post-header">
+		<div class="post-title"> 
+			Deep Learning
+		</div>
+		<time class="post-date dt-published" datetime="2023-01-27T18:20:23-05:00" itemprop="datePublished">2023/01/27
+		</time>		
+	</header>
 
-  <div class="post-content"><ul class="post-list"><li class="post-list-item">
-        <!----><span class="post-date">2023/01/27</span>
-      	<a class="post-link" href="/sample/2023/01/27/Deep-Learning.md.back">
-    	    Deep Learning
-		</a></li><li class="post-list-item">
-        <!----><span class="post-date">2023/01/26</span>
-      	<a class="post-link" href="/jekyll/update/2023/01/26/welcome-to-jekyll.html">
-    	    Welcome to Jekyll!
-		</a></li><li class="post-list-item">
-        <!----><span class="post-date">2022/11/07</span>
-      	<a class="post-link" href="/2022/11/07/Milestone2.html">
-    	    Milestone2
-		</a></li><li class="post-list-item">
-        <!----><span class="post-date">2022/10/18</span>
-      	<a class="post-link" href="/sample/2022/10/18/youtube.html">
-    	    Youtube
-		</a></li><li class="post-list-item">
-        <!----><span class="post-date">2022/10/11</span>
-      	<a class="post-link" href="/2022/10/11/Milestone1.html">
-    	    Milestone1
-		</a></li><li class="post-list-item">
-        <!----><span class="post-date">2022/09/29</span>
-      	<a class="post-link" href="/2022/09/29/kaggle1.html">
-    	    Kaggle1
-		</a></li><li class="post-list-item">
-        <!----><span class="post-date">2020/01/02</span>
-      	<a class="post-link" href="/sample/2020/01/02/Deep-Learning.html">
-    	    Deep Learning
-		</a></li><li class="post-list-item">
-        <!----><span class="post-date">2018/02/19</span>
-      	<a class="post-link" href="/jekyll/update/2018/02/19/interior-point-method.html">
-    	    A regularized interior-point method
-		</a></li></ul></div>
+	<div class="post-content">
+		In this blog, we will:
+
+• define a simple linear regression model
+
+• walk through every step of gradient descent: initializing parameters,
+performing a forward pass, computing errors and loss, computing gradients, and updating parameters
+
+• understand gradients using equations, code, and geometry
+
+• understand the difference between batch, mini-batch, and stochastic gradient descent
+
+• visualize the effects on the loss of using different learning rates
+
+• understand the importance of standardizing / scaling features
+
+ <iframe src="/assets/Chapter00.html"
+ onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));'
+   style="height:100px;width:90%;border:none;overflow:hidden;">
+ </iframe>
+	</div>
 </article>
-
-
-
-</div>
-
 		</div>
 	</div>
   </body>
