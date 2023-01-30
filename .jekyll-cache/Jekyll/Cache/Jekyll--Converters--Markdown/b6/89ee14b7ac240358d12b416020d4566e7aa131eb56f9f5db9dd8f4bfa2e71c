@@ -1,4 +1,5 @@
-I"Ï-<h1 id="deep-learning-with-pytorch-step-by-step">Deep Learning with PyTorch Step-by-Step</h1>
+I"Ð-<h1 id="deep-learning-with-pytorch-step-by-step">Deep Learning with PyTorch Step-by-Step</h1>
+
 <h1 id="optimizer">Optimizer:</h1>
 
 <p>What if we had a whole lot of parameters using the computed gradients?
