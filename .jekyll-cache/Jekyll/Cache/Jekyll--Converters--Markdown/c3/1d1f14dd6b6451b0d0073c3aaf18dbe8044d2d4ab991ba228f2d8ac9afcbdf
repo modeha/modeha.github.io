@@ -1,0 +1,43 @@
+I"�<hr />
+<p>layout: post
+title:  “Milestone1”
+date:   2022-10-19 19:31:29 +0900
+categories: jekyll update
+—</p>
+<h3 id="an-api-for-the-national-hockey-league-nhl">An API for The National Hockey League (NHL)</h3>
+<ul>
+  <li><a href="#introduction">Introduction</a>
+    <ul>
+      <li><a href="#motivation">Motivation</a></li>
+    </ul>
+  </li>
+  <li><a href="#installation">Installation</a>
+    <ul>
+      <li><a href="#setup-environment">Setup Environment</a></li>
+      <li><a href="#install-dependencies">Install Dependencies</a></li>
+    </ul>
+  </li>
+  <li><a href="#usage">Usage</a>
+    <ul>
+      <li><a href="#download-data">Download Data</a></li>
+      <li><a href="#run-interactive-debugging-tool">Run Interactive Debugging Tool</a></li>
+      <li><a href="#create-tidy-data-for-visualisation">Create Tidy Data for Visualisation</a></li>
+      <li><a href="#run-simple-visualisation">Run Simple Visualisation</a></li>
+      <li><a href="#run-advance-visualisation">Run Advance Visualisation</a></li>
+    </ul>
+  </li>
+  <li><a href="#project-structure">Project Structure</a></li>
+  <li><a href="#data-apis">Data APIs</a></li>
+  <li><a href="#data-insights">Data Insights</a>
+    <ul>
+      <li><a href="#data-extractions">Data Extractions</a></li>
+      <li><a href="#interactive-debugging-tool">Interactive Debugging Tool</a></li>
+      <li><a href="#simple-visualisations">Simple Visualisations</a></li>
+      <li><a href="#advanced-visualisations">Advanced Visualisations</a></li>
+      <li><a href="#discuss-the-interpretation-of-the-figures">Discuss the interpretation of the figures</a></li>
+    </ul>
+  </li>
+  <li><a href="#conclusion">Conclusion</a></li>
+  <li><a href="#authors">Authors</a></li>
+</ul>
+:ET

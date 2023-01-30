@@ -1,4 +1,4 @@
-<hr />
+I"J<hr />
 <p>layout: post
 title:  “kaggle”
 date:   2022-09-19 19:31:29 +0900
@@ -10,3 +10,4 @@ categories: jekyll update
 
 <iframe src="/assets/Accuracyclassifiers.html" onload="javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+&quot;px&quot;;}(this));" style="height:150px;width:150%;border:none;overflow:hidden;">
  </iframe>
+:ET

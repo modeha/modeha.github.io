@@ -1,4 +1,4 @@
-<hr />
+I"t|<hr />
 <p>layout: post
 title:  “Milestone2”
 date:   2022-11-19 19:31:29 +0900
@@ -385,3 +385,4 @@ We trained a kNN using Scikit-learn. We used Euclidean distance as a distance me
 <p>This project involved predicted a relatively rare (10%) event - goals. It illustrates how feature engineering, feature selection, and finally hyperparameter tuning and model selection can achieve a good model generalizability to the evaluation set. The fact that the generalizability was poor to the part of the evaluation set that represented the playoffs illustrates how it is important for the training set to be representative of the evaluation set in all aspects. This also illustrates how some models might have better generalizability in such a context (i.e. XGBoost).</p>
 
 <p>Some limitations of the present project involve the fact that we used a simple train-test split. The method that we used therefore did not permit us to assign a confidence interval to the performance metrics, such as to compare whether the performance of the models was significantly different from one another.</p>
+:ET

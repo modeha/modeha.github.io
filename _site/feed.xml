@@ -1,22 +1,41 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-01-29T22:18:03-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Monos</title><subtitle>Themed by Dehghani</subtitle><entry><title type="html">Deep Learning</title><link href="http://localhost:4000/sample/2023/01/27/Deep-Learning.md.back" rel="alternate" type="text/html" title="Deep Learning" /><published>2023-01-27T18:20:23-05:00</published><updated>2023-01-27T18:20:23-05:00</updated><id>http://localhost:4000/sample/2023/01/27/Deep-Learning.md</id><content type="html" xml:base="http://localhost:4000/sample/2023/01/27/Deep-Learning.md.back"><![CDATA[In this blog, we will:
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-01-29T22:37:26-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Monos</title><subtitle>Themed by Dehghani</subtitle><entry><title type="html">Deep Learning</title><link href="http://localhost:4000/jekyll%20update/2023/01/27/Deep-Learning.html" rel="alternate" type="text/html" title="Deep Learning" /><published>2023-01-27T18:20:23-05:00</published><updated>2023-01-27T18:20:23-05:00</updated><id>http://localhost:4000/jekyll%20update/2023/01/27/Deep-Learning</id><content type="html" xml:base="http://localhost:4000/jekyll%20update/2023/01/27/Deep-Learning.html"><![CDATA[<h1 id="deep-learning-with-pytorch-step-by-step">Deep Learning with PyTorch Step-by-Step</h1>
 
-• define a simple linear regression model
+<h1 id="optimizer">Optimizer:</h1>
 
-• walk through every step of gradient descent: initializing parameters,
-performing a forward pass, computing errors and loss, computing gradients, and updating parameters
+<p>What if we had a whole lot of parameters using the computed gradients?
+We need to use one of PyTorch’s optimizers, like SGD, RMSprop, or Adam.
+There are many optimizers: SGD is the most basic of them, and Adam is one of the most popular.
+Different optimizers use different mechanics for updating the parameters, but they all achieve 
+the same goal through, literally, different paths.The following animation shows a loss surface,the paths traversed by some optimizers to achieve the minimum (represented by a star).</p>
 
-• understand gradients using equations, code, and geometry
+<p>Remember, the choice of mini-batch size influences the path of gradient descent, and so does the choice of an optimizer.</p>
 
-• understand the difference between batch, mini-batch, and stochastic gradient descent
+<p align="left">
+<img src="/assets/figures/opt2.gif" />
+</p>
+<p>Most modern neural networks are trained using maximum likelihood. This means that the cost function is simply the negative log-likelihood, equivalently described as the cross-entropy between the training data and the model distribution. This cost function is given by
+ \(J(θ) = \log p_{model}(y | x)\)
+The specific form of the cost function changes from model to model, depending on the specific form of \(\log p_{model}\) The expansion of the above equation typically yields some terms that do not depend on the model parameters and may be discarded. 
+For example, if \(p_{model}(y | x) = N(y; f(x; θ), I)\),then we recover the mean squared error cost,
+\(J(θ) = 1\)</p>
 
-• visualize the effects on the loss of using different learning rates
+<p>In this blog, we will:</p>
 
-• understand the importance of standardizing / scaling features
+<p>• define a simple linear regression model</p>
 
- <iframe src="/assets/Chapter00.html"
- onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));'
-   style="height:100px;width:90%;border:none;overflow:hidden;">
- </iframe>]]></content><author><name></name></author><category term="sample" /><summary type="html"><![CDATA[In this blog, we will:]]></summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2023/01/26/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2023-01-26T05:31:29-05:00</published><updated>2023-01-26T05:31:29-05:00</updated><id>http://localhost:4000/jekyll/update/2023/01/26/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2023/01/26/welcome-to-jekyll.html"><![CDATA[<h2 id="how-to-use-mathjax">How to use MathJax</h2>
+<p>• walk through every step of gradient descent: initializing parameters,
+performing a forward pass, computing errors and loss, computing gradients, and updating parameters</p>
+
+<p>• understand gradients using equations, code, and geometry</p>
+
+<p>• understand the difference between batch, mini-batch, and stochastic gradient descent</p>
+
+<p>• visualize the effects on the loss of using different learning rates</p>
+
+<p>• understand the importance of standardizing / scaling features</p>
+
+<iframe src="/assets/Chapter00.html" onload="javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+&quot;px&quot;;}(this));" style="height:100px;width:90%;border:none;overflow:hidden;">
+ </iframe>]]></content><author><name></name></author><category term="jekyll update" /><summary type="html"><![CDATA[Deep Learning with PyTorch Step-by-Step]]></summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2023/01/26/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2023-01-26T05:31:29-05:00</published><updated>2023-01-26T05:31:29-05:00</updated><id>http://localhost:4000/jekyll/update/2023/01/26/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2023/01/26/welcome-to-jekyll.html"><![CDATA[<h2 id="how-to-use-mathjax">How to use MathJax</h2>
 
 <ul>
   <li>
@@ -52,7 +71,13 @@ usemathjax: true</p>
 <span class="n">print_hi</span><span class="p">(</span><span class="s1">'Tom'</span><span class="p">)</span>
 <span class="c1"># =&gt; prints 'Hi, Tom' to STDOUT.</span></code></pre></figure>
 
-<p>Check out the <a href="https://jekyllrb.com/docs/home">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://talk.jekyllrb.com/">Jekyll Talk</a>.</p>]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[How to use MathJax]]></summary></entry><entry><title type="html">Milestone2</title><link href="http://localhost:4000/2022/11/07/Milestone2.html" rel="alternate" type="text/html" title="Milestone2" /><published>2022-11-07T00:00:00-05:00</published><updated>2022-11-07T00:00:00-05:00</updated><id>http://localhost:4000/2022/11/07/Milestone2</id><content type="html" xml:base="http://localhost:4000/2022/11/07/Milestone2.html"><![CDATA[<h3 id="an-api-for-the-national-hockey-league-nhl">An API for The National Hockey League (NHL)</h3>
+<p>Check out the <a href="https://jekyllrb.com/docs/home">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://talk.jekyllrb.com/">Jekyll Talk</a>.</p>]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[How to use MathJax]]></summary></entry><entry><title type="html">Milestone2</title><link href="http://localhost:4000/2022/11/07/Milestone2.html" rel="alternate" type="text/html" title="Milestone2" /><published>2022-11-07T00:00:00-05:00</published><updated>2022-11-07T00:00:00-05:00</updated><id>http://localhost:4000/2022/11/07/Milestone2</id><content type="html" xml:base="http://localhost:4000/2022/11/07/Milestone2.html"><![CDATA[<hr />
+<p>layout: post
+title:  “Milestone2”
+date:   2022-11-19 19:31:29 +0900
+categories: jekyll update
+—</p>
+<h3 id="an-api-for-the-national-hockey-league-nhl">An API for The National Hockey League (NHL)</h3>
 
 <h1 id="table-of-contents">Table of contents</h1>
 <ol>
@@ -432,7 +457,7 @@ We trained a kNN using Scikit-learn. We used Euclidean distance as a distance me
 
 <p>This project involved predicted a relatively rare (10%) event - goals. It illustrates how feature engineering, feature selection, and finally hyperparameter tuning and model selection can achieve a good model generalizability to the evaluation set. The fact that the generalizability was poor to the part of the evaluation set that represented the playoffs illustrates how it is important for the training set to be representative of the evaluation set in all aspects. This also illustrates how some models might have better generalizability in such a context (i.e. XGBoost).</p>
 
-<p>Some limitations of the present project involve the fact that we used a simple train-test split. The method that we used therefore did not permit us to assign a confidence interval to the performance metrics, such as to compare whether the performance of the models was significantly different from one another.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[An API for The National Hockey League (NHL)]]></summary></entry><entry><title type="html">Youtube</title><link href="http://localhost:4000/sample/2022/10/18/youtube.html" rel="alternate" type="text/html" title="Youtube" /><published>2022-10-18T19:20:23-04:00</published><updated>2022-10-18T19:20:23-04:00</updated><id>http://localhost:4000/sample/2022/10/18/youtube</id><content type="html" xml:base="http://localhost:4000/sample/2022/10/18/youtube.html"><![CDATA[<h3 id="youtube-video-convert-to-mp3">Youtube Video convert to mp3</h3>
+<p>Some limitations of the present project involve the fact that we used a simple train-test split. The method that we used therefore did not permit us to assign a confidence interval to the performance metrics, such as to compare whether the performance of the models was significantly different from one another.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[layout: post title: “Milestone2” date: 2022-11-19 19:31:29 +0900 categories: jekyll update — An API for The National Hockey League (NHL)]]></summary></entry><entry><title type="html">Youtube</title><link href="http://localhost:4000/jekyll%20update/2022/10/18/youtube.html" rel="alternate" type="text/html" title="Youtube" /><published>2022-10-18T19:20:23-04:00</published><updated>2022-10-18T19:20:23-04:00</updated><id>http://localhost:4000/jekyll%20update/2022/10/18/youtube</id><content type="html" xml:base="http://localhost:4000/jekyll%20update/2022/10/18/youtube.html"><![CDATA[<h3 id="youtube-video-convert-to-mp3">Youtube Video convert to mp3</h3>
 
 <p>Create a function that downloads the audio of the Youtube Video with a given ID and saves it in the folder given by path.
 Download it as an mp3. If there is a problem downloading the file, handle the exception. If a file at <code class="highlighter-rouge">path</code> exists, 
@@ -532,7 +557,13 @@ the function should return without attempting to download it again.</p>
 </span><span class="n">filename</span> <span class="o">=</span> <span class="n">YTID</span><span class="o">+</span><span class="s">".mp3"</span>
 <span class="n">download_audio</span><span class="p">(</span><span class="n">YTID</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
 <span class="c1">#cut_audio(TEST_DIR+'/4X3upUSL54I.mp3', 'cut_'+'4X3upUSL54I.mp3', 0.0, 10.0)
-</span></code></pre></div></div>]]></content><author><name></name></author><category term="sample" /><summary type="html"><![CDATA[Youtube Video convert to mp3]]></summary></entry><entry><title type="html">Milestone1</title><link href="http://localhost:4000/2022/10/11/Milestone1.html" rel="alternate" type="text/html" title="Milestone1" /><published>2022-10-11T00:00:00-04:00</published><updated>2022-10-11T00:00:00-04:00</updated><id>http://localhost:4000/2022/10/11/Milestone1</id><content type="html" xml:base="http://localhost:4000/2022/10/11/Milestone1.html"><![CDATA[<h3 id="an-api-for-the-national-hockey-league-nhl">An API for The National Hockey League (NHL)</h3>
+</span></code></pre></div></div>]]></content><author><name></name></author><category term="jekyll update" /><summary type="html"><![CDATA[Youtube Video convert to mp3]]></summary></entry><entry><title type="html">Milestone1</title><link href="http://localhost:4000/2022/10/11/Milestone1.html" rel="alternate" type="text/html" title="Milestone1" /><published>2022-10-11T00:00:00-04:00</published><updated>2022-10-11T00:00:00-04:00</updated><id>http://localhost:4000/2022/10/11/Milestone1</id><content type="html" xml:base="http://localhost:4000/2022/10/11/Milestone1.html"><![CDATA[<hr />
+<p>layout: post
+title:  “Milestone1”
+date:   2022-10-19 19:31:29 +0900
+categories: jekyll update
+—</p>
+<h3 id="an-api-for-the-national-hockey-league-nhl">An API for The National Hockey League (NHL)</h3>
 <ul>
   <li><a href="#introduction">Introduction</a>
     <ul>
@@ -838,124 +869,18 @@ year with two json files, with regular season games and playoffs respectively.</
 
 <p><strong>Raphaël Bourque:</strong> Graduated from Medicine, presently doing residency training in Psychiatry and at the Clinician Investigator Program, and studying at the MSc in Computationnal Medicine. My current research work is in Genetics (CHU Sainte-Justine), and I am very interested in the applications of data science and machine learning to evidence-based medical practice.</p>
 
-<p><em>(Names are in ascending order)</em></p>]]></content><author><name></name></author><summary type="html"><![CDATA[An API for The National Hockey League (NHL) Introduction Motivation Installation Setup Environment Install Dependencies Usage Download Data Run Interactive Debugging Tool Create Tidy Data for Visualisation Run Simple Visualisation Run Advance Visualisation Project Structure Data APIs Data Insights Data Extractions Interactive Debugging Tool Simple Visualisations Advanced Visualisations Discuss the interpretation of the figures Conclusion Authors]]></summary></entry><entry><title type="html">Kaggle1</title><link href="http://localhost:4000/2022/09/29/kaggle1.html" rel="alternate" type="text/html" title="Kaggle1" /><published>2022-09-29T00:00:00-04:00</published><updated>2022-09-29T00:00:00-04:00</updated><id>http://localhost:4000/2022/09/29/kaggle1</id><content type="html" xml:base="http://localhost:4000/2022/09/29/kaggle1.html"><![CDATA[<iframe src="/assets/Kaggel1_final_codes.html" onload="javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+&quot;px&quot;;}(this));" style="height:100px;width:100%;border:none;overflow:hidden;">
+<p><em>(Names are in ascending order)</em></p>]]></content><author><name></name></author><summary type="html"><![CDATA[layout: post title: “Milestone1” date: 2022-10-19 19:31:29 +0900 categories: jekyll update — An API for The National Hockey League (NHL) Introduction Motivation Installation Setup Environment Install Dependencies Usage Download Data Run Interactive Debugging Tool Create Tidy Data for Visualisation Run Simple Visualisation Run Advance Visualisation Project Structure Data APIs Data Insights Data Extractions Interactive Debugging Tool Simple Visualisations Advanced Visualisations Discuss the interpretation of the figures Conclusion Authors]]></summary></entry><entry><title type="html">Kaggle1</title><link href="http://localhost:4000/2022/09/29/kaggle1.html" rel="alternate" type="text/html" title="Kaggle1" /><published>2022-09-29T00:00:00-04:00</published><updated>2022-09-29T00:00:00-04:00</updated><id>http://localhost:4000/2022/09/29/kaggle1</id><content type="html" xml:base="http://localhost:4000/2022/09/29/kaggle1.html"><![CDATA[<hr />
+<p>layout: post
+title:  “kaggle”
+date:   2022-09-19 19:31:29 +0900
+categories: jekyll update
+—</p>
+
+<iframe src="/assets/Kaggel1_final_codes.html" onload="javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+&quot;px&quot;;}(this));" style="height:100px;width:100%;border:none;overflow:hidden;">
  </iframe>
 
 <iframe src="/assets/Accuracyclassifiers.html" onload="javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+&quot;px&quot;;}(this));" style="height:150px;width:150%;border:none;overflow:hidden;">
- </iframe>]]></content><author><name></name></author><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Deep Learning</title><link href="http://localhost:4000/sample/2020/01/02/Deep-Learning.html" rel="alternate" type="text/html" title="Deep Learning" /><published>2020-01-02T05:20:23-05:00</published><updated>2020-01-02T05:20:23-05:00</updated><id>http://localhost:4000/sample/2020/01/02/Deep-Learning</id><content type="html" xml:base="http://localhost:4000/sample/2020/01/02/Deep-Learning.html"><![CDATA[<h1 id="deep-learning-with-pytorch-step-by-step">Deep Learning with PyTorch Step-by-Step</h1>
-
-<p>In this blog, we will:</p>
-
-<p>• define a simple linear regression model</p>
-
-<p>• walk through every step of gradient descent: initializing parameters,
-performing a forward pass, computing errors and loss, computing gradients,
-and updating parameters</p>
-
-<p>• understand gradients using equations, code, and geometry</p>
-
-<p>• understand the difference between batch, mini-batch, and stochastic gradient
-descent</p>
-
-<p>• visualize the effects on the loss of using different learning rates</p>
-
-<p>• understand the importance of standardizing / scaling features</p>
-
-<iframe src="/assets/Chapter00.html" onload="javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+&quot;px&quot;;}(this));" style="height:100px;width:65%;border:none;overflow:hidden;">
- </iframe>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
-<span class="kn">import</span> <span class="nn">youtube_dl</span>
-<span class="kn">import</span> <span class="nn">ffmpeg</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
-<span class="kn">import</span> <span class="nn">csv</span>
-<span class="kn">import</span> <span class="nn">threading</span>
-<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
-<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">exists</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-
-<span class="c1">#TEST_DIR = os.path.dirname()
-</span>
-<span class="k">def</span> <span class="nf">download_audio</span><span class="p">(</span><span class="n">YTID</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
-    <span class="s">"""
-    Create a function that downloads the audio of the Youtube Video with a given ID
-    and saves it in the folder given by path. Download it as an mp3. If there is a problem downloading the file, handle the exception. If a file at `path` exists, the function should return without attempting to download it again.
-
-    ** Use the library youtube_dl: https://github.com/ytdl-org/youtube-dl/ **
-    Args:
-      YTID: Contains the youtube ID, the corresponding youtube video can be found at
-      'https://www.youtube.com/watch?v='+YTID
-      path: The path to the file where the audio will be saved
-    """</span>
-    <span class="n">video_url</span> <span class="o">=</span> <span class="s">'https://www.youtube.com/watch?v='</span><span class="o">+</span><span class="n">YTID</span>
-  
-    <span class="c1">#from youtube_dl import YoutubeDL
-</span>    <span class="c1">#ydl_opts = {
-</span>        <span class="c1">#'ignoreerrors': True,
-</span>        <span class="c1">#'simulate': True,
-</span>    <span class="c1">#}   
-</span>    <span class="c1">#with YoutubeDL(ydl_opts) as ydl:
-</span>      
-        <span class="c1">#info_dict = ydl.extract_info(video_url)
-</span>    <span class="c1">#print(info_dict)
-</span>    <span class="c1">#xx
-</span>    <span class="c1">#video_info = youtube_dl.YoutubeDL(ydl_opts).extract_info(url = video_url,download=False)
-</span>
-  
-    <span class="n">filename</span> <span class="o">=</span> <span class="n">YTID</span><span class="o">+</span><span class="s">".mp3"</span>
-    <span class="n">options</span><span class="o">=</span><span class="p">{</span>
-        <span class="s">'format'</span><span class="p">:</span><span class="s">'bestaudio/best'</span><span class="p">,</span>
-        <span class="s">'keepvideo'</span><span class="p">:</span><span class="bp">False</span><span class="p">,</span>
-        <span class="s">'outtmpl'</span><span class="p">:</span> <span class="n">path</span> <span class="p">,</span><span class="c1">#"outtmpl" : path+"$(id)s.$(ext)s" 
-</span>        <span class="s">'ignoreerrors'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
-    <span class="p">}</span>
-    <span class="n">video_info</span> <span class="o">=</span> <span class="n">youtube_dl</span><span class="p">.</span><span class="n">YoutubeDL</span><span class="p">(</span><span class="n">options</span><span class="p">).</span><span class="n">extract_info</span><span class="p">(</span><span class="n">url</span> <span class="o">=</span> <span class="n">video_url</span><span class="p">,</span><span class="n">download</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">video_info</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">False</span><span class="p">:</span>
-        <span class="k">with</span> <span class="n">youtube_dl</span><span class="p">.</span><span class="n">YoutubeDL</span><span class="p">(</span><span class="n">options</span><span class="p">)</span> <span class="k">as</span> <span class="n">ydl</span><span class="p">:</span>
-            <span class="n">ydl</span><span class="p">.</span><span class="n">download</span><span class="p">([</span><span class="n">video_info</span><span class="p">[</span><span class="s">'webpage_url'</span><span class="p">]])</span>
-            <span class="k">print</span><span class="p">(</span><span class="s">"Download complete... {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">filename</span><span class="p">))</span>  
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">"Oops!  That was no valid YTID.  Try again..."</span><span class="p">)</span>
-    <span class="c1"># to dowload vido use :
-</span>    <span class="c1">#ydl_opts = {}   
-</span>    <span class="c1">#with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-</span>        <span class="c1">#ydl.download(['https://www.youtube.com/watch?v='+YTID])   
-</span>  
-
-
-<span class="k">def</span> <span class="nf">cut_audio</span><span class="p">(</span><span class="n">in_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">out_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
-    <span class="s">"""
-    Create a function that cuts the audio from in_path to only include the segment from start to end and saves it to out_path.
-
-    ** Use the ffmpeg library: https://github.com/kkroening/ffmpeg-python
-    Args:
-      in_path: Path of the audio file to cut
-      out_path: Path of file to save the cut audio
-      start: Indicates the start of the sequence (in seconds)
-      end: Indicates the end of the sequence (in seconds)
-    """</span>
-    <span class="c1"># TODO
-</span>    <span class="k">try</span><span class="p">:</span>
-        <span class="nb">input</span> <span class="o">=</span> <span class="n">ffmpeg</span><span class="p">.</span><span class="nb">input</span><span class="p">(</span><span class="n">in_path</span><span class="p">)</span>
-        <span class="n">audio</span> <span class="o">=</span> <span class="nb">input</span><span class="p">.</span><span class="n">audio</span><span class="p">.</span><span class="nb">filter</span><span class="p">(</span><span class="s">"atrim"</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
-        <span class="n">out</span> <span class="o">=</span> <span class="n">ffmpeg</span><span class="p">.</span><span class="n">output</span><span class="p">(</span><span class="n">audio</span><span class="p">,</span> <span class="n">out_path</span><span class="p">)</span>
-        <span class="n">ffmpeg</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">out</span><span class="p">,</span><span class="n">capture_stdout</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">capture_stderr</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="k">except</span> <span class="nb">ValueError</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">"Oops!  That was no valid file.  Try again..."</span><span class="p">)</span>
-
-
-</code></pre></div></div>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="n">YTID</span> <span class="o">=</span><span class="s">'30PV4W3w_k4&amp;ab_channel=AbangYellowZIN'</span><span class="c1">#RFeU64gTvGQ'
-</span><span class="n">l</span><span class="o">=</span><span class="p">[</span><span class="s">"dczdR4laGwc&amp;ab_channel=EnriqueIglesiasVEVO"</span><span class="p">,</span><span class="s">"gfZChizkEuI&amp;ab_channel=RapSamurai"</span><span class="p">]</span>
-<span class="c1">#VqzpEw69Tze
-</span><span class="n">filename</span> <span class="o">=</span> <span class="n">YTID</span><span class="o">+</span><span class="s">".mp3"</span>
-<span class="n">download_audio</span><span class="p">(</span><span class="n">YTID</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-<span class="c1">#cut_audio(TEST_DIR+'/4X3upUSL54I.mp3', 'cut_'+'4X3upUSL54I.mp3', 0.0, 10.0)
-</span></code></pre></div></div>]]></content><author><name></name></author><category term="sample" /><summary type="html"><![CDATA[Deep Learning with PyTorch Step-by-Step]]></summary></entry><entry><title type="html">A regularized interior-point method</title><link href="http://localhost:4000/jekyll/update/2018/02/19/interior-point-method.html" rel="alternate" type="text/html" title="A regularized interior-point method" /><published>2018-02-19T05:31:29-05:00</published><updated>2018-02-19T05:31:29-05:00</updated><id>http://localhost:4000/jekyll/update/2018/02/19/interior-point-method</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2018/02/19/interior-point-method.html"><![CDATA[<h3 id="a-regularized-interior-point-method-for-constrained-linear-least-squares">A regularized interior-point method for constrained linear least squares</h3>
+ </iframe>]]></content><author><name></name></author><summary type="html"><![CDATA[layout: post title: “kaggle” date: 2022-09-19 19:31:29 +0900 categories: jekyll update —]]></summary></entry><entry><title type="html">A regularized interior-point method</title><link href="http://localhost:4000/jekyll/update/2018/02/19/interior-point-method.html" rel="alternate" type="text/html" title="A regularized interior-point method" /><published>2018-02-19T05:31:29-05:00</published><updated>2018-02-19T05:31:29-05:00</updated><id>http://localhost:4000/jekyll/update/2018/02/19/interior-point-method</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2018/02/19/interior-point-method.html"><![CDATA[<h3 id="a-regularized-interior-point-method-for-constrained-linear-least-squares">A regularized interior-point method for constrained linear least squares</h3>
 
 <p>We propose an infeasible interior-point algorithm for constrained linear least-squares problems based on the primal-dual regularization of convex programs of Friedlander and Orban. Regularization allows us to dispense with the assumption that the active gradients are linearly independent. At each iteration, a linear system with a symmetric quasi-definite (SQD) matrix is solved. This matrix is shown to be uniformly bounded and nonsingular. While the linear system may be solved using sparse LDLT factorization, we observe that other approaches may be used. In particular, we build on the connection between SQD linear systems and unconstrained linear least-squares problems to solve the linear system with sparse QR factorization. We establish conditions under which a solution of the original, constrained least-squares problem is recovered. We report computational experience with the sparse QR factorization and illustrate the potential advantages of our approach.</p>
 
