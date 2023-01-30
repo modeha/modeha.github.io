@@ -1,9 +1,10 @@
 ---
 layout: post
 title: "Deep Learning"
-date: 2023-01-28 08:20:23 +0900
+date: 2020-01-02 19:20:23 +0900
 category: sample
 ---
+# Deep Learning with PyTorch Step-by-Step
 
 
 In this blog, we will:
@@ -11,11 +12,13 @@ In this blog, we will:
 • define a simple linear regression model
 
 • walk through every step of gradient descent: initializing parameters,
-performing a forward pass, computing errors and loss, computing gradients, and updating parameters
+performing a forward pass, computing errors and loss, computing gradients,
+and updating parameters
 
 • understand gradients using equations, code, and geometry
 
-• understand the difference between batch, mini-batch, and stochastic gradient descent
+• understand the difference between batch, mini-batch, and stochastic gradient
+descent
 
 • visualize the effects on the loss of using different learning rates
 
@@ -23,5 +26,101 @@ performing a forward pass, computing errors and loss, computing gradients, and u
 
  <iframe src="/assets/Chapter00.html"
  onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));'
-   style="height:100px;width:90%;border:none;overflow:hidden;">
+   style="height:100px;width:65%;border:none;overflow:hidden;">
  </iframe>
+
+```python
+from __future__ import unicode_literals
+import youtube_dl
+import ffmpeg
+import pandas as pd
+import numpy as np
+import csv
+import threading
+from tqdm import tqdm
+from os.path import exists
+import os
+import sys
+
+#TEST_DIR = os.path.dirname()
+
+def download_audio(YTID: str, path: str) -> None:
+    """
+    Create a function that downloads the audio of the Youtube Video with a given ID
+    and saves it in the folder given by path. Download it as an mp3. If there is a problem downloading the file, handle the exception. If a file at `path` exists, the function should return without attempting to download it again.
+
+    ** Use the library youtube_dl: https://github.com/ytdl-org/youtube-dl/ **
+    Args:
+      YTID: Contains the youtube ID, the corresponding youtube video can be found at
+      'https://www.youtube.com/watch?v='+YTID
+      path: The path to the file where the audio will be saved
+    """
+    video_url = 'https://www.youtube.com/watch?v='+YTID
+  
+    #from youtube_dl import YoutubeDL
+    #ydl_opts = {
+        #'ignoreerrors': True,
+        #'simulate': True,
+    #}   
+    #with YoutubeDL(ydl_opts) as ydl:
+      
+        #info_dict = ydl.extract_info(video_url)
+    #print(info_dict)
+    #xx
+    #video_info = youtube_dl.YoutubeDL(ydl_opts).extract_info(url = video_url,download=False)
+
+  
+    filename = YTID+".mp3"
+    options={
+        'format':'bestaudio/best',
+        'keepvideo':False,
+        'outtmpl': path ,#"outtmpl" : path+"$(id)s.$(ext)s" 
+        'ignoreerrors': True,
+    }
+    video_info = youtube_dl.YoutubeDL(options).extract_info(url = video_url,download=False)
+    if (video_info is None) is False:
+        with youtube_dl.YoutubeDL(options) as ydl:
+            ydl.download([video_info['webpage_url']])
+            print("Download complete... {}".format(filename))  
+    else:
+        print("Oops!  That was no valid YTID.  Try again...")
+    # to dowload vido use :
+    #ydl_opts = {}   
+    #with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+        #ydl.download(['https://www.youtube.com/watch?v='+YTID])   
+  
+
+
+def cut_audio(in_path: str, out_path: str, start: float, end: float) -> None:
+    """
+    Create a function that cuts the audio from in_path to only include the segment from start to end and saves it to out_path.
+
+    ** Use the ffmpeg library: https://github.com/kkroening/ffmpeg-python
+    Args:
+      in_path: Path of the audio file to cut
+      out_path: Path of file to save the cut audio
+      start: Indicates the start of the sequence (in seconds)
+      end: Indicates the end of the sequence (in seconds)
+    """
+    # TODO
+    try:
+        input = ffmpeg.input(in_path)
+        audio = input.audio.filter("atrim", start, end)
+        out = ffmpeg.output(audio, out_path)
+        ffmpeg.run(out,capture_stdout=True, capture_stderr=True)
+    except ValueError:
+        print("Oops!  That was no valid file.  Try again...")
+
+
+```
+
+```python
+
+YTID ='30PV4W3w_k4&ab_channel=AbangYellowZIN'#RFeU64gTvGQ'
+l=["dczdR4laGwc&ab_channel=EnriqueIglesiasVEVO","gfZChizkEuI&ab_channel=RapSamurai"]
+#VqzpEw69Tze
+filename = YTID+".mp3"
+download_audio(YTID, filename)
+#cut_audio(TEST_DIR+'/4X3upUSL54I.mp3', 'cut_'+'4X3upUSL54I.mp3', 0.0, 10.0)
+```
+ 
