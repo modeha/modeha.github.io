@@ -1,20 +1,8 @@
-I"�'<p>In this blog, we will:</p>
-
-<p>• define a simple linear regression model</p>
-
-<p>• walk through every step of gradient descent: initializing parameters,
-performing a forward pass, computing errors and loss, computing gradients, and updating parameters</p>
-
-<p>• understand gradients using equations, code, and geometry</p>
-
-<p>• understand the difference between batch, mini-batch, and stochastic gradient descent</p>
-
-<p>• visualize the effects on the loss of using different learning rates</p>
-
-<p>• understand the importance of standardizing / scaling features</p>
-
-<iframe src="/assets/Chapter00.html" onload="javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+&quot;px&quot;;}(this));" style="height:100px;width:90%;border:none;overflow:hidden;">
- </iframe>
+I"h&<h3 id="youtube-video-convert-to-mp3">Youtube Video convert to mp3</h3>
+<p>Create a function that downloads the audio of the Youtube Video with a given ID
+    and saves it in the folder given by path. Download it as an mp3. If there is a 
+    problem downloading the file, handle the exception. If a file at <code class="highlighter-rouge">path</code> exists, 
+    the function should return without attempting to download it again.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
 <span class="kn">import</span> <span class="nn">youtube_dl</span>
