@@ -1,23 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-01-29T21:27:58-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Monos</title><subtitle>Themed by ejjoo</subtitle><entry><title type="html">Deep Learning</title><link href="http://localhost:4000/sample/2023/01/27/Deep-Learning.html" rel="alternate" type="text/html" title="Deep Learning" /><published>2023-01-27T18:20:23-05:00</published><updated>2023-01-27T18:20:23-05:00</updated><id>http://localhost:4000/sample/2023/01/27/Deep-Learning</id><content type="html" xml:base="http://localhost:4000/sample/2023/01/27/Deep-Learning.html"><![CDATA[<h1 id="deep-learning-with-pytorch-step-by-step">Deep Learning with PyTorch Step-by-Step</h1>
-
-<h1 id="optimizer">Optimizer:</h1>
-<p>What if we had a whole lot of parameters using the computed gradients?
-We need to use one of PyTorch’s optimizers, like SGD, RMSprop, or Adam.
-There are many optimizers: SGD is the most basic of them, and Adam is one of the most popular.
-Different optimizers use different mechanics for updating the parameters, but they all achieve 
-the same goal through, literally, different paths.The following animation shows a loss surface,the paths traversed by some optimizers to achieve the minimum (represented by a star).</p>
-
-<p>Remember, the choice of mini-batch size influences the path of gradient descent, and so does the choice of an optimizer.</p>
-<p align="left">
-<img src="/assets/figures/opt2.gif" />
-</p>
-<p>Most modern neural networks are trained using maximum likelihood. This means that the cost function is simply the negative log-likelihood, equivalently described as the cross-entropy between the training data and the model distribution. This cost function is given by
- \(J(θ) = \log p_{model}(y | x)\)
-The specific form of the cost function changes from model to model, depending on the specific form of \(\log p_{model}\) The expansion of the above equation typically yields some terms that do not depend on the model parameters and may be discarded. 
-For example, if \(p_{model}(y | x) = N(y; f(x; θ), I)\),then we recover the mean squared error cost,
-\(J(θ) = 1\)</p>
-
-<p>In this blog, we will:</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-01-29T21:31:39-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Monos</title><subtitle>Themed by ejjoo</subtitle><entry><title type="html">Deep Learning</title><link href="http://localhost:4000/sample/2023/01/27/Deep-Learning.html" rel="alternate" type="text/html" title="Deep Learning" /><published>2023-01-27T18:20:23-05:00</published><updated>2023-01-27T18:20:23-05:00</updated><id>http://localhost:4000/sample/2023/01/27/Deep-Learning</id><content type="html" xml:base="http://localhost:4000/sample/2023/01/27/Deep-Learning.html"><![CDATA[<p>In this blog, we will:</p>
 
 <p>• define a simple linear regression model</p>
 
@@ -129,7 +110,7 @@ performing a forward pass, computing errors and loss, computing gradients, and u
 </span><span class="n">filename</span> <span class="o">=</span> <span class="n">YTID</span><span class="o">+</span><span class="s">".mp3"</span>
 <span class="n">download_audio</span><span class="p">(</span><span class="n">YTID</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
 <span class="c1">#cut_audio(TEST_DIR+'/4X3upUSL54I.mp3', 'cut_'+'4X3upUSL54I.mp3', 0.0, 10.0)
-</span></code></pre></div></div>]]></content><author><name></name></author><category term="sample" /><summary type="html"><![CDATA[Deep Learning with PyTorch Step-by-Step]]></summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2023/01/26/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2023-01-26T05:31:29-05:00</published><updated>2023-01-26T05:31:29-05:00</updated><id>http://localhost:4000/jekyll/update/2023/01/26/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2023/01/26/welcome-to-jekyll.html"><![CDATA[<h2 id="how-to-use-mathjax">How to use MathJax</h2>
+</span></code></pre></div></div>]]></content><author><name></name></author><category term="sample" /><summary type="html"><![CDATA[In this blog, we will:]]></summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2023/01/26/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2023-01-26T05:31:29-05:00</published><updated>2023-01-26T05:31:29-05:00</updated><id>http://localhost:4000/jekyll/update/2023/01/26/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2023/01/26/welcome-to-jekyll.html"><![CDATA[<h2 id="how-to-use-mathjax">How to use MathJax</h2>
 
 <ul>
   <li>

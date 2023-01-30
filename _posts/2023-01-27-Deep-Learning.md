@@ -4,24 +4,7 @@ title: "Deep Learning"
 date: 2023-01-28 08:20:23 +0900
 category: sample
 ---
-# Deep Learning with PyTorch Step-by-Step
 
-#  Optimizer:
-What if we had a whole lot of parameters using the computed gradients?
-We need to use one of PyTorch’s optimizers, like SGD, RMSprop, or Adam.
-There are many optimizers: SGD is the most basic of them, and Adam is one of the most popular.
-Different optimizers use different mechanics for updating the parameters, but they all achieve 
-the same goal through, literally, different paths.The following animation shows a loss surface,the paths traversed by some optimizers to achieve the minimum (represented by a star).
-
-Remember, the choice of mini-batch size influences the path of gradient descent, and so does the choice of an optimizer.
-<p align="left">
-<img src="/assets/figures/opt2.gif"/>
-</p>
-Most modern neural networks are trained using maximum likelihood. This means that the cost function is simply the negative log-likelihood, equivalently described as the cross-entropy between the training data and the model distribution. This cost function is given by
- $$J(θ) = \log p_{model}(y | x)$$
-The specific form of the cost function changes from model to model, depending on the specific form of $$\log p_{model}$$ The expansion of the above equation typically yields some terms that do not depend on the model parameters and may be discarded. 
-For example, if $$p_{model}(y | x) = N(y; f(x; θ), I)$$,then we recover the mean squared error cost,
-$$J(θ) = 1$$
 
 In this blog, we will:
 
