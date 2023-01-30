@@ -58,7 +58,7 @@ GEM
     terminal-table (1.8.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
     thread_safe (0.3.6)
-    tzinfo (1.2.10)
+    tzinfo (1.2.11)
       thread_safe (~> 0.1)
     tzinfo-data (1.2022.7)
       tzinfo (>= 1.0.0)
@@ -76,4 +76,4 @@ DEPENDENCIES
   webrick (~> 1.8)
 
 BUNDLED WITH
-   1.17.2
+   2.4.5
