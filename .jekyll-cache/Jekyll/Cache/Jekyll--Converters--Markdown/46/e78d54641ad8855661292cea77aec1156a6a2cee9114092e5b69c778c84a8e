@@ -1,9 +1,9 @@
-I"¤"
-<h3 id="youtube-video-convert-to-mp3">Youtube Video convert to mp3</h3>
-<p>Create a function that downloads the audio of the Youtube Video with a given ID
-    and saves it in the folder given by path. Download it as an mp3. If there is a 
-    problem downloading the file, handle the exception. If a file at <code class="highlighter-rouge">path</code> exists, 
-    the function should return without attempting to download it again.</p>
+I"^&<h3 id="youtube-video-convert-to-mp3">Youtube Video convert to mp3</h3>
+
+<p>Create a function that downloads the audio of the Youtube Video with a given ID and saves it in the folder given by path.
+ Download it as an mp3. If there is a 
+problem downloading the file, handle the exception. If a file at <code class="highlighter-rouge">path</code> exists, 
+the function should return without attempting to download it again.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
 <span class="kn">import</span> <span class="nn">youtube_dl</span>
@@ -91,5 +91,13 @@
 
 
 </code></pre></div></div>
-<p>```python</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">YTID</span> <span class="o">=</span><span class="s">'30PV4W3w_k4&amp;ab_channel=AbangYellowZIN'</span><span class="c1">#RFeU64gTvGQ'
+</span><span class="n">l</span><span class="o">=</span><span class="p">[</span><span class="s">"dczdR4laGwc&amp;ab_channel=EnriqueIglesiasVEVO"</span><span class="p">,</span><span class="s">"gfZChizkEuI&amp;ab_channel=RapSamurai"</span><span class="p">]</span>
+<span class="c1">#VqzpEw69Tze
+</span><span class="n">filename</span> <span class="o">=</span> <span class="n">YTID</span><span class="o">+</span><span class="s">".mp3"</span>
+<span class="n">download_audio</span><span class="p">(</span><span class="n">YTID</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+<span class="c1">#cut_audio(TEST_DIR+'/4X3upUSL54I.mp3', 'cut_'+'4X3upUSL54I.mp3', 0.0, 10.0)
+</span></code></pre></div></div>
 :ET

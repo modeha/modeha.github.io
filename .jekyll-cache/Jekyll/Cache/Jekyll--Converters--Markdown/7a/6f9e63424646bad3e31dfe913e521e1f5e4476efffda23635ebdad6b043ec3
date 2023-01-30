@@ -1,6 +1,0 @@
-I"µ<h3 id="youtube-video-convert-to-mp3">Youtube Video convert to mp3</h3>
-<p>Create a function that downloads the audio of the Youtube Video with a given ID
-    and saves it in the folder given by path. Download it as an mp3. If there is a 
-    problem downloading the file, handle the exception. If a file at <code class="highlighter-rouge">path</code> exists, 
-    the function should return without attempting to download it again.</p>
-:ET
