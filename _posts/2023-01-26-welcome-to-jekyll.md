@@ -2,14 +2,16 @@
 layout: post
 title:  "Welcome to Jekyll!"
 date:   2023-01-26 19:31:29 +0900
-categories: jekyll update
+categories: Jekyll
 ---
 ## How to use MathJax
 
 * In the `_config.yml`, add the following lines:
+  
   markdown: kramdown
 
 * On the top of the posts that you’d like to add mathjax support, add the following line:
+  
   usemathjax: true
 
 * Add these lines to `_includes/head.html`:

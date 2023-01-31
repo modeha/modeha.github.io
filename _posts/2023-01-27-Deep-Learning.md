@@ -2,11 +2,11 @@
 layout: post
 title: "Deep Learning"
 date: 2023-01-28 08:20:23 +0900
-category: jekyll update
+category: update
 ---
 # Deep Learning with PyTorch Step-by-Step
 
-#  Optimizer:
+#  Optimizer for NN:
 
 What if we had a whole lot of parameters using the computed gradients?
 We need to use one of PyTorch’s optimizers, like SGD, RMSprop, or Adam.

@@ -2,7 +2,7 @@
 layout: post
 title:  "A regularized interior-point method"
 date:   2018-02-19 19:31:29 +0900
-categories: jekyll update
+categories: Update
 ---
 
 ### A regularized interior-point method for constrained linear least squares

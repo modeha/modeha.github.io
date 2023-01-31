@@ -21,10 +21,10 @@
 usemathjax: true
 markdown: kramdown
 
-title: Monos
+title: Deep Learning
 email: mohsen.dehghani@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Themed by Dehghani
+  Mohsen Dehghani
 # baseurl: "/" # the subpath of your site, e.g. /blog
 # url: "http://ejjoo.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: modeha
