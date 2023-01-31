@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Autograd Encodes Execution"
-date:   2022-11-19 19:31:29 +0900
+date:   2023-01-31 19:31:29 +0900
 categories: update
 ---
 ## How autograd encodes execution work?
