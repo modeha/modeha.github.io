@@ -58,12 +58,7 @@ The equation above is strikingly similar to the original **linear regression mod
 *Does it mean a **logit** is the same as **linear regression**?*
 
 Not quite—there is one **fundamental difference** between them: There is **no error term (*epsilon*)** in Equation above.
-
-![](/assets/sigmoid/Aspose.Words.f06965dc-5caa-4654-b599-bd950b862427.006.png)*If there is no error term, where does the **uncertainty** come from?*
-
-I am glad you asked :-) That’s the role of the **probability**: Instead of assigning a data
-
-point to a **discrete label (zero or one)**, we’ll compute the **probability of a data point’s belonging to the positive class**.
+If there is no error term, where does the **uncertainty** come from?* I am glad you asked :-) That’s the role of the **probability**: Instead of assigning a data point to a **discrete label (zero or one)**, we’ll compute the **probability of a data point’s belonging to the positive class**.
 
 ## **Probabilities**
 
