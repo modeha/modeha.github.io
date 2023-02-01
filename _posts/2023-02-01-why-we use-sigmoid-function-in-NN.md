@@ -17,9 +17,7 @@ $$\Huge y=b+w_1x_1+w_2x_2+ϵ$$
 
 There is one obvious **problem** with the model above: Our **labels (*y*)** are **discrete**; that is, they are either **zero** or **one**; no other value is allowed. We need to **change the model slightly** to adapt it to our purposes.
 
-*What if we assign the **positive** outputs to **one** and the **negative***
-
-*outputs to **zero**?*"
+*What if we assign the **positive** outputs to **one** and the **negative*** *outputs to **zero**?*
 
 Makes sense, right? We’re already calling them **positive** and **negative** classes anyway; why not put their names to good use? Our model would look like this:
 
