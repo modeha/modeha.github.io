@@ -56,7 +56,7 @@ For *really large* positive and negative **logit values (*z*)**, we would like t
 
 ![](/assets/sigmoid/Aspose.Words.f06965dc-5caa-4654-b599-bd950b862427.007.jpeg)
 
-*Probabilities assigned to different logit values (z)*
+## *Probabilities assigned to different logit values (z)*
 
 We still need to figure out a **function** that maps **logit values** into **probabilities**. We’ll get there soon enough, but first, we need to talk about…
 
@@ -74,7 +74,7 @@ The **odds ratio** is given by the **ratio** between the **probability of succes
 
 ![](/assets/sigmoid/Aspose.Words.f06965dc-5caa-4654-b599-bd950b862427.008.jpeg)
 
-*Odds ratio*
+## *Odds ratio*
 
 In code, our odds\_ratio() function looks like this:
 ```python
