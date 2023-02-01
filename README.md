@@ -12,7 +12,7 @@ Mohsen Dehghani Master's degree in Optimization 2010-2013 and student of DESS in
     </embed>
 </object>
 
-
+<a href="/assets/Resume.pdf" title="Resume" download>Download</a>
 
 Deep learning is a machine learning technique that teaches computers to do what comes naturally to humans: learn by example. Deep learning is a key technology behind driverless cars, enabling them to recognize a stop sign, or to distinguish a pedestrian from a lamppost. It is the key to voice control in consumer devices like phones, tablets, TVs, and hands-free speakers. Deep learning is getting lots of attention lately and for good reason. It’s achieving results that were not possible before.
 
