@@ -46,7 +46,7 @@ I am glad you asked :-) That’s the role of the **probability**: Instead of ass
 
 point to a **discrete label (zero or one)**, we’ll compute the **probability of a data point’s belonging to the positive class**.
 
-**Probabilities**
+## **Probabilities**
 
 If a data point has a **logit** that equals **zero**, it is exactly at the decision boundary since it is neither positive nor negative. For the sake of completeness, we assigned it to the **positive class**, but this assignment has **maximum uncertainty**, right? So, the corresponding **probability needs to be 0.5** (50%), since it could go either way.
 
