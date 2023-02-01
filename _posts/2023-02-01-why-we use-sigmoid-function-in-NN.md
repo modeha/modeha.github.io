@@ -25,24 +25,22 @@ Makes sense, right? We’re already calling them **positive** and **negative** c
 
 
 
-**Logits**
+## **Logits**
 
-*Equation above - Mapping a linear regression model to* **discrete labels**
-
-
+*Equation above - Mapping a linear regression model to* **discrete labels.**
 To make our lives easier, let’s give the right-hand side of the equation above a name: **logit (*z*)**.
 
 ![](/assets/sigmoid/Aspose.Words.f06965dc-5caa-4654-b599-bd950b862427.005.jpeg)
 
-*- Computing* **logits**
+## *Computing* **logits**
 
 The equation above is strikingly similar to the original **linear regression model**, but we’re calling the resulting value ***z***, or **logit**, instead of ***y***, or **label**.
 
-*Does it mean a **logit** is the same as **linear regression**?*"
+*Does it mean a **logit** is the same as **linear regression**?*
 
 Not quite—there is one **fundamental difference** between them: There is **no error term (*epsilon*)** in Equation above.
 
-![](/assets/sigmoid/Aspose.Words.f06965dc-5caa-4654-b599-bd950b862427.006.png)"*If there is no error term, where does the **uncertainty** come from?*"
+![](/assets/sigmoid/Aspose.Words.f06965dc-5caa-4654-b599-bd950b862427.006.png)*If there is no error term, where does the **uncertainty** come from?*
 
 I am glad you asked :-) That’s the role of the **probability**: Instead of assigning a data
 
@@ -64,7 +62,7 @@ We still need to figure out a **function** that maps **logit values** into **pro
 
 **Odds Ratio**
 
-![](/assets/sigmoid/Aspose.Words.f06965dc-5caa-4654-b599-bd950b862427.006.png)"*What are the odds?!*"
+![](/assets/sigmoid/Aspose.Words.f06965dc-5caa-4654-b599-bd950b862427.006.png)*What are the odds?!*
 
 This is a colloquial expression meaning something very unlikely has happened. But **odds** do not have to refer to an unlikely event or a slim chance. The odds of getting **heads** in a (fair) coin flip are 1 to 1 since there is a 50% chance of success and a 50% chance of failure.
 
