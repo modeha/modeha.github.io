@@ -5,7 +5,7 @@ date:   2023-01-31 19:31:29 +0900
 categories: update
 ---
 
-**Model**
+## **Model**
 
 Given a **classification problem**, one of the more straightforward models is the **logistic regression**. But, instead of simply *presenting* it and using it right away, I am going to **build up to it**. The rationale behind this approach is twofold: First, it will make clear why this algorithm is called logistic *regression* if it is used for classification; second, you’ll get a **clear understanding of what a *logit* is**.
 
