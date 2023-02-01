@@ -46,7 +46,7 @@ Makes sense, right? We’re already calling them **positive** and **negative** c
 
 ## **Logits**
 
-$\color{red}\text{Equation above  Mapping a linear regression model to discrete labels.}$
+$$\color{red}\text{Equation above  Mapping a linear regression model to discrete labels.}$$
 To make our lives easier, let’s give the right-hand side of the equation above a name: **logit (*z*)**.
 
 ![](/assets/sigmoid/Aspose.Words.f06965dc-5caa-4654-b599-bd950b862427.005.jpeg)
