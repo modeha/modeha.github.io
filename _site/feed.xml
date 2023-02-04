@@ -1,6 +1,775 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-02-01T12:49:26-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Deep Learning</title><subtitle>Mohsen Dehghani</subtitle><entry><title type="html">Autograd Encodes Execution</title><link href="http://localhost:4000/update/2023/01/31/Autograd-Encodes.html" rel="alternate" type="text/html" title="Autograd Encodes Execution" /><published>2023-01-31T05:31:29-05:00</published><updated>2023-01-31T05:31:29-05:00</updated><id>http://localhost:4000/update/2023/01/31/Autograd-Encodes</id><content type="html" xml:base="http://localhost:4000/update/2023/01/31/Autograd-Encodes.html"><![CDATA[<h2 id="how-autograd-encodes-execution-work">How autograd encodes execution work?</h2>
-<iframe src="/assets/PyTorch.html" onload="javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+&quot;px&quot;;}(this));" style="height:500px;width:100%;border:none;overflow:hidden;">
- </iframe>]]></content><author><name></name></author><category term="update" /><summary type="html"><![CDATA[How autograd encodes execution work?]]></summary></entry><entry><title type="html">Why Using Sigmoid in NN</title><link href="http://localhost:4000/update/2023/01/31/why-we-use-sigmoid-function-in-NN.html" rel="alternate" type="text/html" title="Why Using Sigmoid in NN" /><published>2023-01-31T05:31:29-05:00</published><updated>2023-01-31T05:31:29-05:00</updated><id>http://localhost:4000/update/2023/01/31/why-we%20use-sigmoid-function-in-NN</id><content type="html" xml:base="http://localhost:4000/update/2023/01/31/why-we-use-sigmoid-function-in-NN.html"><![CDATA[<!--- 
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-02-03T19:21:47-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Deep Learning</title><subtitle>Mohsen Dehghani</subtitle><entry><title type="html">Maximum Likelihood Estimator</title><link href="http://localhost:4000/update/2023/02/03/Maximum-Likelihood-Estimator.html" rel="alternate" type="text/html" title="Maximum Likelihood Estimator" /><published>2023-02-03T05:31:29-05:00</published><updated>2023-02-03T05:31:29-05:00</updated><id>http://localhost:4000/update/2023/02/03/Maximum-Likelihood-Estimator</id><content type="html" xml:base="http://localhost:4000/update/2023/02/03/Maximum-Likelihood-Estimator.html"><![CDATA[<p>Suppose that we have access to some data set as follow:
+\(x^{(1)},x^{(2)},x^{(3)},\cdots x^{(m)}\).
+Our main intresting question is:
+can we find a random variable \(X\) and distribution \(P\) such that \(p(X)\) can  well-modeled our data by this distribution?. In general, this is a hard problem. If we consider the class of all possible distributions, there is no way to best fit to the data.</p>
+
+<p>Instead, the common strategy is to choose our distribution from a certain parameterized family of distribution \(p(X;θ)\), parameterized by \(θ\), and have our goal be to find the parameters \(θ\) that fit the data best. Even here there are multiple different approaches that are possible, but at the very least this gives us a more concrete problem that lets us better attack the underlying problem.</p>
+
+<p>In this set of notes, we’ll first answer this estimation problem by appeal to the maximum likelihood estimation (MLE) procedure.</p>
+<h3 id="maximum-likelihood-estimation">Maximum likelihood estimation</h3>
+
+<p>Given some parameterized distribution \(p(X;θ)\), and an collection of (independent) samples \(x^{(1)},x^{(2)},x^{(3)},\cdots x^{(m)}.\)
+We can compute the probability of observing this set of samples under the distribution, which is simply given by</p>
+
+<p>\(p(x^{(1)},x^{(2)},x^{(3)},\cdots x^{(m)};θ)=∏_{i=1}^mp(x^{(i)};θ)\)
+We suppose here samples are all assumed to be independent.The basic idea of maximum likelihood estimation, is that we want to pick parameters \(θ\)that maximize the probaiblity of the observed data; in other words, we want to choose \(θ\) to solve the optimization problem</p>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <munder>
+    <mo lspace="0" rspace="0" movablelimits="true">maximize</mo>
+    <mi>&#x03B8;<!-- θ --></mi>
+  </munder>
+  <mspace width="thickmathspace" />
+  <munderover>
+    <mo>&#x220F;<!-- ∏ --></mo>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>i</mi>
+      <mo>=</mo>
+      <mn>1</mn>
+    </mrow>
+    <mi>m</mi>
+  </munderover>
+  <mi>p</mi>
+  <mo stretchy="false">(</mo>
+  <msup>
+    <mi>x</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mo stretchy="false">(</mo>
+      <mi>i</mi>
+      <mo stretchy="false">)</mo>
+    </mrow>
+  </msup>
+  <mo>;</mo>
+  <mi>&#x03B8;<!-- θ --></mi>
+  <mo stretchy="false">)</mo>
+</math>
+
+<p>or equivalently (because maximizing a function is equivalent to maximizing the log of that function, and we can scale this function arbitrarily).</p>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <munder>
+    <mo lspace="0" rspace="0" movablelimits="true">maximize</mo>
+    <mi>&#x03B8;<!-- θ --></mi>
+  </munder>
+  <mspace width="thickmathspace" />
+  <mfrac>
+    <mn>1</mn>
+    <mi>m</mi>
+  </mfrac>
+  <munderover>
+    <mo>&#x2211;<!-- ∑ --></mo>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>i</mi>
+      <mo>=</mo>
+      <mn>1</mn>
+    </mrow>
+    <mi>m</mi>
+  </munderover>
+  <mi>log</mi>
+  <mo>&#x2061;<!-- ⁡ --></mo>
+  <mi>p</mi>
+  <mo stretchy="false">(</mo>
+  <msup>
+    <mi>x</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mo stretchy="false">(</mo>
+      <mi>i</mi>
+      <mo stretchy="false">)</mo>
+    </mrow>
+  </msup>
+  <mo>;</mo>
+  <mi>&#x03B8;<!-- θ --></mi>
+  <mo stretchy="false">)</mo>
+</math>
+<p>The term we are maximizing above is so common that it usually has it’s own name: the log-likelihood of the data, written as</p>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <mi>&#x2113;<!-- ℓ --></mi>
+  <mo stretchy="false">(</mo>
+  <mi>&#x03B8;<!-- θ --></mi>
+  <mo stretchy="false">)</mo>
+  <mo>=</mo>
+  <mfrac>
+    <mn>1</mn>
+    <mi>m</mi>
+  </mfrac>
+  <munderover>
+    <mo>&#x2211;<!-- ∑ --></mo>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>i</mi>
+      <mo>=</mo>
+      <mn>1</mn>
+    </mrow>
+    <mi>m</mi>
+  </munderover>
+  <mi>log</mi>
+  <mo>&#x2061;<!-- ⁡ --></mo>
+  <mi>p</mi>
+  <mo stretchy="false">(</mo>
+  <msup>
+    <mi>x</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mo stretchy="false">(</mo>
+      <mi>i</mi>
+      <mo stretchy="false">)</mo>
+    </mrow>
+  </msup>
+  <mo>;</mo>
+  <mi>&#x03B8;<!-- θ --></mi>
+  <mo stretchy="false">)</mo>
+</math>
+<p>where we explicitly write \(ℓ\) as a function of \(θ\) because we want to emphasize the fact this likelihood depends on the parameters.</p>
+
+<p>This procedure may seem “obvious” when stated like this (of course we want to find the parameters that make the data as likely as possible), but there are actually a number of other estimators that are equally valid or reasonable in many situations. We’ll consider some of these when we discuss hypothesis testing and then later probabilistic modeling, but for now, maximum likelihood estimation will serve as a nice principle for how we fit parameters of distributions to data.</p>
+
+<h3 id="example-bernoulli-distribution">Example: Bernoulli distribution</h3>
+<p>Let’s take a simple example as an illustration of this point for the Bernoulli distribution. Recall that a Bernoulli distribution, 
+\(p(X;ϕ)\) is a simple binary distribution over random variables taking values in \({0,1}\), parameterized by \(ϕ\), which is just the probability of the random variable being equal to one. Now suppose we have some data \(x^{(1)},x^{(2)},x^{(3)},\cdots x^{(m)}\) with 
+\(x^{(i)}∈({0,1})\); what would be a good estimate of the Bernoulli parameter \(ϕ\)? 
+For example, maybe we flipped a coin 100 times and 30 of these times it came up heads; what would be a good estimate for the probability that this coin comes up heads?</p>
+
+<p>The “obvious” answer here is that we just estimate \(ϕ\) to be the proportion of 1’s in the data</p>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <mi>&#x03D5;<!-- ϕ --></mi>
+  <mo>=</mo>
+  <mfrac>
+    <mstyle displaystyle="false" scriptlevel="0">
+      <mtext># 1's</mtext>
+    </mstyle>
+    <mstyle displaystyle="false" scriptlevel="0">
+      <mtext># Total</mtext>
+    </mstyle>
+  </mfrac>
+  <mo>=</mo>
+  <mfrac>
+    <mrow>
+      <munderover>
+        <mo>&#x2211;<!-- ∑ --></mo>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mi>i</mi>
+          <mo>=</mo>
+          <mn>1</mn>
+        </mrow>
+        <mi>m</mi>
+      </munderover>
+      <msup>
+        <mi>x</mi>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mo stretchy="false">(</mo>
+          <mi>i</mi>
+          <mo stretchy="false">)</mo>
+        </mrow>
+      </msup>
+    </mrow>
+    <mi>m</mi>
+  </mfrac>
+  <mo>.</mo>
+</math>
+<p>But why is this the case? If we flip the coin just once, for example, would we expect that we should estimate \(ϕ\) to be either zero or one? Maybe some other estimators exist that can better handle our expectation that the coin “should” be unbiased, i.e., have \(ϕ=1/2\).</p>
+
+<p>While this is certainly true, in fact that maximum likelihood estimate of \(ϕ\) is just the equation above, the number of ones divided by the total number. So this gives some rationale that at least under the principles of maximum likelihood esimation, we should believe that this is a good estimate. However, showing that this is in fact the maximum likelihood estimator is a little more involved that you might expect. Let’s go through the derivation to see how this work.</p>
+
+<p>First, recall that our objective is to choose \(ϕ\) maximize the likelihood, or equivalently the log likelihood of the data, of the observed data \(x^{(1)},x^{(2)},x^{(3)},\cdots x^{(m)}\).. This can be written as the optimization problem.</p>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <munder>
+    <mo lspace="0" rspace="0" movablelimits="true">maximize</mo>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>&#x03D5;<!-- ϕ --></mi>
+    </mrow>
+  </munder>
+  <mo>&#x2061;<!-- ⁡ --></mo>
+  <munderover>
+    <mo>&#x2211;<!-- ∑ --></mo>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>i</mi>
+      <mo>=</mo>
+      <mn>1</mn>
+    </mrow>
+    <mi>m</mi>
+  </munderover>
+  <mi>log</mi>
+  <mo>&#x2061;<!-- ⁡ --></mo>
+  <mi>p</mi>
+  <mo stretchy="false">(</mo>
+  <msup>
+    <mi>x</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mo stretchy="false">(</mo>
+      <mi>i</mi>
+      <mo stretchy="false">)</mo>
+    </mrow>
+  </msup>
+  <mo>;</mo>
+  <mi>&#x03D5;<!-- ϕ --></mi>
+  <mo stretchy="false">)</mo>
+  <mo>.</mo>
+</math>
+
+<p>Recall that the probability under a Bernoulli distribution is just \(p(X=1;ϕ)=ϕ\), and \(p(X=0;ϕ)1−ϕ\), , which we can write compactly as</p>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <mi>p</mi>
+  <mo stretchy="false">(</mo>
+  <mi>X</mi>
+  <mo>=</mo>
+  <mi>x</mi>
+  <mo>;</mo>
+  <mi>&#x03D5;<!-- ϕ --></mi>
+  <mo stretchy="false">)</mo>
+  <mo>=</mo>
+  <msup>
+    <mi>&#x03D5;<!-- ϕ --></mi>
+    <mi>x</mi>
+  </msup>
+  <mo stretchy="false">(</mo>
+  <mn>1</mn>
+  <mo>&#x2212;<!-- − --></mo>
+  <mi>&#x03D5;<!-- ϕ --></mi>
+  <msup>
+    <mo stretchy="false">)</mo>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mo stretchy="false">(</mo>
+      <mn>1</mn>
+      <mo>&#x2212;<!-- − --></mo>
+      <mi>x</mi>
+      <mo stretchy="false">)</mo>
+    </mrow>
+  </msup>
+</math>
+<p>it’s easy to see that this equals \(ϕ\) or \(x=1\) and \(1-ϕ\) for \(x=0\). Plugging this in to our maximum likelihood optimization problem we have</p>
+
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <munder>
+    <mo lspace="0" rspace="0" movablelimits="true">maximize</mo>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>&#x03D5;<!-- ϕ --></mi>
+    </mrow>
+  </munder>
+  <mo>&#x2061;<!-- ⁡ --></mo>
+  <munderover>
+    <mo>&#x2211;<!-- ∑ --></mo>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>i</mi>
+      <mo>=</mo>
+      <mn>1</mn>
+    </mrow>
+    <mi>m</mi>
+  </munderover>
+  <mrow>
+    <mo>(</mo>
+    <mrow>
+      <msup>
+        <mi>x</mi>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mo stretchy="false">(</mo>
+          <mi>i</mi>
+          <mo stretchy="false">)</mo>
+        </mrow>
+      </msup>
+      <mi>log</mi>
+      <mo>&#x2061;<!-- ⁡ --></mo>
+      <mi>&#x03D5;<!-- ϕ --></mi>
+      <mo>+</mo>
+      <mo stretchy="false">(</mo>
+      <mn>1</mn>
+      <mo>&#x2212;<!-- − --></mo>
+      <msup>
+        <mi>x</mi>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mo stretchy="false">(</mo>
+          <mi>i</mi>
+          <mo stretchy="false">)</mo>
+        </mrow>
+      </msup>
+      <mo stretchy="false">)</mo>
+      <mi>log</mi>
+      <mo>&#x2061;<!-- ⁡ --></mo>
+      <mo stretchy="false">(</mo>
+      <mn>1</mn>
+      <mo>&#x2212;<!-- − --></mo>
+      <mi>&#x03D5;<!-- ϕ --></mi>
+      <mo stretchy="false">)</mo>
+    </mrow>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+<p>In order to maximize this equation, let’s take the derivative and set it equal to 0 (though we won’t show it, it turns out this function just a single maximum point, which thus must have derivative zero, and so we can find it in this manner). Via some basic calculus we have</p>
+
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <mtable columnalign="right left" rowspacing="3pt" columnspacing="0em" displaystyle="true">
+    <mtr>
+      <mtd>
+        <mfrac>
+          <mi>d</mi>
+          <mrow>
+            <mi>d</mi>
+            <mi>&#x03D5;<!-- ϕ --></mi>
+          </mrow>
+        </mfrac>
+        <munderover>
+          <mo>&#x2211;<!-- ∑ --></mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>i</mi>
+            <mo>=</mo>
+            <mn>1</mn>
+          </mrow>
+          <mi>m</mi>
+        </munderover>
+        <mrow>
+          <mo>(</mo>
+          <mrow>
+            <msup>
+              <mi>x</mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mo stretchy="false">(</mo>
+                <mi>i</mi>
+                <mo stretchy="false">)</mo>
+              </mrow>
+            </msup>
+            <mi>log</mi>
+            <mo>&#x2061;<!-- ⁡ --></mo>
+            <mi>&#x03D5;<!-- ϕ --></mi>
+            <mo>+</mo>
+            <mo stretchy="false">(</mo>
+            <mn>1</mn>
+            <mo>&#x2212;<!-- − --></mo>
+            <msup>
+              <mi>x</mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mo stretchy="false">(</mo>
+                <mi>i</mi>
+                <mo stretchy="false">)</mo>
+              </mrow>
+            </msup>
+            <mo stretchy="false">)</mo>
+            <mi>log</mi>
+            <mo>&#x2061;<!-- ⁡ --></mo>
+            <mo stretchy="false">(</mo>
+            <mn>1</mn>
+            <mo>&#x2212;<!-- − --></mo>
+            <mi>&#x03D5;<!-- ϕ --></mi>
+            <mo stretchy="false">)</mo>
+          </mrow>
+          <mo>)</mo>
+        </mrow>
+      </mtd>
+      <mtd>
+        <mi></mi>
+        <mo>=</mo>
+        <munderover>
+          <mo>&#x2211;<!-- ∑ --></mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>i</mi>
+            <mo>=</mo>
+            <mn>1</mn>
+          </mrow>
+          <mi>m</mi>
+        </munderover>
+        <mfrac>
+          <mi>d</mi>
+          <mrow>
+            <mi>d</mi>
+            <mi>&#x03D5;<!-- ϕ --></mi>
+          </mrow>
+        </mfrac>
+        <mrow>
+          <mo>(</mo>
+          <mrow>
+            <msup>
+              <mi>x</mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mo stretchy="false">(</mo>
+                <mi>i</mi>
+                <mo stretchy="false">)</mo>
+              </mrow>
+            </msup>
+            <mi>log</mi>
+            <mo>&#x2061;<!-- ⁡ --></mo>
+            <mi>&#x03D5;<!-- ϕ --></mi>
+            <mo>+</mo>
+            <mo stretchy="false">(</mo>
+            <mn>1</mn>
+            <mo>&#x2212;<!-- − --></mo>
+            <msup>
+              <mi>x</mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mo stretchy="false">(</mo>
+                <mi>i</mi>
+                <mo stretchy="false">)</mo>
+              </mrow>
+            </msup>
+            <mo stretchy="false">)</mo>
+            <mi>log</mi>
+            <mo>&#x2061;<!-- ⁡ --></mo>
+            <mo stretchy="false">(</mo>
+            <mn>1</mn>
+            <mo>&#x2212;<!-- − --></mo>
+            <mi>&#x03D5;<!-- ϕ --></mi>
+            <mo stretchy="false">)</mo>
+          </mrow>
+          <mo>)</mo>
+        </mrow>
+      </mtd>
+    </mtr>
+    <mtr>
+      <mtd />
+      <mtd>
+        <mi></mi>
+        <mo>=</mo>
+        <munderover>
+          <mo>&#x2211;<!-- ∑ --></mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>i</mi>
+            <mo>=</mo>
+            <mn>1</mn>
+          </mrow>
+          <mi>m</mi>
+        </munderover>
+        <mrow>
+          <mo>(</mo>
+          <mrow>
+            <mfrac>
+              <msup>
+                <mi>x</mi>
+                <mrow class="MJX-TeXAtom-ORD">
+                  <mo stretchy="false">(</mo>
+                  <mi>i</mi>
+                  <mo stretchy="false">)</mo>
+                </mrow>
+              </msup>
+              <mi>&#x03D5;<!-- ϕ --></mi>
+            </mfrac>
+            <mo>&#x2212;<!-- − --></mo>
+            <mfrac>
+              <mrow>
+                <mn>1</mn>
+                <mo>&#x2212;<!-- − --></mo>
+                <msup>
+                  <mi>x</mi>
+                  <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">(</mo>
+                    <mi>i</mi>
+                    <mo stretchy="false">)</mo>
+                  </mrow>
+                </msup>
+              </mrow>
+              <mrow>
+                <mn>1</mn>
+                <mo>&#x2212;<!-- − --></mo>
+                <mi>&#x03D5;<!-- ϕ --></mi>
+              </mrow>
+            </mfrac>
+          </mrow>
+          <mo>)</mo>
+        </mrow>
+      </mtd>
+    </mtr>
+  </mtable>
+</math>
+
+<p>Setting this term equal to zero we have</p>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <mtable columnalign="right left" rowspacing="3pt" columnspacing="0em" displaystyle="true">
+    <mtr>
+      <mtd />
+      <mtd>
+        <mi></mi>
+        <munderover>
+          <mo>&#x2211;<!-- ∑ --></mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>i</mi>
+            <mo>=</mo>
+            <mn>1</mn>
+          </mrow>
+          <mi>m</mi>
+        </munderover>
+        <mrow>
+          <mo>(</mo>
+          <mrow>
+            <mfrac>
+              <msup>
+                <mi>x</mi>
+                <mrow class="MJX-TeXAtom-ORD">
+                  <mo stretchy="false">(</mo>
+                  <mi>i</mi>
+                  <mo stretchy="false">)</mo>
+                </mrow>
+              </msup>
+              <mi>&#x03D5;<!-- ϕ --></mi>
+            </mfrac>
+            <mo>&#x2212;<!-- − --></mo>
+            <mfrac>
+              <mrow>
+                <mn>1</mn>
+                <mo>&#x2212;<!-- − --></mo>
+                <msup>
+                  <mi>x</mi>
+                  <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">(</mo>
+                    <mi>i</mi>
+                    <mo stretchy="false">)</mo>
+                  </mrow>
+                </msup>
+              </mrow>
+              <mrow>
+                <mn>1</mn>
+                <mo>&#x2212;<!-- − --></mo>
+                <mi>&#x03D5;<!-- ϕ --></mi>
+              </mrow>
+            </mfrac>
+          </mrow>
+          <mo>)</mo>
+        </mrow>
+        <mo>=</mo>
+        <mn>0</mn>
+      </mtd>
+    </mtr>
+    <mtr>
+      <mtd>
+        <mo stretchy="false">&#x27F9;<!-- ⟹ --></mo>
+        <mspace width="thickmathspace" />
+        <mspace width="thickmathspace" />
+      </mtd>
+      <mtd>
+        <mfrac>
+          <mrow>
+            <munderover>
+              <mo>&#x2211;<!-- ∑ --></mo>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mi>i</mi>
+                <mo>=</mo>
+                <mn>1</mn>
+              </mrow>
+              <mi>m</mi>
+            </munderover>
+            <msup>
+              <mi>x</mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mo stretchy="false">(</mo>
+                <mi>i</mi>
+                <mo stretchy="false">)</mo>
+              </mrow>
+            </msup>
+          </mrow>
+          <mi>&#x03D5;<!-- ϕ --></mi>
+        </mfrac>
+        <mo>&#x2212;<!-- − --></mo>
+        <mfrac>
+          <mrow>
+            <munderover>
+              <mo>&#x2211;<!-- ∑ --></mo>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mi>i</mi>
+                <mo>=</mo>
+                <mn>1</mn>
+              </mrow>
+              <mi>m</mi>
+            </munderover>
+            <mo stretchy="false">(</mo>
+            <mn>1</mn>
+            <mo>&#x2212;<!-- − --></mo>
+            <msup>
+              <mi>x</mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mo stretchy="false">(</mo>
+                <mi>i</mi>
+                <mo stretchy="false">)</mo>
+              </mrow>
+            </msup>
+            <mo stretchy="false">)</mo>
+          </mrow>
+          <mrow>
+            <mn>1</mn>
+            <mo>&#x2212;<!-- − --></mo>
+            <mi>&#x03D5;<!-- ϕ --></mi>
+          </mrow>
+        </mfrac>
+        <mo>=</mo>
+        <mn>0</mn>
+      </mtd>
+    </mtr>
+    <mtr>
+      <mtd>
+        <mo stretchy="false">&#x27F9;<!-- ⟹ --></mo>
+        <mspace width="thickmathspace" />
+        <mspace width="thickmathspace" />
+      </mtd>
+      <mtd>
+        <mi></mi>
+        <mo stretchy="false">(</mo>
+        <mn>1</mn>
+        <mo>&#x2212;<!-- − --></mo>
+        <mi>&#x03D5;<!-- ϕ --></mi>
+        <mo stretchy="false">)</mo>
+        <munderover>
+          <mo>&#x2211;<!-- ∑ --></mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>i</mi>
+            <mo>=</mo>
+            <mn>1</mn>
+          </mrow>
+          <mi>m</mi>
+        </munderover>
+        <msup>
+          <mi>x</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mo stretchy="false">(</mo>
+            <mi>i</mi>
+            <mo stretchy="false">)</mo>
+          </mrow>
+        </msup>
+        <mo>&#x2212;<!-- − --></mo>
+        <mi>&#x03D5;<!-- ϕ --></mi>
+        <munderover>
+          <mo>&#x2211;<!-- ∑ --></mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>i</mi>
+            <mo>=</mo>
+            <mn>1</mn>
+          </mrow>
+          <mi>m</mi>
+        </munderover>
+        <mo stretchy="false">(</mo>
+        <mn>1</mn>
+        <mo>&#x2212;<!-- − --></mo>
+        <msup>
+          <mi>x</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mo stretchy="false">(</mo>
+            <mi>i</mi>
+            <mo stretchy="false">)</mo>
+          </mrow>
+        </msup>
+        <mo stretchy="false">)</mo>
+        <mo>=</mo>
+        <mn>0</mn>
+      </mtd>
+    </mtr>
+    <mtr>
+      <mtd>
+        <mo stretchy="false">&#x27F9;<!-- ⟹ --></mo>
+        <mspace width="thickmathspace" />
+        <mspace width="thickmathspace" />
+      </mtd>
+      <mtd>
+        <mi></mi>
+        <munderover>
+          <mo>&#x2211;<!-- ∑ --></mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>i</mi>
+            <mo>=</mo>
+            <mn>1</mn>
+          </mrow>
+          <mi>m</mi>
+        </munderover>
+        <msup>
+          <mi>x</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mo stretchy="false">(</mo>
+            <mi>i</mi>
+            <mo stretchy="false">)</mo>
+          </mrow>
+        </msup>
+        <mo>=</mo>
+        <mi>&#x03D5;<!-- ϕ --></mi>
+        <munderover>
+          <mo>&#x2211;<!-- ∑ --></mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>i</mi>
+            <mo>=</mo>
+            <mn>1</mn>
+          </mrow>
+          <mi>m</mi>
+        </munderover>
+        <mo stretchy="false">(</mo>
+        <msup>
+          <mi>x</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mo stretchy="false">(</mo>
+            <mi>i</mi>
+            <mo stretchy="false">)</mo>
+          </mrow>
+        </msup>
+        <mo>+</mo>
+        <mo stretchy="false">(</mo>
+        <mn>1</mn>
+        <mo>&#x2212;<!-- − --></mo>
+        <msup>
+          <mi>x</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mo stretchy="false">(</mo>
+            <mi>i</mi>
+            <mo stretchy="false">)</mo>
+          </mrow>
+        </msup>
+        <mo stretchy="false">)</mo>
+        <mo stretchy="false">)</mo>
+      </mtd>
+    </mtr>
+    <mtr>
+      <mtd>
+        <mo stretchy="false">&#x27F9;<!-- ⟹ --></mo>
+        <mspace width="thickmathspace" />
+        <mspace width="thickmathspace" />
+      </mtd>
+      <mtd>
+        <mi></mi>
+        <munderover>
+          <mo>&#x2211;<!-- ∑ --></mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>i</mi>
+            <mo>=</mo>
+            <mn>1</mn>
+          </mrow>
+          <mi>m</mi>
+        </munderover>
+        <msup>
+          <mi>x</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mo stretchy="false">(</mo>
+            <mi>i</mi>
+            <mo stretchy="false">)</mo>
+          </mrow>
+        </msup>
+        <mo>=</mo>
+        <mi>&#x03D5;<!-- ϕ --></mi>
+        <mi>m</mi>
+      </mtd>
+    </mtr>
+    <mtr>
+      <mtd>
+        <mo stretchy="false">&#x27F9;<!-- ⟹ --></mo>
+        <mspace width="thickmathspace" />
+        <mspace width="thickmathspace" />
+      </mtd>
+      <mtd>
+        <mi>&#x03D5;<!-- ϕ --></mi>
+        <mo>=</mo>
+        <mfrac>
+          <mrow>
+            <munderover>
+              <mo>&#x2211;<!-- ∑ --></mo>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mi>i</mi>
+                <mo>=</mo>
+                <mn>1</mn>
+              </mrow>
+              <mi>m</mi>
+            </munderover>
+            <msup>
+              <mi>x</mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mo stretchy="false">(</mo>
+                <mi>i</mi>
+                <mo stretchy="false">)</mo>
+              </mrow>
+            </msup>
+          </mrow>
+          <mi>m</mi>
+        </mfrac>
+        <mo>.</mo>
+      </mtd>
+    </mtr>
+  </mtable>
+</math>
+<p>And there we have it, the surprisingly long proof of the fact that if we want to pick \(ϕ\) to maximize the likelihood of the observed data, we need to choose it to be equal to the empirical proportion of the ones. Of course, the objections we had at the beginning of this section were also valid: and in fact this perhaps is not the best estimate of \(ϕ\)if we have very little data, or some prior information about what values \(ϕ\) should take. But it is the estimate of \(ϕ\) that maximizes the probability of the observed data, and if this is a bad estimate then it reflects more on the underlying problem with this procedure than with the proof above. Nonetheless, in the presence of a lot of data, there is actually good reason to use the maximum likelihood estimator, and it is extremely common to use in practice.</p>]]></content><author><name></name></author><category term="update" /><summary type="html"><![CDATA[Suppose that we have access to some data set as follow: \(x^{(1)},x^{(2)},x^{(3)},\cdots x^{(m)}\). Our main intresting question is: can we find a random variable \(X\) and distribution \(P\) such that \(p(X)\) can well-modeled our data by this distribution?. In general, this is a hard problem. If we consider the class of all possible distributions, there is no way to best fit to the data.]]></summary></entry><entry><title type="html">Why Using Sigmoid in NN</title><link href="http://localhost:4000/update/2023/01/31/why-we-use-sigmoid-function-in-NN.html" rel="alternate" type="text/html" title="Why Using Sigmoid in NN" /><published>2023-01-31T05:31:29-05:00</published><updated>2023-01-31T05:31:29-05:00</updated><id>http://localhost:4000/update/2023/01/31/why-we%20use-sigmoid-function-in-NN</id><content type="html" xml:base="http://localhost:4000/update/2023/01/31/why-we-use-sigmoid-function-in-NN.html"><![CDATA[<!--- 
 
 <style>
 r { color: Red }
@@ -186,7 +955,9 @@ If there is no error term, where does the <strong>uncertainty</strong> come from
 
 <p><img src="/assets/sigmoid/Aspose.Words.f06965dc-5caa-4654-b599-bd950b862427.013.png" alt="" /></p>
 
-<p><strong>Equation - Sigmoid function</strong></p>]]></content><author><name></name></author><category term="update" /><summary type="html"><![CDATA[Model Given a classification problem, one of the more straightforward models is the logistic regression. But, instead of simply presenting it and using it right away, I am going to build up to it. The rationale behind this approach is twofold: First, it will make clear why this algorithm is called logistic regression if it is used for classification; second, you’ll get a clear understanding of what a logit is. Well, since it is called logistic regression, I would say that linear regression is a good starting point. What would a linear regression model with two features look like? \[\Huge y=b+w_1x_1+w_2x_2+ϵ\] A linear regression model with two features There is one obvious problem with the model above: Our labels (y) are discrete; that is, they are either zero or one; no other value is allowed. We need to change the model slightly to adapt it to our purposes. What if we assign the positive outputs to one and the negative outputs to zero? Makes sense, right? We’re already calling them positive and negative classes anyway; why not put their names to good use? Our model would look like this: Logits \(\color{red}{\text{Equation above Mapping a linear regression model to discrete labels.}}\) To make our lives easier, let’s give the right-hand side of the equation above a name: logit (z). Computing logits The equation above is strikingly similar to the original linear regression model, but we’re calling the resulting value z, or logit, instead of y, or label. Does it mean a **logit is the same as linear regression?** Not quite—there is one fundamental difference between them: There is no error term (epsilon) in Equation above. If there is no error term, where does the uncertainty come from? I am glad you asked :smiley: That’s the role of the probability: Instead of assigning a data point to a discrete label (zero or one), we’ll compute the probability of a data point’s belonging to the positive class. Probabilities If a data point has a logit that equals zero, it is exactly at the decision boundary since it is neither positive nor negative. For the sake of completeness, we assigned it to the positive class, but this assignment has maximum uncertainty, right? So, the corresponding probability needs to be 0.5 (50%), since it could go either way. Following this reasoning, we would like to have large positive logit values assigned to higher probabilities (of being in the positive class) and large negative logit values assigned to lower probabilities (of being in the positive class). For really large positive and negative logit values (z), we would like to have: Probabilities assigned to different logit values (z) We still need to figure out a function that maps logit values into probabilities. We’ll get there soon enough, but first, we need to talk about… Odds Ratio What are the odds?! This is a colloquial expression meaning something very unlikely has happened. But odds do not have to refer to an unlikely event or a slim chance. The odds of getting heads in a (fair) coin flip are 1 to 1 since there is a 50% chance of success and a 50% chance of failure. Let’s imagine we are betting on the winner of the World Cup final. There are two countries: A and B. Country A is the favorite: It has a 75% chance of winning. So, Country B has only a 25% chance of winning. If you bet on Country A, your chances of winning—that is, your odds (in favor)—are 3 to 1 (75 to 25). If you decide to test your luck and bet on Country B, your chances of winning—that is, your odds (in favor)—are 1 to 3 (25 to 75), or 0.33 to 1. The odds ratio is given by the ratio between the probability of success (p) and the probability of failure (q): Odds ratio In code, our odds_ratio() function looks like this: def odds_ratio(prob): return prob / (1 - prob) p = .75 q = 1 - p odds_ratio(p), odds_ratio(q) *Output* (3.0, 0.3333333333333333) We can also plot the resulting odds ratios for probabilities ranging from 1% to 99%. The red dots correspond to the probabilities of 25% (q), 50%, and 75% (p). Odds ratio Clearly, the odds ratios (left plot) are not symmetrical. But, in a log scale (right plot), they are. This serves us very well since we’re looking for a symmetrical function that maps logit values into probabilities. Why does it need to be symmetrical? If the function weren’t symmetrical, different choices for the positive class would produce models that were not equivalent. But, using a symmetrical function, we could train two equivalent models using the same dataset, just flipping the classes: Blue Model (the positive class (y=1) corresponds to blue points) Data Point #1: P(y=1) = P(blue) = .83 (which is the same as P(red) = .17) Red Model (the positive class (y=1) corresponds to red points) Data Point #1: P(y=1) = P(red) = .17 (which is the same as P(blue) = .83) ##Log Odds Ratio By taking the logarithm of the odds ratio, the function is not only symmetrical, but also maps probabilities into real numbers, instead of only the positive ones: Log odds ratio In code, our log_odds_ratio() function looks like this: def log_odds_ratio(prob): return np.log(odds\_ratio(prob)) $$p = .75$$ $$q = 1 - p$$ $$\log_odds_ratio(p), log_odds_ratio(q)$$ *Output* (1.0986122886681098, -1.0986122886681098) As expected, probabilities that add up to 100% (like 75% and 25%) correspond to log odds ratios that are the same in absolute value. Let’s plot it: Log odds ratio and probability On the left, each probability maps into a log odds ratio. The red dots correspond to probabilities of 25%, 50%, and 75%, the same as before. If we flip the horizontal and vertical axes (right plot), we are inverting the function, thus mapping each log odds ratio into a probability. That’s the function we were looking for! Does its shape look familiar? Wait for it… From Logits to Probabilities In the previous section, we were trying to map logit values into probabilities, and we’ve just found out, graphically, a function that maps log odds ratios into probabilities. Clearly, our logits are log odds ratios :-) Sure, drawing conclusions like this is not very scientific, but the purpose of this exercise is to illustrate how the results of a regression, represented by the logits (z), get to be mapped into probabilities. So, here’s what we arrived at: Equation - Regression, logits, and log odds ratios Let’s work this equation out a bit, inverting, rearranging, and simplifying some terms to isolate p: Equation - From logits (z) to probabilities (p) Does it look familiar? That’s a sigmoid function! It is the inverse of the log odds ratio. Equation - Sigmoid function]]></summary></entry><entry><title type="html">Plotly</title><link href="http://localhost:4000/update/2023/01/29/plotly.html" rel="alternate" type="text/html" title="Plotly" /><published>2023-01-29T18:20:23-05:00</published><updated>2023-01-29T18:20:23-05:00</updated><id>http://localhost:4000/update/2023/01/29/plotly</id><content type="html" xml:base="http://localhost:4000/update/2023/01/29/plotly.html"><![CDATA[<h1 id="intractive-plot-with-plotly">Intractive plot with plotly</h1>
+<p><strong>Equation - Sigmoid function</strong></p>]]></content><author><name></name></author><category term="update" /><summary type="html"><![CDATA[Model Given a classification problem, one of the more straightforward models is the logistic regression. But, instead of simply presenting it and using it right away, I am going to build up to it. The rationale behind this approach is twofold: First, it will make clear why this algorithm is called logistic regression if it is used for classification; second, you’ll get a clear understanding of what a logit is. Well, since it is called logistic regression, I would say that linear regression is a good starting point. What would a linear regression model with two features look like? \[\Huge y=b+w_1x_1+w_2x_2+ϵ\] A linear regression model with two features There is one obvious problem with the model above: Our labels (y) are discrete; that is, they are either zero or one; no other value is allowed. We need to change the model slightly to adapt it to our purposes. What if we assign the positive outputs to one and the negative outputs to zero? Makes sense, right? We’re already calling them positive and negative classes anyway; why not put their names to good use? Our model would look like this: Logits \(\color{red}{\text{Equation above Mapping a linear regression model to discrete labels.}}\) To make our lives easier, let’s give the right-hand side of the equation above a name: logit (z). Computing logits The equation above is strikingly similar to the original linear regression model, but we’re calling the resulting value z, or logit, instead of y, or label. Does it mean a **logit is the same as linear regression?** Not quite—there is one fundamental difference between them: There is no error term (epsilon) in Equation above. If there is no error term, where does the uncertainty come from? I am glad you asked :smiley: That’s the role of the probability: Instead of assigning a data point to a discrete label (zero or one), we’ll compute the probability of a data point’s belonging to the positive class. Probabilities If a data point has a logit that equals zero, it is exactly at the decision boundary since it is neither positive nor negative. For the sake of completeness, we assigned it to the positive class, but this assignment has maximum uncertainty, right? So, the corresponding probability needs to be 0.5 (50%), since it could go either way. Following this reasoning, we would like to have large positive logit values assigned to higher probabilities (of being in the positive class) and large negative logit values assigned to lower probabilities (of being in the positive class). For really large positive and negative logit values (z), we would like to have: Probabilities assigned to different logit values (z) We still need to figure out a function that maps logit values into probabilities. We’ll get there soon enough, but first, we need to talk about… Odds Ratio What are the odds?! This is a colloquial expression meaning something very unlikely has happened. But odds do not have to refer to an unlikely event or a slim chance. The odds of getting heads in a (fair) coin flip are 1 to 1 since there is a 50% chance of success and a 50% chance of failure. Let’s imagine we are betting on the winner of the World Cup final. There are two countries: A and B. Country A is the favorite: It has a 75% chance of winning. So, Country B has only a 25% chance of winning. If you bet on Country A, your chances of winning—that is, your odds (in favor)—are 3 to 1 (75 to 25). If you decide to test your luck and bet on Country B, your chances of winning—that is, your odds (in favor)—are 1 to 3 (25 to 75), or 0.33 to 1. The odds ratio is given by the ratio between the probability of success (p) and the probability of failure (q): Odds ratio In code, our odds_ratio() function looks like this: def odds_ratio(prob): return prob / (1 - prob) p = .75 q = 1 - p odds_ratio(p), odds_ratio(q) *Output* (3.0, 0.3333333333333333) We can also plot the resulting odds ratios for probabilities ranging from 1% to 99%. The red dots correspond to the probabilities of 25% (q), 50%, and 75% (p). Odds ratio Clearly, the odds ratios (left plot) are not symmetrical. But, in a log scale (right plot), they are. This serves us very well since we’re looking for a symmetrical function that maps logit values into probabilities. Why does it need to be symmetrical? If the function weren’t symmetrical, different choices for the positive class would produce models that were not equivalent. But, using a symmetrical function, we could train two equivalent models using the same dataset, just flipping the classes: Blue Model (the positive class (y=1) corresponds to blue points) Data Point #1: P(y=1) = P(blue) = .83 (which is the same as P(red) = .17) Red Model (the positive class (y=1) corresponds to red points) Data Point #1: P(y=1) = P(red) = .17 (which is the same as P(blue) = .83) ##Log Odds Ratio By taking the logarithm of the odds ratio, the function is not only symmetrical, but also maps probabilities into real numbers, instead of only the positive ones: Log odds ratio In code, our log_odds_ratio() function looks like this: def log_odds_ratio(prob): return np.log(odds\_ratio(prob)) $$p = .75$$ $$q = 1 - p$$ $$\log_odds_ratio(p), log_odds_ratio(q)$$ *Output* (1.0986122886681098, -1.0986122886681098) As expected, probabilities that add up to 100% (like 75% and 25%) correspond to log odds ratios that are the same in absolute value. Let’s plot it: Log odds ratio and probability On the left, each probability maps into a log odds ratio. The red dots correspond to probabilities of 25%, 50%, and 75%, the same as before. If we flip the horizontal and vertical axes (right plot), we are inverting the function, thus mapping each log odds ratio into a probability. That’s the function we were looking for! Does its shape look familiar? Wait for it… From Logits to Probabilities In the previous section, we were trying to map logit values into probabilities, and we’ve just found out, graphically, a function that maps log odds ratios into probabilities. Clearly, our logits are log odds ratios :-) Sure, drawing conclusions like this is not very scientific, but the purpose of this exercise is to illustrate how the results of a regression, represented by the logits (z), get to be mapped into probabilities. So, here’s what we arrived at: Equation - Regression, logits, and log odds ratios Let’s work this equation out a bit, inverting, rearranging, and simplifying some terms to isolate p: Equation - From logits (z) to probabilities (p) Does it look familiar? That’s a sigmoid function! It is the inverse of the log odds ratio. Equation - Sigmoid function]]></summary></entry><entry><title type="html">Autograd Encodes Execution</title><link href="http://localhost:4000/update/2023/01/31/Autograd-Encodes.html" rel="alternate" type="text/html" title="Autograd Encodes Execution" /><published>2023-01-31T05:31:29-05:00</published><updated>2023-01-31T05:31:29-05:00</updated><id>http://localhost:4000/update/2023/01/31/Autograd-Encodes</id><content type="html" xml:base="http://localhost:4000/update/2023/01/31/Autograd-Encodes.html"><![CDATA[<h2 id="how-autograd-encodes-execution-work">How autograd encodes execution work?</h2>
+<iframe src="/assets/PyTorch.html" onload="javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+&quot;px&quot;;}(this));" style="height:500px;width:100%;border:none;overflow:hidden;">
+ </iframe>]]></content><author><name></name></author><category term="update" /><summary type="html"><![CDATA[How autograd encodes execution work?]]></summary></entry><entry><title type="html">Plotly</title><link href="http://localhost:4000/update/2023/01/29/plotly.html" rel="alternate" type="text/html" title="Plotly" /><published>2023-01-29T18:20:23-05:00</published><updated>2023-01-29T18:20:23-05:00</updated><id>http://localhost:4000/update/2023/01/29/plotly</id><content type="html" xml:base="http://localhost:4000/update/2023/01/29/plotly.html"><![CDATA[<h1 id="intractive-plot-with-plotly">Intractive plot with plotly</h1>
 
 <p>Here is an example of an animated scatter plot creating using Plotly Express. Note that you should always fix the x_range and y_range to ensure that your data remains visible throughout the animation.</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="n">px</span>
@@ -1199,8 +1970,4 @@ the function should return without attempting to download it again.</p>
  </iframe>
 
 <iframe src="/assets/Accuracyclassifiers.html" onload="javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+&quot;px&quot;;}(this));" style="height:150px;width:150%;border:none;overflow:hidden;">
- </iframe>]]></content><author><name></name></author><category term="Update" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">A regularized interior-point method</title><link href="http://localhost:4000/update/2018/02/19/interior-point-method.html" rel="alternate" type="text/html" title="A regularized interior-point method" /><published>2018-02-19T05:31:29-05:00</published><updated>2018-02-19T05:31:29-05:00</updated><id>http://localhost:4000/update/2018/02/19/interior-point-method</id><content type="html" xml:base="http://localhost:4000/update/2018/02/19/interior-point-method.html"><![CDATA[<h3 id="a-regularized-interior-point-method-for-constrained-linear-least-squares">A regularized interior-point method for constrained linear least squares</h3>
-
-<p>We propose an infeasible interior-point algorithm for constrained linear least-squares problems based on the primal-dual regularization of convex programs of Friedlander and Orban. Regularization allows us to dispense with the assumption that the active gradients are linearly independent. At each iteration, a linear system with a symmetric quasi-definite (SQD) matrix is solved. This matrix is shown to be uniformly bounded and nonsingular. While the linear system may be solved using sparse LDLT factorization, we observe that other approaches may be used. In particular, we build on the connection between SQD linear systems and unconstrained linear least-squares problems to solve the linear system with sparse QR factorization. We establish conditions under which a solution of the original, constrained least-squares problem is recovered. We report computational experience with the sparse QR factorization and illustrate the potential advantages of our approach.</p>
-
-<p><a href="https://www.tandfonline.com/doi/full/10.1080/03155986.2018.1559428">Go to the Support Web Site</a></p>]]></content><author><name></name></author><category term="Update" /><summary type="html"><![CDATA[A regularized interior-point method for constrained linear least squares]]></summary></entry></feed>
+ </iframe>]]></content><author><name></name></author><category term="Update" /><summary type="html"><![CDATA[]]></summary></entry></feed>

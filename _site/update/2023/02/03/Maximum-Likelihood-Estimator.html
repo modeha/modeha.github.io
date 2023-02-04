@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Deep Learning" /></head>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<style>@import url(/public/css/syntax/monokai.css);</style>
+  <title>Deep Learning</title>
+  <!-- <link href="/public/css/bootstrap.min.css" rel="stylesheet"> -->
+
+  <link href="/public/css/style.css" rel="stylesheet">
+  <body>
+  	<div class="container"> 
+		<div class="sidebar">
+			<div class="sidebar-item sidebar-header">
+	<div class='sidebar-brand'>
+		<a href="/about/">Deep Learning</a>
+	</div>
+	<p class="lead">Mohsen Dehghani</p></div>
+
+<div class="sidebar-item sidebar-nav">
+	<ul class="nav">
+      <li class="nav-title">Pages</li>
+	  <li>
+	  	<a class="nav-item" href="/">Articles</a>
+	  </li>
+	  
+	  
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/about/">
+	            	About
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	  
+	    
+	  
+	</ul>
+</div>
+
+<div class="sidebar-item sidebar-nav">
+  	<ul class="nav">
+			<li class="nav-title">Categories</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#Update">
+				<span class="name">Update</span>
+				<span class="badge">4</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#update">
+				<span class="name">update</span>
+				<span class="badge">6</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#Jekyll">
+				<span class="name">Jekyll</span>
+				<span class="badge">1</span>
+	    	</a>
+ 		</li>
+	    
+	  </nav>
+	</ul>
+</div>
+
+<div class="sidebar-item sidebar-footer">
+	<p>Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a></p>
+</div>
+		</div>
+		<div class="content">
+			<article class="post">
+	<header class="post-header">
+		<div class="post-title"> 
+			Maximum Likelihood Estimator
+		</div>
+		<time class="post-date dt-published" datetime="2023-02-03T05:31:29-05:00" itemprop="datePublished">2023/02/03
+		</time>		
+	</header>
+
+	<div class="post-content">
+		<p>Suppose that we have access to some data set as follow:
+\(x^{(1)},x^{(2)},x^{(3)},\cdots x^{(m)}\).
+Our main intresting question is:
+can we find a random variable \(X\) and distribution \(P\) such that \(p(X)\) can  well-modeled our data by this distribution?. In general, this is a hard problem. If we consider the class of all possible distributions, there is no way to best fit to the data.</p>
+
+<p>Instead, the common strategy is to choose our distribution from a certain parameterized family of distribution \(p(X;θ)\), parameterized by \(θ\), and have our goal be to find the parameters \(θ\) that fit the data best. Even here there are multiple different approaches that are possible, but at the very least this gives us a more concrete problem that lets us better attack the underlying problem.</p>
+
+<p>In this set of notes, we’ll first answer this estimation problem by appeal to the maximum likelihood estimation (MLE) procedure.</p>
+<h3 id="maximum-likelihood-estimation">Maximum likelihood estimation</h3>
+
+<p>Given some parameterized distribution \(p(X;θ)\), and an collection of (independent) samples \(x^{(1)},x^{(2)},x^{(3)},\cdots x^{(m)}.\)
+We can compute the probability of observing this set of samples under the distribution, which is simply given by</p>
+
+<p>\(p(x^{(1)},x^{(2)},x^{(3)},\cdots x^{(m)};θ)=∏_{i=1}^mp(x^{(i)};θ)\)
+We suppose here samples are all assumed to be independent.The basic idea of maximum likelihood estimation, is that we want to pick parameters \(θ\)that maximize the probaiblity of the observed data; in other words, we want to choose \(θ\) to solve the optimization problem</p>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <munder>
+    <mo lspace="0" rspace="0" movablelimits="true">maximize</mo>
+    <mi>&#x03B8;<!-- θ --></mi>
+  </munder>
+  <mspace width="thickmathspace" />
+  <munderover>
+    <mo>&#x220F;<!-- ∏ --></mo>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>i</mi>
+      <mo>=</mo>
+      <mn>1</mn>
+    </mrow>
+    <mi>m</mi>
+  </munderover>
+  <mi>p</mi>
+  <mo stretchy="false">(</mo>
+  <msup>
+    <mi>x</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mo stretchy="false">(</mo>
+      <mi>i</mi>
+      <mo stretchy="false">)</mo>
+    </mrow>
+  </msup>
+  <mo>;</mo>
+  <mi>&#x03B8;<!-- θ --></mi>
+  <mo stretchy="false">)</mo>
+</math>
+
+<p>or equivalently (because maximizing a function is equivalent to maximizing the log of that function, and we can scale this function arbitrarily).</p>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <munder>
+    <mo lspace="0" rspace="0" movablelimits="true">maximize</mo>
+    <mi>&#x03B8;<!-- θ --></mi>
+  </munder>
+  <mspace width="thickmathspace" />
+  <mfrac>
+    <mn>1</mn>
+    <mi>m</mi>
+  </mfrac>
+  <munderover>
+    <mo>&#x2211;<!-- ∑ --></mo>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>i</mi>
+      <mo>=</mo>
+      <mn>1</mn>
+    </mrow>
+    <mi>m</mi>
+  </munderover>
+  <mi>log</mi>
+  <mo>&#x2061;<!-- ⁡ --></mo>
+  <mi>p</mi>
+  <mo stretchy="false">(</mo>
+  <msup>
+    <mi>x</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mo stretchy="false">(</mo>
+      <mi>i</mi>
+      <mo stretchy="false">)</mo>
+    </mrow>
+  </msup>
+  <mo>;</mo>
+  <mi>&#x03B8;<!-- θ --></mi>
+  <mo stretchy="false">)</mo>
+</math>
+<p>The term we are maximizing above is so common that it usually has it’s own name: the log-likelihood of the data, written as</p>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <mi>&#x2113;<!-- ℓ --></mi>
+  <mo stretchy="false">(</mo>
+  <mi>&#x03B8;<!-- θ --></mi>
+  <mo stretchy="false">)</mo>
+  <mo>=</mo>
+  <mfrac>
+    <mn>1</mn>
+    <mi>m</mi>
+  </mfrac>
+  <munderover>
+    <mo>&#x2211;<!-- ∑ --></mo>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>i</mi>
+      <mo>=</mo>
+      <mn>1</mn>
+    </mrow>
+    <mi>m</mi>
+  </munderover>
+  <mi>log</mi>
+  <mo>&#x2061;<!-- ⁡ --></mo>
+  <mi>p</mi>
+  <mo stretchy="false">(</mo>
+  <msup>
+    <mi>x</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mo stretchy="false">(</mo>
+      <mi>i</mi>
+      <mo stretchy="false">)</mo>
+    </mrow>
+  </msup>
+  <mo>;</mo>
+  <mi>&#x03B8;<!-- θ --></mi>
+  <mo stretchy="false">)</mo>
+</math>
+<p>where we explicitly write \(ℓ\) as a function of \(θ\) because we want to emphasize the fact this likelihood depends on the parameters.</p>
+
+<p>This procedure may seem “obvious” when stated like this (of course we want to find the parameters that make the data as likely as possible), but there are actually a number of other estimators that are equally valid or reasonable in many situations. We’ll consider some of these when we discuss hypothesis testing and then later probabilistic modeling, but for now, maximum likelihood estimation will serve as a nice principle for how we fit parameters of distributions to data.</p>
+
+<h3 id="example-bernoulli-distribution">Example: Bernoulli distribution</h3>
+<p>Let’s take a simple example as an illustration of this point for the Bernoulli distribution. Recall that a Bernoulli distribution, 
+\(p(X;ϕ)\) is a simple binary distribution over random variables taking values in \({0,1}\), parameterized by \(ϕ\), which is just the probability of the random variable being equal to one. Now suppose we have some data \(x^{(1)},x^{(2)},x^{(3)},\cdots x^{(m)}\) with 
+\(x^{(i)}∈({0,1})\); what would be a good estimate of the Bernoulli parameter \(ϕ\)? 
+For example, maybe we flipped a coin 100 times and 30 of these times it came up heads; what would be a good estimate for the probability that this coin comes up heads?</p>
+
+<p>The “obvious” answer here is that we just estimate \(ϕ\) to be the proportion of 1’s in the data</p>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <mi>&#x03D5;<!-- ϕ --></mi>
+  <mo>=</mo>
+  <mfrac>
+    <mstyle displaystyle="false" scriptlevel="0">
+      <mtext># 1's</mtext>
+    </mstyle>
+    <mstyle displaystyle="false" scriptlevel="0">
+      <mtext># Total</mtext>
+    </mstyle>
+  </mfrac>
+  <mo>=</mo>
+  <mfrac>
+    <mrow>
+      <munderover>
+        <mo>&#x2211;<!-- ∑ --></mo>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mi>i</mi>
+          <mo>=</mo>
+          <mn>1</mn>
+        </mrow>
+        <mi>m</mi>
+      </munderover>
+      <msup>
+        <mi>x</mi>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mo stretchy="false">(</mo>
+          <mi>i</mi>
+          <mo stretchy="false">)</mo>
+        </mrow>
+      </msup>
+    </mrow>
+    <mi>m</mi>
+  </mfrac>
+  <mo>.</mo>
+</math>
+<p>But why is this the case? If we flip the coin just once, for example, would we expect that we should estimate \(ϕ\) to be either zero or one? Maybe some other estimators exist that can better handle our expectation that the coin “should” be unbiased, i.e., have \(ϕ=1/2\).</p>
+
+<p>While this is certainly true, in fact that maximum likelihood estimate of \(ϕ\) is just the equation above, the number of ones divided by the total number. So this gives some rationale that at least under the principles of maximum likelihood esimation, we should believe that this is a good estimate. However, showing that this is in fact the maximum likelihood estimator is a little more involved that you might expect. Let’s go through the derivation to see how this work.</p>
+
+<p>First, recall that our objective is to choose \(ϕ\) maximize the likelihood, or equivalently the log likelihood of the data, of the observed data \(x^{(1)},x^{(2)},x^{(3)},\cdots x^{(m)}\).. This can be written as the optimization problem.</p>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <munder>
+    <mo lspace="0" rspace="0" movablelimits="true">maximize</mo>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>&#x03D5;<!-- ϕ --></mi>
+    </mrow>
+  </munder>
+  <mo>&#x2061;<!-- ⁡ --></mo>
+  <munderover>
+    <mo>&#x2211;<!-- ∑ --></mo>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>i</mi>
+      <mo>=</mo>
+      <mn>1</mn>
+    </mrow>
+    <mi>m</mi>
+  </munderover>
+  <mi>log</mi>
+  <mo>&#x2061;<!-- ⁡ --></mo>
+  <mi>p</mi>
+  <mo stretchy="false">(</mo>
+  <msup>
+    <mi>x</mi>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mo stretchy="false">(</mo>
+      <mi>i</mi>
+      <mo stretchy="false">)</mo>
+    </mrow>
+  </msup>
+  <mo>;</mo>
+  <mi>&#x03D5;<!-- ϕ --></mi>
+  <mo stretchy="false">)</mo>
+  <mo>.</mo>
+</math>
+
+<p>Recall that the probability under a Bernoulli distribution is just \(p(X=1;ϕ)=ϕ\), and \(p(X=0;ϕ)1−ϕ\), , which we can write compactly as</p>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <mi>p</mi>
+  <mo stretchy="false">(</mo>
+  <mi>X</mi>
+  <mo>=</mo>
+  <mi>x</mi>
+  <mo>;</mo>
+  <mi>&#x03D5;<!-- ϕ --></mi>
+  <mo stretchy="false">)</mo>
+  <mo>=</mo>
+  <msup>
+    <mi>&#x03D5;<!-- ϕ --></mi>
+    <mi>x</mi>
+  </msup>
+  <mo stretchy="false">(</mo>
+  <mn>1</mn>
+  <mo>&#x2212;<!-- − --></mo>
+  <mi>&#x03D5;<!-- ϕ --></mi>
+  <msup>
+    <mo stretchy="false">)</mo>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mo stretchy="false">(</mo>
+      <mn>1</mn>
+      <mo>&#x2212;<!-- − --></mo>
+      <mi>x</mi>
+      <mo stretchy="false">)</mo>
+    </mrow>
+  </msup>
+</math>
+<p>it’s easy to see that this equals \(ϕ\) or \(x=1\) and \(1-ϕ\) for \(x=0\). Plugging this in to our maximum likelihood optimization problem we have</p>
+
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <munder>
+    <mo lspace="0" rspace="0" movablelimits="true">maximize</mo>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>&#x03D5;<!-- ϕ --></mi>
+    </mrow>
+  </munder>
+  <mo>&#x2061;<!-- ⁡ --></mo>
+  <munderover>
+    <mo>&#x2211;<!-- ∑ --></mo>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mi>i</mi>
+      <mo>=</mo>
+      <mn>1</mn>
+    </mrow>
+    <mi>m</mi>
+  </munderover>
+  <mrow>
+    <mo>(</mo>
+    <mrow>
+      <msup>
+        <mi>x</mi>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mo stretchy="false">(</mo>
+          <mi>i</mi>
+          <mo stretchy="false">)</mo>
+        </mrow>
+      </msup>
+      <mi>log</mi>
+      <mo>&#x2061;<!-- ⁡ --></mo>
+      <mi>&#x03D5;<!-- ϕ --></mi>
+      <mo>+</mo>
+      <mo stretchy="false">(</mo>
+      <mn>1</mn>
+      <mo>&#x2212;<!-- − --></mo>
+      <msup>
+        <mi>x</mi>
+        <mrow class="MJX-TeXAtom-ORD">
+          <mo stretchy="false">(</mo>
+          <mi>i</mi>
+          <mo stretchy="false">)</mo>
+        </mrow>
+      </msup>
+      <mo stretchy="false">)</mo>
+      <mi>log</mi>
+      <mo>&#x2061;<!-- ⁡ --></mo>
+      <mo stretchy="false">(</mo>
+      <mn>1</mn>
+      <mo>&#x2212;<!-- − --></mo>
+      <mi>&#x03D5;<!-- ϕ --></mi>
+      <mo stretchy="false">)</mo>
+    </mrow>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+<p>In order to maximize this equation, let’s take the derivative and set it equal to 0 (though we won’t show it, it turns out this function just a single maximum point, which thus must have derivative zero, and so we can find it in this manner). Via some basic calculus we have</p>
+
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <mtable columnalign="right left" rowspacing="3pt" columnspacing="0em" displaystyle="true">
+    <mtr>
+      <mtd>
+        <mfrac>
+          <mi>d</mi>
+          <mrow>
+            <mi>d</mi>
+            <mi>&#x03D5;<!-- ϕ --></mi>
+          </mrow>
+        </mfrac>
+        <munderover>
+          <mo>&#x2211;<!-- ∑ --></mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>i</mi>
+            <mo>=</mo>
+            <mn>1</mn>
+          </mrow>
+          <mi>m</mi>
+        </munderover>
+        <mrow>
+          <mo>(</mo>
+          <mrow>
+            <msup>
+              <mi>x</mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mo stretchy="false">(</mo>
+                <mi>i</mi>
+                <mo stretchy="false">)</mo>
+              </mrow>
+            </msup>
+            <mi>log</mi>
+            <mo>&#x2061;<!-- ⁡ --></mo>
+            <mi>&#x03D5;<!-- ϕ --></mi>
+            <mo>+</mo>
+            <mo stretchy="false">(</mo>
+            <mn>1</mn>
+            <mo>&#x2212;<!-- − --></mo>
+            <msup>
+              <mi>x</mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mo stretchy="false">(</mo>
+                <mi>i</mi>
+                <mo stretchy="false">)</mo>
+              </mrow>
+            </msup>
+            <mo stretchy="false">)</mo>
+            <mi>log</mi>
+            <mo>&#x2061;<!-- ⁡ --></mo>
+            <mo stretchy="false">(</mo>
+            <mn>1</mn>
+            <mo>&#x2212;<!-- − --></mo>
+            <mi>&#x03D5;<!-- ϕ --></mi>
+            <mo stretchy="false">)</mo>
+          </mrow>
+          <mo>)</mo>
+        </mrow>
+      </mtd>
+      <mtd>
+        <mi></mi>
+        <mo>=</mo>
+        <munderover>
+          <mo>&#x2211;<!-- ∑ --></mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>i</mi>
+            <mo>=</mo>
+            <mn>1</mn>
+          </mrow>
+          <mi>m</mi>
+        </munderover>
+        <mfrac>
+          <mi>d</mi>
+          <mrow>
+            <mi>d</mi>
+            <mi>&#x03D5;<!-- ϕ --></mi>
+          </mrow>
+        </mfrac>
+        <mrow>
+          <mo>(</mo>
+          <mrow>
+            <msup>
+              <mi>x</mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mo stretchy="false">(</mo>
+                <mi>i</mi>
+                <mo stretchy="false">)</mo>
+              </mrow>
+            </msup>
+            <mi>log</mi>
+            <mo>&#x2061;<!-- ⁡ --></mo>
+            <mi>&#x03D5;<!-- ϕ --></mi>
+            <mo>+</mo>
+            <mo stretchy="false">(</mo>
+            <mn>1</mn>
+            <mo>&#x2212;<!-- − --></mo>
+            <msup>
+              <mi>x</mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mo stretchy="false">(</mo>
+                <mi>i</mi>
+                <mo stretchy="false">)</mo>
+              </mrow>
+            </msup>
+            <mo stretchy="false">)</mo>
+            <mi>log</mi>
+            <mo>&#x2061;<!-- ⁡ --></mo>
+            <mo stretchy="false">(</mo>
+            <mn>1</mn>
+            <mo>&#x2212;<!-- − --></mo>
+            <mi>&#x03D5;<!-- ϕ --></mi>
+            <mo stretchy="false">)</mo>
+          </mrow>
+          <mo>)</mo>
+        </mrow>
+      </mtd>
+    </mtr>
+    <mtr>
+      <mtd />
+      <mtd>
+        <mi></mi>
+        <mo>=</mo>
+        <munderover>
+          <mo>&#x2211;<!-- ∑ --></mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>i</mi>
+            <mo>=</mo>
+            <mn>1</mn>
+          </mrow>
+          <mi>m</mi>
+        </munderover>
+        <mrow>
+          <mo>(</mo>
+          <mrow>
+            <mfrac>
+              <msup>
+                <mi>x</mi>
+                <mrow class="MJX-TeXAtom-ORD">
+                  <mo stretchy="false">(</mo>
+                  <mi>i</mi>
+                  <mo stretchy="false">)</mo>
+                </mrow>
+              </msup>
+              <mi>&#x03D5;<!-- ϕ --></mi>
+            </mfrac>
+            <mo>&#x2212;<!-- − --></mo>
+            <mfrac>
+              <mrow>
+                <mn>1</mn>
+                <mo>&#x2212;<!-- − --></mo>
+                <msup>
+                  <mi>x</mi>
+                  <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">(</mo>
+                    <mi>i</mi>
+                    <mo stretchy="false">)</mo>
+                  </mrow>
+                </msup>
+              </mrow>
+              <mrow>
+                <mn>1</mn>
+                <mo>&#x2212;<!-- − --></mo>
+                <mi>&#x03D5;<!-- ϕ --></mi>
+              </mrow>
+            </mfrac>
+          </mrow>
+          <mo>)</mo>
+        </mrow>
+      </mtd>
+    </mtr>
+  </mtable>
+</math>
+
+<p>Setting this term equal to zero we have</p>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <mtable columnalign="right left" rowspacing="3pt" columnspacing="0em" displaystyle="true">
+    <mtr>
+      <mtd />
+      <mtd>
+        <mi></mi>
+        <munderover>
+          <mo>&#x2211;<!-- ∑ --></mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>i</mi>
+            <mo>=</mo>
+            <mn>1</mn>
+          </mrow>
+          <mi>m</mi>
+        </munderover>
+        <mrow>
+          <mo>(</mo>
+          <mrow>
+            <mfrac>
+              <msup>
+                <mi>x</mi>
+                <mrow class="MJX-TeXAtom-ORD">
+                  <mo stretchy="false">(</mo>
+                  <mi>i</mi>
+                  <mo stretchy="false">)</mo>
+                </mrow>
+              </msup>
+              <mi>&#x03D5;<!-- ϕ --></mi>
+            </mfrac>
+            <mo>&#x2212;<!-- − --></mo>
+            <mfrac>
+              <mrow>
+                <mn>1</mn>
+                <mo>&#x2212;<!-- − --></mo>
+                <msup>
+                  <mi>x</mi>
+                  <mrow class="MJX-TeXAtom-ORD">
+                    <mo stretchy="false">(</mo>
+                    <mi>i</mi>
+                    <mo stretchy="false">)</mo>
+                  </mrow>
+                </msup>
+              </mrow>
+              <mrow>
+                <mn>1</mn>
+                <mo>&#x2212;<!-- − --></mo>
+                <mi>&#x03D5;<!-- ϕ --></mi>
+              </mrow>
+            </mfrac>
+          </mrow>
+          <mo>)</mo>
+        </mrow>
+        <mo>=</mo>
+        <mn>0</mn>
+      </mtd>
+    </mtr>
+    <mtr>
+      <mtd>
+        <mo stretchy="false">&#x27F9;<!-- ⟹ --></mo>
+        <mspace width="thickmathspace" />
+        <mspace width="thickmathspace" />
+      </mtd>
+      <mtd>
+        <mfrac>
+          <mrow>
+            <munderover>
+              <mo>&#x2211;<!-- ∑ --></mo>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mi>i</mi>
+                <mo>=</mo>
+                <mn>1</mn>
+              </mrow>
+              <mi>m</mi>
+            </munderover>
+            <msup>
+              <mi>x</mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mo stretchy="false">(</mo>
+                <mi>i</mi>
+                <mo stretchy="false">)</mo>
+              </mrow>
+            </msup>
+          </mrow>
+          <mi>&#x03D5;<!-- ϕ --></mi>
+        </mfrac>
+        <mo>&#x2212;<!-- − --></mo>
+        <mfrac>
+          <mrow>
+            <munderover>
+              <mo>&#x2211;<!-- ∑ --></mo>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mi>i</mi>
+                <mo>=</mo>
+                <mn>1</mn>
+              </mrow>
+              <mi>m</mi>
+            </munderover>
+            <mo stretchy="false">(</mo>
+            <mn>1</mn>
+            <mo>&#x2212;<!-- − --></mo>
+            <msup>
+              <mi>x</mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mo stretchy="false">(</mo>
+                <mi>i</mi>
+                <mo stretchy="false">)</mo>
+              </mrow>
+            </msup>
+            <mo stretchy="false">)</mo>
+          </mrow>
+          <mrow>
+            <mn>1</mn>
+            <mo>&#x2212;<!-- − --></mo>
+            <mi>&#x03D5;<!-- ϕ --></mi>
+          </mrow>
+        </mfrac>
+        <mo>=</mo>
+        <mn>0</mn>
+      </mtd>
+    </mtr>
+    <mtr>
+      <mtd>
+        <mo stretchy="false">&#x27F9;<!-- ⟹ --></mo>
+        <mspace width="thickmathspace" />
+        <mspace width="thickmathspace" />
+      </mtd>
+      <mtd>
+        <mi></mi>
+        <mo stretchy="false">(</mo>
+        <mn>1</mn>
+        <mo>&#x2212;<!-- − --></mo>
+        <mi>&#x03D5;<!-- ϕ --></mi>
+        <mo stretchy="false">)</mo>
+        <munderover>
+          <mo>&#x2211;<!-- ∑ --></mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>i</mi>
+            <mo>=</mo>
+            <mn>1</mn>
+          </mrow>
+          <mi>m</mi>
+        </munderover>
+        <msup>
+          <mi>x</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mo stretchy="false">(</mo>
+            <mi>i</mi>
+            <mo stretchy="false">)</mo>
+          </mrow>
+        </msup>
+        <mo>&#x2212;<!-- − --></mo>
+        <mi>&#x03D5;<!-- ϕ --></mi>
+        <munderover>
+          <mo>&#x2211;<!-- ∑ --></mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>i</mi>
+            <mo>=</mo>
+            <mn>1</mn>
+          </mrow>
+          <mi>m</mi>
+        </munderover>
+        <mo stretchy="false">(</mo>
+        <mn>1</mn>
+        <mo>&#x2212;<!-- − --></mo>
+        <msup>
+          <mi>x</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mo stretchy="false">(</mo>
+            <mi>i</mi>
+            <mo stretchy="false">)</mo>
+          </mrow>
+        </msup>
+        <mo stretchy="false">)</mo>
+        <mo>=</mo>
+        <mn>0</mn>
+      </mtd>
+    </mtr>
+    <mtr>
+      <mtd>
+        <mo stretchy="false">&#x27F9;<!-- ⟹ --></mo>
+        <mspace width="thickmathspace" />
+        <mspace width="thickmathspace" />
+      </mtd>
+      <mtd>
+        <mi></mi>
+        <munderover>
+          <mo>&#x2211;<!-- ∑ --></mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>i</mi>
+            <mo>=</mo>
+            <mn>1</mn>
+          </mrow>
+          <mi>m</mi>
+        </munderover>
+        <msup>
+          <mi>x</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mo stretchy="false">(</mo>
+            <mi>i</mi>
+            <mo stretchy="false">)</mo>
+          </mrow>
+        </msup>
+        <mo>=</mo>
+        <mi>&#x03D5;<!-- ϕ --></mi>
+        <munderover>
+          <mo>&#x2211;<!-- ∑ --></mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>i</mi>
+            <mo>=</mo>
+            <mn>1</mn>
+          </mrow>
+          <mi>m</mi>
+        </munderover>
+        <mo stretchy="false">(</mo>
+        <msup>
+          <mi>x</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mo stretchy="false">(</mo>
+            <mi>i</mi>
+            <mo stretchy="false">)</mo>
+          </mrow>
+        </msup>
+        <mo>+</mo>
+        <mo stretchy="false">(</mo>
+        <mn>1</mn>
+        <mo>&#x2212;<!-- − --></mo>
+        <msup>
+          <mi>x</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mo stretchy="false">(</mo>
+            <mi>i</mi>
+            <mo stretchy="false">)</mo>
+          </mrow>
+        </msup>
+        <mo stretchy="false">)</mo>
+        <mo stretchy="false">)</mo>
+      </mtd>
+    </mtr>
+    <mtr>
+      <mtd>
+        <mo stretchy="false">&#x27F9;<!-- ⟹ --></mo>
+        <mspace width="thickmathspace" />
+        <mspace width="thickmathspace" />
+      </mtd>
+      <mtd>
+        <mi></mi>
+        <munderover>
+          <mo>&#x2211;<!-- ∑ --></mo>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mi>i</mi>
+            <mo>=</mo>
+            <mn>1</mn>
+          </mrow>
+          <mi>m</mi>
+        </munderover>
+        <msup>
+          <mi>x</mi>
+          <mrow class="MJX-TeXAtom-ORD">
+            <mo stretchy="false">(</mo>
+            <mi>i</mi>
+            <mo stretchy="false">)</mo>
+          </mrow>
+        </msup>
+        <mo>=</mo>
+        <mi>&#x03D5;<!-- ϕ --></mi>
+        <mi>m</mi>
+      </mtd>
+    </mtr>
+    <mtr>
+      <mtd>
+        <mo stretchy="false">&#x27F9;<!-- ⟹ --></mo>
+        <mspace width="thickmathspace" />
+        <mspace width="thickmathspace" />
+      </mtd>
+      <mtd>
+        <mi>&#x03D5;<!-- ϕ --></mi>
+        <mo>=</mo>
+        <mfrac>
+          <mrow>
+            <munderover>
+              <mo>&#x2211;<!-- ∑ --></mo>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mi>i</mi>
+                <mo>=</mo>
+                <mn>1</mn>
+              </mrow>
+              <mi>m</mi>
+            </munderover>
+            <msup>
+              <mi>x</mi>
+              <mrow class="MJX-TeXAtom-ORD">
+                <mo stretchy="false">(</mo>
+                <mi>i</mi>
+                <mo stretchy="false">)</mo>
+              </mrow>
+            </msup>
+          </mrow>
+          <mi>m</mi>
+        </mfrac>
+        <mo>.</mo>
+      </mtd>
+    </mtr>
+  </mtable>
+</math>
+<p>And there we have it, the surprisingly long proof of the fact that if we want to pick \(ϕ\) to maximize the likelihood of the observed data, we need to choose it to be equal to the empirical proportion of the ones. Of course, the objections we had at the beginning of this section were also valid: and in fact this perhaps is not the best estimate of \(ϕ\)if we have very little data, or some prior information about what values \(ϕ\) should take. But it is the estimate of \(ϕ\) that maximizes the probability of the observed data, and if this is a bad estimate then it reflects more on the underlying problem with this procedure than with the proof above. Nonetheless, in the presence of a lot of data, there is actually good reason to use the maximum likelihood estimator, and it is extremely common to use in practice.</p>
+
+	</div>
+</article>
+		</div>
+	</div>
+  </body>
+</html>
