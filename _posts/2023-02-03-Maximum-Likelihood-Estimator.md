@@ -779,3 +779,8 @@ Setting this term equal to zero we have
   </mtable>
 </math>
 And there we have it, the surprisingly long proof of the fact that if we want to pick $$ϕ$$ to maximize the likelihood of the observed data, we need to choose it to be equal to the empirical proportion of the ones. Of course, the objections we had at the beginning of this section were also valid: and in fact this perhaps is not the best estimate of $$ϕ$$ if we have very little data, or some prior information about what values $$ϕ$$ should take. But it is the estimate of $$ϕ$$ that maximizes the probability of the observed data, and if this is a bad estimate then it reflects more on the underlying problem with this procedure than with the proof above. Nonetheless, in the presence of a lot of data, there is actually good reason to use the maximum likelihood estimator, and it is extremely common to use in practice.
+
+
+
+
+
