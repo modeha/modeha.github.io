@@ -173,7 +173,7 @@ But why is this the case? If we flip the coin just once, for example, would we e
 
 While this is certainly true, in fact that maximum likelihood estimate of $$ϕ$$ is just the equation above, the number of ones divided by the total number. So this gives some rationale that at least under the principles of maximum likelihood esimation, we should believe that this is a good estimate. However, showing that this is in fact the maximum likelihood estimator is a little more involved that you might expect. Let’s go through the derivation to see how this work.
 
-First, recall that our objective is to choose $$ϕ$$ maximize the likelihood, or equivalently the log likelihood of the data, of the observed data $$x^{(1)},x^{(2)},x^{(3)},\cdots x^{(m)}$$.. This can be written as the optimization problem.
+First, recall that our objective is to choose $$ϕ$$ maximize the likelihood, or equivalently the log likelihood of the data, of the observed data $$x^{(1)},x^{(2)},x^{(3)},\cdots x^{(m)}$$. This can be written as the optimization problem.
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
   <munder>
     <mo lspace="0" rspace="0" movablelimits="true">maximize</mo>
