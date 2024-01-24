@@ -89,18 +89,23 @@
 			<article class="post">
 	<header class="post-header">
 		<div class="post-title"> 
-			A regularized interior-point method
+			Recurrent Neural Network Models
 		</div>
-		<time class="post-date dt-published" datetime="2018-02-19T05:31:29-05:00" itemprop="datePublished">2018/02/19
+		<time class="post-date dt-published" datetime="2024-01-23T19:31:29-05:00" itemprop="datePublished">2024/01/23
 		</time>		
 	</header>
 
 	<div class="post-content">
-		<h3 id="a-regularized-interior-point-method-for-constrained-linear-least-squares">A regularized interior-point method for constrained linear least squares</h3>
+		<h3 id="recurrent-neural-network-models-for-forecasting">Recurrent Neural Network Models For Forecasting</h3>
 
-<p>We propose an infeasible interior-point algorithm for constrained linear least-squares problems based on the primal-dual regularization of convex programs of Friedlander and Orban. Regularization allows us to dispense with the assumption that the active gradients are linearly independent. At each iteration, a linear system with a symmetric quasi-definite (SQD) matrix is solved. This matrix is shown to be uniformly bounded and nonsingular. While the linear system may be solved using sparse LDLT factorization, we observe that other approaches may be used. In particular, we build on the connection between SQD linear systems and unconstrained linear least-squares problems to solve the linear system with sparse QR factorization. We establish conditions under which a solution of the original, constrained least-squares problem is recovered. We report computational experience with the sparse QR factorization and illustrate the potential advantages of our approach.</p>
+<p>LSTM achieves this by learning the weights for internal gates that control the recurrent connections within each node. Although developed for sequence data, LSTMs have not proven effective on time series forecasting problems where the output is a function of recent observations, e.g. an autoregressive type forecasting problem, such as the car sales dataset.</p>
 
-<p><a href="https://www.tandfonline.com/doi/full/10.1080/03155986.2018.1559428">Go to the Support Web Site</a></p>
+<p>In this section, we will explore three variations on the LSTM model for univariate time series forecasting:</p>
+<ul>
+  <li>Vanilla LSTM: The LSTM network as-is.</li>
+  <li>CNN-LSTM: A CNN network that learns input features and an LSTM that interprets them.</li>
+  <li>ConvLSTM: A combination of CNNs and LSTMs where the LSTM units read input data using the convolutional process of a CNN.</li>
+</ul>
 
 	</div>
 </article>
