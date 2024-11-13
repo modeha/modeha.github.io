@@ -1,4 +1,50 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-01-30T21:10:47-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Deep Learning</title><subtitle>Mohsen Dehghani</subtitle><entry><title type="html">Recurrent Neural Network Models</title><link href="http://localhost:4000/update/2024/01/23/Forecasting-Alghorithems.html" rel="alternate" type="text/html" title="Recurrent Neural Network Models" /><published>2024-01-23T19:31:29-05:00</published><updated>2024-01-23T19:31:29-05:00</updated><id>http://localhost:4000/update/2024/01/23/Forecasting-Alghorithems</id><content type="html" xml:base="http://localhost:4000/update/2024/01/23/Forecasting-Alghorithems.html"><![CDATA[<h3 id="recurrent-neural-network-models-for-forecasting">Recurrent Neural Network Models For Forecasting</h3>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-11-13T15:57:15-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Deep Learning</title><subtitle>Mohsen Dehghani</subtitle><entry><title type="html">High-dimensional Spaces and The Concept of Angles Between Features</title><link href="http://localhost:4000/update/2024/11/12/fetures.html" rel="alternate" type="text/html" title="High-dimensional Spaces and The Concept of Angles Between Features" /><published>2024-11-12T19:31:29-05:00</published><updated>2024-11-12T19:31:29-05:00</updated><id>http://localhost:4000/update/2024/11/12/fetures</id><content type="html" xml:base="http://localhost:4000/update/2024/11/12/fetures.html"><![CDATA[<p>In feature selection, the angle between features can be a useful tool for understanding and managing redundancy and correlation in the data, especially in high-dimensional spaces. Here’s how the angle between features impacts feature selection and the techniques that can leverage this information:</p>
+
+<h3 id="1-understanding-redundancy-with-angles">1. <strong>Understanding Redundancy with Angles</strong></h3>
+<ul>
+  <li>Features that have a small angle between them are highly correlated, meaning they contain similar information. Including both in a model might not add much value and could introduce redundancy.</li>
+  <li>By selecting features with larger angles between them (closer to orthogonal), you’re choosing features that contribute more unique information, potentially improving the model’s robustness and interpretability.</li>
+</ul>
+
+<h3 id="2-dimensionality-reduction-techniques">2. <strong>Dimensionality Reduction Techniques</strong></h3>
+<ul>
+  <li><strong>Principal Component Analysis (PCA)</strong>: PCA transforms the feature space into a new set of orthogonal components, which are linear combinations of the original features. By choosing the components that capture the most variance, you’re effectively selecting directions in feature space that maximize information content while minimizing redundancy.</li>
+  <li><strong>Independent Component Analysis (ICA)</strong>: While PCA focuses on uncorrelated features, ICA aims for statistical independence, which often corresponds to large angles between features in transformed space. ICA can help separate features that have meaningful independent contributions.</li>
+</ul>
+
+<h3 id="3-correlation-based-feature-selection">3. <strong>Correlation-Based Feature Selection</strong></h3>
+<ul>
+  <li>By calculating the correlation (or cosine similarity) between pairs of features, you can identify features that have small angles between them, indicating high correlation.</li>
+  <li><strong>Threshold-Based Selection</strong>: A common approach is to set a correlation threshold (e.g., features with correlations above 0.9) and remove one of the correlated features. This is particularly useful when features are highly correlated, as you can remove redundant features to streamline the model without losing much information.</li>
+</ul>
+
+<h3 id="4-regularization-techniques-in-high-dimensions">4. <strong>Regularization Techniques in High Dimensions</strong></h3>
+<ul>
+  <li><strong>Lasso Regression (L1 Regularization)</strong>: Lasso regression tends to select a subset of features by driving coefficients of less important (or redundant) features to zero. By penalizing model complexity, Lasso helps in selecting features that contribute unique information, thus indirectly accounting for the “angle” between features.</li>
+  <li><strong>Elastic Net</strong>: This combines L1 and L2 regularization, balancing between feature selection and managing multicollinearity. Elastic Net is effective in high-dimensional spaces where groups of correlated features (small angles) exist. It often selects one feature from each correlated group, effectively reducing redundancy.</li>
+</ul>
+
+<h3 id="5-variance-inflation-factor-vif">5. <strong>Variance Inflation Factor (VIF)</strong></h3>
+<ul>
+  <li><strong>VIF</strong> quantifies how much the variance of a regression coefficient is inflated due to multicollinearity with other features. High VIF values indicate a small angle (high correlation) with other features, suggesting redundancy.</li>
+  <li>By removing features with high VIF values, you retain only those features that contribute unique information, reducing the chance of multicollinearity affecting model performance.</li>
+</ul>
+
+<h3 id="6-mutual-information-and-feature-selection">6. <strong>Mutual Information and Feature Selection</strong></h3>
+<ul>
+  <li><strong>Mutual Information (MI)</strong> measures the dependency between features and can be seen as a non-linear analog to cosine similarity for more complex relationships. Small MI values indicate independence (similar to orthogonal vectors), suggesting that features contribute unique information.</li>
+  <li>Selecting features with low MI relative to others ensures that each feature adds unique value, similar to selecting features with large angles between them.</li>
+</ul>
+
+<h3 id="practical-approach-for-feature-selection-using-angles">Practical Approach for Feature Selection Using Angles</h3>
+<p>If you want to use angles explicitly for feature selection:</p>
+<ol>
+  <li><strong>Calculate Cosine Similarity Matrix</strong>: Compute the cosine similarity (or Pearson correlation) between each pair of features.</li>
+  <li><strong>Set a Threshold</strong>: Decide on a similarity threshold, such as 0.9. For pairs of features with similarity above this threshold (i.e., angle close to 0°), retain only one feature in each pair.</li>
+  <li><strong>Select Independent Features</strong>: Keep features with lower cosine similarity (or correlation), effectively selecting features that provide more unique information.</li>
+</ol>
+
+<p>These steps can help ensure that your selected features are diverse in their contributions, enhancing model accuracy and stability. Let me know if you’d like assistance with code or examples for any of these techniques!</p>]]></content><author><name></name></author><category term="Update" /><summary type="html"><![CDATA[In feature selection, the angle between features can be a useful tool for understanding and managing redundancy and correlation in the data, especially in high-dimensional spaces. Here’s how the angle between features impacts feature selection and the techniques that can leverage this information:]]></summary></entry><entry><title type="html">Recurrent Neural Network Models</title><link href="http://localhost:4000/update/2024/01/23/Forecasting-Alghorithems.html" rel="alternate" type="text/html" title="Recurrent Neural Network Models" /><published>2024-01-23T19:31:29-05:00</published><updated>2024-01-23T19:31:29-05:00</updated><id>http://localhost:4000/update/2024/01/23/Forecasting-Alghorithems</id><content type="html" xml:base="http://localhost:4000/update/2024/01/23/Forecasting-Alghorithems.html"><![CDATA[<h3 id="recurrent-neural-network-models-for-forecasting">Recurrent Neural Network Models For Forecasting</h3>
 
 <p>LSTM achieves this by learning the weights for internal gates that control the recurrent connections within each node. Although developed for sequence data, LSTMs have not proven effective on time series forecasting problems where the output is a function of recent observations, e.g. an autoregressive type forecasting problem, such as the car sales dataset.</p>
 
@@ -1875,104 +1921,4 @@ year with two json files, with regular season games and playoffs respectively.</
 
 <p><strong>Raphaël Bourque:</strong> Graduated from Medicine, presently doing residency training in Psychiatry and at the Clinician Investigator Program, and studying at the MSc in Computationnal Medicine. My current research work is in Genetics (CHU Sainte-Justine), and I am very interested in the applications of data science and machine learning to evidence-based medical practice.</p>
 
-<p><em>(Names are in ascending order)</em></p>]]></content><author><name></name></author><category term="Update" /><summary type="html"><![CDATA[An API for The National Hockey League (NHL) Introduction Motivation Installation Setup Environment Install Dependencies Usage Download Data Run Interactive Debugging Tool Create Tidy Data for Visualisation Run Simple Visualisation Run Advance Visualisation Project Structure Data APIs Data Insights Data Extractions Interactive Debugging Tool Simple Visualisations Advanced Visualisations Discuss the interpretation of the figures Conclusion Authors]]></summary></entry><entry><title type="html">Youtube</title><link href="http://localhost:4000/update/2022/10/18/youtube.html" rel="alternate" type="text/html" title="Youtube" /><published>2022-10-18T19:20:23-04:00</published><updated>2022-10-18T19:20:23-04:00</updated><id>http://localhost:4000/update/2022/10/18/youtube</id><content type="html" xml:base="http://localhost:4000/update/2022/10/18/youtube.html"><![CDATA[<h3 id="youtube-video-convert-to-mp3">Youtube Video convert to mp3</h3>
-
-<p>Create a function that downloads the audio of the Youtube Video with a given ID and saves it in the folder given by path.
-Download it as an mp3. If there is a problem downloading the file, handle the exception. If a file at <code class="highlighter-rouge">path</code> exists, 
-the function should return without attempting to download it again.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
-<span class="kn">import</span> <span class="nn">youtube_dl</span>
-<span class="kn">import</span> <span class="nn">ffmpeg</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
-<span class="kn">import</span> <span class="nn">csv</span>
-<span class="kn">import</span> <span class="nn">threading</span>
-<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
-<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">exists</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-
-<span class="c1">#TEST_DIR = os.path.dirname()
-</span>
-<span class="k">def</span> <span class="nf">download_audio</span><span class="p">(</span><span class="n">YTID</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
-    <span class="s">"""
-    Create a function that downloads the audio of the Youtube Video with a given ID
-    and saves it in the folder given by path. Download it as an mp3. If there is a 
-    problem downloading the file, handle the exception. If a file at `path` exists, 
-    the function should return without attempting to download it again.
-
-    ** Use the library youtube_dl: https://github.com/ytdl-org/youtube-dl/ **
-    Args:
-      YTID: Contains the youtube ID, the corresponding youtube video can be found at
-      'https://www.youtube.com/watch?v='+YTID
-      path: The path to the file where the audio will be saved
-    """</span>
-    <span class="n">video_url</span> <span class="o">=</span> <span class="s">'https://www.youtube.com/watch?v='</span><span class="o">+</span><span class="n">YTID</span>
-  
-    <span class="c1">#from youtube_dl import YoutubeDL
-</span>    <span class="c1">#ydl_opts = {
-</span>        <span class="c1">#'ignoreerrors': True,
-</span>        <span class="c1">#'simulate': True,
-</span>    <span class="c1">#}   
-</span>    <span class="c1">#with YoutubeDL(ydl_opts) as ydl:
-</span>      
-        <span class="c1">#info_dict = ydl.extract_info(video_url)
-</span>    <span class="c1">#print(info_dict)
-</span>    <span class="c1">#xx
-</span>    <span class="c1">#video_info = youtube_dl.YoutubeDL(ydl_opts).extract_info(url = video_url,download=False)
-</span>
-  
-    <span class="n">filename</span> <span class="o">=</span> <span class="n">YTID</span><span class="o">+</span><span class="s">".mp3"</span>
-    <span class="n">options</span><span class="o">=</span><span class="p">{</span>
-        <span class="s">'format'</span><span class="p">:</span><span class="s">'bestaudio/best'</span><span class="p">,</span>
-        <span class="s">'keepvideo'</span><span class="p">:</span><span class="bp">False</span><span class="p">,</span>
-        <span class="s">'outtmpl'</span><span class="p">:</span> <span class="n">path</span> <span class="p">,</span><span class="c1">#"outtmpl" : path+"$(id)s.$(ext)s" 
-</span>        <span class="s">'ignoreerrors'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
-    <span class="p">}</span>
-    <span class="n">video_info</span> <span class="o">=</span> <span class="n">youtube_dl</span><span class="p">.</span><span class="n">YoutubeDL</span><span class="p">(</span><span class="n">options</span><span class="p">).</span><span class="n">extract_info</span><span class="p">(</span><span class="n">url</span> <span class="o">=</span> <span class="n">video_url</span><span class="p">,</span><span class="n">download</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">video_info</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">False</span><span class="p">:</span>
-        <span class="k">with</span> <span class="n">youtube_dl</span><span class="p">.</span><span class="n">YoutubeDL</span><span class="p">(</span><span class="n">options</span><span class="p">)</span> <span class="k">as</span> <span class="n">ydl</span><span class="p">:</span>
-            <span class="n">ydl</span><span class="p">.</span><span class="n">download</span><span class="p">([</span><span class="n">video_info</span><span class="p">[</span><span class="s">'webpage_url'</span><span class="p">]])</span>
-            <span class="k">print</span><span class="p">(</span><span class="s">"Download complete... {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">filename</span><span class="p">))</span>  
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">"Oops!  That was no valid YTID.  Try again..."</span><span class="p">)</span>
-    <span class="c1"># to dowload vido use :
-</span>    <span class="c1">#ydl_opts = {}   
-</span>    <span class="c1">#with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-</span>        <span class="c1">#ydl.download(['https://www.youtube.com/watch?v='+YTID])   
-</span>  
-
-
-<span class="k">def</span> <span class="nf">cut_audio</span><span class="p">(</span><span class="n">in_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">out_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">end</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
-    <span class="s">"""
-    Create a function that cuts the audio from in_path to only include the segment 
-    from start to end and saves it to out_path.
-
-    ** Use the ffmpeg library: https://github.com/kkroening/ffmpeg-python
-    Args:
-      in_path: Path of the audio file to cut
-      out_path: Path of file to save the cut audio
-      start: Indicates the start of the sequence (in seconds)
-      end: Indicates the end of the sequence (in seconds)
-    """</span>
-    <span class="c1"># TODO
-</span>    <span class="k">try</span><span class="p">:</span>
-        <span class="nb">input</span> <span class="o">=</span> <span class="n">ffmpeg</span><span class="p">.</span><span class="nb">input</span><span class="p">(</span><span class="n">in_path</span><span class="p">)</span>
-        <span class="n">audio</span> <span class="o">=</span> <span class="nb">input</span><span class="p">.</span><span class="n">audio</span><span class="p">.</span><span class="nb">filter</span><span class="p">(</span><span class="s">"atrim"</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
-        <span class="n">out</span> <span class="o">=</span> <span class="n">ffmpeg</span><span class="p">.</span><span class="n">output</span><span class="p">(</span><span class="n">audio</span><span class="p">,</span> <span class="n">out_path</span><span class="p">)</span>
-        <span class="n">ffmpeg</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">out</span><span class="p">,</span><span class="n">capture_stdout</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">capture_stderr</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="k">except</span> <span class="nb">ValueError</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">"Oops!  That was no valid file.  Try again..."</span><span class="p">)</span>
-
-
-</code></pre></div></div>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="n">YTID</span> <span class="o">=</span><span class="s">'30PV4W3w_k4&amp;ab_channel=AbangYellowZIN'</span><span class="c1">#RFeU64gTvGQ'
-</span><span class="n">l</span><span class="o">=</span><span class="p">[</span><span class="s">"dczdR4laGwc&amp;ab_channel=EnriqueIglesiasVEVO"</span><span class="p">,</span><span class="s">"gfZChizkEuI&amp;ab_channel=RapSamurai"</span><span class="p">]</span>
-<span class="c1">#VqzpEw69Tze
-</span><span class="n">filename</span> <span class="o">=</span> <span class="n">YTID</span><span class="o">+</span><span class="s">".mp3"</span>
-<span class="n">download_audio</span><span class="p">(</span><span class="n">YTID</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-<span class="c1">#cut_audio(TEST_DIR+'/4X3upUSL54I.mp3', 'cut_'+'4X3upUSL54I.mp3', 0.0, 10.0)
-</span></code></pre></div></div>]]></content><author><name></name></author><category term="Update" /><summary type="html"><![CDATA[Youtube Video convert to mp3]]></summary></entry></feed>
+<p><em>(Names are in ascending order)</em></p>]]></content><author><name></name></author><category term="Update" /><summary type="html"><![CDATA[An API for The National Hockey League (NHL) Introduction Motivation Installation Setup Environment Install Dependencies Usage Download Data Run Interactive Debugging Tool Create Tidy Data for Visualisation Run Simple Visualisation Run Advance Visualisation Project Structure Data APIs Data Insights Data Extractions Interactive Debugging Tool Simple Visualisations Advanced Visualisations Discuss the interpretation of the figures Conclusion Authors]]></summary></entry></feed>

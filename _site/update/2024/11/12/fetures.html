@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Deep Learning" /></head>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<style>@import url(/public/css/syntax/monokai.css);</style>
+  <title>Deep Learning</title>
+  <!-- <link href="/public/css/bootstrap.min.css" rel="stylesheet"> -->
+
+  <link href="/public/css/style.css" rel="stylesheet">
+  <body>
+  	<div class="container"> 
+		<div class="sidebar">
+			<div class="sidebar-item sidebar-header">
+	<div class='sidebar-brand'>
+		<a href="/about/">Deep Learning</a>
+	</div>
+	<p class="lead">Mohsen Dehghani</p></div>
+
+<div class="sidebar-item sidebar-nav">
+	<ul class="nav">
+      <li class="nav-title">Pages</li>
+	  <li>
+	  	<a class="nav-item" href="/">Articles</a>
+	  </li>
+	  
+	  
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/about/">
+	            	About
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	  
+	    
+	  
+	</ul>
+</div>
+
+<div class="sidebar-item sidebar-nav">
+  	<ul class="nav">
+			<li class="nav-title">Categories</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#Update">
+				<span class="name">Update</span>
+				<span class="badge">6</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#update">
+				<span class="name">update</span>
+				<span class="badge">6</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#Jekyll">
+				<span class="name">Jekyll</span>
+				<span class="badge">1</span>
+	    	</a>
+ 		</li>
+	    
+	  </nav>
+	</ul>
+</div>
+
+<div class="sidebar-item sidebar-footer">
+	<p>Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a></p>
+</div>
+		</div>
+		<div class="content">
+			<article class="post">
+	<header class="post-header">
+		<div class="post-title"> 
+			High-dimensional Spaces and The Concept of Angles Between Features 
+		</div>
+		<time class="post-date dt-published" datetime="2024-11-12T19:31:29-05:00" itemprop="datePublished">2024/11/12
+		</time>		
+	</header>
+
+	<div class="post-content">
+		<p>In feature selection, the angle between features can be a useful tool for understanding and managing redundancy and correlation in the data, especially in high-dimensional spaces. Here’s how the angle between features impacts feature selection and the techniques that can leverage this information:</p>
+
+<h3 id="1-understanding-redundancy-with-angles">1. <strong>Understanding Redundancy with Angles</strong></h3>
+<ul>
+  <li>Features that have a small angle between them are highly correlated, meaning they contain similar information. Including both in a model might not add much value and could introduce redundancy.</li>
+  <li>By selecting features with larger angles between them (closer to orthogonal), you’re choosing features that contribute more unique information, potentially improving the model’s robustness and interpretability.</li>
+</ul>
+
+<h3 id="2-dimensionality-reduction-techniques">2. <strong>Dimensionality Reduction Techniques</strong></h3>
+<ul>
+  <li><strong>Principal Component Analysis (PCA)</strong>: PCA transforms the feature space into a new set of orthogonal components, which are linear combinations of the original features. By choosing the components that capture the most variance, you’re effectively selecting directions in feature space that maximize information content while minimizing redundancy.</li>
+  <li><strong>Independent Component Analysis (ICA)</strong>: While PCA focuses on uncorrelated features, ICA aims for statistical independence, which often corresponds to large angles between features in transformed space. ICA can help separate features that have meaningful independent contributions.</li>
+</ul>
+
+<h3 id="3-correlation-based-feature-selection">3. <strong>Correlation-Based Feature Selection</strong></h3>
+<ul>
+  <li>By calculating the correlation (or cosine similarity) between pairs of features, you can identify features that have small angles between them, indicating high correlation.</li>
+  <li><strong>Threshold-Based Selection</strong>: A common approach is to set a correlation threshold (e.g., features with correlations above 0.9) and remove one of the correlated features. This is particularly useful when features are highly correlated, as you can remove redundant features to streamline the model without losing much information.</li>
+</ul>
+
+<h3 id="4-regularization-techniques-in-high-dimensions">4. <strong>Regularization Techniques in High Dimensions</strong></h3>
+<ul>
+  <li><strong>Lasso Regression (L1 Regularization)</strong>: Lasso regression tends to select a subset of features by driving coefficients of less important (or redundant) features to zero. By penalizing model complexity, Lasso helps in selecting features that contribute unique information, thus indirectly accounting for the “angle” between features.</li>
+  <li><strong>Elastic Net</strong>: This combines L1 and L2 regularization, balancing between feature selection and managing multicollinearity. Elastic Net is effective in high-dimensional spaces where groups of correlated features (small angles) exist. It often selects one feature from each correlated group, effectively reducing redundancy.</li>
+</ul>
+
+<h3 id="5-variance-inflation-factor-vif">5. <strong>Variance Inflation Factor (VIF)</strong></h3>
+<ul>
+  <li><strong>VIF</strong> quantifies how much the variance of a regression coefficient is inflated due to multicollinearity with other features. High VIF values indicate a small angle (high correlation) with other features, suggesting redundancy.</li>
+  <li>By removing features with high VIF values, you retain only those features that contribute unique information, reducing the chance of multicollinearity affecting model performance.</li>
+</ul>
+
+<h3 id="6-mutual-information-and-feature-selection">6. <strong>Mutual Information and Feature Selection</strong></h3>
+<ul>
+  <li><strong>Mutual Information (MI)</strong> measures the dependency between features and can be seen as a non-linear analog to cosine similarity for more complex relationships. Small MI values indicate independence (similar to orthogonal vectors), suggesting that features contribute unique information.</li>
+  <li>Selecting features with low MI relative to others ensures that each feature adds unique value, similar to selecting features with large angles between them.</li>
+</ul>
+
+<h3 id="practical-approach-for-feature-selection-using-angles">Practical Approach for Feature Selection Using Angles</h3>
+<p>If you want to use angles explicitly for feature selection:</p>
+<ol>
+  <li><strong>Calculate Cosine Similarity Matrix</strong>: Compute the cosine similarity (or Pearson correlation) between each pair of features.</li>
+  <li><strong>Set a Threshold</strong>: Decide on a similarity threshold, such as 0.9. For pairs of features with similarity above this threshold (i.e., angle close to 0°), retain only one feature in each pair.</li>
+  <li><strong>Select Independent Features</strong>: Keep features with lower cosine similarity (or correlation), effectively selecting features that provide more unique information.</li>
+</ol>
+
+<p>These steps can help ensure that your selected features are diverse in their contributions, enhancing model accuracy and stability. Let me know if you’d like assistance with code or examples for any of these techniques!</p>
+
+	</div>
+</article>
+		</div>
+	</div>
+  </body>
+</html>
