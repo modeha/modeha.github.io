@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Understanding Dimensionality Reduction for High-Dimensional Data Visualization"
-date:   2024-11-13 9:31:29 +0900
+date:   2024-11-03 9:31:29 +0900
 categories: Update
 ---
 ### Understanding Dimensionality Reduction for High-Dimensional Data Visualization

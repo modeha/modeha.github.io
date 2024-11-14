@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Deep Learning" /></head>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<style>@import url(/public/css/syntax/monokai.css);</style>
+  <title>Deep Learning</title>
+  <!-- <link href="/public/css/bootstrap.min.css" rel="stylesheet"> -->
+
+  <link href="/public/css/style.css" rel="stylesheet">
+  <body>
+  	<div class="container"> 
+		<div class="sidebar">
+			<div class="sidebar-item sidebar-header">
+	<div class='sidebar-brand'>
+		<a href="/about/">Deep Learning</a>
+	</div>
+	<p class="lead">A blog exploring deep learning, AI, and data science topics by Mohsen Dehghani.</p></div>
+
+<div class="sidebar-item sidebar-nav">
+	<ul class="nav">
+      <li class="nav-title">Pages</li>
+	  <li>
+	  	<a class="nav-item" href="/">Articles</a>
+	  </li>
+	  
+	  
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/about/">
+	            	About
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	</ul>
+</div>
+
+<div class="sidebar-item sidebar-nav">
+  	<ul class="nav">
+			<li class="nav-title">Categories</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#Update">
+				<span class="name">Update</span>
+				<span class="badge">13</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#update">
+				<span class="name">update</span>
+				<span class="badge">6</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#Jekyll">
+				<span class="name">Jekyll</span>
+				<span class="badge">1</span>
+	    	</a>
+ 		</li>
+	    
+	  </nav>
+	</ul>
+</div>
+
+<div class="sidebar-item sidebar-footer">
+	<p>Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a></p>
+</div>
+		</div>
+		<div class="content">
+			<article class="post">
+	<header class="post-header">
+		<div class="post-title"> 
+			essential Git commands for managing your GitHub Pages repository
+		</div>
+		<time class="post-date dt-published" datetime="2024-11-14T15:54:00-05:00" itemprop="datePublished">2024/11/14
+		</time>		
+	</header>
+
+	<div class="post-content">
+		<p>Here’s a list of essential Git commands for managing a GitHub Pages repository I will consider  (<code class="highlighter-rouge">modeha.github.io</code>), including creating branches, committing changes, merging, and pushing to GitHub.</p>
+
+<h3 id="initial-setup">Initial Setup</h3>
+
+<ol>
+  <li><strong>Clone the Repository</strong> (if not already cloned):
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/your-username/modeha.github.io.git
+<span class="nb">cd </span>modeha.github.io
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Check the Status</strong>:
+    <ul>
+      <li>To check the current status of your working directory and see any changes:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git status
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="basic-workflow-commands">Basic Workflow Commands</h3>
+
+<ol>
+  <li><strong>Add Files to Staging</strong>:
+    <ul>
+      <li>Adds all changed files to the staging area:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add <span class="nb">.</span>
+</code></pre></div>        </div>
+      </li>
+      <li>Or, add a specific file:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add filename
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Commit Changes</strong>:
+    <ul>
+      <li>Commit staged changes with a descriptive message:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git commit <span class="nt">-m</span> <span class="s2">"Your commit message"</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Push Changes to GitHub</strong>:
+    <ul>
+      <li>Push commits to the main branch:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push origin main
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="working-with-branches">Working with Branches</h3>
+
+<ol>
+  <li><strong>Create a New Branch</strong>:
+    <ul>
+      <li>Create and switch to a new branch:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">-b</span> new-branch-name
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Switch to an Existing Branch</strong>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout branch-name
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Push a New Branch to GitHub</strong>:
+    <ul>
+      <li>After creating a new branch locally, push it to GitHub:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push <span class="nt">-u</span> origin new-branch-name
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>List All Branches</strong>:
+    <ul>
+      <li>To see all branches (local and remote):
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git branch <span class="nt">-a</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="merging-branches">Merging Branches</h3>
+
+<ol>
+  <li><strong>Merge a Branch into Main</strong>:
+    <ul>
+      <li>First, switch to the main branch:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout main
+</code></pre></div>        </div>
+      </li>
+      <li>Pull the latest changes from GitHub to ensure it’s up to date:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git pull origin main
+</code></pre></div>        </div>
+      </li>
+      <li>Merge the feature branch into main:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git merge feature-branch-name
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Resolve Merge Conflicts</strong> (if any):
+    <ul>
+      <li>Open the conflicting files, make necessary edits, then add the resolved files:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add resolved-file
+</code></pre></div>        </div>
+      </li>
+      <li>Commit the merge after resolving conflicts:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git commit <span class="nt">-m</span> <span class="s2">"Resolved merge conflicts"</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Delete a Merged Branch</strong>:
+    <ul>
+      <li>Delete the branch locally after it’s merged:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git branch <span class="nt">-d</span> feature-branch-name
+</code></pre></div>        </div>
+      </li>
+      <li>Delete the branch from GitHub:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push origin <span class="nt">--delete</span> feature-branch-name
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="syncing-with-remote">Syncing with Remote</h3>
+
+<ol>
+  <li><strong>Pull Changes from GitHub</strong>:
+    <ul>
+      <li>To sync the local branch with changes from GitHub:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git pull origin branch-name
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Fetch Remote Changes Without Merging</strong>:
+    <ul>
+      <li>Downloads changes from GitHub but doesn’t merge them into your current branch:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git fetch origin
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="undoing-changes">Undoing Changes</h3>
+
+<ol>
+  <li><strong>Undo Changes in a File</strong>:
+    <ul>
+      <li>Revert changes in a file that hasn’t been staged:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">--</span> filename
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Unstage Changes</strong>:
+    <ul>
+      <li>If you added changes with <code class="highlighter-rouge">git add</code> but want to remove them from the staging area:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git reset filename
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Revert a Commit</strong>:
+    <ul>
+      <li>To undo the latest commit but keep the changes in your working directory:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git reset <span class="nt">--soft</span> HEAD~1
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="pushing-to-github-pages">Pushing to GitHub Pages</h3>
+
+<p>If you’re using GitHub Pages, pushing to the <code class="highlighter-rouge">main</code> branch (or <code class="highlighter-rouge">gh-pages</code>, depending on your repository settings) will automatically update the site. Ensure all changes are committed and pushed to the branch that GitHub Pages is configured to use.</p>
+
+<ol>
+  <li><strong>Push to Update GitHub Pages</strong>:
+    <ul>
+      <li>If your GitHub Pages site is served from the <code class="highlighter-rouge">main</code> branch:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push origin main
+</code></pre></div>        </div>
+      </li>
+      <li>If your GitHub Pages site is served from a different branch, push to that branch instead.</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<p>Here are some additional, less common Git commands and concepts that can be useful in specific scenarios. These commands extend beyond the basics covered above, offering more control over branches, commits, history, and repository management.</p>
+
+<h3 id="advanced-git-commands-and-concepts">Advanced Git Commands and Concepts</h3>
+
+<ol>
+  <li><strong>Rebasing</strong>:
+    <ul>
+      <li><strong>Rebase a Branch</strong>: Rebasing is useful for keeping a clean, linear history by applying your changes on top of another branch’s latest changes.
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout feature-branch
+git rebase main
+</code></pre></div>        </div>
+      </li>
+      <li><strong>Interactive Rebase</strong>: Allows you to rewrite commit history, such as squashing multiple commits into one.
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git rebase <span class="nt">-i</span> HEAD~3
+</code></pre></div>        </div>
+        <ul>
+          <li>Replace <code class="highlighter-rouge">HEAD~3</code> with the number of commits you want to go back.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Stashing Changes</strong>:
+    <ul>
+      <li><strong>Stash Uncommitted Changes</strong>: Temporarily saves changes without committing them, allowing you to work on something else.
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git stash
+</code></pre></div>        </div>
+      </li>
+      <li><strong>Apply Stashed Changes</strong>: Reapplies the stashed changes.
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git stash apply
+</code></pre></div>        </div>
+      </li>
+      <li><strong>List Stashes</strong>: Shows all stashed changes.
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git stash list
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Resetting Commits</strong>:
+    <ul>
+      <li><strong>Soft Reset</strong>: Moves the latest commit to the staging area, keeping changes in your working directory.
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git reset <span class="nt">--soft</span> HEAD~1
+</code></pre></div>        </div>
+      </li>
+      <li><strong>Hard Reset</strong>: Deletes the latest commit and all changes. This cannot be undone, so use with caution.
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git reset <span class="nt">--hard</span> HEAD~1
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Cherry-Picking Commits</strong>:
+    <ul>
+      <li><strong>Cherry-Pick a Commit</strong>: Copy a specific commit from one branch to another without merging the full branch.
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git cherry-pick &lt;commit-hash&gt;
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Viewing History and Differences</strong>:
+    <ul>
+      <li><strong>View Commit Log</strong>: Shows the commit history with messages.
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git log
+</code></pre></div>        </div>
+      </li>
+      <li><strong>Graph Log</strong>: Visualizes the branch and merge history.
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git log <span class="nt">--oneline</span> <span class="nt">--graph</span> <span class="nt">--all</span> <span class="nt">--decorate</span>
+</code></pre></div>        </div>
+      </li>
+      <li><strong>Difference Between Commits</strong>: Shows the differences between two commits.
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff &lt;commit1&gt; &lt;commit2&gt;
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Tagging</strong>:
+    <ul>
+      <li><strong>Create a Tag</strong>: Tags are useful for marking releases or specific points in the project’s history.
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git tag <span class="nt">-a</span> v1.0 <span class="nt">-m</span> <span class="s2">"Version 1.0 release"</span>
+</code></pre></div>        </div>
+      </li>
+      <li><strong>Push Tags to GitHub</strong>:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push origin v1.0
+</code></pre></div>        </div>
+      </li>
+      <li><strong>List All Tags</strong>:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git tag
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Forking and Pull Requests</strong>:
+    <ul>
+      <li><strong>Fork a Repository</strong>: Create a copy of another user’s repository on GitHub to your account (done on GitHub’s web interface).</li>
+      <li><strong>Submit a Pull Request</strong>: After pushing changes to your fork, open a pull request on GitHub to propose changes to the original repository.</li>
+    </ul>
+  </li>
+  <li><strong>Git Aliases</strong>:
+    <ul>
+      <li><strong>Create Git Aliases</strong>: Shorten common commands. For example:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config <span class="nt">--global</span> alias.co checkout
+git config <span class="nt">--global</span> alias.br branch
+git config <span class="nt">--global</span> alias.ci commit
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Amending Commits</strong>:
+    <ul>
+      <li><strong>Amend the Last Commit</strong>: Add more changes to the most recent commit without creating a new one.
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add <span class="nb">.</span>
+git commit <span class="nt">--amend</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Fork Synchronization</strong>:
+    <ul>
+      <li><strong>Update Your Fork with Upstream Changes</strong>: Useful if you’ve forked a repository and need to sync it with changes made to the original.
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote add upstream https://github.com/original-owner/repo.git
+git fetch upstream
+git merge upstream/main
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Submodules</strong>:
+    <ul>
+      <li><strong>Add a Submodule</strong>: Add another Git repository within your current repository (useful for projects with dependencies).
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git submodule add https://github.com/username/another-repo.git
+</code></pre></div>        </div>
+      </li>
+      <li><strong>Update Submodules</strong>:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git submodule update <span class="nt">--init</span> <span class="nt">--recursive</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Git Clean</strong>:
+    <ul>
+      <li><strong>Remove Untracked Files</strong>: Deletes untracked files in the working directory. Use with caution.
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clean <span class="nt">-f</span>
+</code></pre></div>        </div>
+      </li>
+      <li><strong>Preview Clean</strong>: See which files would be deleted without deleting them.
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clean <span class="nt">-n</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<p>These additional commands cover more advanced usage and specific workflows in Git, enhancing flexibility and control in managing your repository. Let me know if you’d like more detailed explanations or examples for any of these!</p>
+
+<p>There are a few more advanced Git concepts and commands that I didn’t mention in the previous responses. These cover some niche and power-user functionalities of Git, which can be helpful in certain scenarios, especially for large projects or complex workflows.</p>
+
+<h3 id="additional-advanced-git-commands-and-concepts">Additional Advanced Git Commands and Concepts</h3>
+
+<ol>
+  <li><strong>Git Bisect</strong>:
+    <ul>
+      <li><strong>Finding a Bug with Git Bisect</strong>: A powerful feature for debugging, <code class="highlighter-rouge">git bisect</code> helps identify the specific commit that introduced a bug by using a binary search approach.
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git bisect start
+git bisect bad <span class="c"># Mark the current commit as bad</span>
+git bisect good &lt;commit-hash&gt; <span class="c"># Mark an earlier known good commit</span>
+</code></pre></div>        </div>
+      </li>
+      <li>Git will check out each commit in the middle of the range, and you can mark each one as “good” or “bad” until you narrow down the offending commit.</li>
+    </ul>
+  </li>
+  <li><strong>Git Hooks</strong>:
+    <ul>
+      <li><strong>Automate Actions with Git Hooks</strong>: Git hooks are custom scripts that run automatically at certain points in Git’s execution, like pre-commit, pre-push, or post-merge.</li>
+      <li><strong>Example</strong>: A pre-commit hook to format code automatically:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s1">'black .'</span> <span class="o">&gt;</span> .git/hooks/pre-commit
+<span class="nb">chmod</span> +x .git/hooks/pre-commit
+</code></pre></div>        </div>
+      </li>
+      <li>Common hooks include:
+        <ul>
+          <li><code class="highlighter-rouge">pre-commit</code>: Runs before committing changes.</li>
+          <li><code class="highlighter-rouge">pre-push</code>: Runs before pushing commits.</li>
+          <li><code class="highlighter-rouge">post-merge</code>: Runs after merging.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Squashing Commits</strong>:
+    <ul>
+      <li><strong>Squash Commits into One</strong>: Useful for cleaning up commit history before merging, especially in pull requests.
+        <ul>
+          <li>Interactive rebase for squashing:
+            <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git rebase <span class="nt">-i</span> HEAD~3
+</code></pre></div>            </div>
+          </li>
+          <li>Mark commits with <code class="highlighter-rouge">squash</code> to combine them into one.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Git Blame</strong>:
+    <ul>
+      <li><strong>Check Who Changed a Line Last</strong>: <code class="highlighter-rouge">git blame</code> is useful for finding out who last modified each line in a file.
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git blame filename
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Git Reflog</strong>:
+    <ul>
+      <li><strong>Recover Lost Commits with Git Reflog</strong>: If you’ve made changes and can’t find them in your branch history, <code class="highlighter-rouge">git reflog</code> can help recover lost commits.
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git reflog
+</code></pre></div>        </div>
+      </li>
+      <li>It shows a log of changes made in the repository, including detached heads or rebases.</li>
+    </ul>
+  </li>
+  <li><strong>Detach Head</strong>:
+    <ul>
+      <li><strong>Checkout a Specific Commit Without Changing the Branch</strong>:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout &lt;commit-hash&gt;
+</code></pre></div>        </div>
+      </li>
+      <li>This “detached HEAD” state is useful for testing or viewing an old commit without modifying the branch’s tip.</li>
+    </ul>
+  </li>
+  <li><strong>Sparse-Checkout</strong>:
+    <ul>
+      <li><strong>Check Out Only Part of a Repository</strong>: Useful for very large repositories where you only need specific directories.
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git sparse-checkout init
+git sparse-checkout <span class="nb">set </span>path/to/directory
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Tracking Files with <code class="highlighter-rouge">.gitattributes</code></strong>:
+    <ul>
+      <li><strong>Customize Git Attributes for Files</strong>: Control how Git handles certain files, like managing line endings or enabling merge strategies.</li>
+      <li>Example <code class="highlighter-rouge">.gitattributes</code>:
+        <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>*.md text
+*.jpg binary
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Git Diff Options</strong>:
+    <ul>
+      <li><strong>Show Word-Level Changes</strong>:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff <span class="nt">--word-diff</span>
+</code></pre></div>        </div>
+      </li>
+      <li><strong>View Stat Summary</strong>:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff <span class="nt">--stat</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Pruning Stale Branches</strong>:
+    <ul>
+      <li><strong>Remove Local References to Deleted Remote Branches</strong>:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote prune origin
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Git Worktrees</strong>:
+    <ul>
+      <li><strong>Multiple Working Directories in One Repository</strong>: Allows you to work on multiple branches simultaneously without cloning the repository multiple times.
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git worktree add ../path-to-new-worktree branch-name
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Git Archive</strong>:
+    <ul>
+      <li><strong>Export a Specific Branch or Commit as a ZIP File</strong>:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git archive <span class="nt">-o</span> archive.zip HEAD
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Replace Commits with Filter-Branch (or BFG)</strong>:
+    <ul>
+      <li><strong>Rewrite History to Remove Large or Sensitive Files</strong>:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git filter-branch <span class="nt">--tree-filter</span> <span class="s1">'rm -f path/to/file'</span> HEAD
+</code></pre></div>        </div>
+      </li>
+      <li>For a safer and faster approach, use <a href="https://rtyley.github.io/bfg-repo-cleaner/">BFG Repo-Cleaner</a>.</li>
+    </ul>
+  </li>
+  <li><strong>Managing Subtrees</strong>:
+    <ul>
+      <li><strong>Add a Repository as a Subtree</strong>: Useful for embedding an entire repository as a subfolder within another repository.
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git subtree add <span class="nt">--prefix</span><span class="o">=</span>subfolder-name https://github.com/username/repo.git branch-name
+</code></pre></div>        </div>
+      </li>
+      <li><strong>Update a Subtree</strong>:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git subtree pull <span class="nt">--prefix</span><span class="o">=</span>subfolder-name https://github.com/username/repo.git branch-name
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Setting Up a Bare Repository</strong>:
+    <ul>
+      <li><strong>Create a Shared Repository Without Working Directory</strong>:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git init <span class="nt">--bare</span>
+</code></pre></div>        </div>
+      </li>
+      <li>Useful for setting up a central Git repository to push and pull from.</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="summary-of-advanced-git-functionalities">Summary of Advanced Git Functionalities</h3>
+
+<p>These advanced Git commands cover areas like <strong>history rewriting</strong>, <strong>branch optimization</strong>, <strong>project modularization</strong>, and <strong>automated workflow management</strong>. While some commands are more specialized, understanding them can give you more flexibility in managing and refining your Git workflow, especially in collaborative and large-scale projects.</p>
+
+<p>To dive deeper into any specific Git command or concept you’d like to explore further. Here are a few commands and concepts from the list above that often benefit from detailed explanations and examples:</p>
+
+<ol>
+  <li><strong>Git Bisect</strong> - Finding a bug through binary search within commit history.</li>
+  <li><strong>Interactive Rebase</strong> - Squashing, reordering, and editing commits to clean up history.</li>
+  <li><strong>Git Reflog</strong> - Recovering lost commits or branches.</li>
+  <li><strong>Git Hooks</strong> - Automating workflows with pre-commit, pre-push, etc.</li>
+  <li><strong>Git Worktrees</strong> - Managing multiple working directories within a single repository.</li>
+  <li><strong>Sparse Checkout</strong> - Cloning only specific parts of a large repository.</li>
+  <li><strong>Filter-Branch and BFG Repo-Cleaner</strong> - Removing large or sensitive data from history.</li>
+</ol>
+
+<p>Here’s a detailed explanation of each of the advanced Git commands and concepts.</p>
+
+<hr />
+
+<h3 id="1-git-bisect---finding-a-bug-with-binary-search">1. <strong>Git Bisect</strong> - Finding a Bug with Binary Search</h3>
+
+<p>Git Bisect is a powerful tool for finding the exact commit where a bug was introduced. It works by performing a binary search on the commit history.</p>
+
+<h4 id="how-it-works">How It Works:</h4>
+<ol>
+  <li>Start bisect:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git bisect start
+</code></pre></div>    </div>
+  </li>
+  <li>Mark the current commit as “bad” (i.e., it contains the bug):
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git bisect bad
+</code></pre></div>    </div>
+  </li>
+  <li>Mark an older commit as “good” (a commit where the bug did not exist):
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git bisect good &lt;commit-hash&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>Git will now checkout a commit halfway between the “good” and “bad” commits. Test this commit, and mark it as either “good” or “bad”:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git bisect good  <span class="c"># or git bisect bad</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Repeat until Git identifies the exact commit where the bug was introduced.</p>
+  </li>
+  <li>To exit bisect mode, use:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git bisect reset
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="2-interactive-rebase---rewriting-commit-history">2. <strong>Interactive Rebase</strong> - Rewriting Commit History</h3>
+
+<p>Interactive rebasing allows you to modify, reorder, squash, and delete commits to clean up your commit history. It’s especially useful before merging a feature branch into the main branch.</p>
+
+<h4 id="basic-steps">Basic Steps:</h4>
+<ol>
+  <li>Start an interactive rebase on the last few commits (e.g., 3 commits):
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git rebase <span class="nt">-i</span> HEAD~3
+</code></pre></div>    </div>
+  </li>
+  <li>This opens an editor showing the last 3 commits. Each line represents a commit and starts with a command (e.g., <code class="highlighter-rouge">pick</code>). Available commands:
+    <ul>
+      <li><strong>pick</strong>: Keep the commit as-is.</li>
+      <li><strong>reword</strong>: Keep the commit but change the commit message.</li>
+      <li><strong>edit</strong>: Pause the rebase to make changes to this commit.</li>
+      <li><strong>squash (s)</strong>: Combine this commit with the previous one.</li>
+      <li><strong>drop (d)</strong>: Delete the commit.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Save and close the editor to apply changes.</p>
+  </li>
+  <li>If you chose to <strong>edit</strong> a commit, make the changes and use:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git commit <span class="nt">--amend</span>
+git rebase <span class="nt">--continue</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="3-git-reflog---recovering-lost-commits-or-branches">3. <strong>Git Reflog</strong> - Recovering Lost Commits or Branches</h3>
+
+<p>Git Reflog (Reference Log) records changes to the tip of branches, allowing you to recover lost commits or branches.</p>
+
+<h4 id="usage">Usage:</h4>
+<ol>
+  <li>View the reflog:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git reflog
+</code></pre></div>    </div>
+  </li>
+  <li>The output shows recent actions along with commit hashes. If you see a commit you want to recover, you can checkout or reset to it:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout &lt;commit-hash&gt;
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Example</strong>: If you accidentally deleted a branch and want to recover its latest commit, use <code class="highlighter-rouge">git reflog</code> to find the commit hash, then create a new branch from it:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git branch recovered-branch &lt;commit-hash&gt;
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="4-git-hooks---automating-workflows">4. <strong>Git Hooks</strong> - Automating Workflows</h3>
+
+<p>Git Hooks are scripts that automatically run at certain points in your Git workflow, like pre-commit or pre-push. They’re useful for enforcing code style, running tests, or automating tasks.</p>
+
+<h4 id="common-hooks">Common Hooks:</h4>
+<ul>
+  <li><strong>Pre-commit</strong>: Runs before <code class="highlighter-rouge">git commit</code>, useful for code formatting.</li>
+  <li><strong>Pre-push</strong>: Runs before <code class="highlighter-rouge">git push</code>, useful for running tests.</li>
+</ul>
+
+<h4 id="setting-up-a-hook">Setting Up a Hook:</h4>
+<ol>
+  <li>Go to the <code class="highlighter-rouge">.git/hooks</code> directory.</li>
+  <li>Rename or create a file for the desired hook (e.g., <code class="highlighter-rouge">pre-commit</code>).</li>
+  <li>Add a script to the file. For example, to format code before committing:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
+black <span class="nb">.</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Make the hook executable:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod</span> +x .git/hooks/pre-commit
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="5-git-worktrees---managing-multiple-working-directories">5. <strong>Git Worktrees</strong> - Managing Multiple Working Directories</h3>
+
+<p>Git Worktrees allow you to check out multiple branches at the same time in separate working directories, which is helpful for working on multiple features or versions concurrently.</p>
+
+<h4 id="basic-commands">Basic Commands:</h4>
+<ol>
+  <li>Add a new worktree:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git worktree add ../new-worktree-dir branch-name
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>This creates a new directory with the specified branch checked out. You can make changes independently in each worktree.</p>
+  </li>
+  <li>To remove a worktree:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git worktree remove ../new-worktree-dir
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="6-sparse-checkout---cloning-only-specific-parts-of-a-repository">6. <strong>Sparse Checkout</strong> - Cloning Only Specific Parts of a Repository</h3>
+
+<p>Sparse Checkout is useful for very large repositories where you only need certain directories, saving disk space and reducing setup time.</p>
+
+<h4 id="steps-to-use-sparse-checkout">Steps to Use Sparse Checkout:</h4>
+<ol>
+  <li>Enable sparse checkout in the repository:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git sparse-checkout init
+</code></pre></div>    </div>
+  </li>
+  <li>Specify the directories you want to check out:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git sparse-checkout <span class="nb">set </span>path/to/directory
+</code></pre></div>    </div>
+  </li>
+  <li>Git will check out only the specified directory, and you can work with it like any other repository.</li>
+</ol>
+
+<hr />
+
+<h3 id="7-filter-branch-and-bfg-repo-cleaner---removing-large-or-sensitive-data-from-history">7. <strong>Filter-Branch and BFG Repo-Cleaner</strong> - Removing Large or Sensitive Data from History</h3>
+
+<p>Both <code class="highlighter-rouge">git filter-branch</code> and <strong>BFG Repo-Cleaner</strong> can be used to rewrite commit history, typically to remove large files or sensitive data.</p>
+
+<h4 id="using-git-filter-branch">Using <code class="highlighter-rouge">git filter-branch</code>:</h4>
+<ol>
+  <li>Remove a specific file from history:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git filter-branch <span class="nt">--tree-filter</span> <span class="s1">'rm -f path/to/file'</span> HEAD
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Important</strong>: This rewrites history, so all branches will need to be forced pushed. It’s best used on private repos or before sharing the repository.</li>
+</ol>
+
+<h4 id="using-bfg-repo-cleaner">Using BFG Repo-Cleaner:</h4>
+<p>BFG is faster and simpler for large repositories. It’s a separate tool you’ll need to install (instructions <a href="https://rtyley.github.io/bfg-repo-cleaner/">here</a>).</p>
+
+<ol>
+  <li>Remove a file or directory:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bfg <span class="nt">--delete-files</span> path/to/file
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Remove All Commits with Sensitive Data</strong> (e.g., passwords):
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bfg <span class="nt">--delete-files</span> <span class="s2">"*.txt"</span>
+</code></pre></div>    </div>
+  </li>
+  <li>After running BFG, clean up and force-push:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git reflog expire <span class="nt">--expire</span><span class="o">=</span>now <span class="nt">--all</span> <span class="o">&amp;&amp;</span> git gc <span class="nt">--prune</span><span class="o">=</span>now <span class="nt">--aggressive</span>
+git push <span class="nt">--force</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+
+<p>Each of these advanced commands can greatly enhance your Git workflow, especially in large or complex projects where history management, parallel development, and automation become crucial.</p>
+
+<p>There are even more advanced Git commands and techniques that can be useful in specific scenarios. Here’s a list of additional Git commands that might come in handy:</p>
+
+<h3 id="1-git-cherry---identifying-unique-commits">1. <strong>Git Cherry</strong> - Identifying Unique Commits</h3>
+
+<ul>
+  <li><strong>Git Cherry</strong> shows which commits exist on your current branch that are not in another branch. It’s useful for checking which changes are unique to a branch.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git cherry &lt;upstream-branch&gt;
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="2-git-shortlog---summarize-commit-history">2. <strong>Git Shortlog</strong> - Summarize Commit History</h3>
+
+<ul>
+  <li><strong>Git Shortlog</strong> organizes commit history by author and displays the commit messages in a summarized format, which is useful for generating changelogs.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git shortlog
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="3-git-describe---naming-commits-based-on-tags">3. <strong>Git Describe</strong> - Naming Commits Based on Tags</h3>
+
+<ul>
+  <li><strong>Git Describe</strong> outputs a name for the current commit based on the most recent tag. It’s handy for identifying builds.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git describe
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="4-git-tag---lightweight-and-annotated-tags">4. <strong>Git Tag - Lightweight and Annotated Tags</strong></h3>
+
+<ul>
+  <li><strong>Creating Lightweight Tags</strong>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git tag &lt;tag-name&gt;
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Creating Annotated Tags</strong>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git tag <span class="nt">-a</span> &lt;tag-name&gt; <span class="nt">-m</span> <span class="s2">"Message"</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Pushing Tags to Remote</strong>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push origin &lt;tag-name&gt;
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Push All Tags</strong>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push origin <span class="nt">--tags</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="5-git-blame---view-line-by-line-history">5. <strong>Git Blame</strong> - View Line-by-Line History</h3>
+
+<ul>
+  <li><strong>Git Blame</strong> shows who last modified each line in a file, which is useful for tracking down the origin of specific lines in code.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git blame filename
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="6-git-apply---applying-patches">6. <strong>Git Apply</strong> - Applying Patches</h3>
+
+<ul>
+  <li><strong>Git Apply</strong> applies a patch file to the working directory. This is useful for applying changes from other repositories or from contributors.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git apply &lt;patch-file&gt;
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="7-git-diff-with-additional-options">7. <strong>Git Diff with Additional Options</strong></h3>
+
+<ul>
+  <li><strong>Check Only Names of Changed Files</strong>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff <span class="nt">--name-only</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>View Changes by Commit</strong>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff &lt;commit-hash1&gt; &lt;commit-hash2&gt;
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Check Word-Level Differences</strong>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff <span class="nt">--word-diff</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="8-git-log-options">8. <strong>Git Log Options</strong></h3>
+
+<ul>
+  <li><strong>Compact One-Line Summary</strong>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git log <span class="nt">--oneline</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Graphical History View</strong>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git log <span class="nt">--graph</span> <span class="nt">--all</span> <span class="nt">--decorate</span> <span class="nt">--oneline</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Search Commit Messages</strong>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git log <span class="nt">--grep</span><span class="o">=</span><span class="s2">"search-term"</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="9-git-show---view-commit-details">9. <strong>Git Show</strong> - View Commit Details</h3>
+
+<ul>
+  <li><strong>Git Show</strong> provides detailed information about a specific commit, including the diff and metadata.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git show &lt;commit-hash&gt;
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="10-git-reset-with-mixed-mode">10. <strong>Git Reset with Mixed Mode</strong></h3>
+
+<ul>
+  <li><strong>Git Reset Mixed</strong>: Resets the staging area to match the specified commit but leaves the working directory unchanged. It’s helpful when you want to unstage changes without losing them.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git reset <span class="nt">--mixed</span> HEAD~1
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="11-git-stash-advanced-options">11. <strong>Git Stash Advanced Options</strong></h3>
+
+<ul>
+  <li><strong>Stash with a Message</strong>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git stash push <span class="nt">-m</span> <span class="s2">"Description of stash"</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Stash Only Untracked Files</strong>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git stash <span class="nt">--include-untracked</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Apply and Drop Stash in One Step</strong>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git stash pop
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="12-git-prune---cleanup-unreachable-objects">12. <strong>Git Prune</strong> - Cleanup Unreachable Objects</h3>
+
+<ul>
+  <li><strong>Git Prune</strong> removes objects that are no longer referenced by any branch, which is often useful after removing branches.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git prune
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="13-git-graft---connect-disconnected-history">13. <strong>Git Graft</strong> - Connect Disconnected History</h3>
+
+<ul>
+  <li><strong>Git Graft</strong> allows you to manually connect histories of two commits when dealing with a disconnected history. Although rarely used, it can be helpful in repositories with imported histories.</li>
+</ul>
+
+<h3 id="14-git-archive-with-specific-path">14. <strong>Git Archive with Specific Path</strong></h3>
+
+<ul>
+  <li><strong>Export a Specific Directory</strong>: Use <code class="highlighter-rouge">git archive</code> to create an archive file with only specific directories included.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git archive <span class="nt">--format</span><span class="o">=</span>zip <span class="nt">--output</span><span class="o">=</span>output.zip HEAD path/to/directory
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="15-git-config-for-custom-aliases">15. <strong>Git Config for Custom Aliases</strong></h3>
+
+<ul>
+  <li><strong>Custom Git Aliases</strong>: Add common commands as shortcuts.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config <span class="nt">--global</span> alias.co checkout
+git config <span class="nt">--global</span> alias.br branch
+git config <span class="nt">--global</span> alias.ci commit
+git config <span class="nt">--global</span> alias.st status
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="16-git-submodule-advanced-commands">16. <strong>Git Submodule Advanced Commands</strong></h3>
+
+<ul>
+  <li><strong>Update All Submodules</strong>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git submodule update <span class="nt">--init</span> <span class="nt">--recursive</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Remove a Submodule</strong>:
+    <ol>
+      <li>Delete the submodule from <code class="highlighter-rouge">.gitmodules</code> and <code class="highlighter-rouge">.git/config</code>.</li>
+      <li>Remove the submodule files:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git <span class="nb">rm</span> <span class="nt">--cached</span> path/to/submodule
+</code></pre></div>        </div>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="17-git-bundle---backup-or-transfer-repository">17. <strong>Git Bundle</strong> - Backup or Transfer Repository</h3>
+
+<ul>
+  <li><strong>Git Bundle</strong> lets you create a single file that contains the entire Git history, useful for backups or sharing.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git bundle create &lt;file.bundle&gt; <span class="nt">--all</span>
+</code></pre></div>    </div>
+  </li>
+  <li>To clone from a bundle:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone &lt;file.bundle&gt;
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="18-git-fast-forward-only-merge">18. <strong>Git Fast-Forward Only Merge</strong></h3>
+
+<ul>
+  <li><strong>Fast-Forward Only</strong>: Forces Git to only merge if it can be done with a fast-forward, which means it won’t create a merge commit.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git merge <span class="nt">--ff-only</span> &lt;branch-name&gt;
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="19-git-fsck-file-system-consistency-check">19. <strong>Git FSCK (File System Consistency Check)</strong></h3>
+
+<ul>
+  <li><strong>Check Repository Consistency</strong>: <code class="highlighter-rouge">git fsck</code> verifies the integrity of the repository by identifying any corrupt objects.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git fsck
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="20-git-cherry-pick-multiple-commits">20. <strong>Git Cherry-Pick Multiple Commits</strong></h3>
+
+<ul>
+  <li><strong>Cherry-Pick a Range of Commits</strong>: Selectively apply multiple commits to another branch.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git cherry-pick &lt;start-commit&gt;^..&lt;end-commit&gt;
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<hr />
+
+<p>Each of these commands serves a unique purpose and can help in different aspects of managing and troubleshooting Git repositories.</p>
+
+<p>Git has a vast number of commands—over <strong>160 main commands</strong> and <strong>dozens of options</strong> within each command. Here’s a breakdown of the main command types and their purposes:</p>
+
+<h3 id="categories-of-git-commands">Categories of Git Commands</h3>
+
+<ol>
+  <li><strong>Basic Commands</strong> - Commonly used for everyday work:
+    <ul>
+      <li><code class="highlighter-rouge">git init</code>, <code class="highlighter-rouge">git clone</code>, <code class="highlighter-rouge">git add</code>, <code class="highlighter-rouge">git commit</code>, <code class="highlighter-rouge">git status</code>, <code class="highlighter-rouge">git push</code>, <code class="highlighter-rouge">git pull</code>, <code class="highlighter-rouge">git log</code></li>
+    </ul>
+  </li>
+  <li><strong>Branching and Merging</strong> - Managing branches and combining code:
+    <ul>
+      <li><code class="highlighter-rouge">git branch</code>, <code class="highlighter-rouge">git checkout</code>, <code class="highlighter-rouge">git switch</code>, <code class="highlighter-rouge">git merge</code>, <code class="highlighter-rouge">git rebase</code>, <code class="highlighter-rouge">git cherry-pick</code>, <code class="highlighter-rouge">git tag</code></li>
+    </ul>
+  </li>
+  <li><strong>Inspection and Comparison</strong> - Viewing changes and differences:
+    <ul>
+      <li><code class="highlighter-rouge">git diff</code>, <code class="highlighter-rouge">git log</code>, <code class="highlighter-rouge">git show</code>, <code class="highlighter-rouge">git blame</code>, <code class="highlighter-rouge">git reflog</code></li>
+    </ul>
+  </li>
+  <li><strong>Rewriting History</strong> - Modifying commit history:
+    <ul>
+      <li><code class="highlighter-rouge">git commit --amend</code>, <code class="highlighter-rouge">git rebase -i</code>, <code class="highlighter-rouge">git reset</code>, <code class="highlighter-rouge">git revert</code>, <code class="highlighter-rouge">git filter-branch</code>, <code class="highlighter-rouge">bfg</code></li>
+    </ul>
+  </li>
+  <li><strong>Stashing and Cleaning</strong> - Saving or discarding changes temporarily:
+    <ul>
+      <li><code class="highlighter-rouge">git stash</code>, <code class="highlighter-rouge">git stash pop</code>, <code class="highlighter-rouge">git clean</code></li>
+    </ul>
+  </li>
+  <li><strong>Collaboration</strong> - Working with remote repositories:
+    <ul>
+      <li><code class="highlighter-rouge">git fetch</code>, <code class="highlighter-rouge">git push</code>, <code class="highlighter-rouge">git pull</code>, <code class="highlighter-rouge">git remote</code>, <code class="highlighter-rouge">git submodule</code></li>
+    </ul>
+  </li>
+  <li><strong>Configuration and Setup</strong> - Setting preferences and global settings:
+    <ul>
+      <li><code class="highlighter-rouge">git config</code>, <code class="highlighter-rouge">git init</code>, <code class="highlighter-rouge">git clone</code>, <code class="highlighter-rouge">git remote add</code></li>
+    </ul>
+  </li>
+  <li><strong>Advanced Commands</strong> - Specialized commands for complex workflows:
+    <ul>
+      <li><code class="highlighter-rouge">git bisect</code>, <code class="highlighter-rouge">git cherry</code>, <code class="highlighter-rouge">git grep</code>, <code class="highlighter-rouge">git worktree</code>, <code class="highlighter-rouge">git sparse-checkout</code>, <code class="highlighter-rouge">git bundle</code>, <code class="highlighter-rouge">git archive</code></li>
+    </ul>
+  </li>
+  <li><strong>Utility and Debugging</strong> - Maintenance, debugging, and recovery tools:
+    <ul>
+      <li><code class="highlighter-rouge">git fsck</code>, <code class="highlighter-rouge">git gc</code>, <code class="highlighter-rouge">git prune</code>, <code class="highlighter-rouge">git repack</code>, <code class="highlighter-rouge">git replace</code></li>
+    </ul>
+  </li>
+  <li><strong>Hooks</strong> - Automating actions at key stages:
+    <ul>
+      <li><code class="highlighter-rouge">pre-commit</code>, <code class="highlighter-rouge">pre-push</code>, <code class="highlighter-rouge">post-merge</code>, and other hooks</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="complete-git-command-list">Complete Git Command List</h3>
+
+<p>Here’s a <strong>non-exhaustive list of Git commands</strong> to give you a better sense of Git’s full command set:</p>
+
+<ul>
+  <li><strong>General Commands</strong>: <code class="highlighter-rouge">git help</code>, <code class="highlighter-rouge">git version</code></li>
+  <li><strong>Branching &amp; Tagging</strong>: <code class="highlighter-rouge">git branch</code>, <code class="highlighter-rouge">git checkout</code>, <code class="highlighter-rouge">git merge</code>, <code class="highlighter-rouge">git tag</code>, <code class="highlighter-rouge">git worktree</code></li>
+  <li><strong>Commit &amp; History</strong>: <code class="highlighter-rouge">git commit</code>, <code class="highlighter-rouge">git log</code>, <code class="highlighter-rouge">git reflog</code>, <code class="highlighter-rouge">git show</code>, <code class="highlighter-rouge">git blame</code>, <code class="highlighter-rouge">git diff</code></li>
+  <li><strong>Configuration</strong>: <code class="highlighter-rouge">git config</code>, <code class="highlighter-rouge">git init</code>, <code class="highlighter-rouge">git clone</code></li>
+  <li><strong>Networking</strong>: <code class="highlighter-rouge">git fetch</code>, <code class="highlighter-rouge">git push</code>, <code class="highlighter-rouge">git pull</code>, <code class="highlighter-rouge">git remote</code></li>
+  <li><strong>Patch &amp; Revision Handling</strong>: <code class="highlighter-rouge">git cherry</code>, <code class="highlighter-rouge">git format-patch</code>, <code class="highlighter-rouge">git apply</code>, <code class="highlighter-rouge">git am</code></li>
+  <li><strong>Archiving &amp; Bundling</strong>: <code class="highlighter-rouge">git archive</code>, <code class="highlighter-rouge">git bundle</code></li>
+  <li><strong>File System &amp; Cleanup</strong>: <code class="highlighter-rouge">git fsck</code>, <code class="highlighter-rouge">git gc</code>, <code class="highlighter-rouge">git prune</code>, <code class="highlighter-rouge">git repack</code></li>
+  <li><strong>Others</strong>: <code class="highlighter-rouge">git describe</code>, <code class="highlighter-rouge">git grep</code>, <code class="highlighter-rouge">git bisect</code>, <code class="highlighter-rouge">git stash</code>, <code class="highlighter-rouge">git submodule</code></li>
+</ul>
+
+<h3 id="git-documentation">Git Documentation</h3>
+
+<p>You can find a complete list of Git commands in the <a href="https://git-scm.com/docs">official Git documentation</a> or by using:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git <span class="nb">help</span> <span class="nt">-a</span>  <span class="c"># Shows all available git commands</span>
+</code></pre></div></div>
+
+<p>Each command has numerous options, so the actual number of unique command usages is extensive, likely numbering in the thousands when considering all variations! Let me know if there’s a specific command you’d like to explore further.</p>
+
+	</div>
+</article>
+		</div>
+	</div>
+  </body>
+</html>

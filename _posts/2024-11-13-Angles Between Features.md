@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "High-dimensional Spaces and The Concept of Angles Between Features "
+title:  "High-dimensional Spaces and The Concept of Angles Between Features"
 date:   2024-11-13 9:31:29 +0900
 categories: Update
 ---

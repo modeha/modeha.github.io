@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Combining Gradient-Boosted Tree Ensembles with Deep Learning"
-date:   2024-11-13 9:31:29 +0900
+date:   2024-11-12 9:31:29 +0900
 categories: Update
 ---
 
