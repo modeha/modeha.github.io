@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Downloading and Running a Jekyll Site Locally on Windows Using VSCode"
-date:   2024-10-10 9:31:29 +0900
+date:   2024-11-14 9:31:29 +0900
 categories: Update
 ---
 ### Downloading and Running a Jekyll Site Locally on Windows Using VSCode
