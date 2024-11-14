@@ -20,6 +20,8 @@
 # Build settings
 usemathjax: true
 markdown: kramdown
+kramdown:
+  input: GFM
 
 title: Deep Learning
 email: mohsen.dehghani@gmail.com
