@@ -1,50 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-11-13T21:59:00-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Deep Learning</title><subtitle>Mohsen Dehghani</subtitle><entry><title type="html">High-dimensional Spaces and The Concept of Angles Between Features</title><link href="http://localhost:4000/update/2024/11/12/fetures.html" rel="alternate" type="text/html" title="High-dimensional Spaces and The Concept of Angles Between Features" /><published>2024-11-12T19:31:29-05:00</published><updated>2024-11-12T19:31:29-05:00</updated><id>http://localhost:4000/update/2024/11/12/fetures</id><content type="html" xml:base="http://localhost:4000/update/2024/11/12/fetures.html"><![CDATA[<p>In feature selection, the angle between features can be a useful tool for understanding and managing redundancy and correlation in the data, especially in high-dimensional spaces. Here’s how the angle between features impacts feature selection and the techniques that can leverage this information:</p>
-
-<h3 id="1-understanding-redundancy-with-angles">1. <strong>Understanding Redundancy with Angles</strong></h3>
-<ul>
-  <li>Features that have a small angle between them are highly correlated, meaning they contain similar information. Including both in a model might not add much value and could introduce redundancy.</li>
-  <li>By selecting features with larger angles between them (closer to orthogonal), you’re choosing features that contribute more unique information, potentially improving the model’s robustness and interpretability.</li>
-</ul>
-
-<h3 id="2-dimensionality-reduction-techniques">2. <strong>Dimensionality Reduction Techniques</strong></h3>
-<ul>
-  <li><strong>Principal Component Analysis (PCA)</strong>: PCA transforms the feature space into a new set of orthogonal components, which are linear combinations of the original features. By choosing the components that capture the most variance, you’re effectively selecting directions in feature space that maximize information content while minimizing redundancy.</li>
-  <li><strong>Independent Component Analysis (ICA)</strong>: While PCA focuses on uncorrelated features, ICA aims for statistical independence, which often corresponds to large angles between features in transformed space. ICA can help separate features that have meaningful independent contributions.</li>
-</ul>
-
-<h3 id="3-correlation-based-feature-selection">3. <strong>Correlation-Based Feature Selection</strong></h3>
-<ul>
-  <li>By calculating the correlation (or cosine similarity) between pairs of features, you can identify features that have small angles between them, indicating high correlation.</li>
-  <li><strong>Threshold-Based Selection</strong>: A common approach is to set a correlation threshold (e.g., features with correlations above 0.9) and remove one of the correlated features. This is particularly useful when features are highly correlated, as you can remove redundant features to streamline the model without losing much information.</li>
-</ul>
-
-<h3 id="4-regularization-techniques-in-high-dimensions">4. <strong>Regularization Techniques in High Dimensions</strong></h3>
-<ul>
-  <li><strong>Lasso Regression (L1 Regularization)</strong>: Lasso regression tends to select a subset of features by driving coefficients of less important (or redundant) features to zero. By penalizing model complexity, Lasso helps in selecting features that contribute unique information, thus indirectly accounting for the “angle” between features.</li>
-  <li><strong>Elastic Net</strong>: This combines L1 and L2 regularization, balancing between feature selection and managing multicollinearity. Elastic Net is effective in high-dimensional spaces where groups of correlated features (small angles) exist. It often selects one feature from each correlated group, effectively reducing redundancy.</li>
-</ul>
-
-<h3 id="5-variance-inflation-factor-vif">5. <strong>Variance Inflation Factor (VIF)</strong></h3>
-<ul>
-  <li><strong>VIF</strong> quantifies how much the variance of a regression coefficient is inflated due to multicollinearity with other features. High VIF values indicate a small angle (high correlation) with other features, suggesting redundancy.</li>
-  <li>By removing features with high VIF values, you retain only those features that contribute unique information, reducing the chance of multicollinearity affecting model performance.</li>
-</ul>
-
-<h3 id="6-mutual-information-and-feature-selection">6. <strong>Mutual Information and Feature Selection</strong></h3>
-<ul>
-  <li><strong>Mutual Information (MI)</strong> measures the dependency between features and can be seen as a non-linear analog to cosine similarity for more complex relationships. Small MI values indicate independence (similar to orthogonal vectors), suggesting that features contribute unique information.</li>
-  <li>Selecting features with low MI relative to others ensures that each feature adds unique value, similar to selecting features with large angles between them.</li>
-</ul>
-
-<h3 id="practical-approach-for-feature-selection-using-angles">Practical Approach for Feature Selection Using Angles</h3>
-<p>If you want to use angles explicitly for feature selection:</p>
-<ol>
-  <li><strong>Calculate Cosine Similarity Matrix</strong>: Compute the cosine similarity (or Pearson correlation) between each pair of features.</li>
-  <li><strong>Set a Threshold</strong>: Decide on a similarity threshold, such as 0.9. For pairs of features with similarity above this threshold (i.e., angle close to 0°), retain only one feature in each pair.</li>
-  <li><strong>Select Independent Features</strong>: Keep features with lower cosine similarity (or correlation), effectively selecting features that provide more unique information.</li>
-</ol>
-
-<p>These steps can help ensure that your selected features are diverse in their contributions, enhancing model accuracy and stability. Let me know if you’d like assistance with code or examples for any of these techniques!</p>]]></content><author><name></name></author><category term="Update" /><summary type="html"><![CDATA[In feature selection, the angle between features can be a useful tool for understanding and managing redundancy and correlation in the data, especially in high-dimensional spaces. Here’s how the angle between features impacts feature selection and the techniques that can leverage this information:]]></summary></entry><entry><title type="html">Understanding Dimensionality Reduction for High-Dimensional Data Visualization</title><link href="http://localhost:4000/update/2024/11/12/code.html" rel="alternate" type="text/html" title="Understanding Dimensionality Reduction for High-Dimensional Data Visualization" /><published>2024-11-12T19:31:29-05:00</published><updated>2024-11-12T19:31:29-05:00</updated><id>http://localhost:4000/update/2024/11/12/code</id><content type="html" xml:base="http://localhost:4000/update/2024/11/12/code.html"><![CDATA[<h3 id="understanding-dimensionality-reduction-for-high-dimensional-data-visualization">Understanding Dimensionality Reduction for High-Dimensional Data Visualization</h3>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-11-14T00:32:59-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Deep Learning</title><subtitle>Mohsen Dehghani</subtitle><entry><title type="html">Understanding Dimensionality Reduction for High-Dimensional Data Visualization</title><link href="http://localhost:4000/update/2024/11/12/code.html" rel="alternate" type="text/html" title="Understanding Dimensionality Reduction for High-Dimensional Data Visualization" /><published>2024-11-12T19:31:29-05:00</published><updated>2024-11-12T19:31:29-05:00</updated><id>http://localhost:4000/update/2024/11/12/code</id><content type="html" xml:base="http://localhost:4000/update/2024/11/12/code.html"><![CDATA[<h3 id="understanding-dimensionality-reduction-for-high-dimensional-data-visualization">Understanding Dimensionality Reduction for High-Dimensional Data Visualization</h3>
 
 <p>In this section, we will cover:</p>
 
@@ -270,7 +224,53 @@ Analyze and visualize the statistical properties and distributions of a dataset<
   </li>
 </ol>
 
-<p>This updated <code class="highlighter-rouge">analyze_distributions</code> method will give you a comprehensive view of each feature’s distribution, helping you make informed decisions about scaling, transformation, or outlier handling. Let me know if you’d like further customization!</p>]]></content><author><name></name></author><category term="Update" /><summary type="html"><![CDATA[Understanding Dimensionality Reduction for High-Dimensional Data Visualization]]></summary></entry><entry><title type="html">Combining Gradient-Boosted Tree Ensembles with Deep Learning</title><link href="http://localhost:4000/update/2024/11/12/preprossesing.html" rel="alternate" type="text/html" title="Combining Gradient-Boosted Tree Ensembles with Deep Learning" /><published>2024-11-12T19:31:29-05:00</published><updated>2024-11-12T19:31:29-05:00</updated><id>http://localhost:4000/update/2024/11/12/preprossesing</id><content type="html" xml:base="http://localhost:4000/update/2024/11/12/preprossesing.html"><![CDATA[<p><strong>“Combining Gradient-Boosted Tree Ensembles with Deep Learning: Implementations and Code Examples of Hybrid Models”</strong></p>
+<p>This updated <code class="highlighter-rouge">analyze_distributions</code> method will give you a comprehensive view of each feature’s distribution, helping you make informed decisions about scaling, transformation, or outlier handling. Let me know if you’d like further customization!</p>]]></content><author><name></name></author><category term="Update" /><summary type="html"><![CDATA[Understanding Dimensionality Reduction for High-Dimensional Data Visualization]]></summary></entry><entry><title type="html">High-dimensional Spaces and The Concept of Angles Between Features</title><link href="http://localhost:4000/update/2024/11/12/fetures.html" rel="alternate" type="text/html" title="High-dimensional Spaces and The Concept of Angles Between Features" /><published>2024-11-12T19:31:29-05:00</published><updated>2024-11-12T19:31:29-05:00</updated><id>http://localhost:4000/update/2024/11/12/fetures</id><content type="html" xml:base="http://localhost:4000/update/2024/11/12/fetures.html"><![CDATA[<p>In feature selection, the angle between features can be a useful tool for understanding and managing redundancy and correlation in the data, especially in high-dimensional spaces. Here’s how the angle between features impacts feature selection and the techniques that can leverage this information:</p>
+
+<h3 id="1-understanding-redundancy-with-angles">1. <strong>Understanding Redundancy with Angles</strong></h3>
+<ul>
+  <li>Features that have a small angle between them are highly correlated, meaning they contain similar information. Including both in a model might not add much value and could introduce redundancy.</li>
+  <li>By selecting features with larger angles between them (closer to orthogonal), you’re choosing features that contribute more unique information, potentially improving the model’s robustness and interpretability.</li>
+</ul>
+
+<h3 id="2-dimensionality-reduction-techniques">2. <strong>Dimensionality Reduction Techniques</strong></h3>
+<ul>
+  <li><strong>Principal Component Analysis (PCA)</strong>: PCA transforms the feature space into a new set of orthogonal components, which are linear combinations of the original features. By choosing the components that capture the most variance, you’re effectively selecting directions in feature space that maximize information content while minimizing redundancy.</li>
+  <li><strong>Independent Component Analysis (ICA)</strong>: While PCA focuses on uncorrelated features, ICA aims for statistical independence, which often corresponds to large angles between features in transformed space. ICA can help separate features that have meaningful independent contributions.</li>
+</ul>
+
+<h3 id="3-correlation-based-feature-selection">3. <strong>Correlation-Based Feature Selection</strong></h3>
+<ul>
+  <li>By calculating the correlation (or cosine similarity) between pairs of features, you can identify features that have small angles between them, indicating high correlation.</li>
+  <li><strong>Threshold-Based Selection</strong>: A common approach is to set a correlation threshold (e.g., features with correlations above 0.9) and remove one of the correlated features. This is particularly useful when features are highly correlated, as you can remove redundant features to streamline the model without losing much information.</li>
+</ul>
+
+<h3 id="4-regularization-techniques-in-high-dimensions">4. <strong>Regularization Techniques in High Dimensions</strong></h3>
+<ul>
+  <li><strong>Lasso Regression (L1 Regularization)</strong>: Lasso regression tends to select a subset of features by driving coefficients of less important (or redundant) features to zero. By penalizing model complexity, Lasso helps in selecting features that contribute unique information, thus indirectly accounting for the “angle” between features.</li>
+  <li><strong>Elastic Net</strong>: This combines L1 and L2 regularization, balancing between feature selection and managing multicollinearity. Elastic Net is effective in high-dimensional spaces where groups of correlated features (small angles) exist. It often selects one feature from each correlated group, effectively reducing redundancy.</li>
+</ul>
+
+<h3 id="5-variance-inflation-factor-vif">5. <strong>Variance Inflation Factor (VIF)</strong></h3>
+<ul>
+  <li><strong>VIF</strong> quantifies how much the variance of a regression coefficient is inflated due to multicollinearity with other features. High VIF values indicate a small angle (high correlation) with other features, suggesting redundancy.</li>
+  <li>By removing features with high VIF values, you retain only those features that contribute unique information, reducing the chance of multicollinearity affecting model performance.</li>
+</ul>
+
+<h3 id="6-mutual-information-and-feature-selection">6. <strong>Mutual Information and Feature Selection</strong></h3>
+<ul>
+  <li><strong>Mutual Information (MI)</strong> measures the dependency between features and can be seen as a non-linear analog to cosine similarity for more complex relationships. Small MI values indicate independence (similar to orthogonal vectors), suggesting that features contribute unique information.</li>
+  <li>Selecting features with low MI relative to others ensures that each feature adds unique value, similar to selecting features with large angles between them.</li>
+</ul>
+
+<h3 id="practical-approach-for-feature-selection-using-angles">Practical Approach for Feature Selection Using Angles</h3>
+<p>If you want to use angles explicitly for feature selection:</p>
+<ol>
+  <li><strong>Calculate Cosine Similarity Matrix</strong>: Compute the cosine similarity (or Pearson correlation) between each pair of features.</li>
+  <li><strong>Set a Threshold</strong>: Decide on a similarity threshold, such as 0.9. For pairs of features with similarity above this threshold (i.e., angle close to 0°), retain only one feature in each pair.</li>
+  <li><strong>Select Independent Features</strong>: Keep features with lower cosine similarity (or correlation), effectively selecting features that provide more unique information.</li>
+</ol>
+
+<p>These steps can help ensure that your selected features are diverse in their contributions, enhancing model accuracy and stability. Let me know if you’d like assistance with code or examples for any of these techniques!</p>]]></content><author><name></name></author><category term="Update" /><summary type="html"><![CDATA[In feature selection, the angle between features can be a useful tool for understanding and managing redundancy and correlation in the data, especially in high-dimensional spaces. Here’s how the angle between features impacts feature selection and the techniques that can leverage this information:]]></summary></entry><entry><title type="html">Combining Gradient-Boosted Tree Ensembles with Deep Learning</title><link href="http://localhost:4000/update/2024/11/12/preprossesing.html" rel="alternate" type="text/html" title="Combining Gradient-Boosted Tree Ensembles with Deep Learning" /><published>2024-11-12T19:31:29-05:00</published><updated>2024-11-12T19:31:29-05:00</updated><id>http://localhost:4000/update/2024/11/12/preprossesing</id><content type="html" xml:base="http://localhost:4000/update/2024/11/12/preprossesing.html"><![CDATA[<p><strong>“Combining Gradient-Boosted Tree Ensembles with Deep Learning: Implementations and Code Examples of Hybrid Models”</strong></p>
 
 <p>Alternatively, if you’re looking for a more concise title, here are some options:</p>
 
@@ -1649,7 +1649,119 @@ Analyze and visualize the statistical properties and distributions of a dataset<
 </code></pre></div></div>
 
 <h3 id="conclusion-4">Conclusion:</h3>
-<p>Each of these algorithms represents a unique combination of deep learning and gradient-boosted tree-inspired approaches. You can experiment with them in your specific applications by using the code provided, depending on your problem domain and the dataset you are working with.</p>]]></content><author><name></name></author><category term="Update" /><summary type="html"><![CDATA[“Combining Gradient-Boosted Tree Ensembles with Deep Learning: Implementations and Code Examples of Hybrid Models”]]></summary></entry><entry><title type="html">Python Packages Specialize for Feature Engineering Techniques</title><link href="http://localhost:4000/update/2024/10/18/Feature_-Engineering.html" rel="alternate" type="text/html" title="Python Packages Specialize for Feature Engineering Techniques" /><published>2024-10-18T20:31:29-04:00</published><updated>2024-10-18T20:31:29-04:00</updated><id>http://localhost:4000/update/2024/10/18/Feature_%20Engineering</id><content type="html" xml:base="http://localhost:4000/update/2024/10/18/Feature_-Engineering.html"><![CDATA[<h3 id="python-packages-specialize-for-feature-engineering-techniques">Python Packages Specialize for Feature Engineering Techniques</h3>
+<p>Each of these algorithms represents a unique combination of deep learning and gradient-boosted tree-inspired approaches. You can experiment with them in your specific applications by using the code provided, depending on your problem domain and the dataset you are working with.</p>]]></content><author><name></name></author><category term="Update" /><summary type="html"><![CDATA[“Combining Gradient-Boosted Tree Ensembles with Deep Learning: Implementations and Code Examples of Hybrid Models”]]></summary></entry><entry><title type="html">Downloading and Running a Jekyll Site Locally on Windows Using VSCode</title><link href="http://localhost:4000/update/2024/11/10/Installation-jeykll.html" rel="alternate" type="text/html" title="Downloading and Running a Jekyll Site Locally on Windows Using VSCode" /><published>2024-11-10T19:31:29-05:00</published><updated>2024-11-10T19:31:29-05:00</updated><id>http://localhost:4000/update/2024/11/10/Installation-jeykll</id><content type="html" xml:base="http://localhost:4000/update/2024/11/10/Installation-jeykll.html"><![CDATA[<h3 id="downloading-and-running-a-jekyll-site-locally-on-windows-using-vscode">Downloading and Running a Jekyll Site Locally on Windows Using VSCode</h3>
+<p>We will cover in this section:</p>
+<ol>
+  <li><strong>Setting Up Prerequisites</strong>: Installing Ruby, Jekyll, Git, and VSCode on Windows.</li>
+  <li><strong>Cloning the GitHub Repository</strong>: Using Git to download the Jekyll site code from GitHub.</li>
+  <li><strong>Installing Dependencies</strong>: Using <code class="highlighter-rouge">bundle install</code> to set up necessary gems for Jekyll.</li>
+  <li><strong>Serving the Site Locally</strong>: Running <code class="highlighter-rouge">bundle exec jekyll serve</code> to start the local Jekyll server and preview the site.</li>
+</ol>
+
+<p>To download your GitHub repository and run Jekyll on Visual Studio Code (VSCode) on Windows, follow these steps:</p>
+
+<h3 id="step-1-install-prerequisites">Step 1: Install Prerequisites</h3>
+<ol>
+  <li><strong>Install Ruby and Jekyll</strong>:
+    <ul>
+      <li>Download and install Ruby for Windows from the <a href="https://rubyinstaller.org/">RubyInstaller</a>.</li>
+      <li>After installation, open a new terminal (Command Prompt or PowerShell) and install Jekyll and Bundler by running:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem <span class="nb">install </span>jekyll bundler
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Install Git</strong>:
+    <ul>
+      <li>Download and install Git for Windows from <a href="https://git-scm.com/">git-scm.com</a>. This will allow you to clone your repository.</li>
+    </ul>
+  </li>
+  <li><strong>Install VSCode</strong>:
+    <ul>
+      <li>Download and install <a href="https://code.visualstudio.com/">Visual Studio Code</a> if you haven’t already.</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="step-2-clone-your-github-repository">Step 2: Clone Your GitHub Repository</h3>
+<ol>
+  <li><strong>Open Git Bash or Command Prompt</strong>:
+    <ul>
+      <li>In Windows, open Git Bash, Command Prompt, or PowerShell.</li>
+    </ul>
+  </li>
+  <li><strong>Navigate to Your Desired Directory</strong>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>path<span class="se">\t</span>o<span class="se">\y</span>our<span class="se">\d</span>esired<span class="se">\d</span>irectory
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Clone the Repository</strong>:
+    <ul>
+      <li>Replace <code class="highlighter-rouge">your-username</code> and <code class="highlighter-rouge">your-repository</code> with your GitHub username and repository name:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/your-username/your-repository.git
+</code></pre></div>        </div>
+      </li>
+      <li>This will download the repository to your local directory.</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="step-3-open-the-project-in-vscode">Step 3: Open the Project in VSCode</h3>
+<ol>
+  <li>Open Visual Studio Code and go to <code class="highlighter-rouge">File</code> &gt; <code class="highlighter-rouge">Open Folder...</code>.</li>
+  <li>Select the folder where you cloned your GitHub repository.</li>
+</ol>
+
+<h3 id="step-4-install-jekyll-dependencies">Step 4: Install Jekyll Dependencies</h3>
+<ol>
+  <li><strong>Open the Terminal in VSCode</strong>:
+    <ul>
+      <li>Go to <code class="highlighter-rouge">View</code> &gt; <code class="highlighter-rouge">Terminal</code> to open the integrated terminal in VSCode.</li>
+    </ul>
+  </li>
+  <li><strong>Navigate to Your Jekyll Project Directory</strong>:
+    <ul>
+      <li>Ensure you’re in the correct directory where your Jekyll project is located.</li>
+    </ul>
+  </li>
+  <li><strong>Install Dependencies with Bundler</strong>:
+    <ul>
+      <li>Run the following command to install the necessary dependencies:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">install</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="step-5-serve-the-jekyll-site-locally">Step 5: Serve the Jekyll Site Locally</h3>
+<ol>
+  <li><strong>Run the Jekyll Server</strong>:
+    <ul>
+      <li>Start the Jekyll server by running:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll serve
+</code></pre></div>        </div>
+      </li>
+      <li>This will start a local server for your Jekyll site. You can access it at <code class="highlighter-rouge">http://127.0.0.1:4000</code> in your browser.</li>
+    </ul>
+  </li>
+  <li><strong>View Live Changes</strong>:
+    <ul>
+      <li>As you make updates in VSCode, Jekyll will automatically regenerate the site, allowing you to see changes immediately in your browser.</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="additional-tips">Additional Tips</h3>
+<ul>
+  <li><strong>Incremental Builds</strong>: For faster builds during development, you can add the <code class="highlighter-rouge">--incremental</code> flag:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll serve <span class="nt">--incremental</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Error Debugging</strong>: If you encounter any errors, try using <code class="highlighter-rouge">--trace</code> for detailed output:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll serve <span class="nt">--trace</span>
+</code></pre></div>    </div>
+  </li>
+</ul>]]></content><author><name></name></author><category term="Update" /><summary type="html"><![CDATA[Downloading and Running a Jekyll Site Locally on Windows Using VSCode We will cover in this section: Setting Up Prerequisites: Installing Ruby, Jekyll, Git, and VSCode on Windows. Cloning the GitHub Repository: Using Git to download the Jekyll site code from GitHub. Installing Dependencies: Using bundle install to set up necessary gems for Jekyll. Serving the Site Locally: Running bundle exec jekyll serve to start the local Jekyll server and preview the site.]]></summary></entry><entry><title type="html">Python Packages Specialize for Feature Engineering Techniques</title><link href="http://localhost:4000/update/2024/10/18/Feature_-Engineering.html" rel="alternate" type="text/html" title="Python Packages Specialize for Feature Engineering Techniques" /><published>2024-10-18T20:31:29-04:00</published><updated>2024-10-18T20:31:29-04:00</updated><id>http://localhost:4000/update/2024/10/18/Feature_%20Engineering</id><content type="html" xml:base="http://localhost:4000/update/2024/10/18/Feature_-Engineering.html"><![CDATA[<h3 id="python-packages-specialize-for-feature-engineering-techniques">Python Packages Specialize for Feature Engineering Techniques</h3>
 <p>Several Python packages specialize in feature engineering techniques, which can help automate tasks like encoding, scaling, generating interaction features, or extracting domain-specific features. Here are some popular feature engineering packages and examples of how to use them:</p>
 
 <h3 id="1-feature-engine">1. <strong>Feature-engine</strong></h3>
@@ -1779,114 +1891,7 @@ Analyze and visualize the statistical properties and distributions of a dataset<
 <span class="k">print</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>These packages offer a wide range of feature engineering capabilities, from automated feature extraction to custom transformations for specific data types. You can choose the best one depending on your dataset and the type of features you want to generate.</p>]]></content><author><name></name></author><category term="Update" /><summary type="html"><![CDATA[Python Packages Specialize for Feature Engineering Techniques Several Python packages specialize in feature engineering techniques, which can help automate tasks like encoding, scaling, generating interaction features, or extracting domain-specific features. Here are some popular feature engineering packages and examples of how to use them:]]></summary></entry><entry><title type="html">Code From Scratch Versus Using a Tool Like GitHub Copilot</title><link href="http://localhost:4000/update/2024/09/02/code-vers_copilot.html" rel="alternate" type="text/html" title="Code From Scratch Versus Using a Tool Like GitHub Copilot" /><published>2024-09-02T20:31:29-04:00</published><updated>2024-09-02T20:31:29-04:00</updated><id>http://localhost:4000/update/2024/09/02/code-vers_copilot</id><content type="html" xml:base="http://localhost:4000/update/2024/09/02/code-vers_copilot.html"><![CDATA[<h3 id="code-from-scratch-versus-using-a-tool-like-github-copilot">Code From Scratch Versus Using a Tool Like GitHub Copilot</h3>
-<p>The main differences between writing code <strong>from scratch</strong> and using a tool like <strong>GitHub Copilot</strong> or another code completion assistant are related to <strong>efficiency</strong>, <strong>guidance</strong>, and <strong>creativity</strong>. Let’s explore the differences in a few key areas:</p>
-
-<h3 id="1-efficiency">1. <strong>Efficiency</strong></h3>
-<ul>
-  <li><strong>From Scratch</strong>: Writing from scratch means starting with a blank slate. You need to conceptualize every step and write each line manually, which can be time-consuming. It requires thinking about the entire problem structure, syntax, and functionality yourself.</li>
-  <li><strong>With Copilot</strong>: Copilot can quickly generate large sections of code based on comments, prompts, or partially written code. It helps speed up repetitive or boilerplate tasks, like setting up configurations, writing standard functions, or implementing common patterns, making it faster to get started and progress.</li>
-</ul>
-
-<h3 id="2-guidance-and-suggestions">2. <strong>Guidance and Suggestions</strong></h3>
-<ul>
-  <li><strong>From Scratch</strong>: When writing from scratch, you rely solely on your own knowledge or documentation for guidance, which can sometimes lead to slower problem-solving, especially for new or complex concepts.</li>
-  <li><strong>With Copilot</strong>: Copilot provides real-time suggestions that can guide your coding direction. It suggests code that fits with what you’re already writing and can sometimes even introduce ideas or approaches you may not have considered. This can be especially helpful when you’re exploring unfamiliar libraries or frameworks.</li>
-</ul>
-
-<h3 id="3-learning-and-skill-development">3. <strong>Learning and Skill Development</strong></h3>
-<ul>
-  <li><strong>From Scratch</strong>: Writing code manually strengthens your understanding of programming concepts, syntax, and problem-solving. You are actively engaging in each step, which can reinforce your skills and help you learn the intricacies of the codebase.</li>
-  <li><strong>With Copilot</strong>: While Copilot can accelerate coding, it might limit deep learning if you rely on it too heavily without understanding the underlying logic. It’s easy to accept suggestions without fully processing them, so reviewing and studying what it generates is essential to maintain learning.</li>
-</ul>
-
-<h3 id="4-creativity-and-customization">4. <strong>Creativity and Customization</strong></h3>
-<ul>
-  <li><strong>From Scratch</strong>: You have complete control over the code structure and can build custom solutions tailored to your exact needs. This approach allows for more creativity, as you can experiment freely without relying on predefined patterns or suggestions.</li>
-  <li><strong>With Copilot</strong>: Copilot may default to common patterns or solutions, which can sometimes restrict creativity or lead to generic code if you aren’t intentional about customizing it. However, Copilot can still spark new ideas by suggesting alternative ways to solve a problem.</li>
-</ul>
-
-<h3 id="5-error-prone-vs-error-corrective">5. <strong>Error-Prone vs. Error-Corrective</strong></h3>
-<ul>
-  <li><strong>From Scratch</strong>: Writing code manually means you might make more syntax or logical errors, especially when working on complex code. Debugging can take longer since you’ve created all parts yourself.</li>
-  <li><strong>With Copilot</strong>: Copilot reduces the chances of syntax errors by suggesting code that is likely syntactically correct, although logical errors are still possible. It can help avoid common mistakes by completing or auto-correcting code structures, reducing some errors but not eliminating them entirely.</li>
-</ul>
-
-<h3 id="6-dependency-on-code-assistance">6. <strong>Dependency on Code Assistance</strong></h3>
-<ul>
-  <li><strong>From Scratch</strong>: When you write code independently, you rely more on your skills and understanding, which builds confidence in tackling projects without assistance.</li>
-  <li><strong>With Copilot</strong>: There’s a risk of developing a dependency on Copilot or similar tools if used constantly. It’s important to strike a balance to avoid becoming overly reliant, which might impact your ability to write complex code independently.</li>
-</ul>
-
-<h3 id="example-comparison">Example Comparison</h3>
-
-<p>Let’s say you’re writing a Python function to train a machine learning model:</p>
-
-<ul>
-  <li>
-    <p><strong>From Scratch</strong>: You’ll start by manually importing the necessary libraries, setting up the dataset loading functions, defining the model, training loop, and evaluation code. You’ll carefully consider each line’s purpose and ensure all components work together.</p>
-  </li>
-  <li>
-    <p><strong>With Copilot</strong>: You might start by typing a comment like <code class="highlighter-rouge"># Train a CNN model on the dataset</code> and Copilot might auto-suggest code for setting up the model, loading data, and writing the training loop. It might even add steps like setting a learning rate scheduler or saving checkpoints based on common patterns, helping you move faster. However, it’s essential to understand each line to ensure it’s appropriate for your specific case.</p>
-  </li>
-</ul>
-
-<p>Using both approaches effectively can help you code efficiently while still deepening your knowledge and skills.</p>
-
-<p>The complexity of code written from scratch versus code generated by tools like GitHub Copilot can vary significantly, as each approach has its unique impact on how complex or streamlined the final code may be. Here’s a breakdown:</p>
-
-<h3 id="1-control-over-complexity">1. <strong>Control Over Complexity</strong></h3>
-<ul>
-  <li><strong>From Scratch</strong>: Writing code from scratch gives you complete control over the complexity of your solution. You can tailor each part to be as simple or as intricate as needed, and you’re mindful of how each piece fits together. For instance, if you’re building a custom algorithm, you can optimize it for performance and readability as you go, which helps manage complexity.</li>
-  <li><strong>With Copilot</strong>: Copilot generates code based on common patterns and popular solutions found in public repositories. It can sometimes introduce complex solutions that, while effective, might not be the simplest approach for your specific case. This complexity may include extra configurations, unnecessary layers, or less-readable code that could complicate debugging or scaling.</li>
-</ul>
-
-<h3 id="2-code-readability-and-maintainability">2. <strong>Code Readability and Maintainability</strong></h3>
-<ul>
-  <li><strong>From Scratch</strong>: When you write from scratch, you have more freedom to prioritize readability and maintainability. Since you’re crafting each line, you’re more likely to include comments, logical organization, and formatting choices that make sense for future maintenance.</li>
-  <li><strong>With Copilot</strong>: Copilot may generate code that works, but not necessarily in a style that’s easy to understand or maintain, especially if it’s incorporating complex methods or patterns you didn’t intend to use. Generated code may lack the logical flow or documentation that makes it immediately understandable, so it’s crucial to review, refactor, and document suggestions to keep things manageable.</li>
-</ul>
-
-<h3 id="3-scalability-of-complexity">3. <strong>Scalability of Complexity</strong></h3>
-<ul>
-  <li><strong>From Scratch</strong>: Starting from scratch allows you to design for scalability from the beginning. For example, you can make modular choices—such as separating functions and classes into reusable components—according to your specific requirements.</li>
-  <li><strong>With Copilot</strong>: While Copilot can suggest scalable patterns, it might not always do so in the way you’d like or with your project’s structure in mind. If you’re not careful, Copilot may introduce complexity that doesn’t scale well, such as overly nested functions, redundant code, or tightly coupled components that make scaling challenging.</li>
-</ul>
-
-<h3 id="4-algorithmic-complexity">4. <strong>Algorithmic Complexity</strong></h3>
-<ul>
-  <li><strong>From Scratch</strong>: When you write code manually, you have full awareness of algorithmic complexity, such as time and space complexity. You can choose algorithms and data structures best suited to your requirements, which often results in optimized code.</li>
-  <li><strong>With Copilot</strong>: Copilot typically suggests solutions that are syntactically correct and commonly used, but it may not always consider algorithmic efficiency. For example, Copilot may suggest a straightforward solution that is more computationally intensive than necessary, especially if it’s based on patterns in open-source code where performance wasn’t the primary focus.</li>
-</ul>
-
-<h3 id="5-error-handling-and-edge-cases">5. <strong>Error Handling and Edge Cases</strong></h3>
-<ul>
-  <li><strong>From Scratch</strong>: When writing from scratch, you’re often more attentive to error handling, validation, and edge cases since you’re deeply involved in each function and step.</li>
-  <li><strong>With Copilot</strong>: Copilot might not include specific error handling or edge-case coverage unless you prompt it to do so. It can sometimes miss subtle complexities in error scenarios or exceptions, potentially leading to more brittle code. You may need to add custom checks and handling to ensure robust code.</li>
-</ul>
-
-<h3 id="example-comparison-of-complexity">Example Comparison of Complexity</h3>
-
-<p>Imagine you’re writing a function to process data for a machine learning pipeline:</p>
-
-<ul>
-  <li>
-    <p><strong>From Scratch</strong>: You might manually set up the data loading, validation checks, and processing logic, such as normalization and encoding. This gives you control over each step and ensures that it’s as efficient and straightforward as possible for your specific dataset and use case.</p>
-  </li>
-  <li>
-    <p><strong>With Copilot</strong>: Copilot might suggest a data processing function that includes several extra steps, such as data augmentation techniques or additional encoding, based on patterns it has seen. While helpful, these additional steps can introduce complexity, making the function harder to understand or debug if they aren’t necessary for your case. You may need to simplify or refactor Copilot’s output to align it with your intended approach.</p>
-  </li>
-</ul>
-
-<h3 id="summary">Summary</h3>
-
-<p>In short:</p>
-<ul>
-  <li><strong>From Scratch</strong>: Allows for controlled, intentional complexity where you decide exactly how intricate the code should be. It can take longer but typically results in more optimized and tailored code.</li>
-  <li><strong>With Copilot</strong>: Can introduce unintended complexity through suggestions that are correct but not necessarily optimized for your situation. It speeds up development but requires careful review to ensure it aligns with your design goals and complexity requirements.</li>
-</ul>
-
-<p>Ultimately, balancing both approaches can help you manage complexity effectively, using Copilot to generate ideas or handle repetitive tasks, while refining and optimizing the code yourself for the best balance of efficiency and readability.</p>]]></content><author><name></name></author><category term="Update" /><summary type="html"><![CDATA[Code From Scratch Versus Using a Tool Like GitHub Copilot The main differences between writing code from scratch and using a tool like GitHub Copilot or another code completion assistant are related to efficiency, guidance, and creativity. Let’s explore the differences in a few key areas:]]></summary></entry><entry><title type="html">Python Packages Help Automate Dataset Preprocessing</title><link href="http://localhost:4000/update/2024/09/02/Preprossesing.html" rel="alternate" type="text/html" title="Python Packages Help Automate Dataset Preprocessing" /><published>2024-09-02T20:31:29-04:00</published><updated>2024-09-02T20:31:29-04:00</updated><id>http://localhost:4000/update/2024/09/02/Preprossesing</id><content type="html" xml:base="http://localhost:4000/update/2024/09/02/Preprossesing.html"><![CDATA[<h3 id="python-packages-help-automate-dataset-preprocessing">Python Packages Help Automate Dataset Preprocessing</h3>
+<p>These packages offer a wide range of feature engineering capabilities, from automated feature extraction to custom transformations for specific data types. You can choose the best one depending on your dataset and the type of features you want to generate.</p>]]></content><author><name></name></author><category term="Update" /><summary type="html"><![CDATA[Python Packages Specialize for Feature Engineering Techniques Several Python packages specialize in feature engineering techniques, which can help automate tasks like encoding, scaling, generating interaction features, or extracting domain-specific features. Here are some popular feature engineering packages and examples of how to use them:]]></summary></entry><entry><title type="html">Python Packages Help Automate Dataset Preprocessing</title><link href="http://localhost:4000/update/2024/09/02/Preprossesing.html" rel="alternate" type="text/html" title="Python Packages Help Automate Dataset Preprocessing" /><published>2024-09-02T20:31:29-04:00</published><updated>2024-09-02T20:31:29-04:00</updated><id>http://localhost:4000/update/2024/09/02/Preprossesing</id><content type="html" xml:base="http://localhost:4000/update/2024/09/02/Preprossesing.html"><![CDATA[<h3 id="python-packages-help-automate-dataset-preprocessing">Python Packages Help Automate Dataset Preprocessing</h3>
 <p>There are several Python packages that can help automate dataset preprocessing, provide insights, and suggest improvements. Here are some popular ones:</p>
 
 <ol>
@@ -2041,7 +2046,114 @@ Analyze and visualize the statistical properties and distributions of a dataset<
 
 <p>DataPrep won’t automatically preprocess the dataset but can be used for selective cleaning tasks on text, dates, or duplicates.</p>
 
-<p>These examples demonstrate the most practical approaches in each package for retrieving preprocessed datasets!</p>]]></content><author><name></name></author><category term="Update" /><summary type="html"><![CDATA[Python Packages Help Automate Dataset Preprocessing There are several Python packages that can help automate dataset preprocessing, provide insights, and suggest improvements. Here are some popular ones:]]></summary></entry><entry><title type="html">Recurrent Neural Network Models</title><link href="http://localhost:4000/update/2024/01/23/Forecasting-Alghorithems.html" rel="alternate" type="text/html" title="Recurrent Neural Network Models" /><published>2024-01-23T19:31:29-05:00</published><updated>2024-01-23T19:31:29-05:00</updated><id>http://localhost:4000/update/2024/01/23/Forecasting-Alghorithems</id><content type="html" xml:base="http://localhost:4000/update/2024/01/23/Forecasting-Alghorithems.html"><![CDATA[<h3 id="recurrent-neural-network-models-for-forecasting">Recurrent Neural Network Models For Forecasting</h3>
+<p>These examples demonstrate the most practical approaches in each package for retrieving preprocessed datasets!</p>]]></content><author><name></name></author><category term="Update" /><summary type="html"><![CDATA[Python Packages Help Automate Dataset Preprocessing There are several Python packages that can help automate dataset preprocessing, provide insights, and suggest improvements. Here are some popular ones:]]></summary></entry><entry><title type="html">Code From Scratch Versus Using a Tool Like GitHub Copilot</title><link href="http://localhost:4000/update/2024/09/02/code-vers_copilot.html" rel="alternate" type="text/html" title="Code From Scratch Versus Using a Tool Like GitHub Copilot" /><published>2024-09-02T20:31:29-04:00</published><updated>2024-09-02T20:31:29-04:00</updated><id>http://localhost:4000/update/2024/09/02/code-vers_copilot</id><content type="html" xml:base="http://localhost:4000/update/2024/09/02/code-vers_copilot.html"><![CDATA[<h3 id="code-from-scratch-versus-using-a-tool-like-github-copilot">Code From Scratch Versus Using a Tool Like GitHub Copilot</h3>
+<p>The main differences between writing code <strong>from scratch</strong> and using a tool like <strong>GitHub Copilot</strong> or another code completion assistant are related to <strong>efficiency</strong>, <strong>guidance</strong>, and <strong>creativity</strong>. Let’s explore the differences in a few key areas:</p>
+
+<h3 id="1-efficiency">1. <strong>Efficiency</strong></h3>
+<ul>
+  <li><strong>From Scratch</strong>: Writing from scratch means starting with a blank slate. You need to conceptualize every step and write each line manually, which can be time-consuming. It requires thinking about the entire problem structure, syntax, and functionality yourself.</li>
+  <li><strong>With Copilot</strong>: Copilot can quickly generate large sections of code based on comments, prompts, or partially written code. It helps speed up repetitive or boilerplate tasks, like setting up configurations, writing standard functions, or implementing common patterns, making it faster to get started and progress.</li>
+</ul>
+
+<h3 id="2-guidance-and-suggestions">2. <strong>Guidance and Suggestions</strong></h3>
+<ul>
+  <li><strong>From Scratch</strong>: When writing from scratch, you rely solely on your own knowledge or documentation for guidance, which can sometimes lead to slower problem-solving, especially for new or complex concepts.</li>
+  <li><strong>With Copilot</strong>: Copilot provides real-time suggestions that can guide your coding direction. It suggests code that fits with what you’re already writing and can sometimes even introduce ideas or approaches you may not have considered. This can be especially helpful when you’re exploring unfamiliar libraries or frameworks.</li>
+</ul>
+
+<h3 id="3-learning-and-skill-development">3. <strong>Learning and Skill Development</strong></h3>
+<ul>
+  <li><strong>From Scratch</strong>: Writing code manually strengthens your understanding of programming concepts, syntax, and problem-solving. You are actively engaging in each step, which can reinforce your skills and help you learn the intricacies of the codebase.</li>
+  <li><strong>With Copilot</strong>: While Copilot can accelerate coding, it might limit deep learning if you rely on it too heavily without understanding the underlying logic. It’s easy to accept suggestions without fully processing them, so reviewing and studying what it generates is essential to maintain learning.</li>
+</ul>
+
+<h3 id="4-creativity-and-customization">4. <strong>Creativity and Customization</strong></h3>
+<ul>
+  <li><strong>From Scratch</strong>: You have complete control over the code structure and can build custom solutions tailored to your exact needs. This approach allows for more creativity, as you can experiment freely without relying on predefined patterns or suggestions.</li>
+  <li><strong>With Copilot</strong>: Copilot may default to common patterns or solutions, which can sometimes restrict creativity or lead to generic code if you aren’t intentional about customizing it. However, Copilot can still spark new ideas by suggesting alternative ways to solve a problem.</li>
+</ul>
+
+<h3 id="5-error-prone-vs-error-corrective">5. <strong>Error-Prone vs. Error-Corrective</strong></h3>
+<ul>
+  <li><strong>From Scratch</strong>: Writing code manually means you might make more syntax or logical errors, especially when working on complex code. Debugging can take longer since you’ve created all parts yourself.</li>
+  <li><strong>With Copilot</strong>: Copilot reduces the chances of syntax errors by suggesting code that is likely syntactically correct, although logical errors are still possible. It can help avoid common mistakes by completing or auto-correcting code structures, reducing some errors but not eliminating them entirely.</li>
+</ul>
+
+<h3 id="6-dependency-on-code-assistance">6. <strong>Dependency on Code Assistance</strong></h3>
+<ul>
+  <li><strong>From Scratch</strong>: When you write code independently, you rely more on your skills and understanding, which builds confidence in tackling projects without assistance.</li>
+  <li><strong>With Copilot</strong>: There’s a risk of developing a dependency on Copilot or similar tools if used constantly. It’s important to strike a balance to avoid becoming overly reliant, which might impact your ability to write complex code independently.</li>
+</ul>
+
+<h3 id="example-comparison">Example Comparison</h3>
+
+<p>Let’s say you’re writing a Python function to train a machine learning model:</p>
+
+<ul>
+  <li>
+    <p><strong>From Scratch</strong>: You’ll start by manually importing the necessary libraries, setting up the dataset loading functions, defining the model, training loop, and evaluation code. You’ll carefully consider each line’s purpose and ensure all components work together.</p>
+  </li>
+  <li>
+    <p><strong>With Copilot</strong>: You might start by typing a comment like <code class="highlighter-rouge"># Train a CNN model on the dataset</code> and Copilot might auto-suggest code for setting up the model, loading data, and writing the training loop. It might even add steps like setting a learning rate scheduler or saving checkpoints based on common patterns, helping you move faster. However, it’s essential to understand each line to ensure it’s appropriate for your specific case.</p>
+  </li>
+</ul>
+
+<p>Using both approaches effectively can help you code efficiently while still deepening your knowledge and skills.</p>
+
+<p>The complexity of code written from scratch versus code generated by tools like GitHub Copilot can vary significantly, as each approach has its unique impact on how complex or streamlined the final code may be. Here’s a breakdown:</p>
+
+<h3 id="1-control-over-complexity">1. <strong>Control Over Complexity</strong></h3>
+<ul>
+  <li><strong>From Scratch</strong>: Writing code from scratch gives you complete control over the complexity of your solution. You can tailor each part to be as simple or as intricate as needed, and you’re mindful of how each piece fits together. For instance, if you’re building a custom algorithm, you can optimize it for performance and readability as you go, which helps manage complexity.</li>
+  <li><strong>With Copilot</strong>: Copilot generates code based on common patterns and popular solutions found in public repositories. It can sometimes introduce complex solutions that, while effective, might not be the simplest approach for your specific case. This complexity may include extra configurations, unnecessary layers, or less-readable code that could complicate debugging or scaling.</li>
+</ul>
+
+<h3 id="2-code-readability-and-maintainability">2. <strong>Code Readability and Maintainability</strong></h3>
+<ul>
+  <li><strong>From Scratch</strong>: When you write from scratch, you have more freedom to prioritize readability and maintainability. Since you’re crafting each line, you’re more likely to include comments, logical organization, and formatting choices that make sense for future maintenance.</li>
+  <li><strong>With Copilot</strong>: Copilot may generate code that works, but not necessarily in a style that’s easy to understand or maintain, especially if it’s incorporating complex methods or patterns you didn’t intend to use. Generated code may lack the logical flow or documentation that makes it immediately understandable, so it’s crucial to review, refactor, and document suggestions to keep things manageable.</li>
+</ul>
+
+<h3 id="3-scalability-of-complexity">3. <strong>Scalability of Complexity</strong></h3>
+<ul>
+  <li><strong>From Scratch</strong>: Starting from scratch allows you to design for scalability from the beginning. For example, you can make modular choices—such as separating functions and classes into reusable components—according to your specific requirements.</li>
+  <li><strong>With Copilot</strong>: While Copilot can suggest scalable patterns, it might not always do so in the way you’d like or with your project’s structure in mind. If you’re not careful, Copilot may introduce complexity that doesn’t scale well, such as overly nested functions, redundant code, or tightly coupled components that make scaling challenging.</li>
+</ul>
+
+<h3 id="4-algorithmic-complexity">4. <strong>Algorithmic Complexity</strong></h3>
+<ul>
+  <li><strong>From Scratch</strong>: When you write code manually, you have full awareness of algorithmic complexity, such as time and space complexity. You can choose algorithms and data structures best suited to your requirements, which often results in optimized code.</li>
+  <li><strong>With Copilot</strong>: Copilot typically suggests solutions that are syntactically correct and commonly used, but it may not always consider algorithmic efficiency. For example, Copilot may suggest a straightforward solution that is more computationally intensive than necessary, especially if it’s based on patterns in open-source code where performance wasn’t the primary focus.</li>
+</ul>
+
+<h3 id="5-error-handling-and-edge-cases">5. <strong>Error Handling and Edge Cases</strong></h3>
+<ul>
+  <li><strong>From Scratch</strong>: When writing from scratch, you’re often more attentive to error handling, validation, and edge cases since you’re deeply involved in each function and step.</li>
+  <li><strong>With Copilot</strong>: Copilot might not include specific error handling or edge-case coverage unless you prompt it to do so. It can sometimes miss subtle complexities in error scenarios or exceptions, potentially leading to more brittle code. You may need to add custom checks and handling to ensure robust code.</li>
+</ul>
+
+<h3 id="example-comparison-of-complexity">Example Comparison of Complexity</h3>
+
+<p>Imagine you’re writing a function to process data for a machine learning pipeline:</p>
+
+<ul>
+  <li>
+    <p><strong>From Scratch</strong>: You might manually set up the data loading, validation checks, and processing logic, such as normalization and encoding. This gives you control over each step and ensures that it’s as efficient and straightforward as possible for your specific dataset and use case.</p>
+  </li>
+  <li>
+    <p><strong>With Copilot</strong>: Copilot might suggest a data processing function that includes several extra steps, such as data augmentation techniques or additional encoding, based on patterns it has seen. While helpful, these additional steps can introduce complexity, making the function harder to understand or debug if they aren’t necessary for your case. You may need to simplify or refactor Copilot’s output to align it with your intended approach.</p>
+  </li>
+</ul>
+
+<h3 id="summary">Summary</h3>
+
+<p>In short:</p>
+<ul>
+  <li><strong>From Scratch</strong>: Allows for controlled, intentional complexity where you decide exactly how intricate the code should be. It can take longer but typically results in more optimized and tailored code.</li>
+  <li><strong>With Copilot</strong>: Can introduce unintended complexity through suggestions that are correct but not necessarily optimized for your situation. It speeds up development but requires careful review to ensure it aligns with your design goals and complexity requirements.</li>
+</ul>
+
+<p>Ultimately, balancing both approaches can help you manage complexity effectively, using Copilot to generate ideas or handle repetitive tasks, while refining and optimizing the code yourself for the best balance of efficiency and readability.</p>]]></content><author><name></name></author><category term="Update" /><summary type="html"><![CDATA[Code From Scratch Versus Using a Tool Like GitHub Copilot The main differences between writing code from scratch and using a tool like GitHub Copilot or another code completion assistant are related to efficiency, guidance, and creativity. Let’s explore the differences in a few key areas:]]></summary></entry><entry><title type="html">Recurrent Neural Network Models</title><link href="http://localhost:4000/update/2024/01/23/Forecasting-Alghorithems.html" rel="alternate" type="text/html" title="Recurrent Neural Network Models" /><published>2024-01-23T19:31:29-05:00</published><updated>2024-01-23T19:31:29-05:00</updated><id>http://localhost:4000/update/2024/01/23/Forecasting-Alghorithems</id><content type="html" xml:base="http://localhost:4000/update/2024/01/23/Forecasting-Alghorithems.html"><![CDATA[<h3 id="recurrent-neural-network-models-for-forecasting">Recurrent Neural Network Models For Forecasting</h3>
 
 <p>LSTM achieves this by learning the weights for internal gates that control the recurrent connections within each node. Although developed for sequence data, LSTMs have not proven effective on time series forecasting problems where the output is a function of recent observations, e.g. an autoregressive type forecasting problem, such as the car sales dataset.</p>
 
@@ -3007,6 +3119,4 @@ If there is no error term, where does the <strong>uncertainty</strong> come from
 
 <p><img src="/assets/sigmoid/Aspose.Words.f06965dc-5caa-4654-b599-bd950b862427.013.png" alt="" /></p>
 
-<p><strong>Equation - Sigmoid function</strong></p>]]></content><author><name></name></author><category term="update" /><summary type="html"><![CDATA[Model Given a classification problem, one of the more straightforward models is the logistic regression. But, instead of simply presenting it and using it right away, I am going to build up to it. The rationale behind this approach is twofold: First, it will make clear why this algorithm is called logistic regression if it is used for classification; second, you’ll get a clear understanding of what a logit is. Well, since it is called logistic regression, I would say that linear regression is a good starting point. What would a linear regression model with two features look like? \[\Huge y=b+w_1x_1+w_2x_2+ϵ\] A linear regression model with two features There is one obvious problem with the model above: Our labels (y) are discrete; that is, they are either zero or one; no other value is allowed. We need to change the model slightly to adapt it to our purposes. What if we assign the positive outputs to one and the negative outputs to zero? Makes sense, right? We’re already calling them positive and negative classes anyway; why not put their names to good use? Our model would look like this: Logits \(\color{red}{\text{Equation above Mapping a linear regression model to discrete labels.}}\) To make our lives easier, let’s give the right-hand side of the equation above a name: logit (z). Computing logits The equation above is strikingly similar to the original linear regression model, but we’re calling the resulting value z, or logit, instead of y, or label. Does it mean a **logit is the same as linear regression?** Not quite—there is one fundamental difference between them: There is no error term (epsilon) in Equation above. If there is no error term, where does the uncertainty come from? I am glad you asked :smiley: That’s the role of the probability: Instead of assigning a data point to a discrete label (zero or one), we’ll compute the probability of a data point’s belonging to the positive class. Probabilities If a data point has a logit that equals zero, it is exactly at the decision boundary since it is neither positive nor negative. For the sake of completeness, we assigned it to the positive class, but this assignment has maximum uncertainty, right? So, the corresponding probability needs to be 0.5 (50%), since it could go either way. Following this reasoning, we would like to have large positive logit values assigned to higher probabilities (of being in the positive class) and large negative logit values assigned to lower probabilities (of being in the positive class). For really large positive and negative logit values (z), we would like to have: Probabilities assigned to different logit values (z) We still need to figure out a function that maps logit values into probabilities. We’ll get there soon enough, but first, we need to talk about… Odds Ratio What are the odds?! This is a colloquial expression meaning something very unlikely has happened. But odds do not have to refer to an unlikely event or a slim chance. The odds of getting heads in a (fair) coin flip are 1 to 1 since there is a 50% chance of success and a 50% chance of failure. Let’s imagine we are betting on the winner of the World Cup final. There are two countries: A and B. Country A is the favorite: It has a 75% chance of winning. So, Country B has only a 25% chance of winning. If you bet on Country A, your chances of winning—that is, your odds (in favor)—are 3 to 1 (75 to 25). If you decide to test your luck and bet on Country B, your chances of winning—that is, your odds (in favor)—are 1 to 3 (25 to 75), or 0.33 to 1. The odds ratio is given by the ratio between the probability of success (p) and the probability of failure (q): Odds ratio In code, our odds_ratio() function looks like this: def odds_ratio(prob): return prob / (1 - prob) p = .75 q = 1 - p odds_ratio(p), odds_ratio(q) *Output* (3.0, 0.3333333333333333) We can also plot the resulting odds ratios for probabilities ranging from 1% to 99%. The red dots correspond to the probabilities of 25% (q), 50%, and 75% (p). Odds ratio Clearly, the odds ratios (left plot) are not symmetrical. But, in a log scale (right plot), they are. This serves us very well since we’re looking for a symmetrical function that maps logit values into probabilities. Why does it need to be symmetrical? If the function weren’t symmetrical, different choices for the positive class would produce models that were not equivalent. But, using a symmetrical function, we could train two equivalent models using the same dataset, just flipping the classes: Blue Model (the positive class (y=1) corresponds to blue points) Data Point #1: P(y=1) = P(blue) = .83 (which is the same as P(red) = .17) Red Model (the positive class (y=1) corresponds to red points) Data Point #1: P(y=1) = P(red) = .17 (which is the same as P(blue) = .83) ##Log Odds Ratio By taking the logarithm of the odds ratio, the function is not only symmetrical, but also maps probabilities into real numbers, instead of only the positive ones: Log odds ratio In code, our log_odds_ratio() function looks like this: def log_odds_ratio(prob): return np.log(odds\_ratio(prob)) $$p = .75$$ $$q = 1 - p$$ $$\log_odds_ratio(p), log_odds_ratio(q)$$ *Output* (1.0986122886681098, -1.0986122886681098) As expected, probabilities that add up to 100% (like 75% and 25%) correspond to log odds ratios that are the same in absolute value. Let’s plot it: Log odds ratio and probability On the left, each probability maps into a log odds ratio. The red dots correspond to probabilities of 25%, 50%, and 75%, the same as before. If we flip the horizontal and vertical axes (right plot), we are inverting the function, thus mapping each log odds ratio into a probability. That’s the function we were looking for! Does its shape look familiar? Wait for it… From Logits to Probabilities In the previous section, we were trying to map logit values into probabilities, and we’ve just found out, graphically, a function that maps log odds ratios into probabilities. Clearly, our logits are log odds ratios :-) Sure, drawing conclusions like this is not very scientific, but the purpose of this exercise is to illustrate how the results of a regression, represented by the logits (z), get to be mapped into probabilities. So, here’s what we arrived at: Equation - Regression, logits, and log odds ratios Let’s work this equation out a bit, inverting, rearranging, and simplifying some terms to isolate p: Equation - From logits (z) to probabilities (p) Does it look familiar? That’s a sigmoid function! It is the inverse of the log odds ratio. Equation - Sigmoid function]]></summary></entry><entry><title type="html">Autograd Encodes Execution</title><link href="http://localhost:4000/update/2023/01/31/Autograd-Encodes.html" rel="alternate" type="text/html" title="Autograd Encodes Execution" /><published>2023-01-31T05:31:29-05:00</published><updated>2023-01-31T05:31:29-05:00</updated><id>http://localhost:4000/update/2023/01/31/Autograd-Encodes</id><content type="html" xml:base="http://localhost:4000/update/2023/01/31/Autograd-Encodes.html"><![CDATA[<h2 id="how-autograd-encodes-execution-work">How autograd encodes execution work?</h2>
-<iframe src="/assets/PyTorch.html" onload="javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+&quot;px&quot;;}(this));" style="height:500px;width:100%;border:none;overflow:hidden;">
- </iframe>]]></content><author><name></name></author><category term="update" /><summary type="html"><![CDATA[How autograd encodes execution work?]]></summary></entry></feed>
+<p><strong>Equation - Sigmoid function</strong></p>]]></content><author><name></name></author><category term="update" /><summary type="html"><![CDATA[&lt;!—]]></summary></entry></feed>
