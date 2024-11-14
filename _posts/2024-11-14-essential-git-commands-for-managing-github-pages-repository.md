@@ -1,6 +1,6 @@
 ---
 layout: post
-title: essential Git commands for managing your GitHub Pages repository
+title: Essential Git Commands for Managing  GitHub Pages Repository
 date: 2024-11-14 15:54 -0500
 ---
 Here’s a list of essential Git commands for managing a GitHub Pages repository I will consider  (`modeha.github.io`), including creating branches, committing changes, merging, and pushing to GitHub.
