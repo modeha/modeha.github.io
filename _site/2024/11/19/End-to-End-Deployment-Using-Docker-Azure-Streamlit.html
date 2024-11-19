@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Deep Learning" /></head>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<style>@import url(/public/css/syntax/monokai.css);</style>
+  <title>Deep Learning</title>
+  <!-- <link href="/public/css/bootstrap.min.css" rel="stylesheet"> -->
+
+  <link href="/public/css/style.css" rel="stylesheet">
+  <body>
+  	<div class="container"> 
+		<div class="sidebar">
+			<div class="sidebar-item sidebar-header">
+	<div class='sidebar-brand'>
+		<a href="/about/">Deep Learning</a>
+	</div>
+	<p class="lead">A blog exploring deep learning, AI, and data science topics by Mohsen Dehghani.</p></div>
+
+<div class="sidebar-item sidebar-nav">
+	<ul class="nav">
+      <li class="nav-title">Pages</li>
+	  <li>
+	  	<a class="nav-item" href="/">Articles</a>
+	  </li>
+	  
+	  
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/about/">
+	            	About
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	</ul>
+</div>
+
+<div class="sidebar-item sidebar-nav">
+  	<ul class="nav">
+			<li class="nav-title">Categories</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#Update">
+				<span class="name">Update</span>
+				<span class="badge">13</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#update">
+				<span class="name">update</span>
+				<span class="badge">6</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#Jekyll">
+				<span class="name">Jekyll</span>
+				<span class="badge">1</span>
+	    	</a>
+ 		</li>
+	    
+	  </nav>
+	</ul>
+</div>
+
+<div class="sidebar-item sidebar-footer">
+	<p>Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a></p>
+</div>
+		</div>
+		<div class="content">
+			<article class="post">
+	<header class="post-header">
+		<div class="post-title"> 
+			End-to-End Deployment of an AI Model Using Docker, Azure, and Streamlit
+		</div>
+		<time class="post-date dt-published" datetime="2024-11-19T07:24:00-05:00" itemprop="datePublished">2024/11/19
+		</time>		
+	</header>
+
+	<div class="post-content">
+		<h3 id="section-4-end-to-end-deployment-of-an-ai-model-using-docker-azure-and-streamlit"><strong>section 4: End-to-End Deployment of an AI Model Using Docker, Azure, and Streamlit</strong></h3>
+
+<hr />
+
+<h4 id="41-designing-the-ai-solution"><strong>4.1 Designing the AI Solution</strong></h4>
+
+<ul>
+  <li><strong>Overview of the AI Model Pipeline</strong>
+    <ul>
+      <li>The pipeline for deploying an AI model typically includes stages like data ingestion, preprocessing, model inference, and visualization. In this section, we’ll walk through deploying an image classification model as a web application using Docker, Azure, and Streamlit.</li>
+      <li><strong>Pipeline Steps</strong>:
+        <ul>
+          <li><strong>Input Handling</strong>: The app will allow users to upload an image.</li>
+          <li><strong>Data Preprocessing</strong>: Image resizing and scaling for compatibility with the model.</li>
+          <li><strong>Model Inference</strong>: Running the model to get predictions.</li>
+          <li><strong>Output Visualization</strong>: Displaying the prediction results in a user-friendly interface.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>High-Level Architecture</strong>
+    <ul>
+      <li>The solution’s architecture includes the following components:
+        <ul>
+          <li><strong>Streamlit Front-End</strong>: The user-facing interface, where users upload images and see predictions.</li>
+          <li><strong>Dockerized Application</strong>: Encapsulates the model and application code in a Docker container for consistency across environments.</li>
+          <li><strong>Azure Cloud Platform</strong>: Hosts the Dockerized application, making it accessible as a web service.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h4 id="42-preparing-the-docker-container"><strong>4.2 Preparing the Docker Container</strong></h4>
+
+<ul>
+  <li><strong>Writing the Dockerfile</strong>
+    <ul>
+      <li>The Dockerfile serves as the blueprint for creating a container that includes all dependencies for running the Streamlit application and model.</li>
+      <li>Sample Dockerfile for an AI application:
+        <div class="language-Dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Start with a base Python image</span>
+<span class="k">FROM</span><span class="s"> python:3.8</span>
+
+<span class="c"># Set the working directory</span>
+<span class="k">WORKDIR</span><span class="s"> /app</span>
+
+<span class="c"># Copy the current directory contents into the container</span>
+<span class="k">COPY</span><span class="s"> . /app</span>
+
+<span class="c"># Install dependencies</span>
+<span class="k">RUN </span>pip <span class="nb">install</span> <span class="nt">-r</span> requirements.txt
+
+<span class="c"># Expose the port on which Streamlit will run</span>
+<span class="k">EXPOSE</span><span class="s"> 8501</span>
+
+<span class="c"># Run the application</span>
+<span class="k">CMD</span><span class="s"> ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]</span>
+</code></pre></div>        </div>
+        <ul>
+          <li><strong>Explanation</strong>:
+            <ul>
+              <li><strong><code class="highlighter-rouge">FROM python:3.8</code></strong>: Specifies the base image.</li>
+              <li><strong><code class="highlighter-rouge">WORKDIR /app</code></strong> and <strong><code class="highlighter-rouge">COPY . /app</code></strong>: Sets the working directory and copies the local files.</li>
+              <li><strong><code class="highlighter-rouge">RUN pip install -r requirements.txt</code></strong>: Installs required packages (e.g., Streamlit, TensorFlow, PyTorch).</li>
+              <li><strong><code class="highlighter-rouge">EXPOSE 8501</code></strong>: Exposes the default Streamlit port.</li>
+              <li><strong><code class="highlighter-rouge">CMD [...]</code></strong>: Runs the Streamlit app when the container starts.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Building the Docker Image</strong>
+    <ul>
+      <li>After defining the Dockerfile, build the Docker image:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build <span class="nt">-t</span> ai-streamlit-app <span class="nb">.</span>
+</code></pre></div>        </div>
+      </li>
+      <li>This command packages the code, dependencies, and environment into a Docker image named <code class="highlighter-rouge">ai-streamlit-app</code>.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h4 id="43-deploying-the-docker-container-on-azure"><strong>4.3 Deploying the Docker Container on Azure</strong></h4>
+
+<ul>
+  <li><strong>Azure Container Instances (ACI) for Simple Deployments</strong>
+    <ul>
+      <li><strong>Push the Docker Image to Azure Container Registry (ACR)</strong>:
+        <ol>
+          <li>First, create a container registry in Azure.
+            <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>az acr create <span class="nt">--resource-group</span> myResourceGroup <span class="nt">--name</span> myContainerRegistry <span class="nt">--sku</span> Basic
+</code></pre></div>            </div>
+          </li>
+          <li>Log in to the registry and push the Docker image:
+            <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>az acr login <span class="nt">--name</span> myContainerRegistry
+docker tag ai-streamlit-app myContainerRegistry.azurecr.io/ai-streamlit-app
+docker push myContainerRegistry.azurecr.io/ai-streamlit-app
+</code></pre></div>            </div>
+          </li>
+        </ol>
+      </li>
+      <li><strong>Deploy the Image to ACI</strong>:
+        <ul>
+          <li>Create a container instance in ACI:
+            <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>az container create <span class="se">\</span>
+  <span class="nt">--resource-group</span> myResourceGroup <span class="se">\</span>
+  <span class="nt">--name</span> aiAppInstance <span class="se">\</span>
+  <span class="nt">--image</span> myContainerRegistry.azurecr.io/ai-streamlit-app <span class="se">\</span>
+  <span class="nt">--cpu</span> 1 <span class="nt">--memory</span> 1 <span class="se">\</span>
+  <span class="nt">--registry-login-server</span> myContainerRegistry.azurecr.io <span class="se">\</span>
+  <span class="nt">--registry-username</span> &lt;username&gt; <span class="se">\</span>
+  <span class="nt">--registry-password</span> &lt;password&gt; <span class="se">\</span>
+  <span class="nt">--dns-name-label</span> ai-streamlit-app <span class="se">\</span>
+  <span class="nt">--ports</span> 8501
+</code></pre></div>            </div>
+          </li>
+          <li><strong>Accessing the Deployed App</strong>:
+            <ul>
+              <li>The deployed application is now accessible at <code class="highlighter-rouge">http://ai-streamlit-app.region.azurecontainer.io:8501</code>.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Azure Kubernetes Service (AKS) for Scalable Deployments</strong>
+    <ul>
+      <li><strong>Why Use AKS?</strong>: AKS provides orchestration for managing multiple containers, load balancing, and scaling.</li>
+      <li><strong>Deploying on AKS</strong>:
+        <ul>
+          <li>Create an AKS cluster and configure it to pull images from ACR, providing a more robust and scalable deployment option for production environments.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h4 id="44-building-and-linking-the-streamlit-front-end"><strong>4.4 Building and Linking the Streamlit Front-End</strong></h4>
+
+<ul>
+  <li><strong>Creating the Streamlit Application Code (<code class="highlighter-rouge">app.py</code>)</strong>
+    <ul>
+      <li>Below is a sample Streamlit application to handle image uploads, preprocess the images, and display model predictions.
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="n">st</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
+
+<span class="c1"># Load the model
+</span><span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">models</span><span class="p">.</span><span class="n">load_model</span><span class="p">(</span><span class="s">"my_model.h5"</span><span class="p">)</span>
+
+<span class="c1"># App title and instructions
+</span><span class="n">st</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">"Image Classification App"</span><span class="p">)</span>
+<span class="n">st</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">"Upload an image to classify."</span><span class="p">)</span>
+
+<span class="c1"># File uploader widget
+</span><span class="n">uploaded_file</span> <span class="o">=</span> <span class="n">st</span><span class="p">.</span><span class="n">file_uploader</span><span class="p">(</span><span class="s">"Choose an image..."</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s">"jpg"</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">uploaded_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="n">uploaded_file</span><span class="p">)</span>
+    <span class="n">st</span><span class="p">.</span><span class="n">image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">caption</span><span class="o">=</span><span class="s">"Uploaded Image"</span><span class="p">,</span> <span class="n">use_column_width</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">st</span><span class="p">.</span><span class="n">button</span><span class="p">(</span><span class="s">"Classify Image"</span><span class="p">):</span>
+        <span class="c1"># Preprocess image
+</span>        <span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="p">.</span><span class="n">resize</span><span class="p">((</span><span class="mi">224</span><span class="p">,</span> <span class="mi">224</span><span class="p">))</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">preprocessing</span><span class="p">.</span><span class="n">image</span><span class="p">.</span><span class="n">img_to_array</span><span class="p">(</span><span class="n">image</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.0</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="p">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">224</span><span class="p">,</span> <span class="mi">224</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+        <span class="c1"># Predict
+</span>        <span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+        <span class="n">st</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s">"Predicted class: </span><span class="si">{</span><span class="n">predictions</span><span class="p">.</span><span class="n">argmax</span><span class="p">()</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Testing the Application Locally</strong>
+    <ul>
+      <li>Run the Streamlit app locally using Docker:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-p</span> 8501:8501 ai-streamlit-app
+</code></pre></div>        </div>
+      </li>
+      <li>Access the app at <code class="highlighter-rouge">http://localhost:8501</code> to verify functionality before deploying.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h4 id="45-monitoring-scaling-and-updating-the-model"><strong>4.5 Monitoring, Scaling, and Updating the Model</strong></h4>
+
+<ul>
+  <li><strong>Monitoring Model Performance with Azure Monitor</strong>
+    <ul>
+      <li>Azure Monitor collects logs and metrics for deployed applications, providing insights into model usage, prediction times, and errors.</li>
+      <li>Integrate Azure Monitor with ACI or AKS to capture logs from the container instances.</li>
+    </ul>
+  </li>
+  <li><strong>Scaling the Application</strong>
+    <ul>
+      <li>In AKS, configure the <strong>Horizontal Pod Autoscaler (HPA)</strong> to automatically scale the number of replicas based on CPU or memory utilization, ensuring high availability.</li>
+      <li>Example HPA configuration:
+        <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">autoscaling/v1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">HorizontalPodAutoscaler</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">ai-streamlit-app</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">maxReplicas</span><span class="pi">:</span> <span class="m">10</span>
+  <span class="na">minReplicas</span><span class="pi">:</span> <span class="m">1</span>
+  <span class="na">targetCPUUtilizationPercentage</span><span class="pi">:</span> <span class="m">50</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Updating the Model and Redeploying</strong>
+    <ul>
+      <li>Update the model, rebuild the Docker image, and push it to ACR. Use the following commands:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build <span class="nt">-t</span> ai-streamlit-app <span class="nb">.</span>
+docker tag ai-streamlit-app myContainerRegistry.azurecr.io/ai-streamlit-app
+docker push myContainerRegistry.azurecr.io/ai-streamlit-app
+</code></pre></div>        </div>
+      </li>
+      <li>Deploy the updated image in ACI or AKS to apply changes to the live application.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h4 id="46-implementing-continuous-integrationcontinuous-deployment-cicd-with-azure-devops"><strong>4.6 Implementing Continuous Integration/Continuous Deployment (CI/CD) with Azure DevOps</strong></h4>
+
+<ul>
+  <li><strong>Setting Up Azure DevOps Pipelines</strong>
+    <ul>
+      <li>Azure DevOps allows automated building, testing, and deployment of Docker images.</li>
+      <li><strong>Example YAML Pipeline</strong>:
+        <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">trigger</span><span class="pi">:</span>
+  <span class="na">branches</span><span class="pi">:</span>
+    <span class="na">include</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">main</span>
+
+<span class="na">pool</span><span class="pi">:</span>
+  <span class="na">vmImage</span><span class="pi">:</span> <span class="s1">'</span><span class="s">ubuntu-latest'</span>
+
+<span class="na">steps</span><span class="pi">:</span>
+<span class="pi">-</span> <span class="na">task</span><span class="pi">:</span> <span class="s">Docker@2</span>
+  <span class="na">inputs</span><span class="pi">:</span>
+    <span class="na">containerRegistry</span><span class="pi">:</span> <span class="s1">'</span><span class="s">myContainerRegistry'</span>
+    <span class="na">repository</span><span class="pi">:</span> <span class="s1">'</span><span class="s">ai-streamlit-app'</span>
+    <span class="na">command</span><span class="pi">:</span> <span class="s1">'</span><span class="s">buildAndPush'</span>
+    <span class="na">tags</span><span class="pi">:</span> <span class="s1">'</span><span class="s">$(Build.BuildId)'</span>
+
+<span class="pi">-</span> <span class="na">task</span><span class="pi">:</span> <span class="s">AzureCLI@2</span>
+  <span class="na">inputs</span><span class="pi">:</span>
+    <span class="na">azureSubscription</span><span class="pi">:</span> <span class="s1">'</span><span class="s">&lt;Your</span><span class="nv"> </span><span class="s">Subscription&gt;'</span>
+    <span class="na">scriptType</span><span class="pi">:</span> <span class="s1">'</span><span class="s">bash'</span>
+    <span class="na">scriptLocation</span><span class="pi">:</span> <span class="s1">'</span><span class="s">inlineScript'</span>
+    <span class="na">inlineScript</span><span class="pi">:</span> <span class="pi">|</span>
+      <span class="s">az container create --resource-group myResourceGroup --name aiAppInstance --image myContainerRegistry.azurecr.io/ai-streamlit-app:$(Build.BuildId) --cpu 1 --memory 1 --dns-name-label ai-streamlit-app --ports 8501</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Automating Updates and Monitoring CI/CD Pipeline</strong>
+    <ul>
+      <li>Each code push triggers the pipeline to rebuild the Docker image, push it to ACR, and deploy the updated container.</li>
+      <li>This setup allows rapid iteration and updates, ensuring the deployed AI model remains current with minimal manual intervention.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h4 id="47-best-practices-and-final-thoughts"><strong>4.7 Best Practices and Final Thoughts</strong></h4>
+
+<ul>
+  <li><strong>Security and Access Control</strong>
+    <ul>
+      <li>Restrict access to ACR, ACI, and AKS resources by configuring role-based access control (RBAC).</li>
+      <li>Use <strong>Azure Key Vault</strong> for secure storage of sensitive data like API keys and database credentials.</li>
+    </ul>
+  </li>
+  <li><strong>Optimizing Costs and Resources</strong>
+    <ul>
+      <li>Monitor and analyze usage to optimize resource allocation and cost-effectiveness, especially when scaling up in AKS.</li>
+      <li>Enable auto-scaling</li>
+    </ul>
+  </li>
+</ul>
+
+	</div>
+</article>
+		</div>
+	</div>
+  </body>
+</html>

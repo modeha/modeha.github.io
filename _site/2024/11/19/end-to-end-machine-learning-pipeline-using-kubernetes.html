@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Deep Learning" /></head>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<style>@import url(/public/css/syntax/monokai.css);</style>
+  <title>Deep Learning</title>
+  <!-- <link href="/public/css/bootstrap.min.css" rel="stylesheet"> -->
+
+  <link href="/public/css/style.css" rel="stylesheet">
+  <body>
+  	<div class="container"> 
+		<div class="sidebar">
+			<div class="sidebar-item sidebar-header">
+	<div class='sidebar-brand'>
+		<a href="/about/">Deep Learning</a>
+	</div>
+	<p class="lead">A blog exploring deep learning, AI, and data science topics by Mohsen Dehghani.</p></div>
+
+<div class="sidebar-item sidebar-nav">
+	<ul class="nav">
+      <li class="nav-title">Pages</li>
+	  <li>
+	  	<a class="nav-item" href="/">Articles</a>
+	  </li>
+	  
+	  
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/about/">
+	            	About
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	</ul>
+</div>
+
+<div class="sidebar-item sidebar-nav">
+  	<ul class="nav">
+			<li class="nav-title">Categories</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#Update">
+				<span class="name">Update</span>
+				<span class="badge">13</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#update">
+				<span class="name">update</span>
+				<span class="badge">6</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#Jekyll">
+				<span class="name">Jekyll</span>
+				<span class="badge">1</span>
+	    	</a>
+ 		</li>
+	    
+	  </nav>
+	</ul>
+</div>
+
+<div class="sidebar-item sidebar-footer">
+	<p>Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a></p>
+</div>
+		</div>
+		<div class="content">
+			<article class="post">
+	<header class="post-header">
+		<div class="post-title"> 
+			End-to-End Machine Learning Pipeline Using Kubernetes
+		</div>
+		<time class="post-date dt-published" datetime="2024-11-19T12:26:00-05:00" itemprop="datePublished">2024/11/19
+		</time>		
+	</header>
+
+	<div class="post-content">
+		<p><strong>End-to-End Machine Learning Pipeline</strong> using Kubernetes, starting from the dataset to deploying a trained model. Here’s the workflow:</p>
+
+<hr />
+
+<h3 id="setup-overview"><strong>Setup Overview</strong></h3>
+<p>We’ll use Kubernetes to:</p>
+<ol>
+  <li>Preprocess a dataset.</li>
+  <li>Train a model using <code class="highlighter-rouge">train.py</code>.</li>
+  <li>Save the trained model.</li>
+  <li>Deploy the trained model as an API for predictions.</li>
+</ol>
+
+<hr />
+
+<h3 id="prerequisites"><strong>Prerequisites</strong></h3>
+<ol>
+  <li><strong>Install Kubernetes on your Mac</strong>:
+    <ul>
+      <li>Use <strong>Docker Desktop</strong> with Kubernetes enabled, or install Kubernetes via <strong>Minikube</strong>.</li>
+    </ul>
+  </li>
+  <li><strong>Install <code class="highlighter-rouge">kubectl</code></strong>:
+    <ul>
+      <li>Verify Kubernetes is running:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get nodes
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Install Python</strong> (if needed) and ML libraries like <code class="highlighter-rouge">scikit-learn</code> or <code class="highlighter-rouge">TensorFlow</code>.</li>
+  <li><strong>Install Helm</strong> (optional): For managing Kubernetes packages.</li>
+</ol>
+
+<hr />
+
+<h3 id="step-1-dataset-preparation"><strong>Step 1: Dataset Preparation</strong></h3>
+<p>We’ll use a simple CSV dataset for house prices:</p>
+<pre><code class="language-csv"># Save this as dataset.csv
+square_footage,bedrooms,bathrooms,price
+1400,3,2,300000
+1600,4,2,350000
+1700,4,3,400000
+1200,2,1,200000
+1500,3,2,320000
+</code></pre>
+
+<p>Place this dataset in a directory, for example, <code class="highlighter-rouge">/Users/yourname/k8s-ml-pipeline</code>.</p>
+
+<hr />
+
+<h3 id="step-2-create-a-trainpy-script"><strong>Step 2: Create a <code class="highlighter-rouge">train.py</code> Script</strong></h3>
+<p>Here’s a basic training script using <code class="highlighter-rouge">scikit-learn</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># train.py
+</span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+
+<span class="c1"># Load the dataset
+</span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"dataset.csv"</span><span class="p">)</span>
+
+<span class="c1"># Features and target variable
+</span><span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s">"square_footage"</span><span class="p">,</span> <span class="s">"bedrooms"</span><span class="p">,</span> <span class="s">"bathrooms"</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">"price"</span><span class="p">]</span>
+
+<span class="c1"># Train the model
+</span><span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">model</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Save the model
+</span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"model.pkl"</span><span class="p">,</span> <span class="s">"wb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="p">.</span><span class="n">dump</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"Model trained and saved as model.pkl"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="step-3-dockerize-trainpy"><strong>Step 3: Dockerize <code class="highlighter-rouge">train.py</code></strong></h3>
+<ol>
+  <li><strong>Create a <code class="highlighter-rouge">Dockerfile</code>:</strong>
+    <div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> python:3.9-slim</span>
+
+<span class="c"># Copy files into the container</span>
+<span class="k">COPY</span><span class="s"> train.py /app/train.py</span>
+<span class="k">COPY</span><span class="s"> dataset.csv /app/dataset.csv</span>
+
+<span class="c"># Set the working directory</span>
+<span class="k">WORKDIR</span><span class="s"> /app</span>
+
+<span class="c"># Install dependencies</span>
+<span class="k">RUN </span>pip <span class="nb">install </span>pandas scikit-learn
+
+<span class="c"># Default command</span>
+<span class="k">CMD</span><span class="s"> ["python", "train.py"]</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Build the Docker Image</strong>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build <span class="nt">-t</span> train-ml:latest <span class="nb">.</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="step-4-create-a-kubernetes-job-for-training"><strong>Step 4: Create a Kubernetes Job for Training</strong></h3>
+<ol>
+  <li><strong>Job YAML</strong> (<code class="highlighter-rouge">train-job.yaml</code>):
+    <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">batch/v1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">Job</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">train-job</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">template</span><span class="pi">:</span>
+    <span class="na">spec</span><span class="pi">:</span>
+      <span class="na">containers</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">train-container</span>
+        <span class="na">image</span><span class="pi">:</span> <span class="s">train-ml:latest</span>
+        <span class="na">volumeMounts</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="na">mountPath</span><span class="pi">:</span> <span class="s">/app</span>
+          <span class="na">name</span><span class="pi">:</span> <span class="s">model-volume</span>
+      <span class="na">restartPolicy</span><span class="pi">:</span> <span class="s">Never</span>
+      <span class="na">volumes</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">model-volume</span>
+        <span class="na">hostPath</span><span class="pi">:</span>
+          <span class="na">path</span><span class="pi">:</span> <span class="s">/Users/yourname/k8s-ml-pipeline</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Run the Job</strong>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl apply <span class="nt">-f</span> train-job.yaml
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Check Logs</strong>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl logs job/train-job
+</code></pre></div>    </div>
+
+    <p>This will output:</p>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Model trained and saved as model.pkl
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>The <code class="highlighter-rouge">model.pkl</code> file will be saved locally in <code class="highlighter-rouge">/Users/yourname/k8s-ml-pipeline</code>.</p>
+
+<hr />
+
+<h3 id="step-5-deploy-the-trained-model-as-an-api"><strong>Step 5: Deploy the Trained Model as an API</strong></h3>
+<ol>
+  <li><strong>Create a <code class="highlighter-rouge">predict.py</code> Script</strong>:
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># predict.py
+</span><span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">jsonify</span>
+
+<span class="c1"># Load the trained model
+</span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"model.pkl"</span><span class="p">,</span> <span class="s">"rb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">pickle</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+
+<span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="s">"/predict"</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">"POST"</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">predict</span><span class="p">():</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="n">get_json</span><span class="p">()</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="p">[[</span><span class="n">data</span><span class="p">[</span><span class="s">"square_footage"</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s">"bedrooms"</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s">"bathrooms"</span><span class="p">]]]</span>
+    <span class="n">prediction</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s">"predicted_price"</span><span class="p">:</span> <span class="n">prediction</span><span class="p">[</span><span class="mi">0</span><span class="p">]})</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+    <span class="n">app</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s">"0.0.0.0"</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Dockerize <code class="highlighter-rouge">predict.py</code></strong>:
+    <div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> python:3.9-slim</span>
+
+<span class="c"># Copy files</span>
+<span class="k">COPY</span><span class="s"> predict.py /app/predict.py</span>
+<span class="k">COPY</span><span class="s"> model.pkl /app/model.pkl</span>
+
+<span class="c"># Set working directory</span>
+<span class="k">WORKDIR</span><span class="s"> /app</span>
+
+<span class="c"># Install dependencies</span>
+<span class="k">RUN </span>pip <span class="nb">install </span>flask scikit-learn
+
+<span class="c"># Default command</span>
+<span class="k">CMD</span><span class="s"> ["python", "predict.py"]</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Build the API Docker Image</strong>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build <span class="nt">-t</span> predict-ml:latest <span class="nb">.</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Deployment YAML</strong> (<code class="highlighter-rouge">predict-deployment.yaml</code>):
+    <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">apps/v1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">Deployment</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">predict-api</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">replicas</span><span class="pi">:</span> <span class="m">2</span>
+  <span class="na">selector</span><span class="pi">:</span>
+    <span class="na">matchLabels</span><span class="pi">:</span>
+      <span class="na">app</span><span class="pi">:</span> <span class="s">predict-api</span>
+  <span class="na">template</span><span class="pi">:</span>
+    <span class="na">metadata</span><span class="pi">:</span>
+      <span class="na">labels</span><span class="pi">:</span>
+        <span class="na">app</span><span class="pi">:</span> <span class="s">predict-api</span>
+    <span class="na">spec</span><span class="pi">:</span>
+      <span class="na">containers</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">predict-container</span>
+        <span class="na">image</span><span class="pi">:</span> <span class="s">predict-ml:latest</span>
+        <span class="na">ports</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="na">containerPort</span><span class="pi">:</span> <span class="m">5000</span>
+<span class="nn">---</span>
+<span class="na">apiVersion</span><span class="pi">:</span> <span class="s">v1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">Service</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">predict-service</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">selector</span><span class="pi">:</span>
+    <span class="na">app</span><span class="pi">:</span> <span class="s">predict-api</span>
+  <span class="na">ports</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">protocol</span><span class="pi">:</span> <span class="s">TCP</span>
+      <span class="na">port</span><span class="pi">:</span> <span class="m">80</span>
+      <span class="na">targetPort</span><span class="pi">:</span> <span class="m">5000</span>
+  <span class="na">type</span><span class="pi">:</span> <span class="s">LoadBalancer</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Deploy the API</strong>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl apply <span class="nt">-f</span> predict-deployment.yaml
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Access the API</strong>:
+    <ul>
+      <li>Find the service IP:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get services
+</code></pre></div>        </div>
+      </li>
+      <li>Test the API:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-X</span> POST <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{"square_footage": 1600, "bedrooms": 3, "bathrooms": 2}'</span> <span class="se">\</span>
+  http://&lt;EXTERNAL-IP&gt;/predict
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="step-6-clean-up"><strong>Step 6: Clean Up</strong></h3>
+<p>To clean up resources:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl delete <span class="nt">-f</span> train-job.yaml
+kubectl delete <span class="nt">-f</span> predict-deployment.yaml
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="summary"><strong>Summary</strong></h3>
+<ol>
+  <li><strong>Dataset</strong>: Prepared and mounted into the container.</li>
+  <li><strong>Training</strong>: Kubernetes Job ran <code class="highlighter-rouge">train.py</code> and saved the model.</li>
+  <li><strong>API Deployment</strong>: The trained model was deployed as a REST API using Kubernetes Deployment and Service.</li>
+</ol>
+
+<p>This pipeline can scale as needed and is fully containerized for portability and reproducibility.</p>
+
+	</div>
+</article>
+		</div>
+	</div>
+  </body>
+</html>

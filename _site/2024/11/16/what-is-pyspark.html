@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Deep Learning" /></head>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<style>@import url(/public/css/syntax/monokai.css);</style>
+  <title>Deep Learning</title>
+  <!-- <link href="/public/css/bootstrap.min.css" rel="stylesheet"> -->
+
+  <link href="/public/css/style.css" rel="stylesheet">
+  <body>
+  	<div class="container"> 
+		<div class="sidebar">
+			<div class="sidebar-item sidebar-header">
+	<div class='sidebar-brand'>
+		<a href="/about/">Deep Learning</a>
+	</div>
+	<p class="lead">A blog exploring deep learning, AI, and data science topics by Mohsen Dehghani.</p></div>
+
+<div class="sidebar-item sidebar-nav">
+	<ul class="nav">
+      <li class="nav-title">Pages</li>
+	  <li>
+	  	<a class="nav-item" href="/">Articles</a>
+	  </li>
+	  
+	  
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/about/">
+	            	About
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	</ul>
+</div>
+
+<div class="sidebar-item sidebar-nav">
+  	<ul class="nav">
+			<li class="nav-title">Categories</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#Update">
+				<span class="name">Update</span>
+				<span class="badge">13</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#update">
+				<span class="name">update</span>
+				<span class="badge">6</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#Jekyll">
+				<span class="name">Jekyll</span>
+				<span class="badge">1</span>
+	    	</a>
+ 		</li>
+	    
+	  </nav>
+	</ul>
+</div>
+
+<div class="sidebar-item sidebar-footer">
+	<p>Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a></p>
+</div>
+		</div>
+		<div class="content">
+			<article class="post">
+	<header class="post-header">
+		<div class="post-title"> 
+			What is pyspark
+		</div>
+		<time class="post-date dt-published" datetime="2024-11-16T16:36:00-05:00" itemprop="datePublished">2024/11/16
+		</time>		
+	</header>
+
+	<div class="post-content">
+		<p><strong>PySpark</strong> is the Python API for <strong>Apache Spark</strong>, a powerful open-source distributed computing framework. PySpark allows you to write Spark applications in Python, enabling data processing and analysis on large datasets across distributed systems (clusters of computers).</p>
+
+<p>Apache Spark is designed for fast, large-scale data processing, and PySpark makes it easy to use Spark’s capabilities within Python, combining the benefits of Python’s simplicity with Spark’s performance.</p>
+
+<hr />
+
+<h3 id="key-features-of-pyspark"><strong>Key Features of PySpark</strong></h3>
+<ol>
+  <li><strong>Distributed Computing:</strong>
+    <ul>
+      <li>PySpark splits large datasets into smaller chunks and processes them across multiple nodes in a cluster.</li>
+    </ul>
+  </li>
+  <li><strong>In-Memory Processing:</strong>
+    <ul>
+      <li>Unlike traditional MapReduce, PySpark keeps intermediate data in memory, significantly speeding up data processing.</li>
+    </ul>
+  </li>
+  <li><strong>Ease of Use:</strong>
+    <ul>
+      <li>PySpark leverages Python’s simple syntax, allowing developers to focus on solving problems rather than managing infrastructure.</li>
+    </ul>
+  </li>
+  <li><strong>Supports Multiple Workloads:</strong>
+    <ul>
+      <li><strong>Batch processing:</strong> Large-scale data transformations (ETL).</li>
+      <li><strong>Stream processing:</strong> Real-time analytics using Spark Streaming.</li>
+      <li><strong>Machine Learning:</strong> Leveraging MLlib, Spark’s built-in machine learning library.</li>
+      <li><strong>Graph processing:</strong> Using GraphX for graph-based computation.</li>
+    </ul>
+  </li>
+  <li><strong>Integration with Big Data Tools:</strong>
+    <ul>
+      <li>Works seamlessly with Hadoop, HDFS, Hive, Cassandra, and more.</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="pyspark-workflow"><strong>PySpark Workflow</strong></h3>
+<ol>
+  <li><strong>Initialize Spark Session:</strong>
+    <ul>
+      <li>A <code class="highlighter-rouge">SparkSession</code> is the entry point to PySpark, managing the context and configurations for the application.</li>
+    </ul>
+  </li>
+  <li><strong>Load Data:</strong>
+    <ul>
+      <li>Use PySpark to read data from various sources like CSV, JSON, Parquet, HDFS, or databases.</li>
+    </ul>
+  </li>
+  <li><strong>Transform Data:</strong>
+    <ul>
+      <li>Use DataFrame APIs or RDDs (Resilient Distributed Datasets) to filter, group, join, and manipulate data.</li>
+    </ul>
+  </li>
+  <li><strong>Analyze and Process Data:</strong>
+    <ul>
+      <li>Perform SQL-like queries, aggregations, and advanced analytics.</li>
+    </ul>
+  </li>
+  <li><strong>Output Results:</strong>
+    <ul>
+      <li>Save transformed data back to files, databases, or visualization tools.</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="example-pyspark-code"><strong>Example PySpark Code</strong></h3>
+<p>Here’s a simple PySpark example to read a CSV file, process the data, and save the results:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
+
+<span class="c1"># Initialize SparkSession
+</span><span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="p">.</span><span class="n">builder</span> \
+    <span class="p">.</span><span class="n">appName</span><span class="p">(</span><span class="s">"PySpark Example"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+
+<span class="c1"># Step 1: Load Data
+</span><span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">read</span><span class="p">.</span><span class="n">csv</span><span class="p">(</span><span class="s">"sales_data.csv"</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">inferSchema</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="c1"># Step 2: Transform Data
+# Calculate total sales (quantity * price)
+</span><span class="n">transformed_data</span> <span class="o">=</span> <span class="n">data</span><span class="p">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s">"total_sales"</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s">"quantity"</span><span class="p">]</span> <span class="o">*</span> <span class="n">data</span><span class="p">[</span><span class="s">"price"</span><span class="p">])</span>
+
+<span class="c1"># Step 3: Analyze Data
+# Group by product and calculate total sales
+</span><span class="n">aggregated_data</span> <span class="o">=</span> <span class="n">transformed_data</span><span class="p">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s">"product_id"</span><span class="p">).</span><span class="nb">sum</span><span class="p">(</span><span class="s">"total_sales"</span><span class="p">)</span>
+
+<span class="c1"># Step 4: Save Results
+</span><span class="n">aggregated_data</span><span class="p">.</span><span class="n">write</span><span class="p">.</span><span class="n">csv</span><span class="p">(</span><span class="s">"output_sales.csv"</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="c1"># Stop the SparkSession
+</span><span class="n">spark</span><span class="p">.</span><span class="n">stop</span><span class="p">()</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="when-to-use-pyspark"><strong>When to Use PySpark</strong></h3>
+<ul>
+  <li><strong>Big Data Processing</strong>: When datasets are too large for a single machine.</li>
+  <li><strong>Real-Time Analytics</strong>: Using Spark Streaming for real-time data processing.</li>
+  <li><strong>Machine Learning</strong>: Distributed training of models with large datasets.</li>
+  <li><strong>ETL Workflows</strong>: Extracting, transforming, and loading large-scale datasets.</li>
+  <li><strong>Integration</strong>: When working with Hadoop, HDFS, or cloud storage systems like AWS S3 or Azure Blob.</li>
+</ul>
+
+<hr />
+
+<h3 id="advantages-of-pyspark"><strong>Advantages of PySpark</strong></h3>
+<ol>
+  <li><strong>Speed</strong>: Fast processing due to in-memory computation.</li>
+  <li><strong>Scalability</strong>: Easily scales from a single machine to a cluster of hundreds of nodes.</li>
+  <li><strong>Fault-Tolerance</strong>: Automatically recovers from failures.</li>
+  <li><strong>Rich Ecosystem</strong>: Includes libraries like MLlib (machine learning), GraphX (graph processing), and Spark SQL.</li>
+</ol>
+
+<hr />
+
+<h3 id="how-to-get-started-with-pyspark"><strong>How to Get Started with PySpark</strong></h3>
+<ol>
+  <li><strong>Install PySpark</strong>:
+    <ul>
+      <li>Using <code class="highlighter-rouge">pip</code>:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>pyspark
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Set Up Local Environment</strong>:
+    <ul>
+      <li>Install Java 8 or 11 (required for Spark).</li>
+      <li>Set <code class="highlighter-rouge">JAVA_HOME</code> and <code class="highlighter-rouge">SPARK_HOME</code> environment variables.</li>
+    </ul>
+  </li>
+  <li><strong>Run PySpark Code</strong>:
+    <ul>
+      <li>Use a standalone script or interactive environments like Jupyter Notebook.</li>
+    </ul>
+  </li>
+  <li><strong>Practice with Datasets</strong>:
+    <ul>
+      <li>Use sample datasets like <a href="https://www.kaggle.com/">Kaggle</a>, or load your own files.</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<p>PySpark is a great tool for handling large-scale data and is widely used in data engineering, analysis, and machine learning workflows.</p>
+
+<p>Here’s an example workflow that demonstrates how to preprocess data with PySpark and train an LSTM model using TensorFlow or PyTorch.</p>
+
+<hr />
+
+<h3 id="steps-to-train-an-lstm-model-using-pyspark"><strong>Steps to Train an LSTM Model Using PySpark</strong></h3>
+<ol>
+  <li>Preprocess large datasets using PySpark (e.g., filtering, scaling, and splitting data).</li>
+  <li>Convert PySpark DataFrame or RDD into NumPy arrays or tensors for deep learning frameworks.</li>
+  <li>Train an LSTM model using TensorFlow or PyTorch.</li>
+</ol>
+
+<hr />
+
+<h3 id="example-using-pyspark-with-tensorflow-for-lstm"><strong>Example: Using PySpark with TensorFlow for LSTM</strong></h3>
+
+<h4 id="1-preprocessing-data-with-pyspark"><strong>1. Preprocessing Data with PySpark</strong></h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">col</span>
+<span class="kn">from</span> <span class="nn">pyspark.ml.feature</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span><span class="p">,</span> <span class="n">VectorAssembler</span>
+
+<span class="c1"># Initialize PySpark session
+</span><span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="p">.</span><span class="n">builder</span> \
+    <span class="p">.</span><span class="n">appName</span><span class="p">(</span><span class="s">"LSTM with PySpark"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+
+<span class="c1"># Load dataset
+</span><span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">read</span><span class="p">.</span><span class="n">csv</span><span class="p">(</span><span class="s">"time_series_data.csv"</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">inferSchema</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="c1"># Select relevant columns
+</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">"timestamp"</span><span class="p">,</span> <span class="s">"value"</span><span class="p">)</span>
+
+<span class="c1"># Sort by timestamp
+</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">.</span><span class="n">orderBy</span><span class="p">(</span><span class="s">"timestamp"</span><span class="p">)</span>
+
+<span class="c1"># Feature scaling
+</span><span class="n">assembler</span> <span class="o">=</span> <span class="n">VectorAssembler</span><span class="p">(</span><span class="n">inputCols</span><span class="o">=</span><span class="p">[</span><span class="s">"value"</span><span class="p">],</span> <span class="n">outputCol</span><span class="o">=</span><span class="s">"features"</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">assembler</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">(</span><span class="n">inputCol</span><span class="o">=</span><span class="s">"features"</span><span class="p">,</span> <span class="n">outputCol</span><span class="o">=</span><span class="s">"scaled_features"</span><span class="p">)</span>
+<span class="n">scaler_model</span> <span class="o">=</span> <span class="n">scaler</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">scaled_data</span> <span class="o">=</span> <span class="n">scaler_model</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Convert PySpark DataFrame to NumPy array
+</span><span class="n">time_series</span> <span class="o">=</span> <span class="n">scaled_data</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">"scaled_features"</span><span class="p">).</span><span class="n">rdd</span><span class="p">.</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]).</span><span class="n">collect</span><span class="p">()</span>
+</code></pre></div></div>
+
+<hr />
+
+<h4 id="2-prepare-data-for-lstm"><strong>2. Prepare Data for LSTM</strong></h4>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="c1"># Function to create sequences for LSTM
+</span><span class="k">def</span> <span class="nf">create_sequences</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">sequence_length</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="n">sequence_length</span><span class="p">):</span>
+        <span class="n">x</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">sequence_length</span><span class="p">])</span>
+        <span class="n">y</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">sequence_length</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Parameters
+</span><span class="n">sequence_length</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">create_sequences</span><span class="p">(</span><span class="n">time_series</span><span class="p">,</span> <span class="n">sequence_length</span><span class="p">)</span>
+
+<span class="c1"># Train-Test Split
+</span><span class="n">split_ratio</span> <span class="o">=</span> <span class="mf">0.8</span>
+<span class="n">split_index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">split_ratio</span><span class="p">)</span>
+<span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:</span><span class="n">split_index</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">split_index</span><span class="p">:]</span>
+<span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">y</span><span class="p">[:</span><span class="n">split_index</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">split_index</span><span class="p">:]</span>
+</code></pre></div></div>
+
+<hr />
+
+<h4 id="3-train-lstm-model-with-tensorflow"><strong>3. Train LSTM Model with TensorFlow</strong></h4>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">LSTM</span><span class="p">,</span> <span class="n">Dense</span>
+
+<span class="c1"># Define LSTM model
+</span><span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">([</span>
+    <span class="n">LSTM</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="n">sequence_length</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span>
+    <span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">])</span>
+
+<span class="c1"># Compile model
+</span><span class="n">model</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s">'adam'</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s">'mse'</span><span class="p">)</span>
+
+<span class="c1"># Reshape data for LSTM
+</span><span class="n">x_train</span> <span class="o">=</span> <span class="n">x_train</span><span class="p">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">x_train</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x_train</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">x_test</span><span class="p">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">x_test</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x_test</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># Train model
+</span><span class="n">model</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="example-using-pyspark-with-pytorch-for-lstm"><strong>Example: Using PySpark with PyTorch for LSTM</strong></h3>
+
+<h4 id="3-train-lstm-model-with-pytorch"><strong>3. Train LSTM Model with PyTorch</strong></h4>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span><span class="p">,</span> <span class="n">optim</span>
+<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">DataLoader</span><span class="p">,</span> <span class="n">TensorDataset</span>
+
+<span class="c1"># Convert data to PyTorch tensors
+</span><span class="n">x_train_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">y_train_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="n">x_test_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">y_test_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="c1"># Create DataLoader
+</span><span class="n">train_dataset</span> <span class="o">=</span> <span class="n">TensorDataset</span><span class="p">(</span><span class="n">x_train_tensor</span><span class="p">,</span> <span class="n">y_train_tensor</span><span class="p">)</span>
+<span class="n">train_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="c1"># Define LSTM model
+</span><span class="k">class</span> <span class="nc">LSTMModel</span><span class="p">(</span><span class="n">nn</span><span class="p">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LSTMModel</span><span class="p">,</span> <span class="bp">self</span><span class="p">).</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">lstm</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">LSTM</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">batch_first</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">fc</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">_</span><span class="p">,</span> <span class="p">(</span><span class="n">hidden</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">lstm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">fc</span><span class="p">(</span><span class="n">hidden</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">out</span>
+
+<span class="c1"># Model, loss, and optimizer
+</span><span class="n">model</span> <span class="o">=</span> <span class="n">LSTMModel</span><span class="p">(</span><span class="n">input_dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">output_dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">MSELoss</span><span class="p">()</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="p">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="p">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
+
+<span class="c1"># Train the model
+</span><span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">targets</span> <span class="ow">in</span> <span class="n">train_loader</span><span class="p">:</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Add channel dimension
+</span>        <span class="n">optimizer</span><span class="p">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">.</span><span class="n">squeeze</span><span class="p">(),</span> <span class="n">targets</span><span class="p">)</span>
+        <span class="n">loss</span><span class="p">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="n">optimizer</span><span class="p">.</span><span class="n">step</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Epoch </span><span class="si">{</span><span class="n">epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s">, Loss: </span><span class="si">{</span><span class="n">loss</span><span class="p">.</span><span class="n">item</span><span class="p">()</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="when-to-use-pyspark-with-lstm"><strong>When to Use PySpark with LSTM</strong></h3>
+<ul>
+  <li><strong>Large Datasets:</strong> PySpark is used to preprocess massive datasets that cannot fit into memory on a single machine.</li>
+  <li><strong>Cluster Environments:</strong> When running on distributed systems like Hadoop or cloud platforms (AWS EMR, Databricks).</li>
+  <li><strong>Time Series Modeling:</strong> Preparing and scaling time-series data for forecasting tasks.</li>
+</ul>
+
+<hr />
+
+<p>This workflow shows how PySpark can be used for data preprocessing and how frameworks like TensorFlow or PyTorch can be integrated to handle LSTM model training.</p>
+
+	</div>
+</article>
+		</div>
+	</div>
+  </body>
+</html>
