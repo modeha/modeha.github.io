@@ -3,9 +3,10 @@ layout: post
 title: End-to-End Machine Learning Pipeline Using Kubernetes
 date: 2024-11-19 12:26 -0500
 ---
- **End-to-End Machine Learning Pipeline** using Kubernetes, starting from the dataset to deploying a trained model. Here's the workflow:
+ **End-to-End Machine Learning Pipeline** using Kubernetes, starting from the dataset to deploying a trained model. 
+ 
+ Here's the workflow:
 
----
 
 ### **Setup Overview**
 We'll use Kubernetes to:
