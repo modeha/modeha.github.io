@@ -1,6 +1,6 @@
 ---
 layout: post
-title: tools available for data scientists
+title: Tools Available for Data Scientists
 date: 2024-11-16 16:39 -0500
 ---
 There are numerous tools available for data scientists, catering to different aspects of the data science workflow such as data collection, cleaning, analysis, visualization, machine learning, and deployment. Here’s a categorized list of tools commonly used by data scientists:

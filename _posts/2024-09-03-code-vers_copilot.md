@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Code From Scratch Versus Using a Tool Like GitHub Copilot"
+title:  "Code from Scratch Versus Using a Tool Like GitHub Copilot"
 date:   2024-09-03 10:31:29 +0900
 categories: Update
 ---

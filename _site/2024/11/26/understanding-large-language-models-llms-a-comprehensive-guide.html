@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Deep Learning" /></head>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<style>@import url(/public/css/syntax/monokai.css);</style>
+  <title>Deep Learning</title>
+  <!-- <link href="/public/css/bootstrap.min.css" rel="stylesheet"> -->
+
+  <link href="/public/css/style.css" rel="stylesheet">
+  <body>
+  	<div class="container"> 
+		<div class="sidebar">
+			<div class="sidebar-item sidebar-header">
+	<div class='sidebar-brand'>
+		<a href="/about/">Deep Learning</a>
+	</div>
+	<p class="lead">A blog exploring deep learning, AI, and data science topics by Mohsen Dehghani.</p></div>
+
+<div class="sidebar-item sidebar-nav">
+	<ul class="nav">
+      <li class="nav-title">Pages</li>
+	  <li>
+	  	<a class="nav-item" href="/">Articles</a>
+	  </li>
+	  
+	  
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/about/">
+	            	About
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	</ul>
+</div>
+
+<div class="sidebar-item sidebar-nav">
+  	<ul class="nav">
+			<li class="nav-title">Categories</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#Update">
+				<span class="name">Update</span>
+				<span class="badge">13</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#update">
+				<span class="name">update</span>
+				<span class="badge">6</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#Jekyll">
+				<span class="name">Jekyll</span>
+				<span class="badge">1</span>
+	    	</a>
+ 		</li>
+	    
+	  </nav>
+	</ul>
+</div>
+
+<div class="sidebar-item sidebar-footer">
+	<p>Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a></p>
+</div>
+		</div>
+		<div class="content">
+			<article class="post">
+	<header class="post-header">
+		<div class="post-title"> 
+			Understanding Large Language Models (LLMs): A Comprehensive Guide
+		</div>
+		<time class="post-date dt-published" datetime="2024-11-26T23:04:00-05:00" itemprop="datePublished">2024/11/26
+		</time>		
+	</header>
+
+	<div class="post-content">
+		<p><strong>How LLM Technology Actually Works</strong></p>
+
+<p>This text explores the inner workings of large language models (LLMs) and their applications in various fields. The topics covered include:</p>
+
+<ol>
+  <li><strong>Model Training</strong></li>
+  <li><strong>Instruction Tuning</strong></li>
+  <li><strong>Fine-tuning</strong></li>
+  <li><strong>The Generative AI Project Lifecycle Framework</strong></li>
+</ol>
+
+<hr />
+
+<h3 id="generative-ai-and-llms-as-general-purpose-technology"><strong>Generative AI and LLMs as General-Purpose Technology</strong></h3>
+
+<p>Generative AI, and LLMs specifically, represent a general-purpose technology. Similar to other transformative technologies like deep learning or electricity, LLMs are not limited to a single application but span a wide range of use cases across various industries.</p>
+
+<p>Similar to the rise of deep learning about 15 years ago, there is much work ahead to fully utilize LLMs. Since the technology is still relatively new and only a small number of people understand how to build applications with it, many companies are currently scrambling to find and hire experts in the field.</p>
+
+<hr />
+
+<h3 id="generative-ai-project-lifecycle"><strong>Generative AI Project Lifecycle</strong></h3>
+
+<p>This text details the typical lifecycle of a generative AI project, including:</p>
+
+<ul>
+  <li>Scoping the problem.</li>
+  <li>Selecting a language model.</li>
+  <li>Optimizing a model for deployment.</li>
+  <li>Integrating it into applications.</li>
+</ul>
+
+<p>The transformer architecture powers large language models. This text also explains how these models are trained and the compute resources required to develop these powerful systems.</p>
+
+<hr />
+
+<h3 id="inference-prompt-engineering-and-parameter-tuning"><strong>Inference, Prompt Engineering, and Parameter Tuning</strong></h3>
+
+<p>How do you guide a model during inference? This involves techniques like prompt engineering and adjusting key generation parameters for better outputs. Some aspects include:</p>
+
+<ul>
+  <li><strong>Instruction Fine-tuning</strong>: Adapting pre-trained models to specific tasks and datasets.</li>
+  <li><strong>Alignment</strong>: Ensuring outputs align with human values, decreasing harmful or toxic responses.</li>
+  <li><strong>Exploration of Sampling Strategies</strong>: Tuning inference parameters to improve generative outputs.</li>
+</ul>
+
+<hr />
+
+<h3 id="efficiency-with-peft-and-rlhf"><strong>Efficiency with PEFT and RLHF</strong></h3>
+
+<ul>
+  <li><strong>Parameter-Efficient Fine-Tuning (PEFT)</strong>: A methodology for streamlining workflows.</li>
+  <li><strong>Reinforcement Learning from Human Feedback (RLHF)</strong>: Training reward models to classify responses as toxic or non-toxic for better alignment.</li>
+</ul>
+
+<hr />
+
+<h3 id="the-transformer-architecture"><strong>The Transformer Architecture</strong></h3>
+
+<p>The transformer architecture, introduced in the 2017 paper “Attention Is All You Need,” laid the foundation for modern LLMs. This architecture relies on self-attention and multi-headed self-attention mechanisms, enabling models to effectively process and understand language. Key attributes include:</p>
+
+<ol>
+  <li><strong>Parallelization</strong>: Transformers can process inputs in parallel, making them efficient on modern GPUs.</li>
+  <li><strong>Scalability</strong>: The architecture is highly scalable and remains the state-of-the-art for many NLP tasks.</li>
+</ol>
+
+<hr />
+
+<h3 id="understanding-transformer-networks"><strong>Understanding Transformer Networks</strong></h3>
+
+<p>When the transformer paper first emerged, its mathematical complexity made it seem “magical.” Over time, researchers have developed better intuitions about terms like multi-headed attention and the role of parallelism, which has allowed transformers to scale effectively.</p>
+
+<p>Transformers process input tokens in parallel and can compute relationships between words using learned attention weights, enabling them to encode language contextually.</p>
+
+<hr />
+
+<h3 id="beyond-transformers-generative-ai-project-lifecycle"><strong>Beyond Transformers: Generative AI Project Lifecycle</strong></h3>
+
+<p>In addition to understanding transformers, it is essential to explore the <strong>Generative AI Project Lifecycle</strong>, which covers:</p>
+
+<ol>
+  <li>Deciding whether to use a pre-trained model or train from scratch.</li>
+  <li>Fine-tuning and customizing models for specific data.</li>
+  <li>Evaluating different model sizes and architectures based on use cases, from massive 100-billion-parameter models to smaller, task-specific ones.</li>
+</ol>
+
+<hr />
+
+<h3 id="applications-of-llms"><strong>Applications of LLMs</strong></h3>
+
+<p>Large language models are powerful tools that extend beyond chat-based applications. Some use cases include:</p>
+
+<ul>
+  <li><strong>Text Summarization</strong>: Summarizing dialogue or long-form text.</li>
+  <li><strong>Language Translation</strong>: Translating text between human languages or natural language into code.</li>
+  <li><strong>Information Retrieval</strong>: Extracting named entities, relationships, or structured information from unstructured data.</li>
+  <li><strong>Creative Writing</strong>: Generating essays, poems, or stories.</li>
+  <li><strong>Code Generation</strong>: Writing code snippets for programming tasks.</li>
+</ul>
+
+<hr />
+
+<h3 id="model-training-and-scalability"><strong>Model Training and Scalability</strong></h3>
+
+<p>Modern LLMs are trained on massive datasets containing trillions of words, using enormous compute power. These “foundation models” exhibit emergent properties, enabling them to solve tasks they were not explicitly trained for.</p>
+
+<ul>
+  <li><strong>Large Models for General Knowledge</strong>: Models with hundreds of billions of parameters are better suited for tasks requiring broad knowledge.</li>
+  <li><strong>Smaller Models for Specific Use Cases</strong>: Small, fine-tuned models can achieve excellent results on narrow tasks, often with significantly lower resource requirements.</li>
+</ul>
+
+<hr />
+
+<h3 id="core-concepts-of-transformer-architectures"><strong>Core Concepts of Transformer Architectures</strong></h3>
+
+<p>Transformers consist of two main components:</p>
+<ol>
+  <li><strong>Encoder</strong>: Encodes input sequences into meaningful representations.</li>
+  <li><strong>Decoder</strong>: Generates outputs based on the encoded input.</li>
+</ol>
+
+<p>These components rely on processes like tokenization, embedding layers, and positional encodings to process text. Multi-headed self-attention layers compute relationships between tokens, learning the context and structure of language. Output probabilities are then normalized using the softmax function to generate predictions.</p>
+
+<hr />
+
+<h3 id="variants-of-transformer-models"><strong>Variants of Transformer Models</strong></h3>
+<ol>
+  <li><strong>Encoder-only Models</strong>: Ideal for classification tasks (e.g., BERT).</li>
+  <li><strong>Encoder-Decoder Models</strong>: Suitable for sequence-to-sequence tasks like translation (e.g., BART, T5).</li>
+  <li><strong>Decoder-only Models</strong>: General-purpose text generation models (e.g., GPT, BLOOM).</li>
+</ol>
+
+<hr />
+
+<h3 id="prompt-engineering-and-inference-techniques"><strong>Prompt Engineering and Inference Techniques</strong></h3>
+
+<p>The interaction between humans and LLMs involves crafting <strong>prompts</strong>, which are fed into the model’s <strong>context window</strong> for inference. Prompt engineering strategies include:</p>
+
+<ul>
+  <li><strong>Zero-shot Inference</strong>: Providing no examples.</li>
+  <li><strong>One-shot Inference</strong>: Providing one example in the prompt.</li>
+  <li><strong>Few-shot Inference</strong>: Providing multiple examples to guide the model’s behavior.</li>
+</ul>
+
+<hr />
+
+<h3 id="controlling-model-output"><strong>Controlling Model Output</strong></h3>
+
+<p>Key parameters for tuning model behavior include:</p>
+<ul>
+  <li><strong>Max New Tokens</strong>: Limits the number of generated tokens.</li>
+  <li><strong>Top-k Sampling</strong>: Chooses from the top-k most probable tokens.</li>
+  <li><strong>Top-p Sampling (Nucleus)</strong>: Selects tokens based on cumulative probabilities.</li>
+  <li><strong>Temperature</strong>: Adjusts randomness in token selection.</li>
+</ul>
+
+<hr />
+
+<h3 id="conclusion"><strong>Conclusion</strong></h3>
+
+<p>The advancements in transformer architectures and the ability to fine-tune models have made LLMs incredibly versatile. From natural language generation to domain-specific applications, understanding concepts like prompt engineering, attention mechanisms, and generative AI project lifecycles equips developers with the tools to unlock the full potential of these technologies. This course will guide you through these critical stages to help you build and deploy your LLM-powered applications.</p>
+
+<hr />
+
+	</div>
+</article>
+		</div>
+	</div>
+  </body>
+</html>
