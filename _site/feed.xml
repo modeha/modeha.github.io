@@ -1,4 +1,125 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-11-26T23:28:32-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Deep Learning</title><subtitle>A blog exploring deep learning, AI, and data science topics by Mohsen Dehghani.</subtitle><entry><title type="html">Understanding Large Language Models (LLMs): A Comprehensive Guide</title><link href="http://localhost:4000/2024/11/26/understanding-large-language-models-llms-a-comprehensive-guide.html" rel="alternate" type="text/html" title="Understanding Large Language Models (LLMs): A Comprehensive Guide" /><published>2024-11-26T23:04:00-05:00</published><updated>2024-11-26T23:04:00-05:00</updated><id>http://localhost:4000/2024/11/26/understanding-large-language-models-llms-a-comprehensive-guide</id><content type="html" xml:base="http://localhost:4000/2024/11/26/understanding-large-language-models-llms-a-comprehensive-guide.html"><![CDATA[<p><strong>How LLM Technology Actually Works</strong></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-11-28T01:32:25-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Deep Learning</title><subtitle>A blog exploring deep learning, AI, and data science topics by Mohsen Dehghani.</subtitle><entry><title type="html">The Four Fundamental Concepts of Object-Oriented Programming (OOP)</title><link href="http://localhost:4000/2024/11/28/the-four-fundamental-concepts-of-object-oriented-programming-oop.html" rel="alternate" type="text/html" title="The Four Fundamental Concepts of Object-Oriented Programming (OOP)" /><published>2024-11-28T00:59:00-05:00</published><updated>2024-11-28T00:59:00-05:00</updated><id>http://localhost:4000/2024/11/28/the-four-fundamental-concepts-of-object-oriented-programming-oop</id><content type="html" xml:base="http://localhost:4000/2024/11/28/the-four-fundamental-concepts-of-object-oriented-programming-oop.html"><![CDATA[<h3 id="1-encapsulation"><strong>1. Encapsulation</strong></h3>
+<ul>
+  <li><strong>Definition</strong>: Encapsulation is the bundling of data (attributes) and methods (functions) into a single unit (class) and restricting direct access to some of the object’s components.
+   <strong>Encapsulation also involves restricting direct access to certain parts of an object to ensure better control and data integrity</strong>.</li>
+  <li><strong>Purpose</strong>: Protect the data from unauthorized access and ensure proper control.</li>
+  <li><strong>Example</strong>: Using private attributes and getter/setter methods (as explained above).</li>
+</ul>
+
+<hr />
+
+<h3 id="2-abstraction"><strong>2. Abstraction</strong></h3>
+<ul>
+  <li><strong>Definition</strong>: Abstraction is the concept of hiding unnecessary implementation details and showing only the essential features of an object.</li>
+  <li><strong>Purpose</strong>: Simplifies complexity by focusing on what an object does rather than how it does it.</li>
+  <li><strong>Example in Python</strong>:
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+
+<span class="k">class</span> <span class="nc">Animal</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>  <span class="c1"># Abstract class
+</span>    <span class="o">@</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">make_sound</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">Dog</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">make_sound</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">"Bark!"</span>
+
+<span class="k">class</span> <span class="nc">Cat</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">make_sound</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">"Meow!"</span>
+
+<span class="n">dog</span> <span class="o">=</span> <span class="n">Dog</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">dog</span><span class="p">.</span><span class="n">make_sound</span><span class="p">())</span>  <span class="c1"># Output: Bark!
+</span></code></pre></div>    </div>
+    <ul>
+      <li><code class="highlighter-rouge">Animal</code> defines an abstract class with an abstract method <code class="highlighter-rouge">make_sound</code>. The subclasses (<code class="highlighter-rouge">Dog</code> and <code class="highlighter-rouge">Cat</code>) provide specific implementations.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="3-inheritance"><strong>3. Inheritance</strong></h3>
+<ul>
+  <li><strong>Definition</strong>: Inheritance allows one class (child/subclass) to acquire the properties and behaviors of another class (parent/superclass).</li>
+  <li><strong>Purpose</strong>: Promotes code reuse and establishes a hierarchical relationship between classes.</li>
+  <li><strong>Example in Python</strong>:
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Vehicle</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">brand</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">brand</span> <span class="o">=</span> <span class="n">brand</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+
+    <span class="k">def</span> <span class="nf">display_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s">"Vehicle: </span><span class="si">{</span><span class="bp">self</span><span class="p">.</span><span class="n">brand</span><span class="si">}</span><span class="s"> </span><span class="si">{</span><span class="bp">self</span><span class="p">.</span><span class="n">model</span><span class="si">}</span><span class="s">"</span>
+
+<span class="k">class</span> <span class="nc">Car</span><span class="p">(</span><span class="n">Vehicle</span><span class="p">):</span>  <span class="c1"># Inheriting from Vehicle
+</span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">brand</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">doors</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">(</span><span class="n">brand</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">doors</span> <span class="o">=</span> <span class="n">doors</span>
+
+    <span class="k">def</span> <span class="nf">display_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s">"Car: </span><span class="si">{</span><span class="bp">self</span><span class="p">.</span><span class="n">brand</span><span class="si">}</span><span class="s"> </span><span class="si">{</span><span class="bp">self</span><span class="p">.</span><span class="n">model</span><span class="si">}</span><span class="s">, Doors: </span><span class="si">{</span><span class="bp">self</span><span class="p">.</span><span class="n">doors</span><span class="si">}</span><span class="s">"</span>
+
+<span class="n">car</span> <span class="o">=</span> <span class="n">Car</span><span class="p">(</span><span class="s">"Toyota"</span><span class="p">,</span> <span class="s">"Corolla"</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">car</span><span class="p">.</span><span class="n">display_info</span><span class="p">())</span>  <span class="c1"># Output: Car: Toyota Corolla, Doors: 4
+</span></code></pre></div>    </div>
+    <ul>
+      <li><code class="highlighter-rouge">Car</code> inherits from <code class="highlighter-rouge">Vehicle</code> and adds its own specific behavior (<code class="highlighter-rouge">doors</code> attribute).</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="4-polymorphism"><strong>4. Polymorphism</strong></h3>
+<ul>
+  <li><strong>Definition</strong>: Polymorphism allows objects of different classes to be treated as objects of a common superclass. It enables the same method to behave differently based on the object calling it.</li>
+  <li><strong>Purpose</strong>: Promotes flexibility and scalability in code.</li>
+  <li><strong>Example in Python</strong>:
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Shape</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">Rectangle</span><span class="p">(</span><span class="n">Shape</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">width</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span>
+
+    <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">width</span> <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">height</span>
+
+<span class="k">class</span> <span class="nc">Circle</span><span class="p">(</span><span class="n">Shape</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radius</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">radius</span>
+
+    <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mf">3.14</span> <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">radius</span> <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">radius</span>
+
+<span class="n">shapes</span> <span class="o">=</span> <span class="p">[</span><span class="n">Rectangle</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">Circle</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
+
+<span class="k">for</span> <span class="n">shape</span> <span class="ow">in</span> <span class="n">shapes</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">shape</span><span class="p">.</span><span class="n">area</span><span class="p">())</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>Output:
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>20
+28.26
+</code></pre></div>        </div>
+      </li>
+      <li>Both <code class="highlighter-rouge">Rectangle</code> and <code class="highlighter-rouge">Circle</code> have the <code class="highlighter-rouge">area</code> method, but they implement it differently.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="summary-of-oop-principles">Summary of OOP Principles:</h3>
+<p>| <strong>Concept</strong>      | <strong>Definition</strong>                                                      | <strong>Purpose</strong>                                |
+|——————-|——————————————————————–|——————————————–|
+| <strong>Encapsulation</strong> | Protects data and ensures controlled access using access modifiers. | Data protection and integrity              |
+| <strong>Abstraction</strong>   | Hides implementation details and focuses on functionality.          | Reduces complexity and increases usability |
+| <strong>Inheritance</strong>   | Enables one class to inherit properties and methods from another.   | Code reuse and hierarchical relationships  |
+| <strong>Polymorphism</strong>  | Allows the same method to behave differently for different objects.  | Flexibility and dynamic method execution   |</p>]]></content><author><name></name></author><summary type="html"><![CDATA[1. Encapsulation Definition: Encapsulation is the bundling of data (attributes) and methods (functions) into a single unit (class) and restricting direct access to some of the object’s components. Encapsulation also involves restricting direct access to certain parts of an object to ensure better control and data integrity. Purpose: Protect the data from unauthorized access and ensure proper control. Example: Using private attributes and getter/setter methods (as explained above).]]></summary></entry><entry><title type="html">Understanding Large Language Models (LLMs): A Comprehensive Guide</title><link href="http://localhost:4000/2024/11/26/understanding-large-language-models-llms-a-comprehensive-guide.html" rel="alternate" type="text/html" title="Understanding Large Language Models (LLMs): A Comprehensive Guide" /><published>2024-11-26T23:04:00-05:00</published><updated>2024-11-26T23:04:00-05:00</updated><id>http://localhost:4000/2024/11/26/understanding-large-language-models-llms-a-comprehensive-guide</id><content type="html" xml:base="http://localhost:4000/2024/11/26/understanding-large-language-models-llms-a-comprehensive-guide.html"><![CDATA[<p><strong>How LLM Technology Actually Works</strong></p>
 
 <p>This text explores the inner workings of large language models (LLMs) and their applications in various fields. The topics covered include:</p>
 
@@ -1493,253 +1614,4 @@ docker push myContainerRegistry.azurecr.io/ai-streamlit-app
       <li>Enable auto-scaling</li>
     </ul>
   </li>
-</ul>]]></content><author><name></name></author><summary type="html"><![CDATA[section 4: End-to-End Deployment of an AI Model Using Docker, Azure, and Streamlit]]></summary></entry><entry><title type="html">What is Kubernetes</title><link href="http://localhost:4000/2024/11/16/what-is-kubernetes.html" rel="alternate" type="text/html" title="What is Kubernetes" /><published>2024-11-16T16:39:00-05:00</published><updated>2024-11-16T16:39:00-05:00</updated><id>http://localhost:4000/2024/11/16/what-is-kubernetes</id><content type="html" xml:base="http://localhost:4000/2024/11/16/what-is-kubernetes.html"><![CDATA[<h3 id="what-is-kubernetes"><strong>What is Kubernetes?</strong></h3>
-
-<p><strong>Kubernetes (often abbreviated as K8s)</strong> is an open-source platform designed for automating the deployment, scaling, and management of containerized applications. Developed initially by Google, Kubernetes is now maintained by the <strong>Cloud Native Computing Foundation (CNCF)</strong>.</p>
-
-<p>Kubernetes is widely used in modern software development for orchestrating containers (such as those created by <strong>Docker</strong>). It ensures that applications run efficiently and reliably, even as they scale to handle large user bases or workloads.</p>
-
-<hr />
-
-<h3 id="key-features-of-kubernetes"><strong>Key Features of Kubernetes</strong></h3>
-
-<ol>
-  <li><strong>Container Orchestration:</strong>
-    <ul>
-      <li>Kubernetes manages the lifecycle of containers (start, stop, restart, scaling) across a cluster of machines.</li>
-    </ul>
-  </li>
-  <li><strong>Load Balancing and Service Discovery:</strong>
-    <ul>
-      <li>Automatically distributes network traffic across containers to ensure application availability and performance.</li>
-    </ul>
-  </li>
-  <li><strong>Scaling:</strong>
-    <ul>
-      <li>Automatically adjusts the number of running containers based on demand (horizontal scaling).</li>
-    </ul>
-  </li>
-  <li><strong>Self-Healing:</strong>
-    <ul>
-      <li>Detects failures and replaces unhealthy containers automatically to maintain application stability.</li>
-    </ul>
-  </li>
-  <li><strong>Declarative Configuration:</strong>
-    <ul>
-      <li>Uses YAML or JSON files to define the desired state of the system, and Kubernetes works to maintain that state.</li>
-    </ul>
-  </li>
-  <li><strong>Storage Orchestration:</strong>
-    <ul>
-      <li>Manages storage for containers, allowing them to use persistent storage like cloud storage, local disks, or network file systems.</li>
-    </ul>
-  </li>
-</ol>
-
-<hr />
-
-<h3 id="why-is-kubernetes-important-for-data-scientists"><strong>Why is Kubernetes Important for Data Scientists?</strong></h3>
-
-<p>Kubernetes is becoming essential for <strong>data scientists</strong> as machine learning and AI workflows increasingly involve <strong>large-scale distributed computing</strong>. Here’s how Kubernetes fits into data science:</p>
-
-<ol>
-  <li><strong>Model Training:</strong>
-    <ul>
-      <li>Scale machine learning models across clusters to handle large datasets or train models faster using distributed computing.</li>
-    </ul>
-  </li>
-  <li><strong>Model Deployment:</strong>
-    <ul>
-      <li>Deploy and manage machine learning models in production with reliability and scalability.</li>
-    </ul>
-  </li>
-  <li><strong>Experiment Tracking:</strong>
-    <ul>
-      <li>Kubernetes helps run multiple experiments simultaneously on separate containers, isolating and managing resources efficiently.</li>
-    </ul>
-  </li>
-  <li><strong>Pipeline Orchestration:</strong>
-    <ul>
-      <li>Integrate with tools like <strong>Kubeflow</strong> to manage ML pipelines.</li>
-    </ul>
-  </li>
-  <li><strong>Integration with Big Data Tools:</strong>
-    <ul>
-      <li>Run big data processing tools like <strong>Apache Spark</strong>, <strong>Hadoop</strong>, or <strong>Dask</strong> on Kubernetes clusters.</li>
-    </ul>
-  </li>
-</ol>
-
-<hr />
-
-<h3 id="kubernetes-architecture"><strong>Kubernetes Architecture</strong></h3>
-
-<ol>
-  <li><strong>Master Node (Control Plane):</strong>
-    <ul>
-      <li>The brain of Kubernetes that manages the cluster.</li>
-      <li>Key components:
-        <ul>
-          <li><strong>API Server</strong>: Manages communication between users and the cluster.</li>
-          <li><strong>Scheduler</strong>: Assigns workloads (Pods) to nodes.</li>
-          <li><strong>Controller Manager</strong>: Ensures the cluster state matches the desired state.</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li><strong>Worker Nodes:</strong>
-    <ul>
-      <li>Machines that run containerized applications (Pods).</li>
-      <li>Key components:
-        <ul>
-          <li><strong>Kubelet</strong>: Agent that communicates with the master node to manage containers.</li>
-          <li><strong>Container Runtime</strong>: (e.g., Docker) Runs the containers.</li>
-          <li><strong>Kube Proxy</strong>: Manages networking and load balancing.</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li><strong>Pods:</strong>
-    <ul>
-      <li>The smallest deployable unit in Kubernetes, which contains one or more containers.</li>
-    </ul>
-  </li>
-</ol>
-
-<hr />
-
-<h3 id="kubernetes-workflow-for-data-scientists"><strong>Kubernetes Workflow for Data Scientists</strong></h3>
-<p>Here’s how Kubernetes can be used in a data science workflow:</p>
-
-<h4 id="1-data-preprocessing">1. <strong>Data Preprocessing:</strong></h4>
-<ul>
-  <li>Spin up multiple containers to preprocess data using distributed frameworks like Apache Spark.</li>
-</ul>
-
-<h4 id="2-model-training">2. <strong>Model Training:</strong></h4>
-<ul>
-  <li>Use Kubernetes to orchestrate <strong>GPU-enabled containers</strong> for training deep learning models (e.g., TensorFlow, PyTorch).</li>
-</ul>
-
-<h4 id="3-experimentation">3. <strong>Experimentation:</strong></h4>
-<ul>
-  <li>Run different ML experiments as isolated containers and track the results.</li>
-</ul>
-
-<h4 id="4-model-deployment">4. <strong>Model Deployment:</strong></h4>
-<ul>
-  <li>Deploy machine learning models as REST APIs using Kubernetes’ <strong>Ingress</strong> and <strong>Service</strong> objects.</li>
-</ul>
-
-<h4 id="5-monitoring-and-logging">5. <strong>Monitoring and Logging:</strong></h4>
-<ul>
-  <li>Monitor resource usage and model performance with tools like <strong>Prometheus</strong> and <strong>Grafana</strong> on Kubernetes.</li>
-</ul>
-
-<hr />
-
-<h3 id="popular-tools-in-the-kubernetes-ecosystem"><strong>Popular Tools in the Kubernetes Ecosystem</strong></h3>
-<ol>
-  <li><strong>Kubeflow</strong>:
-    <ul>
-      <li>A machine learning toolkit built on Kubernetes for managing end-to-end ML workflows.</li>
-      <li>Ideal for automating ML pipelines and deploying models.</li>
-    </ul>
-  </li>
-  <li><strong>Kustomize &amp; Helm</strong>:
-    <ul>
-      <li>Tools for managing and templating Kubernetes configuration files.</li>
-    </ul>
-  </li>
-  <li><strong>Prometheus</strong>:
-    <ul>
-      <li>For monitoring Kubernetes clusters and application performance.</li>
-    </ul>
-  </li>
-  <li><strong>Argo Workflows</strong>:
-    <ul>
-      <li>Workflow orchestration tool, useful for ML pipelines.</li>
-    </ul>
-  </li>
-  <li><strong>Knative</strong>:
-    <ul>
-      <li>For serverless workloads on Kubernetes, suitable for lightweight ML model serving.</li>
-    </ul>
-  </li>
-  <li><strong>MLflow + Kubernetes</strong>:
-    <ul>
-      <li>Kubernetes can be integrated with MLflow for experiment tracking, model deployment, and reproducibility.</li>
-    </ul>
-  </li>
-</ol>
-
-<hr />
-
-<h3 id="example-running-a-model-in-kubernetes"><strong>Example: Running a Model in Kubernetes</strong></h3>
-<p>Here’s a simplified example of deploying a machine learning model in Kubernetes:</p>
-
-<h4 id="1-create-a-docker-container"><strong>1. Create a Docker Container</strong></h4>
-<p>Package the ML model as a Docker container.</p>
-
-<div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Dockerfile</span>
-<span class="k">FROM</span><span class="s"> python:3.8</span>
-
-<span class="k">WORKDIR</span><span class="s"> /app</span>
-
-<span class="k">COPY</span><span class="s"> requirements.txt .</span>
-<span class="k">RUN </span>pip <span class="nb">install</span> <span class="nt">-r</span> requirements.txt
-
-<span class="k">COPY</span><span class="s"> model.py .</span>
-<span class="k">CMD</span><span class="s"> ["python", "model.py"]</span>
-</code></pre></div></div>
-
-<p>Build the container:</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build <span class="nt">-t</span> ml-model:latest <span class="nb">.</span>
-</code></pre></div></div>
-
-<hr />
-
-<h4 id="2-write-kubernetes-deployment-yaml"><strong>2. Write Kubernetes Deployment YAML</strong></h4>
-<p>Define how the container will be deployed on Kubernetes.</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># deployment.yaml</span>
-<span class="na">apiVersion</span><span class="pi">:</span> <span class="s">apps/v1</span>
-<span class="na">kind</span><span class="pi">:</span> <span class="s">Deployment</span>
-<span class="na">metadata</span><span class="pi">:</span>
-  <span class="na">name</span><span class="pi">:</span> <span class="s">ml-model-deployment</span>
-<span class="na">spec</span><span class="pi">:</span>
-  <span class="na">replicas</span><span class="pi">:</span> <span class="m">3</span>
-  <span class="na">selector</span><span class="pi">:</span>
-    <span class="na">matchLabels</span><span class="pi">:</span>
-      <span class="na">app</span><span class="pi">:</span> <span class="s">ml-model</span>
-  <span class="na">template</span><span class="pi">:</span>
-    <span class="na">metadata</span><span class="pi">:</span>
-      <span class="na">labels</span><span class="pi">:</span>
-        <span class="na">app</span><span class="pi">:</span> <span class="s">ml-model</span>
-    <span class="na">spec</span><span class="pi">:</span>
-      <span class="na">containers</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">ml-model</span>
-        <span class="na">image</span><span class="pi">:</span> <span class="s">ml-model:latest</span>
-        <span class="na">ports</span><span class="pi">:</span>
-        <span class="pi">-</span> <span class="na">containerPort</span><span class="pi">:</span> <span class="m">5000</span>
-</code></pre></div></div>
-
-<hr />
-
-<h4 id="3-deploy-the-model"><strong>3. Deploy the Model</strong></h4>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl apply <span class="nt">-f</span> deployment.yaml
-</code></pre></div></div>
-
-<hr />
-
-<h3 id="learning-resources-for-kubernetes"><strong>Learning Resources for Kubernetes</strong></h3>
-<ul>
-  <li><strong>Official Documentation</strong>: <a href="https://kubernetes.io/docs/">Kubernetes.io</a></li>
-  <li><strong>Kubeflow Documentation</strong>: <a href="https://www.kubeflow.org/">kubeflow.org</a></li>
-  <li><strong>Books</strong>:
-    <ul>
-      <li><em>Kubernetes: Up &amp; Running</em> by Kelsey Hightower.</li>
-      <li><em>Kubeflow for Machine Learning</em> by Trevor Grant.</li>
-    </ul>
-  </li>
-</ul>]]></content><author><name></name></author><summary type="html"><![CDATA[What is Kubernetes?]]></summary></entry></feed>
+</ul>]]></content><author><name></name></author><summary type="html"><![CDATA[section 4: End-to-End Deployment of an AI Model Using Docker, Azure, and Streamlit]]></summary></entry></feed>

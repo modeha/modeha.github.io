@@ -38,6 +38,6 @@ exclude:
   - node_modules/
   - vendor/
 
-theme: jekyll-theme-merlot
+theme: jekyll-theme-cayman # minima #jekyll-theme-merlot
 
 
