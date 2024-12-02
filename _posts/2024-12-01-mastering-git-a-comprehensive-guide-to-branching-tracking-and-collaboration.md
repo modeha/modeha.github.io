@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Mastering Git: A Comprehensive Guide to Branching, Tracking, and Collaboration'
-date: 2024-11-28 21:26 -0500
+date: 2024-12-01 21:26 -0500
 ---
 
 #### **Introduction**

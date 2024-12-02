@@ -1,4 +1,125 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-12-02T11:46:15-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Deep Learning</title><subtitle>A blog exploring deep learning, AI, and data science topics by Mohsen Dehghani.</subtitle><entry><title type="html">Mastering Git: A Comprehensive Guide to Branching, Tracking, and Collaboration</title><link href="http://localhost:4000/2024/11/28/mastering-git-a-comprehensive-guide-to-branching-tracking-and-collaboration.html" rel="alternate" type="text/html" title="Mastering Git: A Comprehensive Guide to Branching, Tracking, and Collaboration" /><published>2024-11-28T21:26:00-05:00</published><updated>2024-11-28T21:26:00-05:00</updated><id>http://localhost:4000/2024/11/28/mastering-git-a-comprehensive-guide-to-branching-tracking-and-collaboration</id><content type="html" xml:base="http://localhost:4000/2024/11/28/mastering-git-a-comprehensive-guide-to-branching-tracking-and-collaboration.html"><![CDATA[<h4 id="introduction"><strong>Introduction</strong></h4>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-12-02T11:51:47-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Deep Learning</title><subtitle>A blog exploring deep learning, AI, and data science topics by Mohsen Dehghani.</subtitle><entry><title type="html">The Four Fundamental Concepts of Object-Oriented Programming (OOP)</title><link href="http://localhost:4000/2024/12/02/the-four-fundamental-concepts-of-object-oriented-programming-oop.html" rel="alternate" type="text/html" title="The Four Fundamental Concepts of Object-Oriented Programming (OOP)" /><published>2024-12-02T00:59:00-05:00</published><updated>2024-12-02T00:59:00-05:00</updated><id>http://localhost:4000/2024/12/02/the-four-fundamental-concepts-of-object-oriented-programming-oop</id><content type="html" xml:base="http://localhost:4000/2024/12/02/the-four-fundamental-concepts-of-object-oriented-programming-oop.html"><![CDATA[<h3 id="1-encapsulation"><strong>1. Encapsulation</strong></h3>
+<ul>
+  <li><strong>Definition</strong>: Encapsulation is the bundling of data (attributes) and methods (functions) into a single unit (class) and restricting direct access to some of the object’s components.
+   <strong>Encapsulation also involves restricting direct access to certain parts of an object to ensure better control and data integrity</strong>.</li>
+  <li><strong>Purpose</strong>: Protect the data from unauthorized access and ensure proper control.</li>
+  <li><strong>Example</strong>: Using private attributes and getter/setter methods (as explained above).</li>
+</ul>
+
+<hr />
+
+<h3 id="2-abstraction"><strong>2. Abstraction</strong></h3>
+<ul>
+  <li><strong>Definition</strong>: Abstraction is the concept of hiding unnecessary implementation details and showing only the essential features of an object.</li>
+  <li><strong>Purpose</strong>: Simplifies complexity by focusing on what an object does rather than how it does it.</li>
+  <li><strong>Example in Python</strong>:
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+
+<span class="k">class</span> <span class="nc">Animal</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>  <span class="c1"># Abstract class
+</span>    <span class="o">@</span><span class="n">abstractmethod</span>
+    <span class="k">def</span> <span class="nf">make_sound</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">Dog</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">make_sound</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">"Bark!"</span>
+
+<span class="k">class</span> <span class="nc">Cat</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">make_sound</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">"Meow!"</span>
+
+<span class="n">dog</span> <span class="o">=</span> <span class="n">Dog</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">dog</span><span class="p">.</span><span class="n">make_sound</span><span class="p">())</span>  <span class="c1"># Output: Bark!
+</span></code></pre></div>    </div>
+    <ul>
+      <li><code class="highlighter-rouge">Animal</code> defines an abstract class with an abstract method <code class="highlighter-rouge">make_sound</code>. The subclasses (<code class="highlighter-rouge">Dog</code> and <code class="highlighter-rouge">Cat</code>) provide specific implementations.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="3-inheritance"><strong>3. Inheritance</strong></h3>
+<ul>
+  <li><strong>Definition</strong>: Inheritance allows one class (child/subclass) to acquire the properties and behaviors of another class (parent/superclass).</li>
+  <li><strong>Purpose</strong>: Promotes code reuse and establishes a hierarchical relationship between classes.</li>
+  <li><strong>Example in Python</strong>:
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Vehicle</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">brand</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">brand</span> <span class="o">=</span> <span class="n">brand</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+
+    <span class="k">def</span> <span class="nf">display_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s">"Vehicle: </span><span class="si">{</span><span class="bp">self</span><span class="p">.</span><span class="n">brand</span><span class="si">}</span><span class="s"> </span><span class="si">{</span><span class="bp">self</span><span class="p">.</span><span class="n">model</span><span class="si">}</span><span class="s">"</span>
+
+<span class="k">class</span> <span class="nc">Car</span><span class="p">(</span><span class="n">Vehicle</span><span class="p">):</span>  <span class="c1"># Inheriting from Vehicle
+</span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">brand</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">doors</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">(</span><span class="n">brand</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">doors</span> <span class="o">=</span> <span class="n">doors</span>
+
+    <span class="k">def</span> <span class="nf">display_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s">"Car: </span><span class="si">{</span><span class="bp">self</span><span class="p">.</span><span class="n">brand</span><span class="si">}</span><span class="s"> </span><span class="si">{</span><span class="bp">self</span><span class="p">.</span><span class="n">model</span><span class="si">}</span><span class="s">, Doors: </span><span class="si">{</span><span class="bp">self</span><span class="p">.</span><span class="n">doors</span><span class="si">}</span><span class="s">"</span>
+
+<span class="n">car</span> <span class="o">=</span> <span class="n">Car</span><span class="p">(</span><span class="s">"Toyota"</span><span class="p">,</span> <span class="s">"Corolla"</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">car</span><span class="p">.</span><span class="n">display_info</span><span class="p">())</span>  <span class="c1"># Output: Car: Toyota Corolla, Doors: 4
+</span></code></pre></div>    </div>
+    <ul>
+      <li><code class="highlighter-rouge">Car</code> inherits from <code class="highlighter-rouge">Vehicle</code> and adds its own specific behavior (<code class="highlighter-rouge">doors</code> attribute).</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="4-polymorphism"><strong>4. Polymorphism</strong></h3>
+<ul>
+  <li><strong>Definition</strong>: Polymorphism allows objects of different classes to be treated as objects of a common superclass. It enables the same method to behave differently based on the object calling it.</li>
+  <li><strong>Purpose</strong>: Promotes flexibility and scalability in code.</li>
+  <li><strong>Example in Python</strong>:
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Shape</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">Rectangle</span><span class="p">(</span><span class="n">Shape</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">width</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span>
+
+    <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">width</span> <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">height</span>
+
+<span class="k">class</span> <span class="nc">Circle</span><span class="p">(</span><span class="n">Shape</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radius</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">radius</span>
+
+    <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mf">3.14</span> <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">radius</span> <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">radius</span>
+
+<span class="n">shapes</span> <span class="o">=</span> <span class="p">[</span><span class="n">Rectangle</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">Circle</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
+
+<span class="k">for</span> <span class="n">shape</span> <span class="ow">in</span> <span class="n">shapes</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">shape</span><span class="p">.</span><span class="n">area</span><span class="p">())</span>
+</code></pre></div>    </div>
+    <ul>
+      <li>Output:
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>20
+28.26
+</code></pre></div>        </div>
+      </li>
+      <li>Both <code class="highlighter-rouge">Rectangle</code> and <code class="highlighter-rouge">Circle</code> have the <code class="highlighter-rouge">area</code> method, but they implement it differently.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="summary-of-oop-principles">Summary of OOP Principles:</h3>
+<p>| <strong>Concept</strong>      | <strong>Definition</strong>                                                      | <strong>Purpose</strong>                                |
+|——————-|——————————————————————–|——————————————–|
+| <strong>Encapsulation</strong> | Protects data and ensures controlled access using access modifiers. | Data protection and integrity              |
+| <strong>Abstraction</strong>   | Hides implementation details and focuses on functionality.          | Reduces complexity and increases usability |
+| <strong>Inheritance</strong>   | Enables one class to inherit properties and methods from another.   | Code reuse and hierarchical relationships  |
+| <strong>Polymorphism</strong>  | Allows the same method to behave differently for different objects.  | Flexibility and dynamic method execution   |</p>]]></content><author><name></name></author><summary type="html"><![CDATA[1. Encapsulation Definition: Encapsulation is the bundling of data (attributes) and methods (functions) into a single unit (class) and restricting direct access to some of the object’s components. Encapsulation also involves restricting direct access to certain parts of an object to ensure better control and data integrity. Purpose: Protect the data from unauthorized access and ensure proper control. Example: Using private attributes and getter/setter methods (as explained above).]]></summary></entry><entry><title type="html">Mastering Git: A Comprehensive Guide to Branching, Tracking, and Collaboration</title><link href="http://localhost:4000/2024/12/01/mastering-git-a-comprehensive-guide-to-branching-tracking-and-collaboration.html" rel="alternate" type="text/html" title="Mastering Git: A Comprehensive Guide to Branching, Tracking, and Collaboration" /><published>2024-12-01T21:26:00-05:00</published><updated>2024-12-01T21:26:00-05:00</updated><id>http://localhost:4000/2024/12/01/mastering-git-a-comprehensive-guide-to-branching-tracking-and-collaboration</id><content type="html" xml:base="http://localhost:4000/2024/12/01/mastering-git-a-comprehensive-guide-to-branching-tracking-and-collaboration.html"><![CDATA[<h4 id="introduction"><strong>Introduction</strong></h4>
 <p>Git is an essential tool for modern software development, enabling seamless collaboration and efficient version control. In this guide, we’ll explore creating branches, pushing changes, setting upstream tracking, and working with remote repositories to enhance your Git workflow.</p>
 
 <hr />
@@ -273,128 +394,7 @@ git push
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff main feature-branch
 </code></pre></div></div>
 
-<p>This shows the line-by-line differences between <code class="highlighter-rouge">main</code> and <code class="highlighter-rouge">feature-branch</code>.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Introduction Git is an essential tool for modern software development, enabling seamless collaboration and efficient version control. In this guide, we’ll explore creating branches, pushing changes, setting upstream tracking, and working with remote repositories to enhance your Git workflow.]]></summary></entry><entry><title type="html">The Four Fundamental Concepts of Object-Oriented Programming (OOP)</title><link href="http://localhost:4000/2024/11/28/the-four-fundamental-concepts-of-object-oriented-programming-oop.html" rel="alternate" type="text/html" title="The Four Fundamental Concepts of Object-Oriented Programming (OOP)" /><published>2024-11-28T00:59:00-05:00</published><updated>2024-11-28T00:59:00-05:00</updated><id>http://localhost:4000/2024/11/28/the-four-fundamental-concepts-of-object-oriented-programming-oop</id><content type="html" xml:base="http://localhost:4000/2024/11/28/the-four-fundamental-concepts-of-object-oriented-programming-oop.html"><![CDATA[<h3 id="1-encapsulation"><strong>1. Encapsulation</strong></h3>
-<ul>
-  <li><strong>Definition</strong>: Encapsulation is the bundling of data (attributes) and methods (functions) into a single unit (class) and restricting direct access to some of the object’s components.
-   <strong>Encapsulation also involves restricting direct access to certain parts of an object to ensure better control and data integrity</strong>.</li>
-  <li><strong>Purpose</strong>: Protect the data from unauthorized access and ensure proper control.</li>
-  <li><strong>Example</strong>: Using private attributes and getter/setter methods (as explained above).</li>
-</ul>
-
-<hr />
-
-<h3 id="2-abstraction"><strong>2. Abstraction</strong></h3>
-<ul>
-  <li><strong>Definition</strong>: Abstraction is the concept of hiding unnecessary implementation details and showing only the essential features of an object.</li>
-  <li><strong>Purpose</strong>: Simplifies complexity by focusing on what an object does rather than how it does it.</li>
-  <li><strong>Example in Python</strong>:
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
-
-<span class="k">class</span> <span class="nc">Animal</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>  <span class="c1"># Abstract class
-</span>    <span class="o">@</span><span class="n">abstractmethod</span>
-    <span class="k">def</span> <span class="nf">make_sound</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">pass</span>
-
-<span class="k">class</span> <span class="nc">Dog</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">make_sound</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s">"Bark!"</span>
-
-<span class="k">class</span> <span class="nc">Cat</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">make_sound</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s">"Meow!"</span>
-
-<span class="n">dog</span> <span class="o">=</span> <span class="n">Dog</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="n">dog</span><span class="p">.</span><span class="n">make_sound</span><span class="p">())</span>  <span class="c1"># Output: Bark!
-</span></code></pre></div>    </div>
-    <ul>
-      <li><code class="highlighter-rouge">Animal</code> defines an abstract class with an abstract method <code class="highlighter-rouge">make_sound</code>. The subclasses (<code class="highlighter-rouge">Dog</code> and <code class="highlighter-rouge">Cat</code>) provide specific implementations.</li>
-    </ul>
-  </li>
-</ul>
-
-<hr />
-
-<h3 id="3-inheritance"><strong>3. Inheritance</strong></h3>
-<ul>
-  <li><strong>Definition</strong>: Inheritance allows one class (child/subclass) to acquire the properties and behaviors of another class (parent/superclass).</li>
-  <li><strong>Purpose</strong>: Promotes code reuse and establishes a hierarchical relationship between classes.</li>
-  <li><strong>Example in Python</strong>:
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Vehicle</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">brand</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">brand</span> <span class="o">=</span> <span class="n">brand</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
-
-    <span class="k">def</span> <span class="nf">display_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s">"Vehicle: </span><span class="si">{</span><span class="bp">self</span><span class="p">.</span><span class="n">brand</span><span class="si">}</span><span class="s"> </span><span class="si">{</span><span class="bp">self</span><span class="p">.</span><span class="n">model</span><span class="si">}</span><span class="s">"</span>
-
-<span class="k">class</span> <span class="nc">Car</span><span class="p">(</span><span class="n">Vehicle</span><span class="p">):</span>  <span class="c1"># Inheriting from Vehicle
-</span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">brand</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">doors</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">(</span><span class="n">brand</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">doors</span> <span class="o">=</span> <span class="n">doors</span>
-
-    <span class="k">def</span> <span class="nf">display_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s">"Car: </span><span class="si">{</span><span class="bp">self</span><span class="p">.</span><span class="n">brand</span><span class="si">}</span><span class="s"> </span><span class="si">{</span><span class="bp">self</span><span class="p">.</span><span class="n">model</span><span class="si">}</span><span class="s">, Doors: </span><span class="si">{</span><span class="bp">self</span><span class="p">.</span><span class="n">doors</span><span class="si">}</span><span class="s">"</span>
-
-<span class="n">car</span> <span class="o">=</span> <span class="n">Car</span><span class="p">(</span><span class="s">"Toyota"</span><span class="p">,</span> <span class="s">"Corolla"</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">car</span><span class="p">.</span><span class="n">display_info</span><span class="p">())</span>  <span class="c1"># Output: Car: Toyota Corolla, Doors: 4
-</span></code></pre></div>    </div>
-    <ul>
-      <li><code class="highlighter-rouge">Car</code> inherits from <code class="highlighter-rouge">Vehicle</code> and adds its own specific behavior (<code class="highlighter-rouge">doors</code> attribute).</li>
-    </ul>
-  </li>
-</ul>
-
-<hr />
-
-<h3 id="4-polymorphism"><strong>4. Polymorphism</strong></h3>
-<ul>
-  <li><strong>Definition</strong>: Polymorphism allows objects of different classes to be treated as objects of a common superclass. It enables the same method to behave differently based on the object calling it.</li>
-  <li><strong>Purpose</strong>: Promotes flexibility and scalability in code.</li>
-  <li><strong>Example in Python</strong>:
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Shape</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">pass</span>
-
-<span class="k">class</span> <span class="nc">Rectangle</span><span class="p">(</span><span class="n">Shape</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">width</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span>
-
-    <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">width</span> <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">height</span>
-
-<span class="k">class</span> <span class="nc">Circle</span><span class="p">(</span><span class="n">Shape</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radius</span><span class="p">):</span>
-        <span class="bp">self</span><span class="p">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">radius</span>
-
-    <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="mf">3.14</span> <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">radius</span> <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">radius</span>
-
-<span class="n">shapes</span> <span class="o">=</span> <span class="p">[</span><span class="n">Rectangle</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">Circle</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
-
-<span class="k">for</span> <span class="n">shape</span> <span class="ow">in</span> <span class="n">shapes</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">shape</span><span class="p">.</span><span class="n">area</span><span class="p">())</span>
-</code></pre></div>    </div>
-    <ul>
-      <li>Output:
-        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>20
-28.26
-</code></pre></div>        </div>
-      </li>
-      <li>Both <code class="highlighter-rouge">Rectangle</code> and <code class="highlighter-rouge">Circle</code> have the <code class="highlighter-rouge">area</code> method, but they implement it differently.</li>
-    </ul>
-  </li>
-</ul>
-
-<hr />
-
-<h3 id="summary-of-oop-principles">Summary of OOP Principles:</h3>
-<p>| <strong>Concept</strong>      | <strong>Definition</strong>                                                      | <strong>Purpose</strong>                                |
-|——————-|——————————————————————–|——————————————–|
-| <strong>Encapsulation</strong> | Protects data and ensures controlled access using access modifiers. | Data protection and integrity              |
-| <strong>Abstraction</strong>   | Hides implementation details and focuses on functionality.          | Reduces complexity and increases usability |
-| <strong>Inheritance</strong>   | Enables one class to inherit properties and methods from another.   | Code reuse and hierarchical relationships  |
-| <strong>Polymorphism</strong>  | Allows the same method to behave differently for different objects.  | Flexibility and dynamic method execution   |</p>]]></content><author><name></name></author><summary type="html"><![CDATA[1. Encapsulation Definition: Encapsulation is the bundling of data (attributes) and methods (functions) into a single unit (class) and restricting direct access to some of the object’s components. Encapsulation also involves restricting direct access to certain parts of an object to ensure better control and data integrity. Purpose: Protect the data from unauthorized access and ensure proper control. Example: Using private attributes and getter/setter methods (as explained above).]]></summary></entry><entry><title type="html">Understanding Large Language Models (LLMs): A Comprehensive Guide</title><link href="http://localhost:4000/2024/11/26/understanding-large-language-models-llms-a-comprehensive-guide.html" rel="alternate" type="text/html" title="Understanding Large Language Models (LLMs): A Comprehensive Guide" /><published>2024-11-26T23:04:00-05:00</published><updated>2024-11-26T23:04:00-05:00</updated><id>http://localhost:4000/2024/11/26/understanding-large-language-models-llms-a-comprehensive-guide</id><content type="html" xml:base="http://localhost:4000/2024/11/26/understanding-large-language-models-llms-a-comprehensive-guide.html"><![CDATA[<p><strong>How LLM Technology Actually Works</strong></p>
+<p>This shows the line-by-line differences between <code class="highlighter-rouge">main</code> and <code class="highlighter-rouge">feature-branch</code>.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Introduction Git is an essential tool for modern software development, enabling seamless collaboration and efficient version control. In this guide, we’ll explore creating branches, pushing changes, setting upstream tracking, and working with remote repositories to enhance your Git workflow.]]></summary></entry><entry><title type="html">Understanding Large Language Models (LLMs): A Comprehensive Guide</title><link href="http://localhost:4000/2024/11/26/understanding-large-language-models-llms-a-comprehensive-guide.html" rel="alternate" type="text/html" title="Understanding Large Language Models (LLMs): A Comprehensive Guide" /><published>2024-11-26T23:04:00-05:00</published><updated>2024-11-26T23:04:00-05:00</updated><id>http://localhost:4000/2024/11/26/understanding-large-language-models-llms-a-comprehensive-guide</id><content type="html" xml:base="http://localhost:4000/2024/11/26/understanding-large-language-models-llms-a-comprehensive-guide.html"><![CDATA[<p><strong>How LLM Technology Actually Works</strong></p>
 
 <p>This text explores the inner workings of large language models (LLMs) and their applications in various fields. The topics covered include:</p>
 
