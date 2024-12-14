@@ -1,7 +1,7 @@
 ﻿---
 layout: post
 title:  "Why Using Sigmoid in NN"
-date:   2022-01-31 19:31:29 +0900
+date:   2022-02-01 19:31:29 +0900
 categories: update
 ---
 <!--- 
