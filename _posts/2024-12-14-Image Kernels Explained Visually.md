@@ -1,6 +1,6 @@
 ---
 layout: no-title
-title: "Image Kernels Explained"
+title: "Image Kernels Explained Visually"
 ---
 
 <iframe
