@@ -1,130 +1,123 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-12-14T22:37:05-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Deep Learning</title><subtitle>A blog exploring deep learning, AI, and data science topics by Mohsen Dehghani.</subtitle><entry><title type="html">Correlation and Angle Relationship</title><link href="http://localhost:4000/2024/12/14/correlation-and-angle-relationship.html" rel="alternate" type="text/html" title="Correlation and Angle Relationship" /><published>2024-12-14T22:36:00-05:00</published><updated>2024-12-14T22:36:00-05:00</updated><id>http://localhost:4000/2024/12/14/correlation-and-angle-relationship</id><content type="html" xml:base="http://localhost:4000/2024/12/14/correlation-and-angle-relationship.html"><![CDATA[<p>The angle between two vectors (features) depends on their <strong>correlation coefficient</strong>, as it is directly related to the cosine of the angle between them:</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-12-14T22:39:54-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Deep Learning</title><subtitle>A blog exploring deep learning, AI, and data science topics by Mohsen Dehghani.</subtitle><entry><title type="html">Correlation and Angle Relationship</title><link href="http://localhost:4000/math/data-science/2024/12/14/correlation-and-angle-relationship.html" rel="alternate" type="text/html" title="Correlation and Angle Relationship" /><published>2024-12-14T00:00:00-05:00</published><updated>2024-12-14T00:00:00-05:00</updated><id>http://localhost:4000/math/data-science/2024/12/14/correlation-and-angle-relationship</id><content type="html" xml:base="http://localhost:4000/math/data-science/2024/12/14/correlation-and-angle-relationship.html"><![CDATA[<h1 id="correlation-and-angle-relationship">Correlation and Angle Relationship</h1>
+
+<p>The angle between two vectors (features) depends on their correlation coefficient, as it is directly related to the cosine of the angle between them:</p>
 
 <p>[
 r = \cos(\theta)
-]
-where ( r ) is the correlation coefficient ((-1 \leq r \leq 1)), and ( \theta ) is the angle between the two vectors.</p>
+]</p>
+
+<p>where ( r ) is the correlation coefficient ((-1 \leq r \leq 1)), and ( \theta ) is the angle between the two vectors.</p>
 
 <hr />
 
-<h3 id="relationship-between-correlation-and-angle"><strong>Relationship Between Correlation and Angle</strong></h3>
+<h2 id="relationship-between-correlation-and-angle">Relationship Between Correlation and Angle</h2>
 
-<ol>
-  <li><strong>High Positive Correlation (( r \approx +1 )):</strong>
-    <ul>
-      <li>When ( r \to 1 ), ( \cos(\theta) \to 1 ), meaning ( \theta \to 0^\circ ).</li>
-      <li>The vectors are nearly <strong>aligned in the same direction</strong>.</li>
-      <li>Example: If ( r = 0.9 ), the angle is small:
+<h3 id="high-positive-correlation--r-approx-1-">High Positive Correlation (( r \approx +1 )):</h3>
+<ul>
+  <li>When ( r \to 1 ), ( \cos(\theta) \to 1 ), meaning ( \theta \to 0^\circ ).</li>
+  <li>The vectors are nearly aligned in the same direction.</li>
+  <li><strong>Example:</strong> If ( r = 0.9 ), the angle is small:
 [
 \theta = \cos^{-1}(0.9) \approx 25.84^\circ
 ]</li>
-    </ul>
-  </li>
-  <li><strong>High Negative Correlation (( r \approx -1 )):</strong>
-    <ul>
-      <li>When ( r \to -1 ), ( \cos(\theta) \to -1 ), meaning ( \theta \to 180^\circ ).</li>
-      <li>The vectors are nearly <strong>aligned in opposite directions</strong>.</li>
-      <li>Example: If ( r = -0.9 ), the angle is:
+</ul>
+
+<h3 id="high-negative-correlation--r-approx--1-">High Negative Correlation (( r \approx -1 )):</h3>
+<ul>
+  <li>When ( r \to -1 ), ( \cos(\theta) \to -1 ), meaning ( \theta \to 180^\circ ).</li>
+  <li>The vectors are nearly aligned in opposite directions.</li>
+  <li><strong>Example:</strong> If ( r = -0.9 ), the angle is:
 [
 \theta = \cos^{-1}(-0.9) \approx 154.16^\circ
 ]</li>
-    </ul>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>**Small Correlation ((</td>
-          <td>r</td>
-          <td>) is small):**</td>
-        </tr>
-      </tbody>
-    </table>
-    <ul>
-      <li>When ( r ) is small (e.g., ( r \approx 0.1 ) or ( r \approx -0.1 )), ( \cos(\theta) ) is close to ( 0 ), meaning ( \theta ) is close to ( 90^\circ ).</li>
-      <li>The vectors are nearly <strong>orthogonal</strong>.</li>
-      <li>Example: If ( r = 0.1 ), the angle is:
+</ul>
+
+<h3 id="small-correlation--r--is-small">Small Correlation (( r ) is small):</h3>
+<ul>
+  <li>When ( r ) is small (e.g., ( r \approx 0.1 ) or ( r \approx -0.1 )), ( \cos(\theta) ) is close to ( 0 ), meaning ( \theta ) is close to ( 90^\circ ).</li>
+  <li>The vectors are nearly orthogonal.</li>
+  <li><strong>Example:</strong> If ( r = 0.1 ), the angle is:
 [
 \theta = \cos^{-1}(0.1) \approx 84.26^\circ
 ]</li>
-    </ul>
-  </li>
-  <li><strong>Zero Correlation (( r = 0 )):</strong>
-    <ul>
-      <li>When ( r = 0 ), ( \cos(\theta) = 0 ), meaning ( \theta = 90^\circ ).</li>
-      <li>The vectors are <strong>orthogonal</strong> or <strong>perpendicular</strong>.</li>
-    </ul>
-  </li>
-</ol>
+</ul>
+
+<h3 id="zero-correlation--r--0-">Zero Correlation (( r = 0 )):</h3>
+<ul>
+  <li>When ( r = 0 ), ( \cos(\theta) = 0 ), meaning ( \theta = 90^\circ ).</li>
+  <li>The vectors are orthogonal or perpendicular.</li>
+</ul>
 
 <hr />
 
-<h3 id="general-cases"><strong>General Cases</strong></h3>
-<p>| Correlation Coefficient (( r )) | Angle (( \theta ))                  | Relationship                            |
-|———————————–|————————————–|—————————————–|
-| ( r = 1 )                       | ( 0^\circ )                        | Perfect positive alignment             |
-| ( 0 &lt; r &lt; 1 )                   | ( 0^\circ &lt; \theta &lt; 90^\circ )    | Small acute angle (positive correlation) |
-| ( r = 0 )                       | ( 90^\circ )                       | Orthogonal (no linear relationship)    |
-| ( -1 &lt; r &lt; 0 )                  | ( 90^\circ &lt; \theta &lt; 180^\circ )  | Obtuse angle (negative correlation)    |
-| ( r = -1 )                      | ( 180^\circ )                      | Perfect negative alignment             |</p>
+<h2 id="general-cases">General Cases</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Correlation Coefficient (( r ))</th>
+      <th>Angle (( \theta ))</th>
+      <th>Relationship</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>( r = 1 )</td>
+      <td>( 0^\circ )</td>
+      <td>Perfect positive alignment</td>
+    </tr>
+    <tr>
+      <td>( 0 &lt; r &lt; 1 )</td>
+      <td>( 0^\circ &lt; \theta &lt; 90^\circ )</td>
+      <td>Small acute angle (positive correlation)</td>
+    </tr>
+    <tr>
+      <td>( r = 0 )</td>
+      <td>( 90^\circ )</td>
+      <td>Orthogonal (no linear relationship)</td>
+    </tr>
+    <tr>
+      <td>( -1 &lt; r &lt; 0 )</td>
+      <td>( 90^\circ &lt; \theta &lt; 180^\circ )</td>
+      <td>Obtuse angle (negative correlation)</td>
+    </tr>
+    <tr>
+      <td>( r = -1 )</td>
+      <td>( 180^\circ )</td>
+      <td>Perfect negative alignment</td>
+    </tr>
+  </tbody>
+</table>
 
 <hr />
 
-<h3 id="examples-with-calculations"><strong>Examples with Calculations</strong></h3>
-<ol>
-  <li>
-    <p><strong>High Positive Correlation (( r = 0.8 )):</strong>
-[
+<h2 id="examples-with-calculations">Examples with Calculations</h2>
+
+<h4 id="high-positive-correlation--r--08-">High Positive Correlation (( r = 0.8 )):</h4>
+<p>[
 \theta = \cos^{-1}(0.8) \approx 36.87^\circ
 ]</p>
-  </li>
-  <li>
-    <p><strong>Low Positive Correlation (( r = 0.2 )):</strong>
-[
+
+<h4 id="low-positive-correlation--r--02-">Low Positive Correlation (( r = 0.2 )):</h4>
+<p>[
 \theta = \cos^{-1}(0.2) \approx 78.46^\circ
 ]</p>
-  </li>
-  <li>
-    <p><strong>High Negative Correlation (( r = -0.8 )):</strong>
-[
+
+<h4 id="high-negative-correlation--r---08-">High Negative Correlation (( r = -0.8 )):</h4>
+<p>[
 \theta = \cos^{-1}(-0.8) \approx 143.13^\circ
 ]</p>
-  </li>
-  <li>
-    <p><strong>Small Negative Correlation (( r = -0.2 )):</strong>
-[
+
+<h4 id="small-negative-correlation--r---02-">Small Negative Correlation (( r = -0.2 )):</h4>
+<p>[
 \theta = \cos^{-1}(-0.2) \approx 101.54^\circ
 ]</p>
-  </li>
-</ol>
 
 <hr />
 
-<h3 id="conclusion"><strong>Conclusion</strong></h3>
-<ul>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>**High correlation ((</td>
-          <td>r</td>
-          <td>\to 1 ))** results in <strong>small angles (( \theta \to 0^\circ ) or ( \theta \to 180^\circ ))</strong>.</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>**Low correlation ((</td>
-          <td>r</td>
-          <td>\to 0 ))** results in <strong>angles near ( 90^\circ )</strong>.</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-</ul>]]></content><author><name></name></author><summary type="html"><![CDATA[The angle between two vectors (features) depends on their correlation coefficient, as it is directly related to the cosine of the angle between them:]]></summary></entry><entry><title type="html">Image Kernels Explained Visually</title><link href="http://localhost:4000/2024/12/13/Image-Kernels-Explained-Visually.html" rel="alternate" type="text/html" title="Image Kernels Explained Visually" /><published>2024-12-13T21:26:00-05:00</published><updated>2024-12-13T21:26:00-05:00</updated><id>http://localhost:4000/2024/12/13/Image%20Kernels%20Explained%20Visually</id><content type="html" xml:base="http://localhost:4000/2024/12/13/Image-Kernels-Explained-Visually.html"><![CDATA[<iframe src="https://setosa.io/ev/image-kernels/" width="100%" height="800px" style="border:none;">
+<h2 id="conclusion">Conclusion</h2>
+
+<p><strong>High correlation (( r \to 1 ))</strong> results in small angles (( \theta \to 0^\circ ) or ( \theta \to 180^\circ )).</p>]]></content><author><name></name></author><category term="math" /><category term="data-science" /><category term="correlation" /><category term="angle" /><category term="math" /><summary type="html"><![CDATA[Correlation and Angle Relationship]]></summary></entry><entry><title type="html">Image Kernels Explained Visually</title><link href="http://localhost:4000/2024/12/13/Image-Kernels-Explained-Visually.html" rel="alternate" type="text/html" title="Image Kernels Explained Visually" /><published>2024-12-13T21:26:00-05:00</published><updated>2024-12-13T21:26:00-05:00</updated><id>http://localhost:4000/2024/12/13/Image%20Kernels%20Explained%20Visually</id><content type="html" xml:base="http://localhost:4000/2024/12/13/Image-Kernels-Explained-Visually.html"><![CDATA[<iframe src="https://setosa.io/ev/image-kernels/" width="100%" height="800px" style="border:none;">
 </iframe>]]></content><author><name></name></author><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">The Four Fundamental Concepts of Object-Oriented Programming (OOP)</title><link href="http://localhost:4000/2024/12/02/the-four-fundamental-concepts-of-object-oriented-programming-oop.html" rel="alternate" type="text/html" title="The Four Fundamental Concepts of Object-Oriented Programming (OOP)" /><published>2024-12-02T00:59:00-05:00</published><updated>2024-12-02T00:59:00-05:00</updated><id>http://localhost:4000/2024/12/02/the-four-fundamental-concepts-of-object-oriented-programming-oop</id><content type="html" xml:base="http://localhost:4000/2024/12/02/the-four-fundamental-concepts-of-object-oriented-programming-oop.html"><![CDATA[<h3 id="1-encapsulation"><strong>1. Encapsulation</strong></h3>
 <ul>
   <li><strong>Definition</strong>: Encapsulation is the bundling of data (attributes) and methods (functions) into a single unit (class) and restricting direct access to some of the object’s components.
