@@ -1,4 +1,124 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-12-14T22:46:54-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Deep Learning</title><subtitle>A blog exploring deep learning, AI, and data science topics by Mohsen Dehghani.</subtitle><entry><title type="html">The Four Fundamental Concepts of Object-Oriented Programming (OOP)</title><link href="http://localhost:4000/2024/11/28/the-four-fundamental-concepts-of-object-oriented-programming-oop.html" rel="alternate" type="text/html" title="The Four Fundamental Concepts of Object-Oriented Programming (OOP)" /><published>2024-11-28T00:59:00-05:00</published><updated>2024-11-28T00:59:00-05:00</updated><id>http://localhost:4000/2024/11/28/the-four-fundamental-concepts-of-object-oriented-programming-oop</id><content type="html" xml:base="http://localhost:4000/2024/11/28/the-four-fundamental-concepts-of-object-oriented-programming-oop.html"><![CDATA[<h3 id="1-encapsulation"><strong>1. Encapsulation</strong></h3>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-12-14T22:48:04-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Deep Learning</title><subtitle>A blog exploring deep learning, AI, and data science topics by Mohsen Dehghani.</subtitle><entry><title type="html">Correlation and Angle Relationship</title><link href="http://localhost:4000/math/data-science/2024/12/14/correlation-and-angle-relationship.html" rel="alternate" type="text/html" title="Correlation and Angle Relationship" /><published>2024-12-14T00:00:00-05:00</published><updated>2024-12-14T00:00:00-05:00</updated><id>http://localhost:4000/math/data-science/2024/12/14/correlation-and-angle-relationship</id><content type="html" xml:base="http://localhost:4000/math/data-science/2024/12/14/correlation-and-angle-relationship.html"><![CDATA[<h1 id="correlation-and-angle-relationship">Correlation and Angle Relationship</h1>
+
+<p>The angle between two vectors (features) depends on their correlation coefficient, as it is directly related to the cosine of the angle between them:</p>
+
+<p>[
+r = \cos(\theta)
+]</p>
+
+<p>where ( r ) is the correlation coefficient ((-1 \leq r \leq 1)), and ( \theta ) is the angle between the two vectors.</p>
+
+<hr />
+
+<h2 id="relationship-between-correlation-and-angle">Relationship Between Correlation and Angle</h2>
+
+<h3 id="high-positive-correlation--r-approx-1-">High Positive Correlation (( r \approx +1 )):</h3>
+<ul>
+  <li>When ( r \to 1 ), ( \cos(\theta) \to 1 ), meaning ( \theta \to 0^\circ ).</li>
+  <li>The vectors are nearly aligned in the same direction.</li>
+  <li><strong>Example:</strong> If ( r = 0.9 ), the angle is small:
+[
+\theta = \cos^{-1}(0.9) \approx 25.84^\circ
+]</li>
+</ul>
+
+<h3 id="high-negative-correlation--r-approx--1-">High Negative Correlation (( r \approx -1 )):</h3>
+<ul>
+  <li>When ( r \to -1 ), ( \cos(\theta) \to -1 ), meaning ( \theta \to 180^\circ ).</li>
+  <li>The vectors are nearly aligned in opposite directions.</li>
+  <li><strong>Example:</strong> If ( r = -0.9 ), the angle is:
+[
+\theta = \cos^{-1}(-0.9) \approx 154.16^\circ
+]</li>
+</ul>
+
+<h3 id="small-correlation--r--is-small">Small Correlation (( r ) is small):</h3>
+<ul>
+  <li>When ( r ) is small (e.g., ( r \approx 0.1 ) or ( r \approx -0.1 )), ( \cos(\theta) ) is close to ( 0 ), meaning ( \theta ) is close to ( 90^\circ ).</li>
+  <li>The vectors are nearly orthogonal.</li>
+  <li><strong>Example:</strong> If ( r = 0.1 ), the angle is:
+[
+\theta = \cos^{-1}(0.1) \approx 84.26^\circ
+]</li>
+</ul>
+
+<h3 id="zero-correlation--r--0-">Zero Correlation (( r = 0 )):</h3>
+<ul>
+  <li>When ( r = 0 ), ( \cos(\theta) = 0 ), meaning ( \theta = 90^\circ ).</li>
+  <li>The vectors are orthogonal or perpendicular.</li>
+</ul>
+
+<hr />
+
+<h2 id="general-cases">General Cases</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Correlation Coefficient (( r ))</th>
+      <th>Angle (( \theta ))</th>
+      <th>Relationship</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>( r = 1 )</td>
+      <td>( 0^\circ )</td>
+      <td>Perfect positive alignment</td>
+    </tr>
+    <tr>
+      <td>( 0 &lt; r &lt; 1 )</td>
+      <td>( 0^\circ &lt; \theta &lt; 90^\circ )</td>
+      <td>Small acute angle (positive correlation)</td>
+    </tr>
+    <tr>
+      <td>( r = 0 )</td>
+      <td>( 90^\circ )</td>
+      <td>Orthogonal (no linear relationship)</td>
+    </tr>
+    <tr>
+      <td>( -1 &lt; r &lt; 0 )</td>
+      <td>( 90^\circ &lt; \theta &lt; 180^\circ )</td>
+      <td>Obtuse angle (negative correlation)</td>
+    </tr>
+    <tr>
+      <td>( r = -1 )</td>
+      <td>( 180^\circ )</td>
+      <td>Perfect negative alignment</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="examples-with-calculations">Examples with Calculations</h2>
+
+<h4 id="high-positive-correlation--r--08-">High Positive Correlation (( r = 0.8 )):</h4>
+<p>[
+\theta = \cos^{-1}(0.8) \approx 36.87^\circ
+]</p>
+
+<h4 id="low-positive-correlation--r--02-">Low Positive Correlation (( r = 0.2 )):</h4>
+<p>[
+\theta = \cos^{-1}(0.2) \approx 78.46^\circ
+]</p>
+
+<h4 id="high-negative-correlation--r---08-">High Negative Correlation (( r = -0.8 )):</h4>
+<p>[
+\theta = \cos^{-1}(-0.8) \approx 143.13^\circ
+]</p>
+
+<h4 id="small-negative-correlation--r---02-">Small Negative Correlation (( r = -0.2 )):</h4>
+<p>[
+\theta = \cos^{-1}(-0.2) \approx 101.54^\circ
+]</p>
+
+<hr />
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p><strong>High correlation (( r \to 1 ))</strong> results in small angles (( \theta \to 0^\circ ) or ( \theta \to 180^\circ )).</p>]]></content><author><name></name></author><category term="math" /><category term="data-science" /><category term="correlation" /><category term="angle" /><category term="math" /><summary type="html"><![CDATA[Correlation and Angle Relationship]]></summary></entry><entry><title type="html">Image Kernels Explained Visually</title><link href="http://localhost:4000/2024/12/13/Image-Kernels-Explained-Visually.html" rel="alternate" type="text/html" title="Image Kernels Explained Visually" /><published>2024-12-13T21:26:00-05:00</published><updated>2024-12-13T21:26:00-05:00</updated><id>http://localhost:4000/2024/12/13/Image%20Kernels%20Explained%20Visually</id><content type="html" xml:base="http://localhost:4000/2024/12/13/Image-Kernels-Explained-Visually.html"><![CDATA[<iframe src="https://setosa.io/ev/image-kernels/" width="100%" height="800px" style="border:none;">
+</iframe>]]></content><author><name></name></author><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">The Four Fundamental Concepts of Object-Oriented Programming (OOP)</title><link href="http://localhost:4000/2024/12/02/the-four-fundamental-concepts-of-object-oriented-programming-oop.html" rel="alternate" type="text/html" title="The Four Fundamental Concepts of Object-Oriented Programming (OOP)" /><published>2024-12-02T00:59:00-05:00</published><updated>2024-12-02T00:59:00-05:00</updated><id>http://localhost:4000/2024/12/02/the-four-fundamental-concepts-of-object-oriented-programming-oop</id><content type="html" xml:base="http://localhost:4000/2024/12/02/the-four-fundamental-concepts-of-object-oriented-programming-oop.html"><![CDATA[<h3 id="1-encapsulation"><strong>1. Encapsulation</strong></h3>
 <ul>
   <li><strong>Definition</strong>: Encapsulation is the bundling of data (attributes) and methods (functions) into a single unit (class) and restricting direct access to some of the object’s components.
    <strong>Encapsulation also involves restricting direct access to certain parts of an object to ensure better control and data integrity</strong>.</li>
@@ -119,7 +239,282 @@
 | <strong>Encapsulation</strong> | Protects data and ensures controlled access using access modifiers. | Data protection and integrity              |
 | <strong>Abstraction</strong>   | Hides implementation details and focuses on functionality.          | Reduces complexity and increases usability |
 | <strong>Inheritance</strong>   | Enables one class to inherit properties and methods from another.   | Code reuse and hierarchical relationships  |
-| <strong>Polymorphism</strong>  | Allows the same method to behave differently for different objects.  | Flexibility and dynamic method execution   |</p>]]></content><author><name></name></author><summary type="html"><![CDATA[1. Encapsulation Definition: Encapsulation is the bundling of data (attributes) and methods (functions) into a single unit (class) and restricting direct access to some of the object’s components. Encapsulation also involves restricting direct access to certain parts of an object to ensure better control and data integrity. Purpose: Protect the data from unauthorized access and ensure proper control. Example: Using private attributes and getter/setter methods (as explained above).]]></summary></entry><entry><title type="html">Understanding Large Language Models (LLMs): A Comprehensive Guide</title><link href="http://localhost:4000/2024/11/26/understanding-large-language-models-llms-a-comprehensive-guide.html" rel="alternate" type="text/html" title="Understanding Large Language Models (LLMs): A Comprehensive Guide" /><published>2024-11-26T23:04:00-05:00</published><updated>2024-11-26T23:04:00-05:00</updated><id>http://localhost:4000/2024/11/26/understanding-large-language-models-llms-a-comprehensive-guide</id><content type="html" xml:base="http://localhost:4000/2024/11/26/understanding-large-language-models-llms-a-comprehensive-guide.html"><![CDATA[<p><strong>How LLM Technology Actually Works</strong></p>
+| <strong>Polymorphism</strong>  | Allows the same method to behave differently for different objects.  | Flexibility and dynamic method execution   |</p>]]></content><author><name></name></author><summary type="html"><![CDATA[1. Encapsulation Definition: Encapsulation is the bundling of data (attributes) and methods (functions) into a single unit (class) and restricting direct access to some of the object’s components. Encapsulation also involves restricting direct access to certain parts of an object to ensure better control and data integrity. Purpose: Protect the data from unauthorized access and ensure proper control. Example: Using private attributes and getter/setter methods (as explained above).]]></summary></entry><entry><title type="html">Mastering Git: A Comprehensive Guide to Branching, Tracking, and Collaboration</title><link href="http://localhost:4000/2024/12/01/mastering-git-a-comprehensive-guide-to-branching-tracking-and-collaboration.html" rel="alternate" type="text/html" title="Mastering Git: A Comprehensive Guide to Branching, Tracking, and Collaboration" /><published>2024-12-01T21:26:00-05:00</published><updated>2024-12-01T21:26:00-05:00</updated><id>http://localhost:4000/2024/12/01/mastering-git-a-comprehensive-guide-to-branching-tracking-and-collaboration</id><content type="html" xml:base="http://localhost:4000/2024/12/01/mastering-git-a-comprehensive-guide-to-branching-tracking-and-collaboration.html"><![CDATA[<h4 id="introduction"><strong>Introduction</strong></h4>
+<p>Git is an essential tool for modern software development, enabling seamless collaboration and efficient version control. In this guide, we’ll explore creating branches, pushing changes, setting upstream tracking, and working with remote repositories to enhance your Git workflow.</p>
+
+<hr />
+
+<h4 id="creating-a-new-branch"><strong>Creating a New Branch</strong></h4>
+<p>Creating branches is a fundamental part of Git, allowing developers to isolate features, bug fixes, or experiments. Here’s how you can create and work with branches:</p>
+
+<ol>
+  <li><strong>Create a New Branch Locally:</strong>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git branch branch-name
+</code></pre></div>    </div>
+    <ul>
+      <li>Creates a branch but keeps you on the current one.</li>
+    </ul>
+  </li>
+  <li><strong>Create and Switch in One Command:</strong>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">-b</span> branch-name
+</code></pre></div>    </div>
+    <ul>
+      <li>This is the most commonly used method.</li>
+    </ul>
+  </li>
+  <li><strong>Check Your Branches:</strong>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git branch
+</code></pre></div>    </div>
+    <ul>
+      <li>Displays all local branches, with <code class="highlighter-rouge">*</code> indicating the active one.</li>
+    </ul>
+  </li>
+  <li><strong>Push the New Branch to the Remote:</strong>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push <span class="nt">-u</span> origin branch-name
+</code></pre></div>    </div>
+    <ul>
+      <li>Links the local branch with the remote repository for easier future pushes.</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h4 id="understanding-git-push--u"><strong>Understanding <code class="highlighter-rouge">git push -u</code></strong></h4>
+<p>The <code class="highlighter-rouge">-u</code> option (short for “set upstream”) links your local branch to a remote branch. This simplifies subsequent Git commands, as you can omit the remote and branch name:</p>
+
+<ul>
+  <li>First push with upstream tracking:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push <span class="nt">-u</span> origin branch-name
+</code></pre></div>    </div>
+  </li>
+  <li>Future pushes and pulls:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push
+git pull
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>This is particularly useful when creating new branches or pulling remote branches for the first time.</p>
+
+<hr />
+
+<h4 id="pushing-files-to-a-repository"><strong>Pushing Files to a Repository</strong></h4>
+<p>Once you’ve added or modified files, pushing them to a repository involves these steps:</p>
+
+<ol>
+  <li><strong>Add Files to the Staging Area:</strong>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add file1 file2
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Commit the Changes:</strong>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git commit <span class="nt">-m</span> <span class="s2">"Describe your changes"</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Push the Changes to the Remote Repository:</strong>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>For new branches, use <code class="highlighter-rouge">git push -u origin branch-name</code> to set up the upstream tracking.</p>
+
+<hr />
+
+<h4 id="working-with-an-existing-branch"><strong>Working with an Existing Branch</strong></h4>
+<p>If you’re adding files to an existing branch in a repository, the workflow becomes even simpler:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout branch-name
+git add file1 file2
+git commit <span class="nt">-m</span> <span class="s2">"Describe your changes"</span>
+git push
+</code></pre></div></div>
+
+<hr />
+
+<h4 id="switching-between-branches"><strong>Switching Between Branches</strong></h4>
+<p>Easily switch between branches:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout branch-name
+</code></pre></div></div>
+<p>Ensure you commit or stash changes before switching to avoid conflicts.</p>
+
+<hr />
+
+<h4 id="best-practices-for-branching-and-collaboration"><strong>Best Practices for Branching and Collaboration</strong></h4>
+<ul>
+  <li><strong>Create Separate Branches</strong> for each feature or bug fix.</li>
+  <li><strong>Commit Frequently</strong> with meaningful messages.</li>
+  <li>Use <strong>Pull Requests (PRs)</strong> for code reviews and merging changes into the main branch.</li>
+  <li>Regularly <strong>sync with the remote repository</strong> using <code class="highlighter-rouge">git pull</code> to avoid conflicts.</li>
+</ul>
+
+<hr />
+
+<h4 id="conclusion"><strong>Conclusion</strong></h4>
+<p>By mastering Git commands like <code class="highlighter-rouge">git branch</code>, <code class="highlighter-rouge">git checkout</code>, and <code class="highlighter-rouge">git push -u</code>, you can streamline your development workflow and collaborate effectively with your team. With this guide, you’re well-equipped to navigate Git’s powerful branching and tracking capabilities.</p>
+
+<h4 id="to-see-the-differences-between-branches-in-git"><strong>To see the differences between branches in Git</strong></h4>
+
+<p>To see the differences between branches in Git, you can use the <code class="highlighter-rouge">git diff</code> command. Below are several methods to view differences between branches.</p>
+
+<hr />
+
+<h3 id="1-view-differences-between-two-branches"><strong>1. View Differences Between Two Branches</strong></h3>
+<p>You can compare two branches using:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff branch1 branch2
+</code></pre></div></div>
+<ul>
+  <li>This shows what changes exist in <code class="highlighter-rouge">branch2</code> that are not in <code class="highlighter-rouge">branch1</code>.</li>
+</ul>
+
+<h4 id="example">Example:</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff main feature-branch
+</code></pre></div></div>
+<ul>
+  <li>This shows what changes are in <code class="highlighter-rouge">feature-branch</code> compared to <code class="highlighter-rouge">main</code>.</li>
+</ul>
+
+<hr />
+
+<h3 id="2-compare-current-branch-with-another-branch"><strong>2. Compare Current Branch with Another Branch</strong></h3>
+<p>If you want to compare your current branch with another branch:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff branch-name
+</code></pre></div></div>
+
+<h4 id="example-1">Example:</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff feature-branch
+</code></pre></div></div>
+<ul>
+  <li>Compares your current branch to <code class="highlighter-rouge">feature-branch</code>.</li>
+</ul>
+
+<hr />
+
+<h3 id="3-compare-a-branch-with-the-remote-version"><strong>3. Compare a Branch with the Remote Version</strong></h3>
+<p>If you want to see differences between a local branch and its remote counterpart:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff branch-name origin/branch-name
+</code></pre></div></div>
+
+<h4 id="example-2">Example:</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff feature-branch origin/feature-branch
+</code></pre></div></div>
+<ul>
+  <li>Shows differences between your local and remote <code class="highlighter-rouge">feature-branch</code>.</li>
+</ul>
+
+<hr />
+
+<h3 id="4-compare-only-specific-files-or-directories"><strong>4. Compare Only Specific Files or Directories</strong></h3>
+<p>To narrow the comparison to specific files or directories, add the path:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff branch1 branch2 <span class="nt">--</span> path/to/file
+</code></pre></div></div>
+
+<h4 id="example-3">Example:</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff main feature-branch <span class="nt">--</span> src/app.js
+</code></pre></div></div>
+<ul>
+  <li>Compares <code class="highlighter-rouge">src/app.js</code> between <code class="highlighter-rouge">main</code> and <code class="highlighter-rouge">feature-branch</code>.</li>
+</ul>
+
+<hr />
+
+<h3 id="5-view-a-summary-of-changes"><strong>5. View a Summary of Changes</strong></h3>
+<p>If you don’t need the detailed diff but just want to see a summary:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff <span class="nt">--stat</span> branch1 branch2
+</code></pre></div></div>
+
+<h4 id="example-4">Example:</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff <span class="nt">--stat</span> main feature-branch
+</code></pre></div></div>
+<ul>
+  <li>Outputs a summary of added, modified, and deleted files.</li>
+</ul>
+
+<hr />
+
+<h3 id="6-compare-merged-and-unmerged-changes"><strong>6. Compare Merged and Unmerged Changes</strong></h3>
+<p>To see changes in a branch that haven’t been merged into another branch:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff branch1...branch2
+</code></pre></div></div>
+<h4 id="example-5">Example:</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff main...feature-branch
+</code></pre></div></div>
+<ul>
+  <li>Shows changes in <code class="highlighter-rouge">feature-branch</code> that are not in <code class="highlighter-rouge">main</code>.</li>
+</ul>
+
+<hr />
+
+<h3 id="7-using-a-gui-for-better-visualization"><strong>7. Using a GUI for Better Visualization</strong></h3>
+<p>You can use Git GUI tools for an easier way to view differences:</p>
+<ul>
+  <li><strong>GitHub Desktop</strong></li>
+  <li><strong>GitKraken</strong></li>
+  <li><strong>SourceTree</strong></li>
+  <li><strong>VSCode Git Extension</strong></li>
+</ul>
+
+<h4 id="example-using-git-log-with-diff">Example Using <code class="highlighter-rouge">git log</code> with Diff:</h4>
+<p>For a graphical log with differences, use:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git log <span class="nt">--oneline</span> <span class="nt">--graph</span> <span class="nt">--decorate</span> <span class="nt">--branches</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="8-visualize-differences-with-git-difftool"><strong>8. Visualize Differences with <code class="highlighter-rouge">git difftool</code></strong></h3>
+<p>If you have a diff tool like <code class="highlighter-rouge">vimdiff</code>, <code class="highlighter-rouge">meld</code>, or <code class="highlighter-rouge">kdiff3</code> installed:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git difftool branch1 branch2
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="9-compare-working-directory-with-a-branch"><strong>9. Compare Working Directory with a Branch</strong></h3>
+<p>To see what changes are in your working directory compared to a branch:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff branch-name
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="summary-table-of-commands">Summary Table of Commands</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Command</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">git diff branch1 branch2</code></td>
+      <td>Compare two branches.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">git diff branch-name</code></td>
+      <td>Compare current branch with another branch.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">git diff --stat branch1 branch2</code></td>
+      <td>Show a summary of changes.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">git diff branch1...branch2</code></td>
+      <td>Show changes in a branch not yet merged.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">git difftool branch1 branch2</code></td>
+      <td>Use a visual tool to compare branches.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="practical-example">Practical Example:</h3>
+<p>You are on <code class="highlighter-rouge">main</code> and want to see what’s different in <code class="highlighter-rouge">feature-branch</code>:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff main feature-branch
+</code></pre></div></div>
+
+<p>This shows the line-by-line differences between <code class="highlighter-rouge">main</code> and <code class="highlighter-rouge">feature-branch</code>.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Introduction Git is an essential tool for modern software development, enabling seamless collaboration and efficient version control. In this guide, we’ll explore creating branches, pushing changes, setting upstream tracking, and working with remote repositories to enhance your Git workflow.]]></summary></entry><entry><title type="html">Understanding Large Language Models (LLMs): A Comprehensive Guide</title><link href="http://localhost:4000/2024/11/26/understanding-large-language-models-llms-a-comprehensive-guide.html" rel="alternate" type="text/html" title="Understanding Large Language Models (LLMs): A Comprehensive Guide" /><published>2024-11-26T23:04:00-05:00</published><updated>2024-11-26T23:04:00-05:00</updated><id>http://localhost:4000/2024/11/26/understanding-large-language-models-llms-a-comprehensive-guide</id><content type="html" xml:base="http://localhost:4000/2024/11/26/understanding-large-language-models-llms-a-comprehensive-guide.html"><![CDATA[<p><strong>How LLM Technology Actually Works</strong></p>
 
 <p>This text explores the inner workings of large language models (LLMs) and their applications in various fields. The topics covered include:</p>
 
@@ -867,751 +1262,4 @@ docker push modeha/my-app:latest
   <li><strong>Scaling</strong>: Adjust replicas in your Deployment YAML to scale the API.</li>
   <li><strong>Monitoring</strong>: Use Kubernetes tools like <code class="highlighter-rouge">kubectl logs</code>, Prometheus, or Grafana.</li>
   <li><strong>CI/CD Integration</strong>: Automate deployments with Jenkins, GitHub Actions, or other CI/CD tools.</li>
-</ul>]]></content><author><name></name></author><summary type="html"><![CDATA[To provide a detailed step-by-step explanation of Kubernetes in the context of the files you’ve uploaded, I’ll use your project as an example. Here’s an overview and breakdown:]]></summary></entry><entry><title type="html">Best Practices, Security, and Monitoring for AI Deployments</title><link href="http://localhost:4000/2024/11/20/Best-Practices-Security-Monitoring-for-AI-Deployments.html" rel="alternate" type="text/html" title="Best Practices, Security, and Monitoring for AI Deployments" /><published>2024-11-20T07:24:00-05:00</published><updated>2024-11-20T07:24:00-05:00</updated><id>http://localhost:4000/2024/11/20/Best%20Practices%20Security%20Monitoring%20for%20AI%20Deployments</id><content type="html" xml:base="http://localhost:4000/2024/11/20/Best-Practices-Security-Monitoring-for-AI-Deployments.html"><![CDATA[<h3 id="section-5-best-practices-security-and-monitoring-for-ai-deployments"><strong>Section 5: Best Practices, Security, and Monitoring for AI Deployments</strong></h3>
-
-<hr />
-
-<h4 id="51-best-practices-for-ai-deployment"><strong>5.1 Best Practices for AI Deployment</strong></h4>
-
-<ul>
-  <li><strong>Ensuring Reproducibility</strong>
-    <ul>
-      <li>To guarantee that model predictions are consistent across environments and deployments, always containerize AI applications using Docker.</li>
-      <li>Store configuration files, environment variables, and dependencies with each deployment. Use version control (e.g., Git) to manage changes and ensure reproducibility.</li>
-    </ul>
-  </li>
-  <li><strong>Effective Data Management</strong>
-    <ul>
-      <li>Set up robust data pipelines for ingestion, preprocessing, and storage, ensuring that data is secure and accessible only to authorized users.</li>
-      <li>Regularly update training data to maintain model performance, particularly in dynamic environments where real-time data evolves.</li>
-    </ul>
-  </li>
-  <li><strong>Optimizing Model Performance</strong>
-    <ul>
-      <li>Optimize model efficiency for production by reducing model size through techniques like quantization or pruning. These techniques reduce computational load without significant performance trade-offs.</li>
-      <li>Use monitoring metrics like latency and throughput to evaluate performance, especially under load in real-world scenarios.</li>
-    </ul>
-  </li>
-  <li><strong>Modular Design for Scalability</strong>
-    <ul>
-      <li>Use a modular architecture where the model, front-end, and data processing are separate components. This allows independent updates and scaling of each module.</li>
-      <li>Integrate APIs to separate model inference logic from the front-end, making it easier to swap models or adjust settings without impacting the UI.</li>
-    </ul>
-  </li>
-</ul>
-
-<hr />
-
-<h4 id="52-security-for-ai-deployments"><strong>5.2 Security for AI Deployments</strong></h4>
-
-<ul>
-  <li><strong>Container Security</strong>
-    <ul>
-      <li><strong>Use Minimal Images</strong>: Start with lightweight, minimal images like <code class="highlighter-rouge">python:3.8-slim</code> to reduce the attack surface.</li>
-      <li><strong>Regular Updates</strong>: Regularly update base images and dependencies to address any security vulnerabilities.</li>
-      <li><strong>Scanning for Vulnerabilities</strong>: Use Docker’s built-in security features and third-party tools like Snyk or Anchore to scan images for vulnerabilities before deployment.</li>
-    </ul>
-  </li>
-  <li><strong>Access Control and Authentication</strong>
-    <ul>
-      <li><strong>Role-Based Access Control (RBAC)</strong>: Implement RBAC in Azure, allowing users to access only what they need. Use roles like Reader, Contributor, and Owner to define permissions.</li>
-      <li><strong>Azure Active Directory (AAD)</strong>: Use AAD for identity management, especially when deploying in enterprise environments. It supports single sign-on (SSO) and multi-factor authentication (MFA), enhancing security.</li>
-    </ul>
-  </li>
-  <li><strong>Secure Data Handling</strong>
-    <ul>
-      <li><strong>Encryption</strong>: Encrypt data at rest and in transit. Azure provides built-in encryption for data storage and offers SSL/TLS certificates to secure data in transit.</li>
-      <li><strong>Using Azure Key Vault</strong>: Store sensitive information, such as API keys and passwords, in Azure Key Vault. Integrate Key Vault with your app to securely fetch these secrets as needed.</li>
-      <li><strong>Logging and Auditing</strong>: Log all access attempts and operations on sensitive data. Azure Monitor and Security Center provide auditing and logging services to track user activities and detect unusual patterns.</li>
-    </ul>
-  </li>
-</ul>
-
-<hr />
-
-<h4 id="53-monitoring-and-logging-for-ai-models"><strong>5.3 Monitoring and Logging for AI Models</strong></h4>
-
-<ul>
-  <li><strong>Azure Monitor for Real-Time Observability</strong>
-    <ul>
-      <li><strong>What is Azure Monitor?</strong>: Azure Monitor is a comprehensive solution for collecting, analyzing, and acting on telemetry from cloud and on-premises environments.</li>
-      <li><strong>Setting Up Metrics</strong>: Track key performance indicators like CPU and memory usage, request latencies, and error rates. Set up custom alerts for these metrics to receive notifications when thresholds are exceeded.</li>
-    </ul>
-  </li>
-  <li><strong>Application Insights for Model-Specific Monitoring</strong>
-    <ul>
-      <li><strong>Monitoring Model Predictions</strong>: Log model predictions, including inputs, outputs, and probabilities, to analyze model behavior and detect anomalies.</li>
-      <li><strong>Analyzing Latency and Errors</strong>: Track response times for model inference and capture errors, which can indicate performance issues or model drift.</li>
-      <li><strong>Configuring Alerts</strong>: Set up alerts for unusual patterns, such as spikes in error rates or inference times. Azure’s Application Insights can trigger notifications to notify you of potential problems in real time.</li>
-    </ul>
-  </li>
-  <li><strong>Logging and Tracing in AKS</strong>
-    <ul>
-      <li><strong>Log Aggregation with Azure Log Analytics</strong>: Collect and centralize logs from different containers and microservices within your AKS clusters, providing a unified view of system health.</li>
-      <li><strong>Distributed Tracing</strong>: Use distributed tracing to follow requests as they travel through the system, helping to identify and troubleshoot bottlenecks.</li>
-      <li><strong>Automated Anomaly Detection</strong>: Leverage Azure’s anomaly detection capabilities to spot deviations in key metrics, such as model accuracy or inference latency, without manual intervention.</li>
-    </ul>
-  </li>
-</ul>
-
-<hr />
-
-<h4 id="54-automating-the-cicd-pipeline"><strong>5.4 Automating the CI/CD Pipeline</strong></h4>
-
-<ul>
-  <li><strong>Setting Up Continuous Integration (CI)</strong>
-    <ul>
-      <li><strong>Automated Testing</strong>: Integrate automated tests in your CI pipeline to validate model changes and code updates. Ensure these tests include data validation and accuracy checks for AI models.</li>
-      <li><strong>Version Control</strong>: Tag model versions with unique identifiers and manage them through Azure’s model registry in AML. Track changes and roll back to previous versions if needed.</li>
-    </ul>
-  </li>
-  <li><strong>Continuous Deployment (CD) for Model Updates</strong>
-    <ul>
-      <li><strong>Using Azure DevOps Pipelines</strong>: Set up Azure DevOps to automate image builds, model testing, and container deployments whenever there is a code or model update.</li>
-      <li><strong>Rolling Deployments</strong>: For production environments, use rolling updates to gradually deploy new versions without downtime. Rolling deployments minimize disruptions, maintaining service availability as updates roll out.</li>
-      <li><strong>Blue-Green Deployments</strong>: In scenarios where minimal risk is essential, consider using blue-green deployments, where the new version is deployed alongside the old version, with traffic switched gradually.</li>
-    </ul>
-  </li>
-  <li><strong>Automated Model Retraining and Deployment</strong>
-    <ul>
-      <li><strong>Scheduled Retraining</strong>: Automate model retraining workflows using Azure Machine Learning Pipelines. Schedule retraining jobs to incorporate new data, improving model accuracy over time.</li>
-      <li><strong>Updating Production Models</strong>: After retraining, the updated model can be automatically pushed to ACR, with CI/CD pipelines handling the redeployment to AKS or ACI.</li>
-    </ul>
-  </li>
-</ul>
-
-<hr />
-
-<h4 id="55-troubleshooting-and-debugging-deployed-models"><strong>5.5 Troubleshooting and Debugging Deployed Models</strong></h4>
-
-<ul>
-  <li><strong>Debugging Performance Issues</strong>
-    <ul>
-      <li><strong>Latency Analysis</strong>: Measure end-to-end latency, breaking down time spent in data preprocessing, model inference, and response handling. Use Azure Monitor and Application Insights for detailed analysis.</li>
-      <li><strong>Profiling Model Performance</strong>: Profile models to identify bottlenecks, such as slow layers or operations, and optimize them. Tools like TensorFlow Profiler or PyTorch Profiler can help identify and address performance issues.</li>
-    </ul>
-  </li>
-  <li><strong>Addressing Model Drift</strong>
-    <ul>
-      <li><strong>What is Model Drift?</strong>: Model drift occurs when the model’s performance degrades due to changes in data patterns. Regularly monitor model accuracy and feature distributions to detect drift.</li>
-      <li><strong>Drift Detection with Azure ML</strong>: Set up alerts for significant drops in model accuracy. Use drift detection tools in Azure ML to compare training and inference data distributions over time.</li>
-    </ul>
-  </li>
-  <li><strong>Troubleshooting Common Errors</strong>
-    <ul>
-      <li><strong>Handling Resource Limits</strong>: If resource limits (like CPU or memory) are exceeded, scale resources in AKS or ACI to meet demand.</li>
-      <li><strong>Dependency and Compatibility Issues</strong>: Ensure compatibility between different environments by testing Docker images in staging environments before production deployment. Regularly update dependencies and manage versions in Docker images to prevent conflicts.</li>
-    </ul>
-  </li>
-</ul>
-
-<hr />
-
-<h4 id="56-scaling-ai-deployments-in-production"><strong>5.6 Scaling AI Deployments in Production</strong></h4>
-
-<ul>
-  <li><strong>Autoscaling in AKS</strong>
-    <ul>
-      <li><strong>Horizontal Scaling with HPA</strong>: Use the Horizontal Pod Autoscaler (HPA) in AKS to adjust the number of pods based on CPU or memory utilization. HPA is ideal for handling fluctuating traffic and maintaining high availability.</li>
-      <li><strong>Vertical Scaling</strong>: For memory or compute-intensive applications, consider scaling vertically by adding more powerful VM nodes to the cluster.</li>
-    </ul>
-  </li>
-  <li><strong>Load Balancing and Traffic Management</strong>
-    <ul>
-      <li><strong>Azure Load Balancer</strong>: Distribute incoming requests across multiple instances of your application in AKS, improving reliability and response times.</li>
-      <li><strong>Traffic Splitting for Testing</strong>: Use Azure Traffic Manager to direct a portion of traffic to different model versions, allowing you to test new models in production while limiting risk.</li>
-    </ul>
-  </li>
-  <li><strong>Resource Optimization for Cost Management</strong>
-    <ul>
-      <li><strong>Scheduled Scaling</strong>: Scale down resources during low-traffic periods to save on costs. Azure’s Auto Scaling schedules allow automated scaling based on time, optimizing resource usage.</li>
-      <li><strong>Cost Monitoring with Azure Cost Management</strong>: Track resource usage and costs to avoid budget overruns. Azure Cost Management provides reports and recommendations on optimizing costs across resources.</li>
-    </ul>
-  </li>
-</ul>
-
-<hr />
-
-<h4 id="57-final-thoughts-on-best-practices-for-ai-deployments"><strong>5.7 Final Thoughts on Best Practices for AI Deployments</strong></h4>
-
-<ul>
-  <li><strong>Continuous Improvement</strong>
-    <ul>
-      <li>Regularly update models and retrain with the latest data to ensure ongoing accuracy and relevance.</li>
-      <li>Monitor and incorporate user feedback to improve the application interface and model performance.</li>
-    </ul>
-  </li>
-  <li><strong>Documentation and Knowledge Sharing</strong>
-    <ul>
-      <li>Maintain thorough documentation on deployment processes, CI/CD pipelines, security configurations, and monitoring strategies.</li>
-      <li>Encourage knowledge sharing across teams to ensure consistency in best practices and security protocols.</li>
-    </ul>
-  </li>
-  <li><strong>Staying Updated with Azure Services</strong>
-    <ul>
-      <li>Azure frequently updates its services, especially in machine learning and AI capabilities. Stay informed on new features and updates that can enhance deployments, improve efficiency, and reduce costs.</li>
-    </ul>
-  </li>
-</ul>
-
-<hr />
-
-<p>This section highlights the best practices, security considerations, and monitoring tools essential for deploying AI models in a production environment. Adopting these best practices helps create a robust, secure, and scalable AI solution, ensuring efficient deployment and operation in real-world scenarios.</p>
-
-<hr />]]></content><author><name></name></author><summary type="html"><![CDATA[Section 5: Best Practices, Security, and Monitoring for AI Deployments]]></summary></entry><entry><title type="html">End-to-End Machine Learning Pipeline Using Kubernetes</title><link href="http://localhost:4000/2024/11/19/end-to-end-machine-learning-pipeline-using-kubernetes.html" rel="alternate" type="text/html" title="End-to-End Machine Learning Pipeline Using Kubernetes" /><published>2024-11-19T12:26:00-05:00</published><updated>2024-11-19T12:26:00-05:00</updated><id>http://localhost:4000/2024/11/19/end-to-end-machine-learning-pipeline-using-kubernetes</id><content type="html" xml:base="http://localhost:4000/2024/11/19/end-to-end-machine-learning-pipeline-using-kubernetes.html"><![CDATA[<p><strong>End-to-End Machine Learning Pipeline</strong> using Kubernetes, starting from the dataset to deploying a trained model.</p>
-
-<p>Here’s the workflow:</p>
-
-<h3 id="setup-overview"><strong>Setup Overview</strong></h3>
-<p>We’ll use Kubernetes to:</p>
-<ol>
-  <li>Preprocess a dataset.</li>
-  <li>Train a model using <code class="highlighter-rouge">train.py</code>.</li>
-  <li>Save the trained model.</li>
-  <li>Deploy the trained model as an API for predictions.</li>
-</ol>
-
-<hr />
-
-<h3 id="prerequisites"><strong>Prerequisites</strong></h3>
-<ol>
-  <li><strong>Install Kubernetes on your Mac</strong>:
-    <ul>
-      <li>Use <strong>Docker Desktop</strong> with Kubernetes enabled, or install Kubernetes via <strong>Minikube</strong>.</li>
-    </ul>
-  </li>
-  <li><strong>Install <code class="highlighter-rouge">kubectl</code></strong>:
-    <ul>
-      <li>Verify Kubernetes is running:
-        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get nodes
-</code></pre></div>        </div>
-      </li>
-    </ul>
-  </li>
-  <li><strong>Install Python</strong> (if needed) and ML libraries like <code class="highlighter-rouge">scikit-learn</code> or <code class="highlighter-rouge">TensorFlow</code>.</li>
-  <li><strong>Install Helm</strong> (optional): For managing Kubernetes packages.</li>
-</ol>
-
-<hr />
-
-<h3 id="step-1-dataset-preparation"><strong>Step 1: Dataset Preparation</strong></h3>
-<p>We’ll use a simple CSV dataset for house prices:</p>
-<pre><code class="language-csv"># Save this as dataset.csv
-square_footage,bedrooms,bathrooms,price
-1400,3,2,300000
-1600,4,2,350000
-1700,4,3,400000
-1200,2,1,200000
-1500,3,2,320000
-</code></pre>
-
-<p>Place this dataset in a directory, for example, <code class="highlighter-rouge">/Users/yourname/k8s-ml-pipeline</code>.</p>
-
-<hr />
-
-<h3 id="step-2-create-a-trainpy-script"><strong>Step 2: Create a <code class="highlighter-rouge">train.py</code> Script</strong></h3>
-<p>Here’s a basic training script using <code class="highlighter-rouge">scikit-learn</code>:</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># train.py
-</span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
-<span class="kn">import</span> <span class="nn">pickle</span>
-
-<span class="c1"># Load the dataset
-</span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"dataset.csv"</span><span class="p">)</span>
-
-<span class="c1"># Features and target variable
-</span><span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s">"square_footage"</span><span class="p">,</span> <span class="s">"bedrooms"</span><span class="p">,</span> <span class="s">"bathrooms"</span><span class="p">]]</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">"price"</span><span class="p">]</span>
-
-<span class="c1"># Train the model
-</span><span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
-<span class="n">model</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-
-<span class="c1"># Save the model
-</span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"model.pkl"</span><span class="p">,</span> <span class="s">"wb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">pickle</span><span class="p">.</span><span class="n">dump</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="s">"Model trained and saved as model.pkl"</span><span class="p">)</span>
-</code></pre></div></div>
-
-<hr />
-
-<h3 id="step-3-dockerize-trainpy"><strong>Step 3: Dockerize <code class="highlighter-rouge">train.py</code></strong></h3>
-<ol>
-  <li><strong>Create a <code class="highlighter-rouge">Dockerfile</code>:</strong>
-    <div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> python:3.9-slim</span>
-
-<span class="c"># Copy files into the container</span>
-<span class="k">COPY</span><span class="s"> train.py /app/train.py</span>
-<span class="k">COPY</span><span class="s"> dataset.csv /app/dataset.csv</span>
-
-<span class="c"># Set the working directory</span>
-<span class="k">WORKDIR</span><span class="s"> /app</span>
-
-<span class="c"># Install dependencies</span>
-<span class="k">RUN </span>pip <span class="nb">install </span>pandas scikit-learn
-
-<span class="c"># Default command</span>
-<span class="k">CMD</span><span class="s"> ["python", "train.py"]</span>
-</code></pre></div>    </div>
-  </li>
-  <li><strong>Build the Docker Image</strong>:
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build <span class="nt">-t</span> train-ml:latest <span class="nb">.</span>
-</code></pre></div>    </div>
-  </li>
-</ol>
-
-<hr />
-
-<h3 id="step-4-create-a-kubernetes-job-for-training"><strong>Step 4: Create a Kubernetes Job for Training</strong></h3>
-<ol>
-  <li><strong>Job YAML</strong> (<code class="highlighter-rouge">train-job.yaml</code>):
-    <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">batch/v1</span>
-<span class="na">kind</span><span class="pi">:</span> <span class="s">Job</span>
-<span class="na">metadata</span><span class="pi">:</span>
-  <span class="na">name</span><span class="pi">:</span> <span class="s">train-job</span>
-<span class="na">spec</span><span class="pi">:</span>
-  <span class="na">template</span><span class="pi">:</span>
-    <span class="na">spec</span><span class="pi">:</span>
-      <span class="na">containers</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">train-container</span>
-        <span class="na">image</span><span class="pi">:</span> <span class="s">train-ml:latest</span>
-        <span class="na">volumeMounts</span><span class="pi">:</span>
-        <span class="pi">-</span> <span class="na">mountPath</span><span class="pi">:</span> <span class="s">/app</span>
-          <span class="na">name</span><span class="pi">:</span> <span class="s">model-volume</span>
-      <span class="na">restartPolicy</span><span class="pi">:</span> <span class="s">Never</span>
-      <span class="na">volumes</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">model-volume</span>
-        <span class="na">hostPath</span><span class="pi">:</span>
-          <span class="na">path</span><span class="pi">:</span> <span class="s">/Users/yourname/k8s-ml-pipeline</span>
-</code></pre></div>    </div>
-  </li>
-  <li><strong>Run the Job</strong>:
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl apply <span class="nt">-f</span> train-job.yaml
-</code></pre></div>    </div>
-  </li>
-  <li><strong>Check Logs</strong>:
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl logs job/train-job
-</code></pre></div>    </div>
-
-    <p>This will output:</p>
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Model trained and saved as model.pkl
-</code></pre></div>    </div>
-  </li>
-</ol>
-
-<p>The <code class="highlighter-rouge">model.pkl</code> file will be saved locally in <code class="highlighter-rouge">/Users/yourname/k8s-ml-pipeline</code>.</p>
-
-<hr />
-
-<h3 id="step-5-deploy-the-trained-model-as-an-api"><strong>Step 5: Deploy the Trained Model as an API</strong></h3>
-<ol>
-  <li><strong>Create a <code class="highlighter-rouge">predict.py</code> Script</strong>:
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># predict.py
-</span><span class="kn">import</span> <span class="nn">pickle</span>
-<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">jsonify</span>
-
-<span class="c1"># Load the trained model
-</span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"model.pkl"</span><span class="p">,</span> <span class="s">"rb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">pickle</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-
-<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
-
-<span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="s">"/predict"</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">"POST"</span><span class="p">])</span>
-<span class="k">def</span> <span class="nf">predict</span><span class="p">():</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="n">get_json</span><span class="p">()</span>
-    <span class="n">X</span> <span class="o">=</span> <span class="p">[[</span><span class="n">data</span><span class="p">[</span><span class="s">"square_footage"</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s">"bedrooms"</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s">"bathrooms"</span><span class="p">]]]</span>
-    <span class="n">prediction</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s">"predicted_price"</span><span class="p">:</span> <span class="n">prediction</span><span class="p">[</span><span class="mi">0</span><span class="p">]})</span>
-
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
-    <span class="n">app</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s">"0.0.0.0"</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
-</code></pre></div>    </div>
-  </li>
-  <li><strong>Dockerize <code class="highlighter-rouge">predict.py</code></strong>:
-    <div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> python:3.9-slim</span>
-
-<span class="c"># Copy files</span>
-<span class="k">COPY</span><span class="s"> predict.py /app/predict.py</span>
-<span class="k">COPY</span><span class="s"> model.pkl /app/model.pkl</span>
-
-<span class="c"># Set working directory</span>
-<span class="k">WORKDIR</span><span class="s"> /app</span>
-
-<span class="c"># Install dependencies</span>
-<span class="k">RUN </span>pip <span class="nb">install </span>flask scikit-learn
-
-<span class="c"># Default command</span>
-<span class="k">CMD</span><span class="s"> ["python", "predict.py"]</span>
-</code></pre></div>    </div>
-  </li>
-  <li><strong>Build the API Docker Image</strong>:
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build <span class="nt">-t</span> predict-ml:latest <span class="nb">.</span>
-</code></pre></div>    </div>
-  </li>
-  <li><strong>Deployment YAML</strong> (<code class="highlighter-rouge">predict-deployment.yaml</code>):
-    <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">apps/v1</span>
-<span class="na">kind</span><span class="pi">:</span> <span class="s">Deployment</span>
-<span class="na">metadata</span><span class="pi">:</span>
-  <span class="na">name</span><span class="pi">:</span> <span class="s">predict-api</span>
-<span class="na">spec</span><span class="pi">:</span>
-  <span class="na">replicas</span><span class="pi">:</span> <span class="m">2</span>
-  <span class="na">selector</span><span class="pi">:</span>
-    <span class="na">matchLabels</span><span class="pi">:</span>
-      <span class="na">app</span><span class="pi">:</span> <span class="s">predict-api</span>
-  <span class="na">template</span><span class="pi">:</span>
-    <span class="na">metadata</span><span class="pi">:</span>
-      <span class="na">labels</span><span class="pi">:</span>
-        <span class="na">app</span><span class="pi">:</span> <span class="s">predict-api</span>
-    <span class="na">spec</span><span class="pi">:</span>
-      <span class="na">containers</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">predict-container</span>
-        <span class="na">image</span><span class="pi">:</span> <span class="s">predict-ml:latest</span>
-        <span class="na">ports</span><span class="pi">:</span>
-        <span class="pi">-</span> <span class="na">containerPort</span><span class="pi">:</span> <span class="m">5000</span>
-<span class="nn">---</span>
-<span class="na">apiVersion</span><span class="pi">:</span> <span class="s">v1</span>
-<span class="na">kind</span><span class="pi">:</span> <span class="s">Service</span>
-<span class="na">metadata</span><span class="pi">:</span>
-  <span class="na">name</span><span class="pi">:</span> <span class="s">predict-service</span>
-<span class="na">spec</span><span class="pi">:</span>
-  <span class="na">selector</span><span class="pi">:</span>
-    <span class="na">app</span><span class="pi">:</span> <span class="s">predict-api</span>
-  <span class="na">ports</span><span class="pi">:</span>
-    <span class="pi">-</span> <span class="na">protocol</span><span class="pi">:</span> <span class="s">TCP</span>
-      <span class="na">port</span><span class="pi">:</span> <span class="m">80</span>
-      <span class="na">targetPort</span><span class="pi">:</span> <span class="m">5000</span>
-  <span class="na">type</span><span class="pi">:</span> <span class="s">LoadBalancer</span>
-</code></pre></div>    </div>
-  </li>
-  <li><strong>Deploy the API</strong>:
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl apply <span class="nt">-f</span> predict-deployment.yaml
-</code></pre></div>    </div>
-  </li>
-  <li><strong>Access the API</strong>:
-    <ul>
-      <li>Find the service IP:
-        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get services
-</code></pre></div>        </div>
-      </li>
-      <li>Test the API:
-        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-X</span> POST <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">'{"square_footage": 1600, "bedrooms": 3, "bathrooms": 2}'</span> <span class="se">\</span>
-  http://&lt;EXTERNAL-IP&gt;/predict
-</code></pre></div>        </div>
-      </li>
-    </ul>
-  </li>
-</ol>
-
-<hr />
-
-<h3 id="step-6-clean-up"><strong>Step 6: Clean Up</strong></h3>
-<p>To clean up resources:</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl delete <span class="nt">-f</span> train-job.yaml
-kubectl delete <span class="nt">-f</span> predict-deployment.yaml
-</code></pre></div></div>
-
-<hr />
-
-<h3 id="summary"><strong>Summary</strong></h3>
-<ol>
-  <li><strong>Dataset</strong>: Prepared and mounted into the container.</li>
-  <li><strong>Training</strong>: Kubernetes Job ran <code class="highlighter-rouge">train.py</code> and saved the model.</li>
-  <li><strong>API Deployment</strong>: The trained model was deployed as a REST API using Kubernetes Deployment and Service.</li>
-</ol>
-
-<p>This pipeline can scale as needed and is fully containerized for portability and reproducibility.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[End-to-End Machine Learning Pipeline using Kubernetes, starting from the dataset to deploying a trained model. Here’s the workflow:]]></summary></entry><entry><title type="html">End-to-End Deployment of an AI Model Using Docker, Azure, and Streamlit</title><link href="http://localhost:4000/2024/11/19/End-to-End-Deployment-Using-Docker-Azure-Streamlit.html" rel="alternate" type="text/html" title="End-to-End Deployment of an AI Model Using Docker, Azure, and Streamlit" /><published>2024-11-19T07:24:00-05:00</published><updated>2024-11-19T07:24:00-05:00</updated><id>http://localhost:4000/2024/11/19/End-to-End-Deployment%20-Using-Docker-Azure-Streamlit</id><content type="html" xml:base="http://localhost:4000/2024/11/19/End-to-End-Deployment-Using-Docker-Azure-Streamlit.html"><![CDATA[<h3 id="section-4-end-to-end-deployment-of-an-ai-model-using-docker-azure-and-streamlit"><strong>section 4: End-to-End Deployment of an AI Model Using Docker, Azure, and Streamlit</strong></h3>
-
-<hr />
-
-<h4 id="41-designing-the-ai-solution"><strong>4.1 Designing the AI Solution</strong></h4>
-
-<ul>
-  <li><strong>Overview of the AI Model Pipeline</strong>
-    <ul>
-      <li>The pipeline for deploying an AI model typically includes stages like data ingestion, preprocessing, model inference, and visualization. In this section, we’ll walk through deploying an image classification model as a web application using Docker, Azure, and Streamlit.</li>
-      <li><strong>Pipeline Steps</strong>:
-        <ul>
-          <li><strong>Input Handling</strong>: The app will allow users to upload an image.</li>
-          <li><strong>Data Preprocessing</strong>: Image resizing and scaling for compatibility with the model.</li>
-          <li><strong>Model Inference</strong>: Running the model to get predictions.</li>
-          <li><strong>Output Visualization</strong>: Displaying the prediction results in a user-friendly interface.</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li><strong>High-Level Architecture</strong>
-    <ul>
-      <li>The solution’s architecture includes the following components:
-        <ul>
-          <li><strong>Streamlit Front-End</strong>: The user-facing interface, where users upload images and see predictions.</li>
-          <li><strong>Dockerized Application</strong>: Encapsulates the model and application code in a Docker container for consistency across environments.</li>
-          <li><strong>Azure Cloud Platform</strong>: Hosts the Dockerized application, making it accessible as a web service.</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<hr />
-
-<h4 id="42-preparing-the-docker-container"><strong>4.2 Preparing the Docker Container</strong></h4>
-
-<ul>
-  <li><strong>Writing the Dockerfile</strong>
-    <ul>
-      <li>The Dockerfile serves as the blueprint for creating a container that includes all dependencies for running the Streamlit application and model.</li>
-      <li>Sample Dockerfile for an AI application:
-        <div class="language-Dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Start with a base Python image</span>
-<span class="k">FROM</span><span class="s"> python:3.8</span>
-
-<span class="c"># Set the working directory</span>
-<span class="k">WORKDIR</span><span class="s"> /app</span>
-
-<span class="c"># Copy the current directory contents into the container</span>
-<span class="k">COPY</span><span class="s"> . /app</span>
-
-<span class="c"># Install dependencies</span>
-<span class="k">RUN </span>pip <span class="nb">install</span> <span class="nt">-r</span> requirements.txt
-
-<span class="c"># Expose the port on which Streamlit will run</span>
-<span class="k">EXPOSE</span><span class="s"> 8501</span>
-
-<span class="c"># Run the application</span>
-<span class="k">CMD</span><span class="s"> ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]</span>
-</code></pre></div>        </div>
-        <ul>
-          <li><strong>Explanation</strong>:
-            <ul>
-              <li><strong><code class="highlighter-rouge">FROM python:3.8</code></strong>: Specifies the base image.</li>
-              <li><strong><code class="highlighter-rouge">WORKDIR /app</code></strong> and <strong><code class="highlighter-rouge">COPY . /app</code></strong>: Sets the working directory and copies the local files.</li>
-              <li><strong><code class="highlighter-rouge">RUN pip install -r requirements.txt</code></strong>: Installs required packages (e.g., Streamlit, TensorFlow, PyTorch).</li>
-              <li><strong><code class="highlighter-rouge">EXPOSE 8501</code></strong>: Exposes the default Streamlit port.</li>
-              <li><strong><code class="highlighter-rouge">CMD [...]</code></strong>: Runs the Streamlit app when the container starts.</li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li><strong>Building the Docker Image</strong>
-    <ul>
-      <li>After defining the Dockerfile, build the Docker image:
-        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build <span class="nt">-t</span> ai-streamlit-app <span class="nb">.</span>
-</code></pre></div>        </div>
-      </li>
-      <li>This command packages the code, dependencies, and environment into a Docker image named <code class="highlighter-rouge">ai-streamlit-app</code>.</li>
-    </ul>
-  </li>
-</ul>
-
-<hr />
-
-<h4 id="43-deploying-the-docker-container-on-azure"><strong>4.3 Deploying the Docker Container on Azure</strong></h4>
-
-<ul>
-  <li><strong>Azure Container Instances (ACI) for Simple Deployments</strong>
-    <ul>
-      <li><strong>Push the Docker Image to Azure Container Registry (ACR)</strong>:
-        <ol>
-          <li>First, create a container registry in Azure.
-            <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>az acr create <span class="nt">--resource-group</span> myResourceGroup <span class="nt">--name</span> myContainerRegistry <span class="nt">--sku</span> Basic
-</code></pre></div>            </div>
-          </li>
-          <li>Log in to the registry and push the Docker image:
-            <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>az acr login <span class="nt">--name</span> myContainerRegistry
-docker tag ai-streamlit-app myContainerRegistry.azurecr.io/ai-streamlit-app
-docker push myContainerRegistry.azurecr.io/ai-streamlit-app
-</code></pre></div>            </div>
-          </li>
-        </ol>
-      </li>
-      <li><strong>Deploy the Image to ACI</strong>:
-        <ul>
-          <li>Create a container instance in ACI:
-            <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>az container create <span class="se">\</span>
-  <span class="nt">--resource-group</span> myResourceGroup <span class="se">\</span>
-  <span class="nt">--name</span> aiAppInstance <span class="se">\</span>
-  <span class="nt">--image</span> myContainerRegistry.azurecr.io/ai-streamlit-app <span class="se">\</span>
-  <span class="nt">--cpu</span> 1 <span class="nt">--memory</span> 1 <span class="se">\</span>
-  <span class="nt">--registry-login-server</span> myContainerRegistry.azurecr.io <span class="se">\</span>
-  <span class="nt">--registry-username</span> &lt;username&gt; <span class="se">\</span>
-  <span class="nt">--registry-password</span> &lt;password&gt; <span class="se">\</span>
-  <span class="nt">--dns-name-label</span> ai-streamlit-app <span class="se">\</span>
-  <span class="nt">--ports</span> 8501
-</code></pre></div>            </div>
-          </li>
-          <li><strong>Accessing the Deployed App</strong>:
-            <ul>
-              <li>The deployed application is now accessible at <code class="highlighter-rouge">http://ai-streamlit-app.region.azurecontainer.io:8501</code>.</li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li><strong>Azure Kubernetes Service (AKS) for Scalable Deployments</strong>
-    <ul>
-      <li><strong>Why Use AKS?</strong>: AKS provides orchestration for managing multiple containers, load balancing, and scaling.</li>
-      <li><strong>Deploying on AKS</strong>:
-        <ul>
-          <li>Create an AKS cluster and configure it to pull images from ACR, providing a more robust and scalable deployment option for production environments.</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<hr />
-
-<h4 id="44-building-and-linking-the-streamlit-front-end"><strong>4.4 Building and Linking the Streamlit Front-End</strong></h4>
-
-<ul>
-  <li><strong>Creating the Streamlit Application Code (<code class="highlighter-rouge">app.py</code>)</strong>
-    <ul>
-      <li>Below is a sample Streamlit application to handle image uploads, preprocess the images, and display model predictions.
-        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="n">st</span>
-<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
-
-<span class="c1"># Load the model
-</span><span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">models</span><span class="p">.</span><span class="n">load_model</span><span class="p">(</span><span class="s">"my_model.h5"</span><span class="p">)</span>
-
-<span class="c1"># App title and instructions
-</span><span class="n">st</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">"Image Classification App"</span><span class="p">)</span>
-<span class="n">st</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">"Upload an image to classify."</span><span class="p">)</span>
-
-<span class="c1"># File uploader widget
-</span><span class="n">uploaded_file</span> <span class="o">=</span> <span class="n">st</span><span class="p">.</span><span class="n">file_uploader</span><span class="p">(</span><span class="s">"Choose an image..."</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s">"jpg"</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">uploaded_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-    <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="n">uploaded_file</span><span class="p">)</span>
-    <span class="n">st</span><span class="p">.</span><span class="n">image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">caption</span><span class="o">=</span><span class="s">"Uploaded Image"</span><span class="p">,</span> <span class="n">use_column_width</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">st</span><span class="p">.</span><span class="n">button</span><span class="p">(</span><span class="s">"Classify Image"</span><span class="p">):</span>
-        <span class="c1"># Preprocess image
-</span>        <span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="p">.</span><span class="n">resize</span><span class="p">((</span><span class="mi">224</span><span class="p">,</span> <span class="mi">224</span><span class="p">))</span>
-        <span class="n">image</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">preprocessing</span><span class="p">.</span><span class="n">image</span><span class="p">.</span><span class="n">img_to_array</span><span class="p">(</span><span class="n">image</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.0</span>
-        <span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="p">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">224</span><span class="p">,</span> <span class="mi">224</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-
-        <span class="c1"># Predict
-</span>        <span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
-        <span class="n">st</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s">"Predicted class: </span><span class="si">{</span><span class="n">predictions</span><span class="p">.</span><span class="n">argmax</span><span class="p">()</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
-</code></pre></div>        </div>
-      </li>
-    </ul>
-  </li>
-  <li><strong>Testing the Application Locally</strong>
-    <ul>
-      <li>Run the Streamlit app locally using Docker:
-        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-p</span> 8501:8501 ai-streamlit-app
-</code></pre></div>        </div>
-      </li>
-      <li>Access the app at <code class="highlighter-rouge">http://localhost:8501</code> to verify functionality before deploying.</li>
-    </ul>
-  </li>
-</ul>
-
-<hr />
-
-<h4 id="45-monitoring-scaling-and-updating-the-model"><strong>4.5 Monitoring, Scaling, and Updating the Model</strong></h4>
-
-<ul>
-  <li><strong>Monitoring Model Performance with Azure Monitor</strong>
-    <ul>
-      <li>Azure Monitor collects logs and metrics for deployed applications, providing insights into model usage, prediction times, and errors.</li>
-      <li>Integrate Azure Monitor with ACI or AKS to capture logs from the container instances.</li>
-    </ul>
-  </li>
-  <li><strong>Scaling the Application</strong>
-    <ul>
-      <li>In AKS, configure the <strong>Horizontal Pod Autoscaler (HPA)</strong> to automatically scale the number of replicas based on CPU or memory utilization, ensuring high availability.</li>
-      <li>Example HPA configuration:
-        <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">autoscaling/v1</span>
-<span class="na">kind</span><span class="pi">:</span> <span class="s">HorizontalPodAutoscaler</span>
-<span class="na">metadata</span><span class="pi">:</span>
-  <span class="na">name</span><span class="pi">:</span> <span class="s">ai-streamlit-app</span>
-<span class="na">spec</span><span class="pi">:</span>
-  <span class="na">maxReplicas</span><span class="pi">:</span> <span class="m">10</span>
-  <span class="na">minReplicas</span><span class="pi">:</span> <span class="m">1</span>
-  <span class="na">targetCPUUtilizationPercentage</span><span class="pi">:</span> <span class="m">50</span>
-</code></pre></div>        </div>
-      </li>
-    </ul>
-  </li>
-  <li><strong>Updating the Model and Redeploying</strong>
-    <ul>
-      <li>Update the model, rebuild the Docker image, and push it to ACR. Use the following commands:
-        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build <span class="nt">-t</span> ai-streamlit-app <span class="nb">.</span>
-docker tag ai-streamlit-app myContainerRegistry.azurecr.io/ai-streamlit-app
-docker push myContainerRegistry.azurecr.io/ai-streamlit-app
-</code></pre></div>        </div>
-      </li>
-      <li>Deploy the updated image in ACI or AKS to apply changes to the live application.</li>
-    </ul>
-  </li>
-</ul>
-
-<hr />
-
-<h4 id="46-implementing-continuous-integrationcontinuous-deployment-cicd-with-azure-devops"><strong>4.6 Implementing Continuous Integration/Continuous Deployment (CI/CD) with Azure DevOps</strong></h4>
-
-<ul>
-  <li><strong>Setting Up Azure DevOps Pipelines</strong>
-    <ul>
-      <li>Azure DevOps allows automated building, testing, and deployment of Docker images.</li>
-      <li><strong>Example YAML Pipeline</strong>:
-        <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">trigger</span><span class="pi">:</span>
-  <span class="na">branches</span><span class="pi">:</span>
-    <span class="na">include</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="s">main</span>
-
-<span class="na">pool</span><span class="pi">:</span>
-  <span class="na">vmImage</span><span class="pi">:</span> <span class="s1">'</span><span class="s">ubuntu-latest'</span>
-
-<span class="na">steps</span><span class="pi">:</span>
-<span class="pi">-</span> <span class="na">task</span><span class="pi">:</span> <span class="s">Docker@2</span>
-  <span class="na">inputs</span><span class="pi">:</span>
-    <span class="na">containerRegistry</span><span class="pi">:</span> <span class="s1">'</span><span class="s">myContainerRegistry'</span>
-    <span class="na">repository</span><span class="pi">:</span> <span class="s1">'</span><span class="s">ai-streamlit-app'</span>
-    <span class="na">command</span><span class="pi">:</span> <span class="s1">'</span><span class="s">buildAndPush'</span>
-    <span class="na">tags</span><span class="pi">:</span> <span class="s1">'</span><span class="s">$(Build.BuildId)'</span>
-
-<span class="pi">-</span> <span class="na">task</span><span class="pi">:</span> <span class="s">AzureCLI@2</span>
-  <span class="na">inputs</span><span class="pi">:</span>
-    <span class="na">azureSubscription</span><span class="pi">:</span> <span class="s1">'</span><span class="s">&lt;Your</span><span class="nv"> </span><span class="s">Subscription&gt;'</span>
-    <span class="na">scriptType</span><span class="pi">:</span> <span class="s1">'</span><span class="s">bash'</span>
-    <span class="na">scriptLocation</span><span class="pi">:</span> <span class="s1">'</span><span class="s">inlineScript'</span>
-    <span class="na">inlineScript</span><span class="pi">:</span> <span class="pi">|</span>
-      <span class="s">az container create --resource-group myResourceGroup --name aiAppInstance --image myContainerRegistry.azurecr.io/ai-streamlit-app:$(Build.BuildId) --cpu 1 --memory 1 --dns-name-label ai-streamlit-app --ports 8501</span>
-</code></pre></div>        </div>
-      </li>
-    </ul>
-  </li>
-  <li><strong>Automating Updates and Monitoring CI/CD Pipeline</strong>
-    <ul>
-      <li>Each code push triggers the pipeline to rebuild the Docker image, push it to ACR, and deploy the updated container.</li>
-      <li>This setup allows rapid iteration and updates, ensuring the deployed AI model remains current with minimal manual intervention.</li>
-    </ul>
-  </li>
-</ul>
-
-<hr />
-
-<h4 id="47-best-practices-and-final-thoughts"><strong>4.7 Best Practices and Final Thoughts</strong></h4>
-
-<ul>
-  <li><strong>Security and Access Control</strong>
-    <ul>
-      <li>Restrict access to ACR, ACI, and AKS resources by configuring role-based access control (RBAC).</li>
-      <li>Use <strong>Azure Key Vault</strong> for secure storage of sensitive data like API keys and database credentials.</li>
-    </ul>
-  </li>
-  <li><strong>Optimizing Costs and Resources</strong>
-    <ul>
-      <li>Monitor and analyze usage to optimize resource allocation and cost-effectiveness, especially when scaling up in AKS.</li>
-      <li>Enable auto-scaling</li>
-    </ul>
-  </li>
-</ul>]]></content><author><name></name></author><summary type="html"><![CDATA[section 4: End-to-End Deployment of an AI Model Using Docker, Azure, and Streamlit]]></summary></entry></feed>
+</ul>]]></content><author><name></name></author><summary type="html"><![CDATA[To provide a detailed step-by-step explanation of Kubernetes in the context of the files you’ve uploaded, I’ll use your project as an example. Here’s an overview and breakdown:]]></summary></entry></feed>

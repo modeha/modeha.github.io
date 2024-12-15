@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Deep Learning" /></head>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<style>@import url(/public/css/syntax/monokai.css);</style>
+  <title>Deep Learning</title>
+  <!-- <link href="/public/css/bootstrap.min.css" rel="stylesheet"> -->
+
+  <link href="/public/css/style.css" rel="stylesheet">
+  <body>
+  	<div class="container"> 
+		<div class="sidebar">
+			<div class="sidebar-item sidebar-header">
+	<div class='sidebar-brand'>
+		<a href="/about/">Deep Learning</a>
+	</div>
+	<p class="lead">A blog exploring deep learning, AI, and data science topics by Mohsen Dehghani.</p></div>
+
+<div class="sidebar-item sidebar-nav">
+	<ul class="nav">
+      <li class="nav-title">Pages</li>
+	  <li>
+	  	<a class="nav-item" href="/">Articles</a>
+	  </li>
+	  
+	  
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/about/">
+	            	About
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	</ul>
+</div>
+
+<div class="sidebar-item sidebar-nav">
+  	<ul class="nav">
+			<li class="nav-title">Categories</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#Update">
+				<span class="name">Update</span>
+				<span class="badge">13</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#Jekyll">
+				<span class="name">Jekyll</span>
+				<span class="badge">1</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#update">
+				<span class="name">update</span>
+				<span class="badge">6</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#math">
+				<span class="name">math</span>
+				<span class="badge">1</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#data-science">
+				<span class="name">data-science</span>
+				<span class="badge">1</span>
+	    	</a>
+ 		</li>
+	    
+	  </nav>
+	</ul>
+</div>
+
+<div class="sidebar-item sidebar-footer">
+	<p>Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a></p>
+</div>
+		</div>
+		<div class="content">
+			<article class="post">
+	<header class="post-header">
+		<div class="post-title"> 
+			Why Using Sigmoid in NN
+		</div>
+		<time class="post-date dt-published" datetime="2022-02-01T05:31:29-05:00" itemprop="datePublished">2022/02/01
+		</time>		
+	</header>
+
+	<div class="post-content">
+		<!--- 
+
+<style>
+r { color: Red }
+o { color: Orange }
+g { color: Green }
+</style>
+
+# TODOs:
+
+- <r>TODO:</r> Important thing to do
+- <o>TODO:</o> Less important thing to do
+- <g>DONE:</g> Breath deeply and improve karma
+- 
+<span style="color:blue">some *This is Blue italic.* text</span>
+This is an HTML comment in Markdown 
+$\color{red}{your-text-here}$
+-->
+
+<h2 id="model"><strong>Model</strong></h2>
+
+<p>Given a <strong>classification problem</strong>, one of the more straightforward models is the <strong>logistic regression</strong>. But, instead of simply <em>presenting</em> it and using it right away, I am going to <strong>build up to it</strong>. The rationale behind this approach is twofold: First, it will make clear why this algorithm is called logistic <em>regression</em> if it is used for classification; second, you’ll get a <strong>clear understanding of what a <em>logit</em> is</strong>.</p>
+
+<p>Well, since it is called logistic <strong>regression</strong>, I would say that <strong>linear regression</strong> is a good starting point. What would a linear regression model with two features look like?</p>
+
+\[\Huge y=b+w_1x_1+w_2x_2+ϵ\]
+
+<p><em>A linear regression model with two features</em></p>
+
+<p>There is one obvious <strong>problem</strong> with the model above: Our <strong>labels (<em>y</em>)</strong> are <strong>discrete</strong>; that is, they are either <strong>zero</strong> or <strong>one</strong>; no other value is allowed. We need to <strong>change the model slightly</strong> to adapt it to our purposes.</p>
+
+<p><em>What if we assign the <strong>positive</strong> outputs to <strong>one</strong> and the <strong>negative</strong></em> <em>outputs to <strong>zero</strong>?</em></p>
+
+<p>Makes sense, right? We’re already calling them <strong>positive</strong> and <strong>negative</strong> classes anyway; why not put their names to good use? Our model would look like this:</p>
+
+<p><img src="/assets/sigmoid/Aspose.Words.f06965dc-5caa-4654-b599-bd950b862427.004.jpeg" alt="" /></p>
+
+<h2 id="logits"><strong>Logits</strong></h2>
+
+<p>\(\color{red}{\text{Equation above  Mapping a linear regression model to discrete labels.}}\)
+To make our lives easier, let’s give the right-hand side of the equation above a name: <strong>logit (<em>z</em>)</strong>.</p>
+
+<p><img src="/assets/sigmoid/Aspose.Words.f06965dc-5caa-4654-b599-bd950b862427.005.jpeg" alt="" /></p>
+
+<h2 id="computing-logits"><em>Computing</em> <strong>logits</strong></h2>
+
+<p>The equation above is strikingly similar to the original <strong>linear regression model</strong>, but we’re calling the resulting value <strong><em>z</em></strong>, or <strong>logit</strong>, instead of <strong><em>y</em></strong>, or <strong>label</strong>.</p>
+
+<p><strong>Does it mean a **logit</strong> is the same as <strong>linear regression</strong>?**</p>
+
+<p>Not quite—there is one <strong>fundamental difference</strong> between them: There is <strong>no error term (<em>epsilon</em>)</strong> in Equation above.
+If there is no error term, where does the <strong>uncertainty</strong> come from? I am glad you asked :smiley: That’s the role of the <strong>probability</strong>: Instead of assigning a data point to a <strong>discrete label (zero or one)</strong>, we’ll compute the <strong>probability of a data point’s belonging to the positive class</strong>.</p>
+
+<h2 id="probabilities"><strong>Probabilities</strong></h2>
+
+<p>If a data point has a <strong>logit</strong> that equals <strong>zero</strong>, it is exactly at the decision boundary since it is neither positive nor negative. For the sake of completeness, we assigned it to the <strong>positive class</strong>, but this assignment has <strong>maximum uncertainty</strong>, right? So, the corresponding <strong>probability needs to be 0.5</strong> (50%), since it could go either way.</p>
+
+<p>Following this reasoning, we would like to have <strong>large <em>positive</em> logit values</strong> assigned to <strong><em>higher</em> probabilities</strong> (of being in the positive class) and <strong>large <em>negative</em> logit values</strong> assigned to <strong><em>lower probabilities</em></strong> (of being in the positive class).</p>
+
+<p>For <em>really large</em> positive and negative <strong>logit values (<em>z</em>)</strong>, we would like to have:</p>
+
+<p><img src="/assets/sigmoid/Aspose.Words.f06965dc-5caa-4654-b599-bd950b862427.007.jpeg" alt="" /></p>
+
+<h2 id="probabilities-assigned-to-different-logit-values-z"><em>Probabilities assigned to different logit values (z)</em></h2>
+
+<p>We still need to figure out a <strong>function</strong> that maps <strong>logit values</strong> into <strong>probabilities</strong>. We’ll get there soon enough, but first, we need to talk about…</p>
+
+<p><strong>Odds Ratio</strong></p>
+
+<p><img src="/assets/sigmoid/Aspose.Words.f06965dc-5caa-4654-b599-bd950b862427.006.png" alt="" /><em>What are the odds?!</em></p>
+
+<p>This is a colloquial expression meaning something very unlikely has happened. But <strong>odds</strong> do not have to refer to an unlikely event or a slim chance. The odds of getting <strong>heads</strong> in a (fair) coin flip are 1 to 1 since there is a 50% chance of success and a 50% chance of failure.</p>
+
+<p>Let’s imagine we are betting on the winner of the World Cup final. There are two countries: <strong>A</strong> and <strong>B</strong>. Country <strong>A</strong> is the <strong>favorite</strong>: It has a 75% chance of winning. So, Country <strong>B</strong> has only a 25% chance of winning. If you bet on Country <strong>A</strong>, your chances of winning—that is, your <strong>odds (in favor)</strong>—are <strong>3 to 1</strong> (75 to 25). If you decide to test your luck and bet on Country <strong>B</strong>, your chances of winning—that is, your <strong>odds (in favor)</strong>—are <strong>1 to 3</strong> (25 to 75), or <strong>0.33 to 1</strong>.</p>
+
+<p>The <strong>odds ratio</strong> is given by the <strong>ratio</strong> between the <strong>probability of success</strong> (<em>p</em>) and the</p>
+
+<p><strong>probability of failure</strong> (<em>q</em>):</p>
+
+<p><img src="/assets/sigmoid/Aspose.Words.f06965dc-5caa-4654-b599-bd950b862427.008.jpeg" alt="" /></p>
+
+<h2 id="odds-ratio"><em>Odds ratio</em></h2>
+
+<p>In code, our odds_ratio() function looks like this:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">def</span> <span class="nf">odds_ratio</span><span class="p">(</span><span class="n">prob</span><span class="p">):</span>
+
+<span class="k">return</span> <span class="n">prob</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">prob</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="p">.</span><span class="mi">75</span>
+
+<span class="n">q</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">p</span>
+
+<span class="n">odds_ratio</span><span class="p">(</span><span class="n">p</span><span class="p">),</span> <span class="n">odds_ratio</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+
+<span class="o">*</span><span class="n">Output</span><span class="o">*</span>
+
+<span class="p">(</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">0.3333333333333333</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>We can also <strong>plot</strong> the resulting <strong>odds ratios</strong> for probabilities ranging from 1% to 99%. The <em>red dots</em> correspond to the probabilities of 25% (<em>q</em>), 50%, and 75% (<em>p</em>).</p>
+
+<p><img src="/assets/sigmoid/Aspose.Words.f06965dc-5caa-4654-b599-bd950b862427.009.png" alt="" /></p>
+
+<p><strong>Odds ratio</strong></p>
+
+<p>Clearly, the odds ratios (left plot) are <strong>not symmetrical</strong>. But, in a <strong>log scale</strong> (right plot), <strong>they are</strong>. This serves us very well since we’re looking for a <strong>symmetrical function</strong> that maps <strong>logit values</strong> into <strong>probabilities</strong>.</p>
+
+<p>Why does it <strong>need</strong> to be <strong>symmetrical</strong>?</p>
+
+<p>If the function <strong>weren’t</strong> symmetrical, different choices for the <strong>positive class</strong> would produce models that were <strong>not</strong> equivalent. But, using a symmetrical function, we could train <strong>two equivalent models</strong> using the <strong>same dataset</strong>, just flipping the classes:</p>
+
+<ul>
+  <li><strong>Blue Model</strong> (the positive class (<em>y=1</em>) corresponds to <strong>blue</strong> points)
+    <ul>
+      <li>Data Point #1: <strong>P(<em>y=1</em>) = P(blue) = .83</strong> (which is the same as <strong>P(red) = .17</strong>)</li>
+    </ul>
+  </li>
+  <li><strong>Red Model</strong> (the positive class (<em>y=1</em>) corresponds to <strong>red</strong> points)
+    <ul>
+      <li>Data Point #1: <strong>P(<em>y=1</em>) = P(red) = .17</strong> (which is the same as <strong>P(blue) = .83</strong>)</li>
+    </ul>
+  </li>
+</ul>
+
+<p>##Log Odds Ratio</p>
+
+<p>By taking the <strong>logarithm</strong> of the <strong>odds ratio</strong>, the function is not only <strong>symmetrical</strong>, but also maps <strong>probabilities</strong> into <strong>real numbers</strong>, instead of only the positive ones:</p>
+
+<p><img src="/assets/sigmoid/Aspose.Words.f06965dc-5caa-4654-b599-bd950b862427.010.jpeg" alt="" /></p>
+
+<p><strong>Log odds ratio</strong></p>
+
+<p>In code, our log_odds_ratio() function looks like this:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">log_odds_ratio</span><span class="p">(</span><span class="n">prob</span><span class="p">):</span>
+
+<span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="n">odds</span>\<span class="n">_ratio</span><span class="p">(</span><span class="n">prob</span><span class="p">))</span>
+
+<span class="err">$$</span><span class="n">p</span> <span class="o">=</span> <span class="p">.</span><span class="mi">75</span><span class="err">$$</span>
+
+<span class="err">$$</span><span class="n">q</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">p</span><span class="err">$$</span>
+
+<span class="err">$$</span>\<span class="n">log_odds_ratio</span><span class="p">(</span><span class="n">p</span><span class="p">),</span> <span class="n">log_odds_ratio</span><span class="p">(</span><span class="n">q</span><span class="p">)</span><span class="err">$$</span>
+
+
+<span class="o">*</span><span class="n">Output</span><span class="o">*</span>
+
+<span class="p">(</span><span class="mf">1.0986122886681098</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0986122886681098</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>As expected, <strong>probabilities that add up to 100%</strong> (like 75% and 25%) correspond to</p>
+
+<p><strong>log odds ratios</strong> that are the <strong>same in absolute value</strong>. Let’s plot it:</p>
+
+<p><img src="/assets/sigmoid/Aspose.Words.f06965dc-5caa-4654-b599-bd950b862427.009.png" alt="" /></p>
+
+<h2 id="log-odds-ratio-and-probability">Log odds ratio and probability</h2>
+
+<p>On the left, <strong>each probability maps into a log odds ratio</strong>. The <em>red dots</em> correspond to probabilities of 25%, 50%, and 75%, the same as before.</p>
+
+<p>If we <strong>flip</strong> the horizontal and vertical axes (right plot), we are <strong>inverting the function</strong>, thus mapping <strong>each log odds ratio into a probability</strong>. That’s the function we were looking for!</p>
+
+<p>Does its shape look familiar? Wait for it…</p>
+
+<p><strong>From Logits to Probabilities</strong></p>
+
+<p>In the previous section, we were trying to <strong>map logit values into probabilities</strong>, and we’ve just found out, graphically, a function that <strong>maps log odds ratios into probabilities</strong>.</p>
+
+<p>Clearly, our <strong>logits are log odds ratios</strong> :-) Sure, drawing conclusions like this is not very scientific, but the purpose of this exercise is to illustrate how the results of a regression, represented by the <strong>logits (z)</strong>, get to be mapped into probabilities.</p>
+
+<p>So, here’s what we arrived at:</p>
+
+<p><img src="/assets/sigmoid/Aspose.Words.f06965dc-5caa-4654-b599-bd950b862427.011.jpeg" alt="" /></p>
+
+<p><strong>Equation - Regression, logits, and log odds ratios</strong></p>
+
+<p>Let’s work this equation out a bit, inverting, rearranging, and simplifying some terms to <strong>isolate <em>p</em></strong>:</p>
+
+<p><img src="/assets/sigmoid/Aspose.Words.f06965dc-5caa-4654-b599-bd950b862427.012.jpeg" alt="" /></p>
+
+<p><em>Equation - From logits (z) to probabilities (p)</em></p>
+
+<p>Does it look familiar? That’s a <strong>sigmoid function</strong>! It is the <strong>inverse of the log odds ratio</strong>.</p>
+
+<p><img src="/assets/sigmoid/Aspose.Words.f06965dc-5caa-4654-b599-bd950b862427.013.png" alt="" /></p>
+
+<p><strong>Equation - Sigmoid function</strong></p>
+
+
+	</div>
+</article>
+		</div>
+	</div>
+  </body>
+</html>
