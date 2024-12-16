@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Deep Learning" /></head>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<style>@import url(/public/css/syntax/monokai.css);</style>
+  <title>Deep Learning</title>
+  <!-- <link href="/public/css/bootstrap.min.css" rel="stylesheet"> -->
+
+  <link href="/public/css/style.css" rel="stylesheet">
+  <body>
+  	<div class="container"> 
+		<div class="sidebar">
+			<div class="sidebar-item sidebar-header">
+	<div class='sidebar-brand'>
+		<a href="/about/">Deep Learning</a>
+	</div>
+	<p class="lead">A blog exploring deep learning, AI, and data science topics by Mohsen Dehghani.</p></div>
+
+<div class="sidebar-item sidebar-nav">
+	<ul class="nav">
+      <li class="nav-title">Pages</li>
+	  <li>
+	  	<a class="nav-item" href="/">Articles</a>
+	  </li>
+	  
+	  
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/about/">
+	            	About
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	</ul>
+</div>
+
+<div class="sidebar-item sidebar-nav">
+  	<ul class="nav">
+			<li class="nav-title">Categories</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#Update">
+				<span class="name">Update</span>
+				<span class="badge">13</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#Jekyll">
+				<span class="name">Jekyll</span>
+				<span class="badge">1</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#update">
+				<span class="name">update</span>
+				<span class="badge">6</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#math">
+				<span class="name">math</span>
+				<span class="badge">1</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#data-science">
+				<span class="name">data-science</span>
+				<span class="badge">1</span>
+	    	</a>
+ 		</li>
+	    
+	  </nav>
+	</ul>
+</div>
+
+<div class="sidebar-item sidebar-footer">
+	<p>Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a></p>
+</div>
+		</div>
+		<div class="content">
+			<article class="post">
+	<header class="post-header">
+		<div class="post-title"> 
+			Correlation and Angle Relationship
+		</div>
+		<time class="post-date dt-published" datetime="2024-12-14T00:00:00-05:00" itemprop="datePublished">2024/12/14
+		</time>		
+	</header>
+
+	<div class="post-content">
+		# Correlation and Angle Relationship
+
+The angle between two vectors (features) depends on their correlation coefficient, as it is directly related to the cosine of the angle between them:
+
+\[
+r = \cos(\theta)
+\]
+
+where \( r \) is the correlation coefficient (\(-1 \leq r \leq 1\)), and \( \theta \) is the angle between the two vectors.
+
+---
+
+## Relationship Between Correlation and Angle
+
+### High Positive Correlation (\( r \approx +1 \)):
+- When \( r \to 1 \), \( \cos(\theta) \to 1 \), meaning \( \theta \to 0^\circ \).
+- The vectors are nearly aligned in the same direction.
+- **Example:** If \( r = 0.9 \), the angle is small:
+  \[
+  \theta = \cos^{-1}(0.9) \approx 25.84^\circ
+  \]
+
+### High Negative Correlation (\( r \approx -1 \)):
+- When \( r \to -1 \), \( \cos(\theta) \to -1 \), meaning \( \theta \to 180^\circ \).
+- The vectors are nearly aligned in opposite directions.
+- **Example:** If \( r = -0.9 \), the angle is:
+  \[
+  \theta = \cos^{-1}(-0.9) \approx 154.16^\circ
+  \]
+
+### Small Correlation (\( r \) is small):
+- When \( r \) is small (e.g., \( r \approx 0.1 \) or \( r \approx -0.1 \)), \( \cos(\theta) \) is close to \( 0 \), meaning \( \theta \) is close to \( 90^\circ \).
+- The vectors are nearly orthogonal.
+- **Example:** If \( r = 0.1 \), the angle is:
+  \[
+  \theta = \cos^{-1}(0.1) \approx 84.26^\circ
+  \]
+
+### Zero Correlation (\( r = 0 \)):
+- When \( r = 0 \), \( \cos(\theta) = 0 \), meaning \( \theta = 90^\circ \).
+- The vectors are orthogonal or perpendicular.
+
+---
+
+## General Cases
+
+| Correlation Coefficient (\( r \)) | Angle (\( \theta \))       | Relationship                          |
+|-----------------------------------|----------------------------|---------------------------------------|
+| \( r = 1 \)                       | \( 0^\circ \)              | Perfect positive alignment            |
+| \( 0 < r < 1 \)                   | \( 0^\circ < \theta < 90^\circ \) | Small acute angle (positive correlation) |
+| \( r = 0 \)                       | \( 90^\circ \)             | Orthogonal (no linear relationship)   |
+| \( -1 < r < 0 \)                  | \( 90^\circ < \theta < 180^\circ \) | Obtuse angle (negative correlation)   |
+| \( r = -1 \)                      | \( 180^\circ \)            | Perfect negative alignment            |
+
+---
+
+## Examples with Calculations
+
+#### High Positive Correlation (\( r = 0.8 \)):
+\[
+\theta = \cos^{-1}(0.8) \approx 36.87^\circ
+\]
+
+#### Low Positive Correlation (\( r = 0.2 \)):
+\[
+\theta = \cos^{-1}(0.2) \approx 78.46^\circ
+\]
+
+#### High Negative Correlation (\( r = -0.8 \)):
+\[
+\theta = \cos^{-1}(-0.8) \approx 143.13^\circ
+\]
+
+#### Small Negative Correlation (\( r = -0.2 \)):
+\[
+\theta = \cos^{-1}(-0.2) \approx 101.54^\circ
+\]
+
+---
+
+## Conclusion
+
+**High correlation (\( r \to 1 \))** results in small angles (\( \theta \to 0^\circ \) or \( \theta \to 180^\circ \)).
+
+	</div>
+</article>
+		</div>
+	</div>
+  </body>
+</html>
