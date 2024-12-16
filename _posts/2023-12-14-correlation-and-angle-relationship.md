@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Correlation and Angle Relationship"
-date: 2024-12-14
+date: 2023-12-14
 categories: [math, data-science]
 tags: [correlation, angle, math]
 mathjax: true
