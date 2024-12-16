@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Deep Learning" /></head>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<style>@import url(/public/css/syntax/monokai.css);</style>
+  <title>Deep Learning</title>
+  <!-- <link href="/public/css/bootstrap.min.css" rel="stylesheet"> -->
+
+  <link href="/public/css/style.css" rel="stylesheet">
+  <body>
+  	<div class="container"> 
+		<div class="sidebar">
+			<div class="sidebar-item sidebar-header">
+	<div class='sidebar-brand'>
+		<a href="/about/">Deep Learning</a>
+	</div>
+	<p class="lead">A blog exploring deep learning, AI, and data science topics by Mohsen Dehghani.</p></div>
+
+<div class="sidebar-item sidebar-nav">
+	<ul class="nav">
+      <li class="nav-title">Pages</li>
+	  <li>
+	  	<a class="nav-item" href="/">Articles</a>
+	  </li>
+	  
+	  
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/about/">
+	            	About
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	</ul>
+</div>
+
+<div class="sidebar-item sidebar-nav">
+  	<ul class="nav">
+			<li class="nav-title">Categories</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#Update">
+				<span class="name">Update</span>
+				<span class="badge">13</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#Jekyll">
+				<span class="name">Jekyll</span>
+				<span class="badge">1</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#update">
+				<span class="name">update</span>
+				<span class="badge">6</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#math">
+				<span class="name">math</span>
+				<span class="badge">1</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#data-science">
+				<span class="name">data-science</span>
+				<span class="badge">1</span>
+	    	</a>
+ 		</li>
+	    
+	  </nav>
+	</ul>
+</div>
+
+<div class="sidebar-item sidebar-footer">
+	<p>Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a></p>
+</div>
+		</div>
+		<div class="content">
+			<article class="post">
+	<header class="post-header">
+		<div class="post-title"> 
+			Correlation and Angle Relationship
+		</div>
+		<time class="post-date dt-published" datetime="2024-12-14T00:00:00-05:00" itemprop="datePublished">2024/12/14
+		</time>		
+	</header>
+
+	<div class="post-content">
+		<h1 id="correlation-and-angle-relationship">Correlation and Angle Relationship</h1>
+
+<p>The angle between two vectors (features) depends on their correlation coefficient, as it is directly related to the cosine of the angle between them:</p>
+
+\[r = \cos(\theta)\]
+
+<p>where \(r\) is the correlation coefficient (\(-1 \leq r \leq 1\)), and \(\theta\) is the angle between the two vectors.</p>
+
+<hr />
+
+<h2 id="relationship-between-correlation-and-angle">Relationship Between Correlation and Angle</h2>
+
+<h3 id="high-positive-correlation-r-approx-1">High Positive Correlation (\(r \approx +1\)):</h3>
+<ul>
+  <li>When \(r \to 1\), \(\cos(\theta) \to 1\), meaning \(\theta \to 0^\circ\).</li>
+  <li>The vectors are nearly aligned in the same direction.</li>
+  <li><strong>Example:</strong> If \(r = 0.9\), the angle is small:
+\(\theta = \cos^{-1}(0.9) \approx 25.84^\circ\)</li>
+</ul>
+
+<h3 id="high-negative-correlation-r-approx--1">High Negative Correlation (\(r \approx -1\)):</h3>
+<ul>
+  <li>When \(r \to -1\), \(\cos(\theta) \to -1\), meaning \(\theta \to 180^\circ\).</li>
+  <li>The vectors are nearly aligned in opposite directions.</li>
+  <li><strong>Example:</strong> If \(r = -0.9\), the angle is:
+\(\theta = \cos^{-1}(-0.9) \approx 154.16^\circ\)</li>
+</ul>
+
+<h3 id="small-correlation-r-is-small">Small Correlation (\(r\) is small):</h3>
+<ul>
+  <li>When \(r\) is small (e.g., \(r \approx 0.1\) or \(r \approx -0.1\)), \(\cos(\theta)\) is close to \(0\), meaning \(\theta\) is close to \(90^\circ\).</li>
+  <li>The vectors are nearly orthogonal.</li>
+  <li><strong>Example:</strong> If \(r = 0.1\), the angle is:
+\(\theta = \cos^{-1}(0.1) \approx 84.26^\circ\)</li>
+</ul>
+
+<h3 id="zero-correlation-r--0">Zero Correlation (\(r = 0\)):</h3>
+<ul>
+  <li>When \(r = 0\), \(\cos(\theta) = 0\), meaning \(\theta = 90^\circ\).</li>
+  <li>The vectors are orthogonal or perpendicular.</li>
+</ul>
+
+<hr />
+
+<h2 id="general-cases">General Cases</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Correlation Coefficient ($r$)</th>
+      <th>Angle ($\theta$)</th>
+      <th>Relationship</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>$r = 1$</td>
+      <td>$0^\circ$</td>
+      <td>Perfect positive alignment</td>
+    </tr>
+    <tr>
+      <td>$0 &lt; r &lt; 1$</td>
+      <td>$0^\circ &lt; \theta &lt; 90^\circ$</td>
+      <td>Small acute angle (positive correlation)</td>
+    </tr>
+    <tr>
+      <td>$r = 0$</td>
+      <td>$90^\circ$</td>
+      <td>Orthogonal (no linear relationship)</td>
+    </tr>
+    <tr>
+      <td>$-1 &lt; r &lt; 0$</td>
+      <td>$90^\circ &lt; \theta &lt; 180^\circ$</td>
+      <td>Obtuse angle (negative correlation)</td>
+    </tr>
+    <tr>
+      <td>$r = -1$</td>
+      <td>$180^\circ$</td>
+      <td>Perfect negative alignment</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="examples-with-calculations">Examples with Calculations</h2>
+
+<h4 id="high-positive-correlation-r--08">High Positive Correlation (\(r = 0.8\)):</h4>
+<p>\(\theta = \cos^{-1}(0.8) \approx 36.87^\circ\)</p>
+
+<h4 id="low-positive-correlation-r--02">Low Positive Correlation (\(r = 0.2\)):</h4>
+<p>\(\theta = \cos^{-1}(0.2) \approx 78.46^\circ\)</p>
+
+<h4 id="high-negative-correlation-r---08">High Negative Correlation (\(r = -0.8\)):</h4>
+<p>\(\theta = \cos^{-1}(-0.8) \approx 143.13^\circ\)</p>
+
+<h4 id="small-negative-correlation-r---02">Small Negative Correlation (\(r = -0.2\)):</h4>
+<p>\(\theta = \cos^{-1}(-0.2) \approx 101.54^\circ\)</p>
+
+<hr />
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p><strong>High correlation (\(r \to 1\))</strong> results in small angles (\(\theta \to 0^\circ\) or \(\theta \to 180^\circ\)).</p>
+
+<p>In <strong>n-dimensional space</strong>, the relationship between correlation, angle, and feature importance (and the decision to drop or keep features) becomes more complex but can still be understood through geometric and statistical principles. Here’s a detailed explanation:</p>
+
+<hr />
+
+<h3 id="1-correlation-and-angle-in-n-dimensional-space"><strong>1. Correlation and Angle in n-Dimensional Space</strong></h3>
+<p>In an \(n\)-dimensional feature space:</p>
+<ul>
+  <li><strong>Correlation</strong> measures the linear relationship between two features.</li>
+  <li>The <strong>angle</strong> between two feature vectors is determined by their dot product, normalized by their magnitudes:
+\(\cos(\theta) = \frac{\mathbf{x} \cdot \mathbf{y}}{\|\mathbf{x}\| \|\mathbf{y}\|}\)
+    <ul>
+      <li>A high correlation (\(r \to 1\)) means \(\cos(\theta) \to 1\), so \(\theta \to 0^\circ\).</li>
+      <li>A low correlation (\(r \to 0\)) means \(\cos(\theta) \to 0\), so \(\theta \to 90^\circ\).</li>
+      <li>A strong negative correlation (\(r \to -1\)) means \(\cos(\theta) \to -1\), so \(\theta \to 180^\circ\).</li>
+    </ul>
+  </li>
+</ul>
+
+<p>In <strong>n dimensions</strong>, correlation can still be interpreted geometrically as the cosine of the angle between feature vectors, even though the data lives in higher dimensions.</p>
+
+<hr />
+
+<h3 id="2-feature-importance-and-redundancy"><strong>2. Feature Importance and Redundancy</strong></h3>
+<ul>
+  <li>In \(n\)-dimensional space, <strong>redundant features</strong> often have high correlation (small angles) and provide overlapping information.</li>
+  <li>Key considerations for deciding whether to drop or keep features:
+    <ol>
+      <li><strong>Correlation Threshold</strong>: If two features have high correlation (e.g., \(r &gt; 0.9\)), they are nearly collinear (small angle), and one may be dropped without losing much information.</li>
+      <li><strong>Feature Importance</strong>: Evaluate the importance of each feature using statistical or model-based methods (e.g., feature importance scores in tree-based models).</li>
+      <li><strong>Dimensionality Reduction</strong>: Instead of dropping features, use techniques like PCA to combine correlated features into uncorrelated components.</li>
+    </ol>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="3-impact-of-correlation-and-angle-on-feature-selection"><strong>3. Impact of Correlation and Angle on Feature Selection</strong></h3>
+<h4 id="case-1-high-correlation-small-angle"><strong>Case 1: High Correlation (Small Angle)</strong></h4>
+<ul>
+  <li>Highly correlated features are nearly collinear, meaning they span almost the same direction in the feature space.</li>
+  <li><strong>Impact on Models:</strong>
+    <ul>
+      <li>In linear models (e.g., regression), high correlation can cause <strong>multicollinearity</strong>, making it hard to estimate coefficients accurately.</li>
+      <li>Non-linear models (e.g., decision trees) are less affected but may still suffer from unnecessary complexity.</li>
+    </ul>
+  </li>
+  <li><strong>What to Do:</strong>
+    <ul>
+      <li>Keep one feature based on domain knowledge or feature importance.</li>
+      <li>If unsure, use regularization (e.g., Lasso or Ridge) to select the most relevant feature.</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="case-2-low-correlation-large-angle-theta-approx-90circ"><strong>Case 2: Low Correlation (Large Angle, \(\theta \approx 90^\circ\))</strong></h4>
+<ul>
+  <li>Low correlation means the features are orthogonal or nearly independent.</li>
+  <li><strong>Impact on Models:</strong>
+    <ul>
+      <li>These features provide unique information and are generally beneficial for most machine learning models.</li>
+      <li>Removing one may lead to a loss of critical information.</li>
+    </ul>
+  </li>
+  <li><strong>What to Do:</strong>
+    <ul>
+      <li>Retain both features unless one is irrelevant to the target variable (assessed via feature importance or statistical tests).</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="case-3-negative-correlation-theta-approx-180circ"><strong>Case 3: Negative Correlation (\(\theta \approx 180^\circ\))</strong></h4>
+<ul>
+  <li>Strong negative correlation indicates features are pointing in opposite directions but still carry similar information (linearly related).</li>
+  <li><strong>Impact on Models:</strong>
+    <ul>
+      <li>Similar to high positive correlation, negative correlation can introduce redundancy or multicollinearity in linear models.</li>
+    </ul>
+  </li>
+  <li><strong>What to Do:</strong>
+    <ul>
+      <li>Consider dropping one feature or combining them (e.g., through PCA or weighted averages).</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="4-dimensionality-reduction"><strong>4. Dimensionality Reduction</strong></h3>
+<p>When dealing with high-dimensional datasets, <strong>dimensionality reduction techniques</strong> can help address correlated or redundant features:</p>
+<ul>
+  <li><strong>Principal Component Analysis (PCA):</strong>
+    <ul>
+      <li>Combines correlated features into uncorrelated components by projecting data onto orthogonal axes.</li>
+      <li>Helps reduce dimensionality while retaining most of the variance in the data.</li>
+    </ul>
+  </li>
+  <li><strong>Linear Discriminant Analysis (LDA):</strong>
+    <ul>
+      <li>Focuses on maximizing class separability and can be used in classification tasks.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="5-feature-importance-and-decision-to-dropkeep"><strong>5. Feature Importance and Decision to Drop/Keep</strong></h3>
+<p>Use model-based methods or statistical techniques to evaluate feature importance:</p>
+<ul>
+  <li><strong>Tree-based Models (e.g., Random Forest, Gradient Boosting):</strong>
+    <ul>
+      <li>Provide feature importance scores based on their contribution to splits in decision trees.</li>
+    </ul>
+  </li>
+  <li><strong>Regularization (Lasso, Ridge):</strong>
+    <ul>
+      <li>Penalizes less important features and reduces their coefficients toward zero.</li>
+    </ul>
+  </li>
+  <li><strong>SHAP (SHapley Additive exPlanations):</strong>
+    <ul>
+      <li>Provides interpretability for feature contributions to predictions.</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="guidelines-for-dropping-features"><strong>Guidelines for Dropping Features:</strong></h4>
+<ol>
+  <li><strong>Drop features if:</strong>
+    <ul>
+      <li>High correlation exists (\(r &gt; 0.9\)).</li>
+      <li>Feature importance score is low.</li>
+      <li>Domain knowledge suggests irrelevance.</li>
+    </ul>
+  </li>
+  <li><strong>Keep features if:</strong>
+    <ul>
+      <li>Low correlation (\(r \approx 0\)) indicates unique information.</li>
+      <li>Feature importance is high.</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="6-summary-table"><strong>6. Summary Table</strong></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Correlation</strong></th>
+      <th><strong>Angle (\(\theta\))</strong></th>
+      <th><strong>Feature Relationship</strong></th>
+      <th><strong>Action</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>\(r = 1\)</td>
+      <td>\(0^\circ\)</td>
+      <td>Perfectly aligned, redundant</td>
+      <td>Drop one feature.</td>
+    </tr>
+    <tr>
+      <td>\(0.8 \leq r &lt; 1\)</td>
+      <td>\(0^\circ &lt; \theta &lt; 45^\circ\)</td>
+      <td>Highly correlated</td>
+      <td>Consider dropping one (or combining).</td>
+    </tr>
+    <tr>
+      <td>\(0 &lt; r &lt; 0.8\)</td>
+      <td>\(45^\circ &lt; \theta &lt; 90^\circ\)</td>
+      <td>Moderately correlated</td>
+      <td>Keep both, unless feature importance is low.</td>
+    </tr>
+    <tr>
+      <td>\(r = 0\)</td>
+      <td>\(90^\circ\)</td>
+      <td>Orthogonal (independent)</td>
+      <td>Retain both features.</td>
+    </tr>
+    <tr>
+      <td>\(-0.8 &lt; r &lt; 0\)</td>
+      <td>\(90^\circ &lt; \theta &lt; 135^\circ\)</td>
+      <td>Moderately negatively correlated</td>
+      <td>Evaluate importance; combine if redundant.</td>
+    </tr>
+    <tr>
+      <td>\(r = -1\)</td>
+      <td>\(180^\circ\)</td>
+      <td>Perfectly negatively aligned</td>
+      <td>Drop one feature.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="conclusion-1"><strong>Conclusion</strong></h3>
+<ul>
+  <li><strong>Correlation and angle</strong> reveal redundancy and independence in feature space.</li>
+  <li><strong>Dimensionality reduction</strong> can address correlation without dropping features.</li>
+  <li>Use <strong>domain knowledge</strong> and <strong>feature importance methods</strong> to decide whether to drop or keep features.</li>
+</ul>
+
+	</div>
+</article>
+		</div>
+	</div>
+  </body>
+</html>
