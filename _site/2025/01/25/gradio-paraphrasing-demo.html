@@ -96,7 +96,180 @@
 	</header>
 
 	<div class="post-content">
-		
+		<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pip</span> <span class="n">install</span> <span class="n">transformers</span> <span class="n">torch</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">sentencepiece</span> <span class="n">protobuf</span>
+
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">gradio</span> <span class="k">as</span> <span class="n">gr</span>
+<span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoTokenizer</span><span class="p">,</span> <span class="n">AutoModelForSeq2SeqLM</span>
+
+<span class="c1"># Load the tokenizer and model
+</span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="p">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s">"Vamsi/T5_Paraphrase_Paws"</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelForSeq2SeqLM</span><span class="p">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s">"Vamsi/T5_Paraphrase_Paws"</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">paraphrase_text</span><span class="p">(</span><span class="n">input_text</span><span class="p">,</span> <span class="n">num_return_sequences</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">num_beams</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="c1"># Preprocess the text
+</span>    <span class="n">input_ids</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="s">"paraphrase: "</span> <span class="o">+</span> <span class="n">input_text</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s">"pt"</span><span class="p">,</span> <span class="n">truncation</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="c1"># Generate paraphrased versions
+</span>    <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">generate</span><span class="p">(</span>
+        <span class="n">input_ids</span><span class="p">,</span>
+        <span class="n">max_length</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span>
+        <span class="n">num_beams</span><span class="o">=</span><span class="n">num_beams</span><span class="p">,</span>
+        <span class="n">num_return_sequences</span><span class="o">=</span><span class="n">num_return_sequences</span><span class="p">,</span>
+        <span class="n">no_repeat_ngram_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">early_stopping</span><span class="o">=</span><span class="bp">True</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Decode the generated sequences
+</span>    <span class="n">paraphrased_texts</span> <span class="o">=</span> <span class="p">[</span><span class="n">tokenizer</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="k">for</span> <span class="n">output</span> <span class="ow">in</span> <span class="n">outputs</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">paraphrased_texts</span>
+
+<span class="n">title</span> <span class="o">=</span> <span class="s">"Paraphrasing with T5 Model"</span>
+<span class="n">description</span> <span class="o">=</span> <span class="s">"This demo uses the T5 model fine-tuned on PAWS for generating paraphrases of input text. Simply enter your text and click 'Submit' to generate multiple paraphrased versions."</span>
+<span class="n">article</span> <span class="o">=</span> <span class="s">"&lt;p style='text-align: center'&gt;&lt;a href='https://huggingface.co/Vamsi/T5_Paraphrase_Paws'&gt;Hugging Face Model&lt;/a&gt; | &lt;a href='https://github.com/huggingface/transformers'&gt;Transformers Library&lt;/a&gt;&lt;/p&gt;"</span>
+
+<span class="n">examples</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s">"Intelligence Analyst Trainer - 24-968-08-086 All information required to determine suitability for employment with the Canadian Security Intelligence Service is collected under the authority of the Canadian Security Intelligence Service Act."</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"The Privacy Act allows candidates to review collected information and request amendments."</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"Machine learning models are improving rapidly, and their applications are expanding across different industries."</span><span class="p">]</span>
+<span class="p">]</span>
+
+<span class="n">iface</span> <span class="o">=</span> <span class="n">gr</span><span class="p">.</span><span class="n">Interface</span><span class="p">(</span>
+    <span class="n">fn</span><span class="o">=</span><span class="n">paraphrase_text</span><span class="p">,</span>
+    <span class="n">inputs</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">gr</span><span class="p">.</span><span class="n">Textbox</span><span class="p">(</span><span class="n">lines</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">placeholder</span><span class="o">=</span><span class="s">"Enter text to paraphrase here..."</span><span class="p">),</span>
+        <span class="n">gr</span><span class="p">.</span><span class="n">Slider</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">"Number of paraphrases"</span><span class="p">),</span>
+        <span class="n">gr</span><span class="p">.</span><span class="n">Slider</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">"Beam search size"</span><span class="p">)</span>
+    <span class="p">],</span>
+    <span class="n">outputs</span><span class="o">=</span><span class="n">gr</span><span class="p">.</span><span class="n">Textbox</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s">"Paraphrased Outputs"</span><span class="p">),</span>
+    <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span>
+    <span class="n">article</span><span class="o">=</span><span class="n">article</span><span class="p">,</span>
+    <span class="n">examples</span><span class="o">=</span><span class="n">examples</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<span class="c1"># iface.launch(debug=True)
+</span>
+
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>You are using the default legacy behaviour of the &lt;class 'transformers.models.t5.tokenization_t5.T5Tokenizer'&gt;. This is expected, and simply means that the `legacy` (previous) behavior will be used so nothing changes for you. If you want to use the new behaviour, set `legacy=False`. This should only be set if you understand what it means, and thoroughly read the reason why this was added as explained in https://github.com/huggingface/transformers/pull/24565
+c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\torchvision\io\image.py:13: UserWarning: Failed to load image Python extension: Could not find module 'C:\Users\mohse\.conda\envs\cdo_idp\Lib\site-packages\torchvision\image.pyd' (or one of its dependencies). Try using the full path with constructor syntax.
+  warn(f"Failed to load image Python extension: {e}")
+
+
+Running on local URL:  http://0.0.0.0:7860
+Running on public URL: https://f1f8800d90672a6ac0.gradio.live
+
+This share link expires in 72 hours. For free permanent hosting and GPU upgrades, run `gradio deploy` from Terminal to deploy to Spaces (https://huggingface.co/spaces)
+</code></pre></div></div>
+
+<div><iframe src="https://f1f8800d90672a6ac0.gradio.live" width="100%" height="500" allow="autoplay; camera; microphone; clipboard-read; clipboard-write;" frameborder="0" allowfullscreen=""></iframe></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">gradio</span> <span class="k">as</span> <span class="n">gr</span>
+<span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoTokenizer</span><span class="p">,</span> <span class="n">AutoModelForSeq2SeqLM</span>
+
+<span class="c1"># Load the tokenizer and model
+</span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="p">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s">"Vamsi/T5_Paraphrase_Paws"</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelForSeq2SeqLM</span><span class="p">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s">"Vamsi/T5_Paraphrase_Paws"</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">paraphrase_text</span><span class="p">(</span><span class="n">input_text</span><span class="p">,</span> <span class="n">num_return_sequences</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">num_beams</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">input_ids</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="s">"paraphrase: "</span> <span class="o">+</span> <span class="n">input_text</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s">"pt"</span><span class="p">,</span> <span class="n">truncation</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">generate</span><span class="p">(</span>
+        <span class="n">input_ids</span><span class="p">,</span>
+        <span class="n">max_length</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span>
+        <span class="n">num_beams</span><span class="o">=</span><span class="n">num_beams</span><span class="p">,</span>
+        <span class="n">num_return_sequences</span><span class="o">=</span><span class="n">num_return_sequences</span><span class="p">,</span>
+        <span class="n">no_repeat_ngram_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">early_stopping</span><span class="o">=</span><span class="bp">True</span>
+    <span class="p">)</span>
+
+    <span class="n">paraphrased_texts</span> <span class="o">=</span> <span class="p">[</span><span class="n">tokenizer</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="k">for</span> <span class="n">output</span> <span class="ow">in</span> <span class="n">outputs</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">paraphrased_texts</span>
+
+<span class="c1"># Personal Information Section
+</span><span class="n">title</span> <span class="o">=</span> <span class="s">"Paraphrasing with T5 Model - Created by Mohsen Dehghani"</span>
+<span class="n">description</span> <span class="o">=</span> <span class="s">"""
+## Welcome to the Paraphrasing Demo
+This demo uses the T5 model fine-tuned on PAWS to generate paraphrases of input text.
+Simply enter your text and click 'Submit' to see the results.
+
+**Created by:** Mohsen Dehghani  
+**Email:** mohsen.dehghani@gmail.com  
+**Location:** Montreal, Quebec, Canada  
+"""</span>
+
+<span class="n">article</span> <span class="o">=</span> <span class="s">"""
+&lt;p style='text-align: center'&gt;
+&lt;a href='https://huggingface.co/Vamsi/T5_Paraphrase_Paws'&gt;Hugging Face Model&lt;/a&gt; | 
+&lt;a href='https://github.com/huggingface/transformers'&gt;Transformers Library&lt;/a&gt;
+&lt;/p&gt;
+"""</span>
+
+<span class="n">examples</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s">"Intelligence Analyst Trainer - 24-968-08-086 All information required to determine suitability for employment with the Canadian Security Intelligence Service is collected under the authority of the Canadian Security Intelligence Service Act."</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"The Privacy Act allows candidates to review collected information and request amendments."</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"Machine learning models are improving rapidly, and their applications are expanding across different industries."</span><span class="p">]</span>
+<span class="p">]</span>
+
+<span class="n">iface</span> <span class="o">=</span> <span class="n">gr</span><span class="p">.</span><span class="n">Interface</span><span class="p">(</span>
+    <span class="n">fn</span><span class="o">=</span><span class="n">paraphrase_text</span><span class="p">,</span>
+    <span class="n">inputs</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">gr</span><span class="p">.</span><span class="n">Textbox</span><span class="p">(</span><span class="n">lines</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">placeholder</span><span class="o">=</span><span class="s">"Enter text to paraphrase here..."</span><span class="p">),</span>
+        <span class="n">gr</span><span class="p">.</span><span class="n">Slider</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">"Number of paraphrases"</span><span class="p">),</span>
+        <span class="n">gr</span><span class="p">.</span><span class="n">Slider</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">"Beam search size"</span><span class="p">)</span>
+    <span class="p">],</span>
+    <span class="n">outputs</span><span class="o">=</span><span class="n">gr</span><span class="p">.</span><span class="n">Textbox</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s">"Paraphrased Outputs"</span><span class="p">),</span>
+    <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span>
+    <span class="n">article</span><span class="o">=</span><span class="n">article</span><span class="p">,</span>
+    <span class="n">examples</span><span class="o">=</span><span class="n">examples</span>
+<span class="p">)</span>
+
+<span class="n">iface</span><span class="p">.</span><span class="n">launch</span><span class="p">(</span><span class="n">share</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Running on local URL:  http://127.0.0.1:7860
+Running on public URL: https://2c03b010d116b96362.gradio.live
+
+This share link expires in 72 hours. For free permanent hosting and GPU upgrades, run `gradio deploy` from Terminal to deploy to Spaces (https://huggingface.co/spaces)
+</code></pre></div></div>
+
+<div><iframe src="https://2c03b010d116b96362.gradio.live" width="100%" height="500" allow="autoplay; camera; microphone; clipboard-read; clipboard-write;" frameborder="0" allowfullscreen=""></iframe></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Traceback (most recent call last):
+  File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\gradio\queueing.py", line 536, in process_events
+    response = await route_utils.call_process_api(
+  File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\gradio\route_utils.py", line 322, in call_process_api
+    output = await app.get_blocks().process_api(
+  File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\gradio\blocks.py", line 1935, in process_api
+    result = await self.call_function(
+  File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\gradio\blocks.py", line 1520, in call_function
+    prediction = await anyio.to_thread.run_sync(  # type: ignore
+  File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\anyio\to_thread.py", line 33, in run_sync
+    return await get_asynclib().run_sync_in_worker_thread(
+  File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\anyio\_backends\_asyncio.py", line 877, in run_sync_in_worker_thread
+    return await future
+  File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\anyio\_backends\_asyncio.py", line 807, in run
+    result = context.run(func, *args)
+  File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\gradio\utils.py", line 826, in wrapper
+    response = f(*args, **kwargs)
+  File "C:\Users\mohse\AppData\Local\Temp\ipykernel_29716\3481243923.py", line 11, in paraphrase_text
+    outputs = model.generate(
+  File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\torch\utils\_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\transformers\generation\utils.py", line 2227, in generate
+    beam_scorer = BeamSearchScorer(
+  File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\transformers\generation\beam_search.py", line 200, in __init__
+    raise ValueError(
+ValueError: `num_beams` has to be an integer strictly greater than 1, but is 4.25. For `num_beams` == 1, one should make use of `greedy_search` instead.
+</code></pre></div></div>
+
 
 	</div>
 </article>

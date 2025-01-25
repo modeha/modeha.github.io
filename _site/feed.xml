@@ -1,4 +1,762 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-01-25T13:10:29-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Deep Learning</title><subtitle>Mohsen Dehghani</subtitle><entry><title type="html">Gradio Paraphrasing Demo</title><link href="http://localhost:4000/2025/01/25/gradio-paraphrasing-demo.html" rel="alternate" type="text/html" title="Gradio Paraphrasing Demo" /><published>2025-01-25T13:10:00-05:00</published><updated>2025-01-25T13:10:00-05:00</updated><id>http://localhost:4000/2025/01/25/gradio-paraphrasing-demo</id><content type="html" xml:base="http://localhost:4000/2025/01/25/gradio-paraphrasing-demo.html"><![CDATA[]]></content><author><name></name></author><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Gradio Paraphrasing Demo</title><link href="http://localhost:4000/2025/01/25/Handwritten-Text-Recognition.html" rel="alternate" type="text/html" title="Gradio Paraphrasing Demo" /><published>2025-01-25T13:06:00-05:00</published><updated>2025-01-25T13:06:00-05:00</updated><id>http://localhost:4000/2025/01/25/Handwritten-Text-Recognition</id><content type="html" xml:base="http://localhost:4000/2025/01/25/Handwritten-Text-Recognition.html"><![CDATA[]]></content><author><name></name></author><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Downloading and Running a Jekyll Site Locally on Windows Using VSCode</title><link href="http://localhost:4000/update/2024/11/13/Installation-jeykll.html" rel="alternate" type="text/html" title="Downloading and Running a Jekyll Site Locally on Windows Using VSCode" /><published>2024-11-13T19:31:29-05:00</published><updated>2024-11-13T19:31:29-05:00</updated><id>http://localhost:4000/update/2024/11/13/Installation-jeykll</id><content type="html" xml:base="http://localhost:4000/update/2024/11/13/Installation-jeykll.html"><![CDATA[<h3 id="downloading-and-running-a-jekyll-site-locally-on-windows-using-vscode">Downloading and Running a Jekyll Site Locally on Windows Using VSCode</h3>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-01-25T13:13:22-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Deep Learning</title><subtitle>Mohsen Dehghani</subtitle><entry><title type="html">Gradio Paraphrasing Demo</title><link href="http://localhost:4000/2025/01/25/gradio-paraphrasing-demo.html" rel="alternate" type="text/html" title="Gradio Paraphrasing Demo" /><published>2025-01-25T13:10:00-05:00</published><updated>2025-01-25T13:10:00-05:00</updated><id>http://localhost:4000/2025/01/25/gradio-paraphrasing-demo</id><content type="html" xml:base="http://localhost:4000/2025/01/25/gradio-paraphrasing-demo.html"><![CDATA[<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pip</span> <span class="n">install</span> <span class="n">transformers</span> <span class="n">torch</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">sentencepiece</span> <span class="n">protobuf</span>
+
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">gradio</span> <span class="k">as</span> <span class="n">gr</span>
+<span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoTokenizer</span><span class="p">,</span> <span class="n">AutoModelForSeq2SeqLM</span>
+
+<span class="c1"># Load the tokenizer and model
+</span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="p">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s">"Vamsi/T5_Paraphrase_Paws"</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelForSeq2SeqLM</span><span class="p">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s">"Vamsi/T5_Paraphrase_Paws"</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">paraphrase_text</span><span class="p">(</span><span class="n">input_text</span><span class="p">,</span> <span class="n">num_return_sequences</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">num_beams</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="c1"># Preprocess the text
+</span>    <span class="n">input_ids</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="s">"paraphrase: "</span> <span class="o">+</span> <span class="n">input_text</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s">"pt"</span><span class="p">,</span> <span class="n">truncation</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="c1"># Generate paraphrased versions
+</span>    <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">generate</span><span class="p">(</span>
+        <span class="n">input_ids</span><span class="p">,</span>
+        <span class="n">max_length</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span>
+        <span class="n">num_beams</span><span class="o">=</span><span class="n">num_beams</span><span class="p">,</span>
+        <span class="n">num_return_sequences</span><span class="o">=</span><span class="n">num_return_sequences</span><span class="p">,</span>
+        <span class="n">no_repeat_ngram_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">early_stopping</span><span class="o">=</span><span class="bp">True</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Decode the generated sequences
+</span>    <span class="n">paraphrased_texts</span> <span class="o">=</span> <span class="p">[</span><span class="n">tokenizer</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="k">for</span> <span class="n">output</span> <span class="ow">in</span> <span class="n">outputs</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">paraphrased_texts</span>
+
+<span class="n">title</span> <span class="o">=</span> <span class="s">"Paraphrasing with T5 Model"</span>
+<span class="n">description</span> <span class="o">=</span> <span class="s">"This demo uses the T5 model fine-tuned on PAWS for generating paraphrases of input text. Simply enter your text and click 'Submit' to generate multiple paraphrased versions."</span>
+<span class="n">article</span> <span class="o">=</span> <span class="s">"&lt;p style='text-align: center'&gt;&lt;a href='https://huggingface.co/Vamsi/T5_Paraphrase_Paws'&gt;Hugging Face Model&lt;/a&gt; | &lt;a href='https://github.com/huggingface/transformers'&gt;Transformers Library&lt;/a&gt;&lt;/p&gt;"</span>
+
+<span class="n">examples</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s">"Intelligence Analyst Trainer - 24-968-08-086 All information required to determine suitability for employment with the Canadian Security Intelligence Service is collected under the authority of the Canadian Security Intelligence Service Act."</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"The Privacy Act allows candidates to review collected information and request amendments."</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"Machine learning models are improving rapidly, and their applications are expanding across different industries."</span><span class="p">]</span>
+<span class="p">]</span>
+
+<span class="n">iface</span> <span class="o">=</span> <span class="n">gr</span><span class="p">.</span><span class="n">Interface</span><span class="p">(</span>
+    <span class="n">fn</span><span class="o">=</span><span class="n">paraphrase_text</span><span class="p">,</span>
+    <span class="n">inputs</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">gr</span><span class="p">.</span><span class="n">Textbox</span><span class="p">(</span><span class="n">lines</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">placeholder</span><span class="o">=</span><span class="s">"Enter text to paraphrase here..."</span><span class="p">),</span>
+        <span class="n">gr</span><span class="p">.</span><span class="n">Slider</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">"Number of paraphrases"</span><span class="p">),</span>
+        <span class="n">gr</span><span class="p">.</span><span class="n">Slider</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">"Beam search size"</span><span class="p">)</span>
+    <span class="p">],</span>
+    <span class="n">outputs</span><span class="o">=</span><span class="n">gr</span><span class="p">.</span><span class="n">Textbox</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s">"Paraphrased Outputs"</span><span class="p">),</span>
+    <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span>
+    <span class="n">article</span><span class="o">=</span><span class="n">article</span><span class="p">,</span>
+    <span class="n">examples</span><span class="o">=</span><span class="n">examples</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<span class="c1"># iface.launch(debug=True)
+</span>
+
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>You are using the default legacy behaviour of the &lt;class 'transformers.models.t5.tokenization_t5.T5Tokenizer'&gt;. This is expected, and simply means that the `legacy` (previous) behavior will be used so nothing changes for you. If you want to use the new behaviour, set `legacy=False`. This should only be set if you understand what it means, and thoroughly read the reason why this was added as explained in https://github.com/huggingface/transformers/pull/24565
+c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\torchvision\io\image.py:13: UserWarning: Failed to load image Python extension: Could not find module 'C:\Users\mohse\.conda\envs\cdo_idp\Lib\site-packages\torchvision\image.pyd' (or one of its dependencies). Try using the full path with constructor syntax.
+  warn(f"Failed to load image Python extension: {e}")
+
+
+Running on local URL:  http://0.0.0.0:7860
+Running on public URL: https://f1f8800d90672a6ac0.gradio.live
+
+This share link expires in 72 hours. For free permanent hosting and GPU upgrades, run `gradio deploy` from Terminal to deploy to Spaces (https://huggingface.co/spaces)
+</code></pre></div></div>
+
+<div><iframe src="https://f1f8800d90672a6ac0.gradio.live" width="100%" height="500" allow="autoplay; camera; microphone; clipboard-read; clipboard-write;" frameborder="0" allowfullscreen=""></iframe></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">gradio</span> <span class="k">as</span> <span class="n">gr</span>
+<span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoTokenizer</span><span class="p">,</span> <span class="n">AutoModelForSeq2SeqLM</span>
+
+<span class="c1"># Load the tokenizer and model
+</span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="p">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s">"Vamsi/T5_Paraphrase_Paws"</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelForSeq2SeqLM</span><span class="p">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s">"Vamsi/T5_Paraphrase_Paws"</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">paraphrase_text</span><span class="p">(</span><span class="n">input_text</span><span class="p">,</span> <span class="n">num_return_sequences</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">num_beams</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">input_ids</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="s">"paraphrase: "</span> <span class="o">+</span> <span class="n">input_text</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s">"pt"</span><span class="p">,</span> <span class="n">truncation</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">generate</span><span class="p">(</span>
+        <span class="n">input_ids</span><span class="p">,</span>
+        <span class="n">max_length</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span>
+        <span class="n">num_beams</span><span class="o">=</span><span class="n">num_beams</span><span class="p">,</span>
+        <span class="n">num_return_sequences</span><span class="o">=</span><span class="n">num_return_sequences</span><span class="p">,</span>
+        <span class="n">no_repeat_ngram_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">early_stopping</span><span class="o">=</span><span class="bp">True</span>
+    <span class="p">)</span>
+
+    <span class="n">paraphrased_texts</span> <span class="o">=</span> <span class="p">[</span><span class="n">tokenizer</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="k">for</span> <span class="n">output</span> <span class="ow">in</span> <span class="n">outputs</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">paraphrased_texts</span>
+
+<span class="c1"># Personal Information Section
+</span><span class="n">title</span> <span class="o">=</span> <span class="s">"Paraphrasing with T5 Model - Created by Mohsen Dehghani"</span>
+<span class="n">description</span> <span class="o">=</span> <span class="s">"""
+## Welcome to the Paraphrasing Demo
+This demo uses the T5 model fine-tuned on PAWS to generate paraphrases of input text.
+Simply enter your text and click 'Submit' to see the results.
+
+**Created by:** Mohsen Dehghani  
+**Email:** mohsen.dehghani@gmail.com  
+**Location:** Montreal, Quebec, Canada  
+"""</span>
+
+<span class="n">article</span> <span class="o">=</span> <span class="s">"""
+&lt;p style='text-align: center'&gt;
+&lt;a href='https://huggingface.co/Vamsi/T5_Paraphrase_Paws'&gt;Hugging Face Model&lt;/a&gt; | 
+&lt;a href='https://github.com/huggingface/transformers'&gt;Transformers Library&lt;/a&gt;
+&lt;/p&gt;
+"""</span>
+
+<span class="n">examples</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s">"Intelligence Analyst Trainer - 24-968-08-086 All information required to determine suitability for employment with the Canadian Security Intelligence Service is collected under the authority of the Canadian Security Intelligence Service Act."</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"The Privacy Act allows candidates to review collected information and request amendments."</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"Machine learning models are improving rapidly, and their applications are expanding across different industries."</span><span class="p">]</span>
+<span class="p">]</span>
+
+<span class="n">iface</span> <span class="o">=</span> <span class="n">gr</span><span class="p">.</span><span class="n">Interface</span><span class="p">(</span>
+    <span class="n">fn</span><span class="o">=</span><span class="n">paraphrase_text</span><span class="p">,</span>
+    <span class="n">inputs</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">gr</span><span class="p">.</span><span class="n">Textbox</span><span class="p">(</span><span class="n">lines</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">placeholder</span><span class="o">=</span><span class="s">"Enter text to paraphrase here..."</span><span class="p">),</span>
+        <span class="n">gr</span><span class="p">.</span><span class="n">Slider</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">"Number of paraphrases"</span><span class="p">),</span>
+        <span class="n">gr</span><span class="p">.</span><span class="n">Slider</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">"Beam search size"</span><span class="p">)</span>
+    <span class="p">],</span>
+    <span class="n">outputs</span><span class="o">=</span><span class="n">gr</span><span class="p">.</span><span class="n">Textbox</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s">"Paraphrased Outputs"</span><span class="p">),</span>
+    <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span>
+    <span class="n">article</span><span class="o">=</span><span class="n">article</span><span class="p">,</span>
+    <span class="n">examples</span><span class="o">=</span><span class="n">examples</span>
+<span class="p">)</span>
+
+<span class="n">iface</span><span class="p">.</span><span class="n">launch</span><span class="p">(</span><span class="n">share</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Running on local URL:  http://127.0.0.1:7860
+Running on public URL: https://2c03b010d116b96362.gradio.live
+
+This share link expires in 72 hours. For free permanent hosting and GPU upgrades, run `gradio deploy` from Terminal to deploy to Spaces (https://huggingface.co/spaces)
+</code></pre></div></div>
+
+<div><iframe src="https://2c03b010d116b96362.gradio.live" width="100%" height="500" allow="autoplay; camera; microphone; clipboard-read; clipboard-write;" frameborder="0" allowfullscreen=""></iframe></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Traceback (most recent call last):
+  File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\gradio\queueing.py", line 536, in process_events
+    response = await route_utils.call_process_api(
+  File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\gradio\route_utils.py", line 322, in call_process_api
+    output = await app.get_blocks().process_api(
+  File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\gradio\blocks.py", line 1935, in process_api
+    result = await self.call_function(
+  File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\gradio\blocks.py", line 1520, in call_function
+    prediction = await anyio.to_thread.run_sync(  # type: ignore
+  File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\anyio\to_thread.py", line 33, in run_sync
+    return await get_asynclib().run_sync_in_worker_thread(
+  File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\anyio\_backends\_asyncio.py", line 877, in run_sync_in_worker_thread
+    return await future
+  File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\anyio\_backends\_asyncio.py", line 807, in run
+    result = context.run(func, *args)
+  File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\gradio\utils.py", line 826, in wrapper
+    response = f(*args, **kwargs)
+  File "C:\Users\mohse\AppData\Local\Temp\ipykernel_29716\3481243923.py", line 11, in paraphrase_text
+    outputs = model.generate(
+  File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\torch\utils\_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\transformers\generation\utils.py", line 2227, in generate
+    beam_scorer = BeamSearchScorer(
+  File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\transformers\generation\beam_search.py", line 200, in __init__
+    raise ValueError(
+ValueError: `num_beams` has to be an integer strictly greater than 1, but is 4.25. For `num_beams` == 1, one should make use of `greedy_search` instead.
+</code></pre></div></div>]]></content><author><name></name></author><summary type="html"><![CDATA[```python pip install transformers torch pip install sentencepiece protobuf]]></summary></entry><entry><title type="html">Handwritten Text Recognition</title><link href="http://localhost:4000/2025/01/25/Handwritten-Text-Recognition.html" rel="alternate" type="text/html" title="Handwritten Text Recognition" /><published>2025-01-25T13:06:00-05:00</published><updated>2025-01-25T13:06:00-05:00</updated><id>http://localhost:4000/2025/01/25/Handwritten-Text-Recognition</id><content type="html" xml:base="http://localhost:4000/2025/01/25/Handwritten-Text-Recognition.html"><![CDATA[<h2 id="handwritten-text-recognition"><strong>Handwritten Text Recognition</strong></h2>
+
+<hr />
+<p>Handwritten Text Recognition with Tensorflow2 &amp; Keras &amp; IAM Dataset.</p>
+
+<p>Convolutional Recurrent Neural Network. CTC.</p>
+
+<p>Author : Mohsen Dehghani</p>
+
+<p>-</p>
+
+<h2 id="dataset-used">Dataset used:</h2>
+
+<p>Data: <a href="http://www.fki.inf.unibe.ch/databases/iam-handwriting-database/download-the-iam-handwriting-database">IAM Dataset</a></p>
+
+<p>Used in this project: <a href="http://www.fki.inf.unibe.ch/DBs/iamDB/data/words/">words.tgz</a></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">string</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="kn">from</span> <span class="nn">keras.preprocessing.sequence</span> <span class="kn">import</span> <span class="n">pad_sequences</span>
+
+<span class="kn">from</span> <span class="nn">keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">LSTM</span><span class="p">,</span> <span class="n">Reshape</span><span class="p">,</span> <span class="n">BatchNormalization</span><span class="p">,</span> <span class="n">Input</span><span class="p">,</span> <span class="n">Conv2D</span><span class="p">,</span> <span class="n">MaxPool2D</span><span class="p">,</span> <span class="n">Lambda</span><span class="p">,</span> <span class="n">Bidirectional</span>
+<span class="kn">from</span> <span class="nn">keras.models</span> <span class="kn">import</span> <span class="n">Model</span>
+<span class="kn">from</span> <span class="nn">keras.activations</span> <span class="kn">import</span> <span class="n">relu</span><span class="p">,</span> <span class="n">sigmoid</span><span class="p">,</span> <span class="n">softmax</span>
+<span class="kn">import</span> <span class="nn">keras.backend</span> <span class="k">as</span> <span class="n">K</span>
+<span class="kn">from</span> <span class="nn">keras.utils</span> <span class="kn">import</span> <span class="n">to_categorical</span>
+<span class="kn">from</span> <span class="nn">keras.callbacks</span> <span class="kn">import</span> <span class="n">ModelCheckpoint</span>
+<span class="kn">from</span> <span class="nn">keras_tqdm</span> <span class="kn">import</span> <span class="n">TQDMNotebookCallback</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Using TensorFlow backend.
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
+
+<span class="c1">#ignore warnings in the output
+</span><span class="n">tf</span><span class="p">.</span><span class="n">compat</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">logging</span><span class="p">.</span><span class="n">set_verbosity</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">compat</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">logging</span><span class="p">.</span><span class="n">ERROR</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">tensorflow.python.client</span> <span class="kn">import</span> <span class="n">device_lib</span>
+
+<span class="c1"># Check all available devices if GPU is available
+</span><span class="k">print</span><span class="p">(</span><span class="n">device_lib</span><span class="p">.</span><span class="n">list_local_devices</span><span class="p">())</span>
+<span class="n">sess</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">compat</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">Session</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">tf</span><span class="p">.</span><span class="n">compat</span><span class="p">.</span><span class="n">v1</span><span class="p">.</span><span class="n">ConfigProto</span><span class="p">(</span><span class="n">log_device_placement</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[name: "/device:CPU:0"
+device_type: "CPU"
+memory_limit: 268435456
+locality {
+}
+incarnation: 94618472378254487
+, name: "/device:XLA_CPU:0"
+device_type: "XLA_CPU"
+memory_limit: 17179869184
+locality {
+}
+incarnation: 17787937145416098544
+physical_device_desc: "device: XLA_CPU device"
+, name: "/device:XLA_GPU:0"
+device_type: "XLA_GPU"
+memory_limit: 17179869184
+locality {
+}
+incarnation: 15991697771353570040
+physical_device_desc: "device: XLA_GPU device"
+, name: "/device:GPU:0"
+device_type: "GPU"
+memory_limit: 11150726272
+locality {
+  bus_id: 1
+  links {
+  }
+}
+incarnation: 14111058102008547075
+physical_device_desc: "device: 0, name: Tesla K80, pci bus id: 0000:00:04.0, compute capability: 3.7"
+]
+Device mapping:
+/job:localhost/replica:0/task:0/device:XLA_CPU:0 -&gt; device: XLA_CPU device
+/job:localhost/replica:0/task:0/device:XLA_GPU:0 -&gt; device: XLA_GPU device
+/job:localhost/replica:0/task:0/device:GPU:0 -&gt; device: 0, name: Tesla K80, pci bus id: 0000:00:04.0, compute capability: 3.7
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tf</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">experimental</span><span class="p">.</span><span class="n">list_physical_devices</span><span class="p">(</span><span class="s">'GPU'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<span class="n">drive</span><span class="p">.</span><span class="n">mount</span><span class="p">(</span><span class="s">'/content/gdrive'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'./words.txt'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">contents</span> <span class="o">=</span> <span class="n">f</span><span class="p">.</span><span class="n">readlines</span><span class="p">()</span>
+
+<span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">line</span><span class="p">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">contents</span><span class="p">]</span> 
+<span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'a01-000u-00-00 ok 154 408 768 27 51 AT A'
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">max_label_len</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">char_list</span> <span class="o">=</span> <span class="s">"!</span><span class="se">\"</span><span class="s">#&amp;'()*+,-./0123456789:;?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"</span> 
+
+<span class="c1"># string.ascii_letters + string.digits (Chars &amp; Digits)
+# or 
+# "!\"#&amp;'()*+,-./0123456789:;?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+</span>
+<span class="k">print</span><span class="p">(</span><span class="n">char_list</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">char_list</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">encode_to_labels</span><span class="p">(</span><span class="n">txt</span><span class="p">):</span>
+    <span class="c1"># encoding each output word into digits
+</span>    <span class="n">dig_lst</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">chara</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">txt</span><span class="p">):</span>
+        <span class="n">dig_lst</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">char_list</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">chara</span><span class="p">))</span>
+        
+    <span class="k">return</span> <span class="n">dig_lst</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>!"#&amp;'()*+,-./0123456789:;?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 78
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">images</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">RECORDS_COUNT</span> <span class="o">=</span> <span class="mi">10000</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">train_images</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">train_labels</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">train_input_length</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">train_label_length</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">train_original_text</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">valid_images</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">valid_labels</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">valid_input_length</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">valid_label_length</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">valid_original_text</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">inputs_length</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">labels_length</span> <span class="o">=</span> <span class="p">[]</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">process_image</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
+    <span class="s">"""
+    Converts image to shape (32, 128, 1) &amp; normalize
+    """</span>
+    <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">img</span><span class="p">.</span><span class="n">shape</span>
+
+    <span class="c1"># Aspect Ratio Calculation
+</span>    <span class="n">new_w</span> <span class="o">=</span> <span class="mi">32</span>
+    <span class="n">new_h</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">h</span> <span class="o">*</span> <span class="p">(</span><span class="n">new_w</span> <span class="o">/</span> <span class="n">w</span><span class="p">))</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="n">new_h</span><span class="p">,</span> <span class="n">new_w</span><span class="p">))</span>
+    <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">img</span><span class="p">.</span><span class="n">shape</span>
+    
+    <span class="n">img</span> <span class="o">=</span> <span class="n">img</span><span class="p">.</span><span class="n">astype</span><span class="p">(</span><span class="s">'float32'</span><span class="p">)</span>
+    
+    <span class="c1"># Converts each to (32, 128, 1)
+</span>    <span class="k">if</span> <span class="n">w</span> <span class="o">&lt;</span> <span class="mi">32</span><span class="p">:</span>
+        <span class="n">add_zeros</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">full</span><span class="p">((</span><span class="mi">32</span><span class="o">-</span><span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">),</span> <span class="mi">255</span><span class="p">)</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">img</span><span class="p">,</span> <span class="n">add_zeros</span><span class="p">))</span>
+        <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">img</span><span class="p">.</span><span class="n">shape</span>
+    
+    <span class="k">if</span> <span class="n">h</span> <span class="o">&lt;</span> <span class="mi">128</span><span class="p">:</span>
+        <span class="n">add_zeros</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">full</span><span class="p">((</span><span class="n">w</span><span class="p">,</span> <span class="mi">128</span><span class="o">-</span><span class="n">h</span><span class="p">),</span> <span class="mi">255</span><span class="p">)</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">img</span><span class="p">,</span> <span class="n">add_zeros</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">img</span><span class="p">.</span><span class="n">shape</span>
+        
+    <span class="k">if</span> <span class="n">h</span> <span class="o">&gt;</span> <span class="mi">128</span> <span class="ow">or</span> <span class="n">w</span> <span class="o">&gt;</span> <span class="mi">32</span><span class="p">:</span>
+        <span class="n">dim</span> <span class="o">=</span> <span class="p">(</span><span class="mi">128</span><span class="p">,</span><span class="mi">32</span><span class="p">)</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
+    
+    <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="p">.</span><span class="n">subtract</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
+    
+    <span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    
+    <span class="c1"># Normalize 
+</span>    <span class="n">img</span> <span class="o">=</span> <span class="n">img</span> <span class="o">/</span> <span class="mi">255</span>
+    
+    <span class="k">return</span> <span class="n">img</span>
+</code></pre></div></div>
+
+<h2 id="generate-train--validation-set">Generate train &amp; validation set</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lines</span><span class="p">):</span>
+    <span class="n">splits</span> <span class="o">=</span> <span class="n">line</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">' '</span><span class="p">)</span>
+    <span class="n">status</span> <span class="o">=</span> <span class="n">splits</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="s">'ok'</span><span class="p">:</span>
+        <span class="n">word_id</span> <span class="o">=</span> <span class="n">splits</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">word</span> <span class="o">=</span> <span class="s">""</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">splits</span><span class="p">[</span><span class="mi">8</span><span class="p">:])</span>
+        
+        <span class="n">splits_id</span> <span class="o">=</span> <span class="n">word_id</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">'-'</span><span class="p">)</span>
+        <span class="n">filepath</span> <span class="o">=</span> <span class="s">'words/{}/{}-{}/{}.png'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">splits_id</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> 
+                                                  <span class="n">splits_id</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> 
+                                                  <span class="n">splits_id</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> 
+                                                  <span class="n">word_id</span><span class="p">)</span>
+        
+        <span class="c1"># process image
+</span>        <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="p">.</span><span class="n">imread</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">cv2</span><span class="p">.</span><span class="n">IMREAD_GRAYSCALE</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">img</span> <span class="o">=</span> <span class="n">process_image</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">continue</span>
+            
+        <span class="c1"># process label
+</span>        <span class="k">try</span><span class="p">:</span>
+            <span class="n">label</span> <span class="o">=</span> <span class="n">encode_to_labels</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">continue</span>
+        
+        <span class="k">if</span> <span class="n">index</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">valid_images</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+            <span class="n">valid_labels</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+            <span class="n">valid_input_length</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">31</span><span class="p">)</span>
+            <span class="n">valid_label_length</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">))</span>
+            <span class="n">valid_original_text</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">train_images</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+            <span class="n">train_labels</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+            <span class="n">train_input_length</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">31</span><span class="p">)</span>
+            <span class="n">train_label_length</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">))</span>
+            <span class="n">train_original_text</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">max_label_len</span><span class="p">:</span>
+            <span class="n">max_label_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">index</span> <span class="o">&gt;=</span> <span class="n">RECORDS_COUNT</span><span class="p">:</span>
+        <span class="k">break</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">train_padded_label</span> <span class="o">=</span> <span class="n">pad_sequences</span><span class="p">(</span><span class="n">train_labels</span><span class="p">,</span> 
+                             <span class="n">maxlen</span><span class="o">=</span><span class="n">max_label_len</span><span class="p">,</span> 
+                             <span class="n">padding</span><span class="o">=</span><span class="s">'post'</span><span class="p">,</span>
+                             <span class="n">value</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">char_list</span><span class="p">))</span>
+
+<span class="n">valid_padded_label</span> <span class="o">=</span> <span class="n">pad_sequences</span><span class="p">(</span><span class="n">valid_labels</span><span class="p">,</span> 
+                             <span class="n">maxlen</span><span class="o">=</span><span class="n">max_label_len</span><span class="p">,</span> 
+                             <span class="n">padding</span><span class="o">=</span><span class="s">'post'</span><span class="p">,</span>
+                             <span class="n">value</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">char_list</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">train_padded_label</span><span class="p">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">valid_padded_label</span><span class="p">.</span><span class="n">shape</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>((7850, 16), (876, 16))
+</code></pre></div></div>
+
+<h2 id="converts-to-numpy-array">Converts to Numpy array</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">train_images</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">train_images</span><span class="p">)</span>
+<span class="n">train_input_length</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">train_input_length</span><span class="p">)</span>
+<span class="n">train_label_length</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">train_label_length</span><span class="p">)</span>
+
+<span class="n">valid_images</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">valid_images</span><span class="p">)</span>
+<span class="n">valid_input_length</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">valid_input_length</span><span class="p">)</span>
+<span class="n">valid_label_length</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">valid_label_length</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">train_images</span><span class="p">.</span><span class="n">shape</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(7850, 32, 128, 1)
+</code></pre></div></div>
+
+<h2 id="build-model">Build Model</h2>
+<p>Convolutional Recurrent Neural Network</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># input with shape of height=32 and width=128 
+</span><span class="n">inputs</span> <span class="o">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+ 
+<span class="c1"># convolution layer with kernel size (3,3)
+</span><span class="n">conv_1</span> <span class="o">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">activation</span> <span class="o">=</span> <span class="s">'relu'</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s">'same'</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
+<span class="c1"># poolig layer with kernel size (2,2)
+</span><span class="n">pool_1</span> <span class="o">=</span> <span class="n">MaxPool2D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">strides</span><span class="o">=</span><span class="mi">2</span><span class="p">)(</span><span class="n">conv_1</span><span class="p">)</span>
+ 
+<span class="n">conv_2</span> <span class="o">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">activation</span> <span class="o">=</span> <span class="s">'relu'</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s">'same'</span><span class="p">)(</span><span class="n">pool_1</span><span class="p">)</span>
+<span class="n">pool_2</span> <span class="o">=</span> <span class="n">MaxPool2D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">strides</span><span class="o">=</span><span class="mi">2</span><span class="p">)(</span><span class="n">conv_2</span><span class="p">)</span>
+ 
+<span class="n">conv_3</span> <span class="o">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">activation</span> <span class="o">=</span> <span class="s">'relu'</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s">'same'</span><span class="p">)(</span><span class="n">pool_2</span><span class="p">)</span>
+ 
+<span class="n">conv_4</span> <span class="o">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">activation</span> <span class="o">=</span> <span class="s">'relu'</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s">'same'</span><span class="p">)(</span><span class="n">conv_3</span><span class="p">)</span>
+<span class="c1"># poolig layer with kernel size (2,1)
+</span><span class="n">pool_4</span> <span class="o">=</span> <span class="n">MaxPool2D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))(</span><span class="n">conv_4</span><span class="p">)</span>
+ 
+<span class="n">conv_5</span> <span class="o">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">activation</span> <span class="o">=</span> <span class="s">'relu'</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s">'same'</span><span class="p">)(</span><span class="n">pool_4</span><span class="p">)</span>
+<span class="c1"># Batch normalization layer
+</span><span class="n">batch_norm_5</span> <span class="o">=</span> <span class="n">BatchNormalization</span><span class="p">()(</span><span class="n">conv_5</span><span class="p">)</span>
+ 
+<span class="n">conv_6</span> <span class="o">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">activation</span> <span class="o">=</span> <span class="s">'relu'</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s">'same'</span><span class="p">)(</span><span class="n">batch_norm_5</span><span class="p">)</span>
+<span class="n">batch_norm_6</span> <span class="o">=</span> <span class="n">BatchNormalization</span><span class="p">()(</span><span class="n">conv_6</span><span class="p">)</span>
+<span class="n">pool_6</span> <span class="o">=</span> <span class="n">MaxPool2D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))(</span><span class="n">batch_norm_6</span><span class="p">)</span>
+ 
+<span class="n">conv_7</span> <span class="o">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">activation</span> <span class="o">=</span> <span class="s">'relu'</span><span class="p">)(</span><span class="n">pool_6</span><span class="p">)</span>
+ 
+<span class="n">squeezed</span> <span class="o">=</span> <span class="n">Lambda</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">K</span><span class="p">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">))(</span><span class="n">conv_7</span><span class="p">)</span>
+ 
+<span class="c1"># bidirectional LSTM layers with units=128
+</span><span class="n">blstm_1</span> <span class="o">=</span> <span class="n">Bidirectional</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="n">return_sequences</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">dropout</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">))(</span><span class="n">squeezed</span><span class="p">)</span>
+<span class="n">blstm_2</span> <span class="o">=</span> <span class="n">Bidirectional</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="n">return_sequences</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">dropout</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">))(</span><span class="n">blstm_1</span><span class="p">)</span>
+ 
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">char_list</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span> <span class="o">=</span> <span class="s">'softmax'</span><span class="p">)(</span><span class="n">blstm_2</span><span class="p">)</span>
+
+<span class="c1"># model to be used at test time
+</span><span class="n">act_model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">act_model</span><span class="p">.</span><span class="n">summary</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Model: "model_1"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+input_1 (InputLayer)         (None, 32, 128, 1)        0         
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 32, 128, 64)       640       
+_________________________________________________________________
+max_pooling2d_1 (MaxPooling2 (None, 16, 64, 64)        0         
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 16, 64, 128)       73856     
+_________________________________________________________________
+max_pooling2d_2 (MaxPooling2 (None, 8, 32, 128)        0         
+_________________________________________________________________
+conv2d_3 (Conv2D)            (None, 8, 32, 256)        295168    
+_________________________________________________________________
+conv2d_4 (Conv2D)            (None, 8, 32, 256)        590080    
+_________________________________________________________________
+max_pooling2d_3 (MaxPooling2 (None, 4, 32, 256)        0         
+_________________________________________________________________
+conv2d_5 (Conv2D)            (None, 4, 32, 512)        1180160   
+_________________________________________________________________
+batch_normalization_1 (Batch (None, 4, 32, 512)        2048      
+_________________________________________________________________
+conv2d_6 (Conv2D)            (None, 4, 32, 512)        2359808   
+_________________________________________________________________
+batch_normalization_2 (Batch (None, 4, 32, 512)        2048      
+_________________________________________________________________
+max_pooling2d_4 (MaxPooling2 (None, 2, 32, 512)        0         
+_________________________________________________________________
+conv2d_7 (Conv2D)            (None, 1, 31, 512)        1049088   
+_________________________________________________________________
+lambda_1 (Lambda)            (None, 31, 512)           0         
+_________________________________________________________________
+bidirectional_1 (Bidirection (None, 31, 512)           1574912   
+_________________________________________________________________
+bidirectional_2 (Bidirection (None, 31, 512)           1574912   
+_________________________________________________________________
+dense_1 (Dense)              (None, 31, 79)            40527     
+=================================================================
+Total params: 8,743,247
+Trainable params: 8,741,199
+Non-trainable params: 2,048
+_________________________________________________________________
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">the_labels</span> <span class="o">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">'the_labels'</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="n">max_label_len</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s">'float32'</span><span class="p">)</span>
+<span class="n">input_length</span> <span class="o">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">'input_length'</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s">'int64'</span><span class="p">)</span>
+<span class="n">label_length</span> <span class="o">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">'label_length'</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s">'int64'</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">ctc_lambda_func</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">y_pred</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">input_length</span><span class="p">,</span> <span class="n">label_length</span> <span class="o">=</span> <span class="n">args</span>
+    
+    <span class="k">return</span> <span class="n">K</span><span class="p">.</span><span class="n">ctc_batch_cost</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">input_length</span><span class="p">,</span> <span class="n">label_length</span><span class="p">)</span>
+
+<span class="n">loss_out</span> <span class="o">=</span> <span class="n">Lambda</span><span class="p">(</span><span class="n">ctc_lambda_func</span><span class="p">,</span> <span class="n">output_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">name</span><span class="o">=</span><span class="s">'ctc'</span><span class="p">)([</span><span class="n">outputs</span><span class="p">,</span> <span class="n">the_labels</span><span class="p">,</span> <span class="n">input_length</span><span class="p">,</span> <span class="n">label_length</span><span class="p">])</span>
+
+<span class="c1">#model to be used at training time
+</span><span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">inputs</span><span class="p">,</span> <span class="n">the_labels</span><span class="p">,</span> <span class="n">input_length</span><span class="p">,</span> <span class="n">label_length</span><span class="p">],</span> <span class="n">outputs</span><span class="o">=</span><span class="n">loss_out</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="mi">60</span>
+<span class="n">e</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">epochs</span><span class="p">)</span>
+<span class="n">optimizer_name</span> <span class="o">=</span> <span class="s">'adam'</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="p">{</span><span class="s">'ctc'</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">:</span> <span class="n">y_pred</span><span class="p">},</span> <span class="n">optimizer</span> <span class="o">=</span> <span class="n">optimizer_name</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s">'accuracy'</span><span class="p">])</span>
+
+<span class="n">filepath</span><span class="o">=</span><span class="s">"{}o-{}r-{}e-{}t-{}v.hdf5"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">optimizer_name</span><span class="p">,</span>
+                                          <span class="nb">str</span><span class="p">(</span><span class="n">RECORDS_COUNT</span><span class="p">),</span>
+                                          <span class="nb">str</span><span class="p">(</span><span class="n">epochs</span><span class="p">),</span>
+                                          <span class="nb">str</span><span class="p">(</span><span class="n">train_images</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+                                          <span class="nb">str</span><span class="p">(</span><span class="n">valid_images</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
+<span class="n">checkpoint</span> <span class="o">=</span> <span class="n">ModelCheckpoint</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="n">filepath</span><span class="p">,</span> <span class="n">monitor</span><span class="o">=</span><span class="s">'val_loss'</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">save_best_only</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s">'auto'</span><span class="p">)</span>
+<span class="n">callbacks_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">checkpoint</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">os</span><span class="p">.</span><span class="n">environ</span><span class="p">[</span><span class="s">'TF_FORCE_GPU_ALLOW_GROWTH'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'true'</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="n">train_images</span><span class="p">,</span> <span class="n">train_padded_label</span><span class="p">,</span> <span class="n">train_input_length</span><span class="p">,</span> <span class="n">train_label_length</span><span class="p">],</span>
+                    <span class="n">y</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">train_images</span><span class="p">)),</span>
+                    <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> 
+                    <span class="n">epochs</span><span class="o">=</span><span class="n">epochs</span><span class="p">,</span> 
+                    <span class="n">validation_data</span><span class="o">=</span><span class="p">([</span><span class="n">valid_images</span><span class="p">,</span> <span class="n">valid_padded_label</span><span class="p">,</span> <span class="n">valid_input_length</span><span class="p">,</span> <span class="n">valid_label_length</span><span class="p">],</span> <span class="p">[</span><span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">valid_images</span><span class="p">))]),</span>
+                    <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">callbacks</span><span class="o">=</span><span class="n">callbacks_list</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="training-accuracy">Training Accuracy</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># predict outputs on validation images
+</span><span class="n">prediction</span> <span class="o">=</span> <span class="n">act_model</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">train_images</span><span class="p">[</span><span class="mi">150</span><span class="p">:</span><span class="mi">170</span><span class="p">])</span>
+ 
+<span class="c1"># use CTC decoder
+</span><span class="n">decoded</span> <span class="o">=</span> <span class="n">K</span><span class="p">.</span><span class="n">ctc_decode</span><span class="p">(</span><span class="n">prediction</span><span class="p">,</span>   
+                       <span class="n">input_length</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="n">ones</span><span class="p">(</span><span class="n">prediction</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">prediction</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                       <span class="n">greedy</span><span class="o">=</span><span class="bp">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">out</span> <span class="o">=</span> <span class="n">K</span><span class="p">.</span><span class="n">get_value</span><span class="p">(</span><span class="n">decoded</span><span class="p">)</span>
+
+<span class="c1"># see the results
+</span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">out</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"original_text =  "</span><span class="p">,</span> <span class="n">train_original_text</span><span class="p">[</span><span class="mi">150</span><span class="o">+</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"predicted text = "</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s">''</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">char_list</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">p</span><span class="p">)],</span> <span class="n">end</span> <span class="o">=</span> <span class="s">''</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">train_images</span><span class="p">[</span><span class="mi">150</span><span class="o">+</span><span class="n">i</span><span class="p">].</span><span class="n">reshape</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span><span class="mi">128</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="p">.</span><span class="n">cm</span><span class="p">.</span><span class="n">gray</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>original_text =   large
+predicted text = large
+</code></pre></div></div>
+
+<p><img src="test10_files/test10_28_1.png" alt="png" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>original_text =   majority
+predicted text = majority
+</code></pre></div></div>
+
+<p><img src="test10_files/test10_28_3.png" alt="png" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>original_text =   of
+predicted text = of
+</code></pre></div></div>
+
+<p><img src="test10_files/test10_28_5.png" alt="png" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>original_text =   Labour
+predicted text = Labour
+</code></pre></div></div>
+
+<p><img src="test10_files/test10_28_7.png" alt="png" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>original_text =   MPs
+predicted text = MPs
+</code></pre></div></div>
+
+<p><img src="test10_files/test10_28_9.png" alt="png" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>original_text =   are
+predicted text = are
+</code></pre></div></div>
+
+<p><img src="test10_files/test10_28_11.png" alt="png" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>original_text =   to
+predicted text = to
+</code></pre></div></div>
+
+<p><img src="test10_files/test10_28_13.png" alt="png" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>original_text =   turn
+predicted text = twn
+</code></pre></div></div>
+
+<p><img src="test10_files/test10_28_15.png" alt="png" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>original_text =   down
+predicted text = down
+</code></pre></div></div>
+
+<p><img src="test10_files/test10_28_17.png" alt="png" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>original_text =   the
+predicted text = the
+</code></pre></div></div>
+
+<p><img src="test10_files/test10_28_19.png" alt="png" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>original_text =   Foot-
+predicted text = Foot-
+</code></pre></div></div>
+
+<p><img src="test10_files/test10_28_21.png" alt="png" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>original_text =   be
+predicted text = be
+</code></pre></div></div>
+
+<p><img src="test10_files/test10_28_23.png" alt="png" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>original_text =   that
+predicted text = that
+</code></pre></div></div>
+
+<p><img src="test10_files/test10_28_25.png" alt="png" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>original_text =   as
+predicted text = as
+</code></pre></div></div>
+
+<p><img src="test10_files/test10_28_27.png" alt="png" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>original_text =   Labour
+predicted text = Labour
+</code></pre></div></div>
+
+<p><img src="test10_files/test10_28_29.png" alt="png" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>original_text =   MPs
+predicted text = MPs
+</code></pre></div></div>
+
+<p><img src="test10_files/test10_28_31.png" alt="png" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>original_text =   opposed
+predicted text = opposed
+</code></pre></div></div>
+
+<p><img src="test10_files/test10_28_33.png" alt="png" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>original_text =   the
+predicted text = the
+</code></pre></div></div>
+
+<p><img src="test10_files/test10_28_35.png" alt="png" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>original_text =   Bill
+predicted text = Bill
+</code></pre></div></div>
+
+<p><img src="test10_files/test10_28_37.png" alt="png" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>original_text =   which
+predicted text = which
+</code></pre></div></div>
+
+<p><img src="test10_files/test10_28_39.png" alt="png" /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># plot accuracy and loss
+</span><span class="k">def</span> <span class="nf">plotgraph</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">acc</span><span class="p">,</span> <span class="n">val_acc</span><span class="p">):</span>
+    <span class="c1"># Plot training &amp; validation accuracy values
+</span>    <span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">acc</span><span class="p">,</span> <span class="s">'b'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">val_acc</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Model accuracy'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'Accuracy'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'Epoch'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">legend</span><span class="p">([</span><span class="s">'Train'</span><span class="p">,</span> <span class="s">'Val'</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s">'upper left'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">acc</span> <span class="o">=</span> <span class="n">history</span><span class="p">.</span><span class="n">history</span><span class="p">[</span><span class="s">'accuracy'</span><span class="p">]</span>
+<span class="n">val_acc</span> <span class="o">=</span> <span class="n">history</span><span class="p">.</span><span class="n">history</span><span class="p">[</span><span class="s">'val_accuracy'</span><span class="p">]</span>
+<span class="n">loss</span> <span class="o">=</span> <span class="n">history</span><span class="p">.</span><span class="n">history</span><span class="p">[</span><span class="s">'loss'</span><span class="p">]</span>
+<span class="n">val_loss</span> <span class="o">=</span> <span class="n">history</span><span class="p">.</span><span class="n">history</span><span class="p">[</span><span class="s">'val_loss'</span><span class="p">]</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plotgraph</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">loss</span><span class="p">,</span> <span class="n">val_loss</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="test10_files/test10_31_0.png" alt="png" /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plotgraph</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">acc</span><span class="p">,</span> <span class="n">val_acc</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="test10_files/test10_32_0.png" alt="png" /></p>]]></content><author><name></name></author><summary type="html"><![CDATA[Handwritten Text Recognition]]></summary></entry><entry><title type="html">Downloading and Running a Jekyll Site Locally on Windows Using VSCode</title><link href="http://localhost:4000/update/2024/11/13/Installation-jeykll.html" rel="alternate" type="text/html" title="Downloading and Running a Jekyll Site Locally on Windows Using VSCode" /><published>2024-11-13T19:31:29-05:00</published><updated>2024-11-13T19:31:29-05:00</updated><id>http://localhost:4000/update/2024/11/13/Installation-jeykll</id><content type="html" xml:base="http://localhost:4000/update/2024/11/13/Installation-jeykll.html"><![CDATA[<h3 id="downloading-and-running-a-jekyll-site-locally-on-windows-using-vscode">Downloading and Running a Jekyll Site Locally on Windows Using VSCode</h3>
 <p>We will cover in this section:</p>
 <ol>
   <li><strong>Setting Up Prerequisites</strong>: Installing Ruby, Jekyll, Git, and VSCode on Windows.</li>
