@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Deep Learning" /></head>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<style>@import url(/public/css/syntax/monokai.css);</style>
+  <title>Deep Learning</title>
+  <!-- <link href="/public/css/bootstrap.min.css" rel="stylesheet"> -->
+
+  <link href="/public/css/style.css" rel="stylesheet">
+  <body>
+  	<div class="container"> 
+		<div class="sidebar">
+			<div class="sidebar-item sidebar-header">
+	<div class='sidebar-brand'>
+		<a href="/about/">Deep Learning</a>
+	</div>
+	<p class="lead">Mohsen Dehghani</p></div>
+
+<div class="sidebar-item sidebar-nav">
+	<ul class="nav">
+      <li class="nav-title">Pages</li>
+	  <li>
+	  	<a class="nav-item" href="/">Articles</a>
+	  </li>
+	  
+	  
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/about/">
+	            	About
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	  
+	    
+	  
+	</ul>
+</div>
+
+<div class="sidebar-item sidebar-nav">
+  	<ul class="nav">
+			<li class="nav-title">Categories</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#Update">
+				<span class="name">Update</span>
+				<span class="badge">13</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#Jekyll">
+				<span class="name">Jekyll</span>
+				<span class="badge">1</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#update">
+				<span class="name">update</span>
+				<span class="badge">6</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#math">
+				<span class="name">math</span>
+				<span class="badge">1</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#data-science">
+				<span class="name">data-science</span>
+				<span class="badge">1</span>
+	    	</a>
+ 		</li>
+	    
+	  </nav>
+	</ul>
+</div>
+
+<div class="sidebar-item sidebar-footer">
+	<p>Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a></p>
+</div>
+		</div>
+		<div class="content">
+			<article class="post">
+	<header class="post-header">
+		<div class="post-title"> 
+			Python Packages Help Automate Dataset Preprocessing
+		</div>
+		<time class="post-date dt-published" datetime="2024-03-09T19:31:29-05:00" itemprop="datePublished">2024/03/09
+		</time>		
+	</header>
+
+	<div class="post-content">
+		<h3 id="python-packages-help-automate-dataset-preprocessing">Python Packages Help Automate Dataset Preprocessing</h3>
+<p>There are several Python packages that can help automate dataset preprocessing, provide insights, and suggest improvements. Here are some popular ones:</p>
+
+<ol>
+  <li><strong>Pandas Profiling</strong>:
+    <ul>
+      <li>Generates a detailed report with summaries and suggestions on a dataset, including missing values, correlations, outliers, and data type distributions.</li>
+      <li>Install it with <code class="highlighter-rouge">pip install pandas-profiling</code>.</li>
+      <li>Usage:
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">from</span> <span class="nn">pandas_profiling</span> <span class="kn">import</span> <span class="n">ProfileReport</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"your_dataset.csv"</span><span class="p">)</span>
+<span class="n">profile</span> <span class="o">=</span> <span class="n">ProfileReport</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s">"Dataset Report"</span><span class="p">)</span>
+<span class="n">profile</span><span class="p">.</span><span class="n">to_notebook_iframe</span><span class="p">()</span>  <span class="c1"># Or save it with profile.to_file("report.html")
+</span></code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Sweetviz</strong>:
+    <ul>
+      <li>Similar to Pandas Profiling but focuses more on visualizations and comparisons, especially useful for comparing train and test datasets.</li>
+      <li>Install it with <code class="highlighter-rouge">pip install sweetviz</code>.</li>
+      <li>Usage:
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">sweetviz</span> <span class="k">as</span> <span class="n">sv</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"your_dataset.csv"</span><span class="p">)</span>
+<span class="n">report</span> <span class="o">=</span> <span class="n">sv</span><span class="p">.</span><span class="n">analyze</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">report</span><span class="p">.</span><span class="n">show_html</span><span class="p">(</span><span class="s">"sweetviz_report.html"</span><span class="p">)</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>AutoML Libraries with Preprocessing Capabilities</strong>:
+    <ul>
+      <li><strong>Auto-Sklearn</strong>, <strong>TPOT</strong>, and <strong>H2O.ai AutoML</strong> can handle not only preprocessing but also feature selection and model selection. They automate the entire ML pipeline, including data cleaning, feature engineering, and hyperparameter tuning.</li>
+      <li>Install with <code class="highlighter-rouge">pip install auto-sklearn</code>, <code class="highlighter-rouge">pip install tpot</code>, or <code class="highlighter-rouge">pip install h2o</code>.</li>
+      <li>Usage varies based on the library, but each has comprehensive documentation.</li>
+    </ul>
+  </li>
+  <li><strong>DataPrep</strong>:
+    <ul>
+      <li>Provides automated data cleaning and preprocessing, plus exploratory data analysis.</li>
+      <li>Install it with <code class="highlighter-rouge">pip install dataprep</code>.</li>
+      <li>Usage:
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">dataprep.eda</span> <span class="kn">import</span> <span class="n">create_report</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"your_dataset.csv"</span><span class="p">)</span>
+<span class="n">create_report</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>PyCaret</strong>:
+    <ul>
+      <li>A low-code machine learning library that also offers data preprocessing, feature engineering, and model selection. It even has modules for data imputation, transformation, scaling, and encoding.</li>
+      <li>Install it with <code class="highlighter-rouge">pip install pycaret</code>.</li>
+      <li>Usage:
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pycaret.classification</span> <span class="kn">import</span> <span class="n">setup</span>
+
+<span class="n">setup</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s">"target_column"</span><span class="p">)</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<p>Each of these tools provides a variety of automated insights and summaries, so you can choose the one that best fits your needs!</p>
+
+<p>Of the packages mentioned, <strong>PyCaret</strong> and <strong>TPOT</strong> are designed to return a preprocessed dataset as part of their pipeline. Here’s how you can use each of them to get the preprocessed dataset:</p>
+
+<h3 id="1-pycaret">1. <strong>PyCaret</strong></h3>
+
+<p>PyCaret is a low-code machine learning library that not only preprocesses data but also prepares it for training. After setting up, it returns the preprocessed dataset and can show you what transformations were applied.</p>
+
+<h4 id="example-with-pycaret">Example with PyCaret</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">from</span> <span class="nn">pycaret.classification</span> <span class="kn">import</span> <span class="n">setup</span><span class="p">,</span> <span class="n">compare_models</span><span class="p">,</span> <span class="n">get_config</span>
+
+<span class="c1"># Load your dataset
+</span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"your_dataset.csv"</span><span class="p">)</span>
+
+<span class="c1"># Setup environment for classification (change to 'pycaret.regression' for regression tasks)
+</span><span class="n">s</span> <span class="o">=</span> <span class="n">setup</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s">"target_column"</span><span class="p">,</span> <span class="n">silent</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">session_id</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
+
+<span class="c1"># Get the transformed training dataset
+</span><span class="n">X_train</span> <span class="o">=</span> <span class="n">get_config</span><span class="p">(</span><span class="s">'X_train'</span><span class="p">)</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">get_config</span><span class="p">(</span><span class="s">'y_train'</span><span class="p">)</span>
+
+<span class="c1"># Check the transformations applied (optional)
+</span><span class="n">X_train</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Here, <code class="highlighter-rouge">get_config</code> gives access to the preprocessed training set <code class="highlighter-rouge">X_train</code> and the target labels <code class="highlighter-rouge">y_train</code>. PyCaret also performs automatic feature encoding, scaling, and outlier handling based on the setup.</p>
+
+<h3 id="2-tpot">2. <strong>TPOT</strong></h3>
+
+<p>TPOT is an automated machine learning library that can optimize preprocessing steps and model selection. TPOT doesn’t explicitly return a preprocessed dataset, but it creates a preprocessing pipeline that you can apply to your data.</p>
+
+<h4 id="example-with-tpot">Example with TPOT</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">tpot</span> <span class="kn">import</span> <span class="n">TPOTClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+
+<span class="c1"># Load your dataset
+</span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"your_dataset.csv"</span><span class="p">)</span>
+
+<span class="c1"># Split into features and target
+</span><span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">drop</span><span class="p">(</span><span class="s">"target_column"</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">"target_column"</span><span class="p">]</span>
+
+<span class="c1"># Train/test split
+</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">train_size</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+
+<span class="c1"># Set up TPOT and fit to data
+</span><span class="n">tpot</span> <span class="o">=</span> <span class="n">TPOTClassifier</span><span class="p">(</span><span class="n">generations</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">population_size</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">verbosity</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">tpot</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Export the best pipeline
+</span><span class="n">tpot</span><span class="p">.</span><span class="n">export</span><span class="p">(</span><span class="s">"best_pipeline.py"</span><span class="p">)</span>
+
+<span class="c1"># Get the preprocessed data (optional)
+</span><span class="n">pipeline</span> <span class="o">=</span> <span class="n">tpot</span><span class="p">.</span><span class="n">fitted_pipeline_</span>
+<span class="n">X_train_transformed</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_test_transformed</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>In this example, <code class="highlighter-rouge">pipeline.transform(X_train)</code> returns the transformed dataset using TPOT’s chosen preprocessing pipeline. The exported Python file (<code class="highlighter-rouge">best_pipeline.py</code>) contains the code for the preprocessing and modeling steps, so you can see exactly what TPOT did to transform the data.</p>
+
+<h3 id="3-dataprep-eda-module">3. <strong>DataPrep (EDA module)</strong></h3>
+
+<p>While DataPrep primarily focuses on creating reports and visualizing data, you can use its <strong>cleaning</strong> functionality from <code class="highlighter-rouge">DataPrep.Clean</code> to preprocess the dataset manually.</p>
+
+<h4 id="example-with-dataprep">Example with DataPrep</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">dataprep.clean</span> <span class="kn">import</span> <span class="n">clean_dates</span><span class="p">,</span> <span class="n">clean_text</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+
+<span class="c1"># Load your dataset
+</span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"your_dataset.csv"</span><span class="p">)</span>
+
+<span class="c1"># Example of specific cleaning functions (text and date)
+</span><span class="n">df_cleaned_dates</span> <span class="o">=</span> <span class="n">clean_dates</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s">"date_column"</span><span class="p">)</span>  <span class="c1"># Cleans date column
+</span><span class="n">df_cleaned_text</span> <span class="o">=</span> <span class="n">clean_text</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s">"text_column"</span><span class="p">)</span>    <span class="c1"># Cleans text column
+</span>
+<span class="c1"># To get the cleaned dataframe
+</span><span class="n">df_preprocessed</span> <span class="o">=</span> <span class="n">df_cleaned_dates</span>  <span class="c1"># or combine them as needed
+</span></code></pre></div></div>
+
+<p>DataPrep won’t automatically preprocess the dataset but can be used for selective cleaning tasks on text, dates, or duplicates.</p>
+
+<p>These examples demonstrate the most practical approaches in each package for retrieving preprocessed datasets!</p>
+
+	</div>
+</article>
+		</div>
+	</div>
+  </body>
+</html>

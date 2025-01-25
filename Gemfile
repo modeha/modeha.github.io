@@ -36,3 +36,13 @@ gem "jekyll-compose", group: [:jekyll_plugins]
 
 gem "webrick", "~> 1.8"
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+gem "jekyll-seo-tag"
+gem "jekyll-sitemap"
+gem "jekyll-theme-merlot"
+gem "minima", "~> 2.5"
+gem "jekyll-theme-cayman"
+
+
+
+
+

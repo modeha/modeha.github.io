@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Deep Learning" /></head>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<style>@import url(/public/css/syntax/monokai.css);</style>
+  <title>Deep Learning</title>
+  <!-- <link href="/public/css/bootstrap.min.css" rel="stylesheet"> -->
+
+  <link href="/public/css/style.css" rel="stylesheet">
+  <body>
+  	<div class="container"> 
+		<div class="sidebar">
+			<div class="sidebar-item sidebar-header">
+	<div class='sidebar-brand'>
+		<a href="/about/">Deep Learning</a>
+	</div>
+	<p class="lead">Mohsen Dehghani</p></div>
+
+<div class="sidebar-item sidebar-nav">
+	<ul class="nav">
+      <li class="nav-title">Pages</li>
+	  <li>
+	  	<a class="nav-item" href="/">Articles</a>
+	  </li>
+	  
+	  
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/about/">
+	            	About
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	  
+	    
+	  
+	</ul>
+</div>
+
+<div class="sidebar-item sidebar-nav">
+  	<ul class="nav">
+			<li class="nav-title">Categories</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#Update">
+				<span class="name">Update</span>
+				<span class="badge">13</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#Jekyll">
+				<span class="name">Jekyll</span>
+				<span class="badge">1</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#update">
+				<span class="name">update</span>
+				<span class="badge">6</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#math">
+				<span class="name">math</span>
+				<span class="badge">1</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#data-science">
+				<span class="name">data-science</span>
+				<span class="badge">1</span>
+	    	</a>
+ 		</li>
+	    
+	  </nav>
+	</ul>
+</div>
+
+<div class="sidebar-item sidebar-footer">
+	<p>Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a></p>
+</div>
+		</div>
+		<div class="content">
+			<article class="post">
+	<header class="post-header">
+		<div class="post-title"> 
+			Understanding Greedy Decoding in Machine Learning: A Simple Approach to Text Generation
+		</div>
+		<time class="post-date dt-published" datetime="2024-11-26T22:44:00-05:00" itemprop="datePublished">2024/11/26
+		</time>		
+	</header>
+
+	<div class="post-content">
+		<p><strong>Greedy Decoding</strong> is a <strong>text generation technique</strong> used in Natural Language Processing (NLP), particularly with models like GPT, T5, or other transformer-based models, to generate output token by token. It is one of the simplest decoding strategies and focuses on selecting the most likely next token at each step.</p>
+
+<hr />
+
+<h3 id="how-greedy-decoding-works"><strong>How Greedy Decoding Works</strong></h3>
+<ol>
+  <li><strong>Step-by-Step Token Generation</strong>:
+    <ul>
+      <li>At each generation step, the model predicts a <strong>probability distribution</strong> over all possible tokens in the vocabulary.</li>
+      <li>Greedy decoding selects the token with the <strong>highest probability</strong> (argmax) from the distribution.</li>
+    </ul>
+  </li>
+  <li><strong>Sequential Process</strong>:
+    <ul>
+      <li>The chosen token is appended to the generated sequence.</li>
+      <li>The model then uses this updated sequence as input to predict the next token.</li>
+      <li>This process continues until:
+        <ul>
+          <li>A special <strong>end-of-sequence (EOS)</strong> token is generated.</li>
+          <li>A predefined <strong>maximum length</strong> is reached.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="advantages-of-greedy-decoding"><strong>Advantages of Greedy Decoding</strong></h3>
+<ol>
+  <li><strong>Simplicity</strong>:
+    <ul>
+      <li>It is computationally efficient and straightforward to implement.</li>
+    </ul>
+  </li>
+  <li><strong>Deterministic</strong>:
+    <ul>
+      <li>Given the same input, greedy decoding will always produce the same output, making it predictable.</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="disadvantages-of-greedy-decoding"><strong>Disadvantages of Greedy Decoding</strong></h3>
+<ol>
+  <li><strong>Suboptimal Results</strong>:
+    <ul>
+      <li>Greedy decoding can <strong>miss the globally optimal sequence</strong> because it focuses only on the most probable token at each step, without considering future tokens.</li>
+      <li>Example:
+        <ul>
+          <li>Model prediction for a sentence: “The cat is on the [mat, roof, bed].”</li>
+          <li>Greedy decoding might pick “mat” (highest probability), but “roof” could lead to a more coherent sequence later.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Lack of Diversity</strong>:
+    <ul>
+      <li>It generates repetitive or overly generic outputs, especially in tasks like storytelling or dialogue generation.</li>
+    </ul>
+  </li>
+  <li><strong>Poor Performance in Ambiguous Contexts</strong>:
+    <ul>
+      <li>If multiple plausible tokens have similar probabilities, greedy decoding may fail to explore alternative paths.</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="comparison-with-other-decoding-methods"><strong>Comparison with Other Decoding Methods</strong></h3>
+<p>| <strong>Method</strong>          | <strong>Description</strong>                                             | <strong>Advantages</strong>                     | <strong>Disadvantages</strong>                  |
+|———————|————————————————————-|————————————|————————————|
+| <strong>Greedy Decoding</strong> | Selects the token with the highest probability at each step | Fast and deterministic             | Misses globally optimal solutions  |
+| <strong>Beam Search</strong>     | Explores multiple paths (beams) to find the most likely sequence | Balances exploration and exploitation | Computationally expensive          |
+| <strong>Sampling</strong>        | Selects tokens based on probability distribution (not just max) | Adds diversity to output           | Can generate incoherent sequences  |
+| <strong>Top-k Sampling</strong>  | Samples from the top-k most probable tokens                 | Balances diversity and coherence   | Still somewhat stochastic          |
+| <strong>Top-p (Nucleus)</strong> | Samples tokens from a cumulative probability threshold      | Highly flexible and dynamic        | Requires careful tuning            |</p>
+
+<hr />
+
+<h3 id="applications-of-greedy-decoding"><strong>Applications of Greedy Decoding</strong></h3>
+<ul>
+  <li><strong>Quick and Deterministic Generation</strong>:
+    <ul>
+      <li>Suitable for tasks where generating <strong>one correct answer</strong> is sufficient, such as:
+        <ul>
+          <li>Machine translation (e.g., Google Translate).</li>
+          <li>Question answering (e.g., FAQ bots).</li>
+          <li>Factual text generation.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Baselines for Comparison</strong>:
+    <ul>
+      <li>Greedy decoding is often used as a <strong>benchmark</strong> for evaluating the performance of more sophisticated decoding methods like beam search or sampling.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="example-of-greedy-decoding"><strong>Example of Greedy Decoding</strong></h3>
+<h4 id="input-prompt">Input Prompt:</h4>
+<p><em>“Translate English to French: The cat is on the mat.”</em></p>
+
+<h4 id="model-predictions-per-step">Model Predictions (per step):</h4>
+<ol>
+  <li><strong>Step 1</strong>: [“Le” (0.8), “Un” (0.1), “La” (0.05)] → Greedy Decoding selects <strong>“Le”</strong>.</li>
+  <li><strong>Step 2</strong>: [“chat” (0.9), “chien” (0.05), “oiseau” (0.02)] → Greedy Decoding selects <strong>“chat”</strong>.</li>
+  <li><strong>Step 3</strong>: [“est” (0.85), “sont” (0.1), “était” (0.05)] → Greedy Decoding selects <strong>“est”</strong>.</li>
+  <li><strong>Step 4</strong>: [“sur” (0.95), “dans” (0.02), “près” (0.01)] → Greedy Decoding selects <strong>“sur”</strong>.</li>
+  <li><strong>Step 5</strong>: [“le” (0.9), “un” (0.05), “la” (0.04)] → Greedy Decoding selects <strong>“le”</strong>.</li>
+  <li><strong>Step 6</strong>: [“tapis” (0.88), “sol” (0.05), “chaise” (0.02)] → Greedy Decoding selects <strong>“tapis”</strong>.</li>
+</ol>
+
+<h4 id="output">Output:</h4>
+<p><em>“Le chat est sur le tapis.”</em></p>
+
+<hr />
+
+<h3 id="when-to-use-greedy-decoding"><strong>When to Use Greedy Decoding</strong></h3>
+<ul>
+  <li>Use greedy decoding when:
+    <ul>
+      <li><strong>Speed</strong> is critical, and the task does not require exploration of alternative outputs.</li>
+      <li>The task demands a <strong>single correct answer</strong>, and alternative outputs are unlikely to be beneficial (e.g., translation, extractive summarization).</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="conclusion"><strong>Conclusion</strong></h3>
+<p>Greedy decoding is a simple and efficient decoding strategy that works well for deterministic tasks but may fall short for tasks requiring creativity, diversity, or long-term planning. Understanding its strengths and limitations is essential for choosing the right decoding strategy based on the task’s requirements.</p>
+
+	</div>
+</article>
+		</div>
+	</div>
+  </body>
+</html>

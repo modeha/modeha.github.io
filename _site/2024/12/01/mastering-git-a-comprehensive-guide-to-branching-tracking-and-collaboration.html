@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Deep Learning" /></head>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<style>@import url(/public/css/syntax/monokai.css);</style>
+  <title>Deep Learning</title>
+  <!-- <link href="/public/css/bootstrap.min.css" rel="stylesheet"> -->
+
+  <link href="/public/css/style.css" rel="stylesheet">
+  <body>
+  	<div class="container"> 
+		<div class="sidebar">
+			<div class="sidebar-item sidebar-header">
+	<div class='sidebar-brand'>
+		<a href="/about/">Deep Learning</a>
+	</div>
+	<p class="lead">Mohsen Dehghani</p></div>
+
+<div class="sidebar-item sidebar-nav">
+	<ul class="nav">
+      <li class="nav-title">Pages</li>
+	  <li>
+	  	<a class="nav-item" href="/">Articles</a>
+	  </li>
+	  
+	  
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/about/">
+	            	About
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	  
+	    
+	  
+	</ul>
+</div>
+
+<div class="sidebar-item sidebar-nav">
+  	<ul class="nav">
+			<li class="nav-title">Categories</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#Update">
+				<span class="name">Update</span>
+				<span class="badge">13</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#Jekyll">
+				<span class="name">Jekyll</span>
+				<span class="badge">1</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#update">
+				<span class="name">update</span>
+				<span class="badge">6</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#math">
+				<span class="name">math</span>
+				<span class="badge">1</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#data-science">
+				<span class="name">data-science</span>
+				<span class="badge">1</span>
+	    	</a>
+ 		</li>
+	    
+	  </nav>
+	</ul>
+</div>
+
+<div class="sidebar-item sidebar-footer">
+	<p>Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a></p>
+</div>
+		</div>
+		<div class="content">
+			<article class="post">
+	<header class="post-header">
+		<div class="post-title"> 
+			Mastering Git: A Comprehensive Guide to Branching, Tracking, and Collaboration
+		</div>
+		<time class="post-date dt-published" datetime="2024-12-01T21:26:00-05:00" itemprop="datePublished">2024/12/01
+		</time>		
+	</header>
+
+	<div class="post-content">
+		<h4 id="introduction"><strong>Introduction</strong></h4>
+<p>Git is an essential tool for modern software development, enabling seamless collaboration and efficient version control. In this guide, we’ll explore creating branches, pushing changes, setting upstream tracking, and working with remote repositories to enhance your Git workflow.</p>
+
+<hr />
+
+<h4 id="creating-a-new-branch"><strong>Creating a New Branch</strong></h4>
+<p>Creating branches is a fundamental part of Git, allowing developers to isolate features, bug fixes, or experiments. Here’s how you can create and work with branches:</p>
+
+<ol>
+  <li><strong>Create a New Branch Locally:</strong>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git branch branch-name
+</code></pre></div>    </div>
+    <ul>
+      <li>Creates a branch but keeps you on the current one.</li>
+    </ul>
+  </li>
+  <li><strong>Create and Switch in One Command:</strong>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">-b</span> branch-name
+</code></pre></div>    </div>
+    <ul>
+      <li>This is the most commonly used method.</li>
+    </ul>
+  </li>
+  <li><strong>Check Your Branches:</strong>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git branch
+</code></pre></div>    </div>
+    <ul>
+      <li>Displays all local branches, with <code class="highlighter-rouge">*</code> indicating the active one.</li>
+    </ul>
+  </li>
+  <li><strong>Push the New Branch to the Remote:</strong>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push <span class="nt">-u</span> origin branch-name
+</code></pre></div>    </div>
+    <ul>
+      <li>Links the local branch with the remote repository for easier future pushes.</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h4 id="understanding-git-push--u"><strong>Understanding <code class="highlighter-rouge">git push -u</code></strong></h4>
+<p>The <code class="highlighter-rouge">-u</code> option (short for “set upstream”) links your local branch to a remote branch. This simplifies subsequent Git commands, as you can omit the remote and branch name:</p>
+
+<ul>
+  <li>First push with upstream tracking:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push <span class="nt">-u</span> origin branch-name
+</code></pre></div>    </div>
+  </li>
+  <li>Future pushes and pulls:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push
+git pull
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>This is particularly useful when creating new branches or pulling remote branches for the first time.</p>
+
+<hr />
+
+<h4 id="pushing-files-to-a-repository"><strong>Pushing Files to a Repository</strong></h4>
+<p>Once you’ve added or modified files, pushing them to a repository involves these steps:</p>
+
+<ol>
+  <li><strong>Add Files to the Staging Area:</strong>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add file1 file2
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Commit the Changes:</strong>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git commit <span class="nt">-m</span> <span class="s2">"Describe your changes"</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Push the Changes to the Remote Repository:</strong>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>For new branches, use <code class="highlighter-rouge">git push -u origin branch-name</code> to set up the upstream tracking.</p>
+
+<hr />
+
+<h4 id="working-with-an-existing-branch"><strong>Working with an Existing Branch</strong></h4>
+<p>If you’re adding files to an existing branch in a repository, the workflow becomes even simpler:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout branch-name
+git add file1 file2
+git commit <span class="nt">-m</span> <span class="s2">"Describe your changes"</span>
+git push
+</code></pre></div></div>
+
+<hr />
+
+<h4 id="switching-between-branches"><strong>Switching Between Branches</strong></h4>
+<p>Easily switch between branches:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout branch-name
+</code></pre></div></div>
+<p>Ensure you commit or stash changes before switching to avoid conflicts.</p>
+
+<hr />
+
+<h4 id="best-practices-for-branching-and-collaboration"><strong>Best Practices for Branching and Collaboration</strong></h4>
+<ul>
+  <li><strong>Create Separate Branches</strong> for each feature or bug fix.</li>
+  <li><strong>Commit Frequently</strong> with meaningful messages.</li>
+  <li>Use <strong>Pull Requests (PRs)</strong> for code reviews and merging changes into the main branch.</li>
+  <li>Regularly <strong>sync with the remote repository</strong> using <code class="highlighter-rouge">git pull</code> to avoid conflicts.</li>
+</ul>
+
+<hr />
+
+<h4 id="conclusion"><strong>Conclusion</strong></h4>
+<p>By mastering Git commands like <code class="highlighter-rouge">git branch</code>, <code class="highlighter-rouge">git checkout</code>, and <code class="highlighter-rouge">git push -u</code>, you can streamline your development workflow and collaborate effectively with your team. With this guide, you’re well-equipped to navigate Git’s powerful branching and tracking capabilities.</p>
+
+<h4 id="to-see-the-differences-between-branches-in-git"><strong>To see the differences between branches in Git</strong></h4>
+
+<p>To see the differences between branches in Git, you can use the <code class="highlighter-rouge">git diff</code> command. Below are several methods to view differences between branches.</p>
+
+<hr />
+
+<h3 id="1-view-differences-between-two-branches"><strong>1. View Differences Between Two Branches</strong></h3>
+<p>You can compare two branches using:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff branch1 branch2
+</code></pre></div></div>
+<ul>
+  <li>This shows what changes exist in <code class="highlighter-rouge">branch2</code> that are not in <code class="highlighter-rouge">branch1</code>.</li>
+</ul>
+
+<h4 id="example">Example:</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff main feature-branch
+</code></pre></div></div>
+<ul>
+  <li>This shows what changes are in <code class="highlighter-rouge">feature-branch</code> compared to <code class="highlighter-rouge">main</code>.</li>
+</ul>
+
+<hr />
+
+<h3 id="2-compare-current-branch-with-another-branch"><strong>2. Compare Current Branch with Another Branch</strong></h3>
+<p>If you want to compare your current branch with another branch:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff branch-name
+</code></pre></div></div>
+
+<h4 id="example-1">Example:</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff feature-branch
+</code></pre></div></div>
+<ul>
+  <li>Compares your current branch to <code class="highlighter-rouge">feature-branch</code>.</li>
+</ul>
+
+<hr />
+
+<h3 id="3-compare-a-branch-with-the-remote-version"><strong>3. Compare a Branch with the Remote Version</strong></h3>
+<p>If you want to see differences between a local branch and its remote counterpart:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff branch-name origin/branch-name
+</code></pre></div></div>
+
+<h4 id="example-2">Example:</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff feature-branch origin/feature-branch
+</code></pre></div></div>
+<ul>
+  <li>Shows differences between your local and remote <code class="highlighter-rouge">feature-branch</code>.</li>
+</ul>
+
+<hr />
+
+<h3 id="4-compare-only-specific-files-or-directories"><strong>4. Compare Only Specific Files or Directories</strong></h3>
+<p>To narrow the comparison to specific files or directories, add the path:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff branch1 branch2 <span class="nt">--</span> path/to/file
+</code></pre></div></div>
+
+<h4 id="example-3">Example:</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff main feature-branch <span class="nt">--</span> src/app.js
+</code></pre></div></div>
+<ul>
+  <li>Compares <code class="highlighter-rouge">src/app.js</code> between <code class="highlighter-rouge">main</code> and <code class="highlighter-rouge">feature-branch</code>.</li>
+</ul>
+
+<hr />
+
+<h3 id="5-view-a-summary-of-changes"><strong>5. View a Summary of Changes</strong></h3>
+<p>If you don’t need the detailed diff but just want to see a summary:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff <span class="nt">--stat</span> branch1 branch2
+</code></pre></div></div>
+
+<h4 id="example-4">Example:</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff <span class="nt">--stat</span> main feature-branch
+</code></pre></div></div>
+<ul>
+  <li>Outputs a summary of added, modified, and deleted files.</li>
+</ul>
+
+<hr />
+
+<h3 id="6-compare-merged-and-unmerged-changes"><strong>6. Compare Merged and Unmerged Changes</strong></h3>
+<p>To see changes in a branch that haven’t been merged into another branch:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff branch1...branch2
+</code></pre></div></div>
+<h4 id="example-5">Example:</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff main...feature-branch
+</code></pre></div></div>
+<ul>
+  <li>Shows changes in <code class="highlighter-rouge">feature-branch</code> that are not in <code class="highlighter-rouge">main</code>.</li>
+</ul>
+
+<hr />
+
+<h3 id="7-using-a-gui-for-better-visualization"><strong>7. Using a GUI for Better Visualization</strong></h3>
+<p>You can use Git GUI tools for an easier way to view differences:</p>
+<ul>
+  <li><strong>GitHub Desktop</strong></li>
+  <li><strong>GitKraken</strong></li>
+  <li><strong>SourceTree</strong></li>
+  <li><strong>VSCode Git Extension</strong></li>
+</ul>
+
+<h4 id="example-using-git-log-with-diff">Example Using <code class="highlighter-rouge">git log</code> with Diff:</h4>
+<p>For a graphical log with differences, use:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git log <span class="nt">--oneline</span> <span class="nt">--graph</span> <span class="nt">--decorate</span> <span class="nt">--branches</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="8-visualize-differences-with-git-difftool"><strong>8. Visualize Differences with <code class="highlighter-rouge">git difftool</code></strong></h3>
+<p>If you have a diff tool like <code class="highlighter-rouge">vimdiff</code>, <code class="highlighter-rouge">meld</code>, or <code class="highlighter-rouge">kdiff3</code> installed:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git difftool branch1 branch2
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="9-compare-working-directory-with-a-branch"><strong>9. Compare Working Directory with a Branch</strong></h3>
+<p>To see what changes are in your working directory compared to a branch:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff branch-name
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="summary-table-of-commands">Summary Table of Commands</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Command</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">git diff branch1 branch2</code></td>
+      <td>Compare two branches.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">git diff branch-name</code></td>
+      <td>Compare current branch with another branch.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">git diff --stat branch1 branch2</code></td>
+      <td>Show a summary of changes.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">git diff branch1...branch2</code></td>
+      <td>Show changes in a branch not yet merged.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">git difftool branch1 branch2</code></td>
+      <td>Use a visual tool to compare branches.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="practical-example">Practical Example:</h3>
+<p>You are on <code class="highlighter-rouge">main</code> and want to see what’s different in <code class="highlighter-rouge">feature-branch</code>:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff main feature-branch
+</code></pre></div></div>
+
+<p>This shows the line-by-line differences between <code class="highlighter-rouge">main</code> and <code class="highlighter-rouge">feature-branch</code>.</p>
+
+	</div>
+</article>
+		</div>
+	</div>
+  </body>
+</html>

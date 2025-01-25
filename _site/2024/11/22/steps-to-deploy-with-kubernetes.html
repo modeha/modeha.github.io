@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Deep Learning" /></head>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<style>@import url(/public/css/syntax/monokai.css);</style>
+  <title>Deep Learning</title>
+  <!-- <link href="/public/css/bootstrap.min.css" rel="stylesheet"> -->
+
+  <link href="/public/css/style.css" rel="stylesheet">
+  <body>
+  	<div class="container"> 
+		<div class="sidebar">
+			<div class="sidebar-item sidebar-header">
+	<div class='sidebar-brand'>
+		<a href="/about/">Deep Learning</a>
+	</div>
+	<p class="lead">Mohsen Dehghani</p></div>
+
+<div class="sidebar-item sidebar-nav">
+	<ul class="nav">
+      <li class="nav-title">Pages</li>
+	  <li>
+	  	<a class="nav-item" href="/">Articles</a>
+	  </li>
+	  
+	  
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/about/">
+	            	About
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	  
+	    
+	  
+	</ul>
+</div>
+
+<div class="sidebar-item sidebar-nav">
+  	<ul class="nav">
+			<li class="nav-title">Categories</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#Update">
+				<span class="name">Update</span>
+				<span class="badge">13</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#Jekyll">
+				<span class="name">Jekyll</span>
+				<span class="badge">1</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#update">
+				<span class="name">update</span>
+				<span class="badge">6</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#math">
+				<span class="name">math</span>
+				<span class="badge">1</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#data-science">
+				<span class="name">data-science</span>
+				<span class="badge">1</span>
+	    	</a>
+ 		</li>
+	    
+	  </nav>
+	</ul>
+</div>
+
+<div class="sidebar-item sidebar-footer">
+	<p>Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a></p>
+</div>
+		</div>
+		<div class="content">
+			<article class="post">
+	<header class="post-header">
+		<div class="post-title"> 
+			Steps to Deploy with Kubernetes
+		</div>
+		<time class="post-date dt-published" datetime="2024-11-22T10:52:00-05:00" itemprop="datePublished">2024/11/22
+		</time>		
+	</header>
+
+	<div class="post-content">
+		<p>To provide a detailed step-by-step explanation of Kubernetes in the context of the files you’ve uploaded, I’ll use your project as an example. Here’s an overview and breakdown:</p>
+
+<hr />
+
+<h3 id="1-what-is-kubernetes">1. <strong>What is Kubernetes?</strong></h3>
+<p>Kubernetes is an open-source container orchestration platform for managing containerized applications across a cluster of machines. It automates deployment, scaling, and operations of application containers.</p>
+
+<p><strong>Key Concepts:</strong></p>
+<ul>
+  <li><strong>Pods</strong>: Smallest deployable units, encapsulating one or more containers.</li>
+  <li><strong>Services</strong>: Expose a set of Pods as a network service.</li>
+  <li><strong>Deployments</strong>: Define how Pods are created and managed.</li>
+  <li><strong>Jobs</strong>: Ensure specific tasks are completed (e.g., model training).</li>
+  <li><strong>Volumes</strong>: Provide persistent storage for containers.</li>
+</ul>
+
+<hr />
+
+<h3 id="2-overview-of-your-project">2. <strong>Overview of Your Project</strong></h3>
+<p>Your project involves:</p>
+<ul>
+  <li><strong>Flask API</strong>: <code class="highlighter-rouge">predict.py</code> serves predictions.</li>
+  <li><strong>Streamlit App</strong>: <code class="highlighter-rouge">app.py</code> interacts with users to send requests to the API.</li>
+  <li><strong>Model Training</strong>: <code class="highlighter-rouge">train.py</code> trains and saves a linear regression model.</li>
+  <li><strong>Kubernetes Deployment</strong>: Managed using YAML files (<code class="highlighter-rouge">deployment.yaml</code>, <code class="highlighter-rouge">service.yaml</code>, <code class="highlighter-rouge">train-job.yaml</code>) and <code class="highlighter-rouge">run_pipeline.sh</code>.</li>
+</ul>
+
+<hr />
+
+<h3 id="3-steps-to-deploy-with-kubernetes">3. <strong>Steps to Deploy with Kubernetes</strong></h3>
+
+<h4 id="step-1-containerize-the-application"><strong>Step 1: Containerize the Application</strong></h4>
+<p>Kubernetes uses Docker containers. Your <code class="highlighter-rouge">Dockerfile</code> ensures:</p>
+<ol>
+  <li>The environment is consistent.</li>
+  <li>Dependencies for <code class="highlighter-rouge">predict.py</code> are installed.</li>
+  <li>The application is runnable.</li>
+</ol>
+
+<p><strong>Example Dockerfile</strong> (assumed from context):</p>
+<div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> python:3.8-slim</span>
+<span class="k">WORKDIR</span><span class="s"> /app</span>
+<span class="k">COPY</span><span class="s"> . /app</span>
+<span class="k">RUN </span>pip <span class="nb">install</span> <span class="nt">-r</span> requirements.txt
+<span class="k">CMD</span><span class="s"> ["python", "predict.py"]</span>
+</code></pre></div></div>
+
+<hr />
+
+<h4 id="step-2-kubernetes-job-for-training"><strong>Step 2: Kubernetes Job for Training</strong></h4>
+<p>Your <code class="highlighter-rouge">run_pipeline.sh</code> creates a Kubernetes Job to train the model.</p>
+
+<p><strong>Key Steps in Training Job</strong>:</p>
+<ul>
+  <li>Volume mounts provide the dataset (<code class="highlighter-rouge">dataset.csv</code>) and a path to save <code class="highlighter-rouge">model.pkl</code>.</li>
+  <li>Job YAML dynamically applies training logic using <code class="highlighter-rouge">train.py</code>.</li>
+</ul>
+
+<p><strong>Snippet from <code class="highlighter-rouge">run_pipeline.sh</code></strong>:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl apply <span class="nt">-f</span> - <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh">
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: train-job
+spec:
+  template:
+    spec:
+      containers:
+      - name: train-job
+        image: </span><span class="nv">$DOCKER_IMAGE</span><span class="sh">
+        command: ["python", "train.py"]
+      volumes:
+      - name: dataset-volume
+        hostPath:
+          path: /mnt/data/dataset.csv
+</span><span class="no">EOF
+</span></code></pre></div></div>
+
+<hr />
+
+<h4 id="step-3-api-deployment"><strong>Step 3: API Deployment</strong></h4>
+<p>After training, the Flask API (<code class="highlighter-rouge">predict.py</code>) is deployed. Kubernetes Deployment YAML defines:</p>
+<ul>
+  <li>Number of replicas.</li>
+  <li>Image to use (from Docker Hub).</li>
+  <li>Port configuration.</li>
+</ul>
+
+<p><strong>Deployment YAML Example</strong>:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">apps/v1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">Deployment</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">flask-api-deployment</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">replicas</span><span class="pi">:</span> <span class="m">2</span>
+  <span class="na">selector</span><span class="pi">:</span>
+    <span class="na">matchLabels</span><span class="pi">:</span>
+      <span class="na">app</span><span class="pi">:</span> <span class="s">flask-api</span>
+  <span class="na">template</span><span class="pi">:</span>
+    <span class="na">metadata</span><span class="pi">:</span>
+      <span class="na">labels</span><span class="pi">:</span>
+        <span class="na">app</span><span class="pi">:</span> <span class="s">flask-api</span>
+    <span class="na">spec</span><span class="pi">:</span>
+      <span class="na">containers</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">flask-api</span>
+        <span class="na">image</span><span class="pi">:</span> <span class="s">modeha/flask-api:latest</span>
+        <span class="na">ports</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="na">containerPort</span><span class="pi">:</span> <span class="m">5000</span>
+</code></pre></div></div>
+
+<hr />
+
+<h4 id="step-4-exposing-the-api"><strong>Step 4: Exposing the API</strong></h4>
+<p>A Kubernetes Service exposes the API internally or externally (e.g., via NodePort).</p>
+
+<p><strong>Service YAML Example</strong>:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">v1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">Service</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">flask-api-service</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">selector</span><span class="pi">:</span>
+    <span class="na">app</span><span class="pi">:</span> <span class="s">flask-api</span>
+  <span class="na">ports</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">protocol</span><span class="pi">:</span> <span class="s">TCP</span>
+    <span class="na">port</span><span class="pi">:</span> <span class="m">80</span>
+    <span class="na">targetPort</span><span class="pi">:</span> <span class="m">5000</span>
+  <span class="na">type</span><span class="pi">:</span> <span class="s">NodePort</span>
+</code></pre></div></div>
+
+<hr />
+
+<h4 id="step-5-using-the-streamlit-interface"><strong>Step 5: Using the Streamlit Interface</strong></h4>
+<p>Your Streamlit app (<code class="highlighter-rouge">app.py</code>) sends requests to the API to predict house prices based on user inputs.</p>
+
+<hr />
+
+<h3 id="4-running-the-pipeline">4. <strong>Running the Pipeline</strong></h3>
+
+<ol>
+  <li><strong>Build and Push Docker Image</strong>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build <span class="nt">-t</span> modeha/my-app:latest <span class="nb">.</span>
+docker push modeha/my-app:latest
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Run the Pipeline Script</strong>:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./run_pipeline.sh my-app
+</code></pre></div>    </div>
+    <p>This:</p>
+    <ul>
+      <li>Kills processes blocking the required port.</li>
+      <li>Trains the model (<code class="highlighter-rouge">train.py</code>) using a Kubernetes Job.</li>
+      <li>Deploys the API and exposes it.</li>
+    </ul>
+  </li>
+  <li><strong>Access the API via Streamlit</strong>:
+    <ul>
+      <li>Launch <code class="highlighter-rouge">app.py</code>:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>streamlit run app.py
+</code></pre></div>        </div>
+      </li>
+      <li>Input house features and get predictions.</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="5-next-steps">5. <strong>Next Steps</strong></h3>
+<ul>
+  <li><strong>Scaling</strong>: Adjust replicas in your Deployment YAML to scale the API.</li>
+  <li><strong>Monitoring</strong>: Use Kubernetes tools like <code class="highlighter-rouge">kubectl logs</code>, Prometheus, or Grafana.</li>
+  <li><strong>CI/CD Integration</strong>: Automate deployments with Jenkins, GitHub Actions, or other CI/CD tools.</li>
+</ul>
+
+
+	</div>
+</article>
+		</div>
+	</div>
+  </body>
+</html>

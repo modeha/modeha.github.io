@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Deep Learning" /></head>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<style>@import url(/public/css/syntax/monokai.css);</style>
+  <title>Deep Learning</title>
+  <!-- <link href="/public/css/bootstrap.min.css" rel="stylesheet"> -->
+
+  <link href="/public/css/style.css" rel="stylesheet">
+  <body>
+  	<div class="container"> 
+		<div class="sidebar">
+			<div class="sidebar-item sidebar-header">
+	<div class='sidebar-brand'>
+		<a href="/about/">Deep Learning</a>
+	</div>
+	<p class="lead">Mohsen Dehghani</p></div>
+
+<div class="sidebar-item sidebar-nav">
+	<ul class="nav">
+      <li class="nav-title">Pages</li>
+	  <li>
+	  	<a class="nav-item" href="/">Articles</a>
+	  </li>
+	  
+	  
+	    
+	  
+	    
+	      
+	        <li>
+	        	<a class="nav-item" href="/about/">
+	            	About
+	            </a>
+	        </li>
+	      
+	    
+	  
+	    
+	      
+	    
+	  
+	    
+	  
+	    
+	  
+	</ul>
+</div>
+
+<div class="sidebar-item sidebar-nav">
+  	<ul class="nav">
+			<li class="nav-title">Categories</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#Update">
+				<span class="name">Update</span>
+				<span class="badge">13</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#Jekyll">
+				<span class="name">Jekyll</span>
+				<span class="badge">1</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#update">
+				<span class="name">update</span>
+				<span class="badge">6</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#math">
+				<span class="name">math</span>
+				<span class="badge">1</span>
+	    	</a>
+ 		</li>
+	    
+	    <li>
+	    	<a class="nav-item" href="/category/#data-science">
+				<span class="name">data-science</span>
+				<span class="badge">1</span>
+	    	</a>
+ 		</li>
+	    
+	  </nav>
+	</ul>
+</div>
+
+<div class="sidebar-item sidebar-footer">
+	<p>Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a></p>
+</div>
+		</div>
+		<div class="content">
+			<article class="post">
+	<header class="post-header">
+		<div class="post-title"> 
+			Understanding Encoders and Decoders in Large Language Models LLMs
+		</div>
+		<time class="post-date dt-published" datetime="2024-11-26T21:16:00-05:00" itemprop="datePublished">2024/11/26
+		</time>		
+	</header>
+
+	<div class="post-content">
+		<p>In the context of <strong>Large Language Models (LLMs)</strong>, <strong>encoders</strong> and <strong>decoders</strong> are components of transformer architectures that process text differently based on the nature of the task (e.g., text classification, generation, translation). Here’s a breakdown of what they mean:</p>
+
+<hr />
+
+<h3 id="encoder"><strong>Encoder</strong></h3>
+<ul>
+  <li>
+    <p><strong>Purpose</strong>: The encoder processes the input text and generates a <strong>contextualized representation</strong> of it. This representation captures the meaning of the input by considering the relationships between all words in the input sequence.</p>
+  </li>
+  <li><strong>Key Features</strong>:
+    <ol>
+      <li><strong>Bidirectional Attention</strong>: Encoders look at the entire input sequence at once, understanding each token in the context of all other tokens (e.g., BERT). This is crucial for tasks that require deep understanding of the input text.</li>
+      <li><strong>Output</strong>: The encoder produces a sequence of embeddings, each corresponding to a token in the input. These embeddings are used for downstream tasks.</li>
+    </ol>
+  </li>
+  <li><strong>Applications</strong>:
+    <ul>
+      <li><strong>Text understanding</strong>: Classification, named entity recognition (NER), and question answering.</li>
+      <li>Examples of encoder-only models: <strong>BERT</strong>, <strong>RoBERTa</strong>, <strong>DistilBERT</strong>.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="decoder"><strong>Decoder</strong></h3>
+<ul>
+  <li>
+    <p><strong>Purpose</strong>: The decoder takes either raw input (during training) or a representation (from an encoder) to generate output text. This component is critical for tasks involving <strong>text generation</strong>.</p>
+  </li>
+  <li><strong>Key Features</strong>:
+    <ol>
+      <li><strong>Auto-regressive Attention</strong>: Decoders process tokens sequentially. At each step, they only look at previously generated tokens (causal or unidirectional attention) to ensure output is generated in a logical sequence.</li>
+      <li><strong>Output</strong>: The decoder generates tokens one at a time until it completes the sequence.</li>
+    </ol>
+  </li>
+  <li><strong>Applications</strong>:
+    <ul>
+      <li><strong>Text generation</strong>: Summarization, machine translation, and chatbots.</li>
+      <li>Examples of decoder-only models: <strong>GPT, GPT-2, GPT-3</strong>.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="encoder-decoder-seq2seq"><strong>Encoder-Decoder (Seq2Seq)</strong></h3>
+<ul>
+  <li>Combines the strengths of both the encoder and decoder:
+    <ul>
+      <li><strong>Encoder</strong>: Encodes the input into a meaningful representation.</li>
+      <li><strong>Decoder</strong>: Decodes this representation to generate output text.</li>
+    </ul>
+  </li>
+  <li><strong>Key Features</strong>:
+    <ul>
+      <li>Suitable for tasks where the input and output differ in form or language (e.g., machine translation).</li>
+      <li>Examples of encoder-decoder models: <strong>T5</strong>, <strong>BART</strong>, <strong>MarianMT</strong>.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="comparison"><strong>Comparison</strong></h3>
+<p>| Feature              | Encoder                          | Decoder                          |
+|———————-|———————————–|———————————–|
+| <strong>Role</strong>             | Understands and processes input. | Generates output based on context or input representation. |
+| <strong>Attention</strong>        | Bidirectional (context from all tokens). | Unidirectional (uses past tokens only). |
+| <strong>Common Models</strong>    | BERT, RoBERTa                    | GPT, GPT-2, GPT-3                |
+| <strong>Tasks</strong>            | Classification, text similarity. | Text generation, translation, summarization. |</p>
+
+<hr />
+
+<h3 id="real-world-analogies"><strong>Real-World Analogies</strong></h3>
+<ol>
+  <li><strong>Encoder</strong>: A <strong>reader</strong> who fully understands a book, capturing all the nuances and meaning.</li>
+  <li><strong>Decoder</strong>: A <strong>storyteller</strong> who takes what they’ve read and generates a coherent story for others.</li>
+</ol>
+
+<p>In <strong>encoder-decoder models</strong>, the reader summarizes or rephrases the book into another format or language for the storyteller to convey.</p>
+
+	</div>
+</article>
+		</div>
+	</div>
+  </body>
+</html>

@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "A regularized interior-point method"
-date:   2018-02-19 19:31:29 +0900
+title:  "A regularized Interior-Point Method"
+date:   2018-09-19 19:31:29 +0900
 categories: Update
 ---
 
