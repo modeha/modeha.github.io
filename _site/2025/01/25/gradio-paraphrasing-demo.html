@@ -112,8 +112,31 @@
 	</header>
 
 	<div class="post-content">
-		<iframe src="https://huggingface.co/spaces/MohsenDehghani/paraphrasing" width="100%" height="800px" style="border:none;">
-</iframe>
+		<h2 id="paraphrasing-text-with-t5-model-using-gradio">Paraphrasing Text with T5 Model Using Gradio</h2>
+
+<p>Paraphrasing is a crucial task in natural language processing (NLP) that involves rephrasing text while retaining its original meaning. It has numerous applications, such as content generation, text simplification, and improving readability. In this post, we will demonstrate how to build a simple yet effective paraphrasing tool using the T5 (Text-to-Text Transfer Transformer) model, fine-tuned on the PAWS (Paraphrase Adversaries from Word Scrambling) dataset.</p>
+
+<p>We’ll leverage the <strong>Hugging Face Transformers</strong> library to load a pre-trained T5 model and the <strong>Gradio</strong> library to create an interactive web-based interface that allows users to input text and generate multiple paraphrased outputs. Gradio provides an intuitive and user-friendly way to deploy machine learning models with minimal effort.</p>
+
+<h3 id="key-features-of-the-paraphrasing-tool">Key Features of the Paraphrasing Tool</h3>
+<ul>
+  <li><strong>Model</strong>: We use the <code class="highlighter-rouge">Vamsi/T5_Paraphrase_Paws</code> model, fine-tuned to generate high-quality paraphrases.</li>
+  <li><strong>Input</strong>: Users can enter text into a textbox to be paraphrased.</li>
+  <li><strong>Output</strong>: The tool generates multiple paraphrased versions of the input text.</li>
+  <li><strong>Customization Options</strong>: Users can adjust the number of paraphrases and beam search size to fine-tune the results.</li>
+</ul>
+
+<h3 id="how-it-works">How It Works</h3>
+<ol>
+  <li>The input text is tokenized and processed using the pre-trained T5 tokenizer.</li>
+  <li>The model generates paraphrased outputs by applying beam search, allowing the user to control the number of generated sequences.</li>
+  <li>The results are displayed in a user-friendly interface powered by Gradio.</li>
+  <li>Example inputs are provided to help users explore the tool’s capabilities.</li>
+</ol>
+
+<p>Below is the implementation of the paraphrasing tool as well you can try it yourself:</p>
+
+<hr />
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pip</span> <span class="n">install</span> <span class="n">transformers</span> <span class="n">torch</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="n">sentencepiece</span> <span class="n">protobuf</span>
@@ -252,42 +275,13 @@ Simply enter your text and click 'Submit' to see the results.
 <span class="n">iface</span><span class="p">.</span><span class="n">launch</span><span class="p">(</span><span class="n">share</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
 </code></pre></div></div>
-
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Running on local URL:  http://127.0.0.1:7860
 Running on public URL: https://2c03b010d116b96362.gradio.live
 
 This share link expires in 72 hours. For free permanent hosting and GPU upgrades, run `gradio deploy` from Terminal to deploy to Spaces (https://huggingface.co/spaces)
 </code></pre></div></div>
 
-<div><iframe src="https://2c03b010d116b96362.gradio.live" width="100%" height="500" allow="autoplay; camera; microphone; clipboard-read; clipboard-write;" frameborder="0" allowfullscreen=""></iframe></div>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Traceback (most recent call last):
-  File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\gradio\queueing.py", line 536, in process_events
-    response = await route_utils.call_process_api(
-  File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\gradio\route_utils.py", line 322, in call_process_api
-    output = await app.get_blocks().process_api(
-  File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\gradio\blocks.py", line 1935, in process_api
-    result = await self.call_function(
-  File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\gradio\blocks.py", line 1520, in call_function
-    prediction = await anyio.to_thread.run_sync(  # type: ignore
-  File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\anyio\to_thread.py", line 33, in run_sync
-    return await get_asynclib().run_sync_in_worker_thread(
-  File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\anyio\_backends\_asyncio.py", line 877, in run_sync_in_worker_thread
-    return await future
-  File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\anyio\_backends\_asyncio.py", line 807, in run
-    result = context.run(func, *args)
-  File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\gradio\utils.py", line 826, in wrapper
-    response = f(*args, **kwargs)
-  File "C:\Users\mohse\AppData\Local\Temp\ipykernel_29716\3481243923.py", line 11, in paraphrase_text
-    outputs = model.generate(
-  File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\torch\utils\_contextlib.py", line 116, in decorate_context
-    return func(*args, **kwargs)
-  File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\transformers\generation\utils.py", line 2227, in generate
-    beam_scorer = BeamSearchScorer(
-  File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\transformers\generation\beam_search.py", line 200, in __init__
-    raise ValueError(
-ValueError: `num_beams` has to be an integer strictly greater than 1, but is 4.25. For `num_beams` == 1, one should make use of `greedy_search` instead.
-</code></pre></div></div>
+<p><a href="https://huggingface.co/spaces/MohsenDehghani/paraphrasing">Visit the Paraphrasing Tool on my Hugging Face</a></p>
 
 
 	</div>

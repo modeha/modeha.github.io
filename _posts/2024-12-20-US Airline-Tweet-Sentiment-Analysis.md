@@ -1,5 +1,5 @@
 ---
-layout: no-title
+layout: post
 title: "US Airline Tweet Sentiment Analysis"
 date: 2024-12-13 21:26 -0500
 ---

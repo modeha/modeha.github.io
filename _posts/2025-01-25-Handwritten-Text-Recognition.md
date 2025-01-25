@@ -12,15 +12,6 @@ Convolutional Recurrent Neural Network. CTC.
 
 Author : Mohsen Dehghani
 
-
-
--
-
-
-
-
-
-
 ## Dataset used:
 
 

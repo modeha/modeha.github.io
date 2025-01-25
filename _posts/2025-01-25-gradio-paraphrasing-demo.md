@@ -5,12 +5,27 @@ date: 2025-01-25 13:10 -0500
 ---
 
 
-<iframe
-    src="https://huggingface.co/spaces/MohsenDehghani/paraphrasing"
-    width="100%"
-    height="800px"
-    style="border:none;">
-</iframe>
+## Paraphrasing Text with T5 Model Using Gradio
+
+Paraphrasing is a crucial task in natural language processing (NLP) that involves rephrasing text while retaining its original meaning. It has numerous applications, such as content generation, text simplification, and improving readability. In this post, we will demonstrate how to build a simple yet effective paraphrasing tool using the T5 (Text-to-Text Transfer Transformer) model, fine-tuned on the PAWS (Paraphrase Adversaries from Word Scrambling) dataset.
+
+We'll leverage the **Hugging Face Transformers** library to load a pre-trained T5 model and the **Gradio** library to create an interactive web-based interface that allows users to input text and generate multiple paraphrased outputs. Gradio provides an intuitive and user-friendly way to deploy machine learning models with minimal effort.
+
+### Key Features of the Paraphrasing Tool
+- **Model**: We use the `Vamsi/T5_Paraphrase_Paws` model, fine-tuned to generate high-quality paraphrases.
+- **Input**: Users can enter text into a textbox to be paraphrased.
+- **Output**: The tool generates multiple paraphrased versions of the input text.
+- **Customization Options**: Users can adjust the number of paraphrases and beam search size to fine-tune the results.
+
+### How It Works
+1. The input text is tokenized and processed using the pre-trained T5 tokenizer.
+2. The model generates paraphrased outputs by applying beam search, allowing the user to control the number of generated sequences.
+3. The results are displayed in a user-friendly interface powered by Gradio.
+4. Example inputs are provided to help users explore the tool's capabilities.
+
+Below is the implementation of the paraphrasing tool as well you can try it yourself:
+
+---
 
 ```python
 pip install transformers torch
@@ -163,48 +178,11 @@ iface = gr.Interface(
 iface.launch(share=True)
 
 ```
-
     Running on local URL:  http://127.0.0.1:7860
     Running on public URL: https://2c03b010d116b96362.gradio.live
     
     This share link expires in 72 hours. For free permanent hosting and GPU upgrades, run `gradio deploy` from Terminal to deploy to Spaces (https://huggingface.co/spaces)
     
-
-
-<div><iframe src="https://2c03b010d116b96362.gradio.live" width="100%" height="500" allow="autoplay; camera; microphone; clipboard-read; clipboard-write;" frameborder="0" allowfullscreen></iframe></div>
-
-
-
-
-
     
+[Visit the Paraphrasing Tool on my Hugging Face](https://huggingface.co/spaces/MohsenDehghani/paraphrasing)
 
-
-
-    Traceback (most recent call last):
-      File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\gradio\queueing.py", line 536, in process_events
-        response = await route_utils.call_process_api(
-      File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\gradio\route_utils.py", line 322, in call_process_api
-        output = await app.get_blocks().process_api(
-      File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\gradio\blocks.py", line 1935, in process_api
-        result = await self.call_function(
-      File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\gradio\blocks.py", line 1520, in call_function
-        prediction = await anyio.to_thread.run_sync(  # type: ignore
-      File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\anyio\to_thread.py", line 33, in run_sync
-        return await get_asynclib().run_sync_in_worker_thread(
-      File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\anyio\_backends\_asyncio.py", line 877, in run_sync_in_worker_thread
-        return await future
-      File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\anyio\_backends\_asyncio.py", line 807, in run
-        result = context.run(func, *args)
-      File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\gradio\utils.py", line 826, in wrapper
-        response = f(*args, **kwargs)
-      File "C:\Users\mohse\AppData\Local\Temp\ipykernel_29716\3481243923.py", line 11, in paraphrase_text
-        outputs = model.generate(
-      File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\torch\utils\_contextlib.py", line 116, in decorate_context
-        return func(*args, **kwargs)
-      File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\transformers\generation\utils.py", line 2227, in generate
-        beam_scorer = BeamSearchScorer(
-      File "c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\transformers\generation\beam_search.py", line 200, in __init__
-        raise ValueError(
-    ValueError: `num_beams` has to be an integer strictly greater than 1, but is 4.25. For `num_beams` == 1, one should make use of `greedy_search` instead.
-    

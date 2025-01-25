@@ -40,4 +40,8 @@ exclude:
 
 theme: jekyll-theme-cayman # minima #jekyll-theme-merlot
 
+kramdown:
+  input: GFM
+  hard_wrap: false
+  auto_ids: true
 
