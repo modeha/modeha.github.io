@@ -3,6 +3,15 @@ layout: post
 title: Gradio Paraphrasing Demo
 date: 2025-01-25 13:10 -0500
 ---
+
+
+<iframe
+    src="https://huggingface.co/spaces/MohsenDehghani/paraphrasing"
+    width="100%"
+    height="800px"
+    style="border:none;">
+</iframe>
+
 ```python
 pip install transformers torch
 pip install sentencepiece protobuf
