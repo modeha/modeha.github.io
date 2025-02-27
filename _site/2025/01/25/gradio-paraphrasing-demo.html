@@ -114,9 +114,14 @@
 	<div class="post-content">
 		<h2 id="paraphrasing-text-with-t5-model-using-gradio">Paraphrasing Text with T5 Model Using Gradio</h2>
 
-<p>Paraphrasing is a crucial task in natural language processing (NLP) that involves rephrasing text while retaining its original meaning. It has numerous applications, such as content generation, text simplification, and improving readability. In this post, we will demonstrate how to build a simple yet effective paraphrasing tool using the T5 (Text-to-Text Transfer Transformer) model, fine-tuned on the PAWS (Paraphrase Adversaries from Word Scrambling) dataset.</p>
+<p>Paraphrasing is a crucial task in natural language processing (NLP) that involves rephrasing text while retaining its original meaning. 
+It has numerous applications, such as content generation, text simplification, and improving readability. In this post,
+ we will demonstrate how to build a simple yet effective paraphrasing tool using the T5 (Text-to-Text Transfer Transformer) model, 
+ fine-tuned on the PAWS (Paraphrase Adversaries from Word Scrambling) dataset.</p>
 
-<p>We’ll leverage the <strong>Hugging Face Transformers</strong> library to load a pre-trained T5 model and the <strong>Gradio</strong> library to create an interactive web-based interface that allows users to input text and generate multiple paraphrased outputs. Gradio provides an intuitive and user-friendly way to deploy machine learning models with minimal effort.</p>
+<p>We’ll leverage the <strong>Hugging Face Transformers</strong> library to load a pre-trained T5 model and the <strong>Gradio</strong> 
+library to create an interactive web-based interface that allows users to input text and generate multiple paraphrased outputs.
+ Gradio provides an intuitive and user-friendly way to deploy machine learning models with minimal effort.</p>
 
 <h3 id="key-features-of-the-paraphrasing-tool">Key Features of the Paraphrasing Tool</h3>
 <ul>
@@ -142,75 +147,6 @@
 <span class="n">pip</span> <span class="n">install</span> <span class="n">sentencepiece</span> <span class="n">protobuf</span>
 
 </code></pre></div></div>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">gradio</span> <span class="k">as</span> <span class="n">gr</span>
-<span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoTokenizer</span><span class="p">,</span> <span class="n">AutoModelForSeq2SeqLM</span>
-
-<span class="c1"># Load the tokenizer and model
-</span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="p">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s">"Vamsi/T5_Paraphrase_Paws"</span><span class="p">)</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelForSeq2SeqLM</span><span class="p">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s">"Vamsi/T5_Paraphrase_Paws"</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">paraphrase_text</span><span class="p">(</span><span class="n">input_text</span><span class="p">,</span> <span class="n">num_return_sequences</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">num_beams</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
-    <span class="c1"># Preprocess the text
-</span>    <span class="n">input_ids</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="s">"paraphrase: "</span> <span class="o">+</span> <span class="n">input_text</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s">"pt"</span><span class="p">,</span> <span class="n">truncation</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-
-    <span class="c1"># Generate paraphrased versions
-</span>    <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">generate</span><span class="p">(</span>
-        <span class="n">input_ids</span><span class="p">,</span>
-        <span class="n">max_length</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span>
-        <span class="n">num_beams</span><span class="o">=</span><span class="n">num_beams</span><span class="p">,</span>
-        <span class="n">num_return_sequences</span><span class="o">=</span><span class="n">num_return_sequences</span><span class="p">,</span>
-        <span class="n">no_repeat_ngram_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-        <span class="n">early_stopping</span><span class="o">=</span><span class="bp">True</span>
-    <span class="p">)</span>
-
-    <span class="c1"># Decode the generated sequences
-</span>    <span class="n">paraphrased_texts</span> <span class="o">=</span> <span class="p">[</span><span class="n">tokenizer</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="k">for</span> <span class="n">output</span> <span class="ow">in</span> <span class="n">outputs</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">paraphrased_texts</span>
-
-<span class="n">title</span> <span class="o">=</span> <span class="s">"Paraphrasing with T5 Model"</span>
-<span class="n">description</span> <span class="o">=</span> <span class="s">"This demo uses the T5 model fine-tuned on PAWS for generating paraphrases of input text. Simply enter your text and click 'Submit' to generate multiple paraphrased versions."</span>
-<span class="n">article</span> <span class="o">=</span> <span class="s">"&lt;p style='text-align: center'&gt;&lt;a href='https://huggingface.co/Vamsi/T5_Paraphrase_Paws'&gt;Hugging Face Model&lt;/a&gt; | &lt;a href='https://github.com/huggingface/transformers'&gt;Transformers Library&lt;/a&gt;&lt;/p&gt;"</span>
-
-<span class="n">examples</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">[</span><span class="s">"Intelligence Analyst Trainer - 24-968-08-086 All information required to determine suitability for employment with the Canadian Security Intelligence Service is collected under the authority of the Canadian Security Intelligence Service Act."</span><span class="p">],</span>
-    <span class="p">[</span><span class="s">"The Privacy Act allows candidates to review collected information and request amendments."</span><span class="p">],</span>
-    <span class="p">[</span><span class="s">"Machine learning models are improving rapidly, and their applications are expanding across different industries."</span><span class="p">]</span>
-<span class="p">]</span>
-
-<span class="n">iface</span> <span class="o">=</span> <span class="n">gr</span><span class="p">.</span><span class="n">Interface</span><span class="p">(</span>
-    <span class="n">fn</span><span class="o">=</span><span class="n">paraphrase_text</span><span class="p">,</span>
-    <span class="n">inputs</span><span class="o">=</span><span class="p">[</span>
-        <span class="n">gr</span><span class="p">.</span><span class="n">Textbox</span><span class="p">(</span><span class="n">lines</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">placeholder</span><span class="o">=</span><span class="s">"Enter text to paraphrase here..."</span><span class="p">),</span>
-        <span class="n">gr</span><span class="p">.</span><span class="n">Slider</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">"Number of paraphrases"</span><span class="p">),</span>
-        <span class="n">gr</span><span class="p">.</span><span class="n">Slider</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">"Beam search size"</span><span class="p">)</span>
-    <span class="p">],</span>
-    <span class="n">outputs</span><span class="o">=</span><span class="n">gr</span><span class="p">.</span><span class="n">Textbox</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s">"Paraphrased Outputs"</span><span class="p">),</span>
-    <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span>
-    <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span>
-    <span class="n">article</span><span class="o">=</span><span class="n">article</span><span class="p">,</span>
-    <span class="n">examples</span><span class="o">=</span><span class="n">examples</span><span class="p">,</span>
-<span class="p">)</span>
-
-
-<span class="c1"># iface.launch(debug=True)
-</span>
-
-</code></pre></div></div>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>You are using the default legacy behaviour of the &lt;class 'transformers.models.t5.tokenization_t5.T5Tokenizer'&gt;. This is expected, and simply means that the `legacy` (previous) behavior will be used so nothing changes for you. If you want to use the new behaviour, set `legacy=False`. This should only be set if you understand what it means, and thoroughly read the reason why this was added as explained in https://github.com/huggingface/transformers/pull/24565
-c:\Users\mohse\.conda\envs\cdo_idp\lib\site-packages\torchvision\io\image.py:13: UserWarning: Failed to load image Python extension: Could not find module 'C:\Users\mohse\.conda\envs\cdo_idp\Lib\site-packages\torchvision\image.pyd' (or one of its dependencies). Try using the full path with constructor syntax.
-  warn(f"Failed to load image Python extension: {e}")
-
-
-Running on local URL:  http://0.0.0.0:7860
-Running on public URL: https://f1f8800d90672a6ac0.gradio.live
-
-This share link expires in 72 hours. For free permanent hosting and GPU upgrades, run `gradio deploy` from Terminal to deploy to Spaces (https://huggingface.co/spaces)
-</code></pre></div></div>
-
-<div><iframe src="https://f1f8800d90672a6ac0.gradio.live" width="100%" height="500" allow="autoplay; camera; microphone; clipboard-read; clipboard-write;" frameborder="0" allowfullscreen=""></iframe></div>
-
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">gradio</span> <span class="k">as</span> <span class="n">gr</span>
 <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoTokenizer</span><span class="p">,</span> <span class="n">AutoModelForSeq2SeqLM</span>
 
@@ -253,7 +189,8 @@ Simply enter your text and click 'Submit' to see the results.
 """</span>
 
 <span class="n">examples</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">[</span><span class="s">"Intelligence Analyst Trainer - 24-968-08-086 All information required to determine suitability for employment with the Canadian Security Intelligence Service is collected under the authority of the Canadian Security Intelligence Service Act."</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">"Intelligence Analyst Trainer - 24-968-08-086 All information required to determine suitability for employment
+     with the Canadian Security Intelligence Service is collected under the authority of the Canadian Security Intelligence Service Act."</span><span class="p">],</span>
     <span class="p">[</span><span class="s">"The Privacy Act allows candidates to review collected information and request amendments."</span><span class="p">],</span>
     <span class="p">[</span><span class="s">"Machine learning models are improving rapidly, and their applications are expanding across different industries."</span><span class="p">]</span>
 <span class="p">]</span>
@@ -281,7 +218,9 @@ Running on public URL: https://2c03b010d116b96362.gradio.live
 This share link expires in 72 hours. For free permanent hosting and GPU upgrades, run `gradio deploy` from Terminal to deploy to Spaces (https://huggingface.co/spaces)
 </code></pre></div></div>
 
-<p><a href="https://huggingface.co/spaces/MohsenDehghani/paraphrasing">Visit the Paraphrasing Tool on my Hugging Face</a></p>
+<p><a href="https://huggingface.co/spaces/MohsenDehghani/paraphrasing" target="_blank">
+    <button style="padding: 10px 20px; font-size: 16px;">Visit the Paraphrasing Tool on my Hugging Face</button>
+</a></p>
 
 
 	</div>

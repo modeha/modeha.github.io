@@ -96,6 +96,7 @@ DEPENDENCIES
   jekyll-theme-cayman
   jekyll-theme-merlot
   minima (~> 2.5)
+  sassc (~> 2.4.0)
   tzinfo (~> 1.2)
   tzinfo-data
   wdm (>= 0.1.0)

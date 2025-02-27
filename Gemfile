@@ -41,6 +41,8 @@ gem "jekyll-sitemap"
 gem "jekyll-theme-merlot"
 gem "minima", "~> 2.5"
 gem "jekyll-theme-cayman"
+gem 'sassc', '~> 2.4.0'
+
 
 
 
