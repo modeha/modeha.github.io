@@ -1,4 +1,3 @@
-````markdown
 ---
 layout: post
 title: "Building a Simple RAG + LLM Workflow for Procurement Documents"
@@ -155,5 +154,4 @@ The most interesting part was seeing how historical procurement knowledge could 
 
 Even with a small dataset, the workflow demonstrated how AI assistants can support research and decision-support tasks without replacing human expertise.
 
-```
-```
+
