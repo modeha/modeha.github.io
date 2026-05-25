@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Building a Simple RAG + LLM Workflow for Procurement Documents"
-date: 2026-02-19
+date: 2026-05-19
 categories: [AI, RAG, LLM, Python]
 ---
 
