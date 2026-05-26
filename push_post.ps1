@@ -6,16 +6,7 @@ if ([string]::IsNullOrWhiteSpace($message)) {
     $message = "Update website"
 }
 
-Write-Host "Checking status..."
 git status
-
-Write-Host "Adding changes..."
 git add .
-
-Write-Host "Committing..."
 git commit -m "$message"
-
-Write-Host "Pushing to GitHub..."
 git push origin main
-
-Write-Host "Done."
