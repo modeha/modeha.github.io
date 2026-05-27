@@ -5,13 +5,6 @@ date: 2026-05-26
 categories: [AI, RAG, LLM, Python]
 ---
 
----
-layout: post
-title: "Procurement RAG Test Agent"
-date: 2026-05-26
-categories: [AI, RAG, LLM, Python]
----
-
 ## Procurement RAG Test Agent
 
 This guide explains how to prepare a small proof-of-concept dataset for a procurement RAG test agent.
