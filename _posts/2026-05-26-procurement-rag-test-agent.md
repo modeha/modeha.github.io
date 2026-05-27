@@ -1,4 +1,11 @@
-﻿---
+---
+layout: post
+title: "Procurement RAG Test Agent"
+date: 2026-05-26
+categories: [AI, RAG, LLM, Python]
+---
+
+---
 layout: post
 title: "Procurement RAG Test Agent"
 date: 2026-05-26
@@ -11,7 +18,7 @@ This guide explains how to prepare a small proof-of-concept dataset for a procur
 
 The goal is to prepare procurement and sustainment documents for AI-assisted search, so users can find source-based evidence from past documents.
 
-### How to run this project
+### How to follow this process
 
 1. **Set up the development environment**  
    Install Python and use an IDE such as PyCharm or VS Code.
@@ -39,7 +46,7 @@ The goal is to prepare procurement and sustainment documents for AI-assisted sea
 
 ### Guardrails
 
-The test should focus on evidence retrieval, not answer invention.
+The test should focus on evidence retrieval, not answer invention and then AI can elaborate it.
 
 A good response should:
 
