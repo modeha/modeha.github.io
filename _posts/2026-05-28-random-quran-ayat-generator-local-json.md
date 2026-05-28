@@ -1,22 +1,29 @@
-The random selection uses a weighted method based on factors related to the number 19.
+---
+layout: post
+title: "آیه تصادفی قرآن"
+date: 2026-05-28
+categories: [javascript, web, quran]
+tags: [html, css, javascript, json, quran, farsi]
+---
+
+این پروژه یک آیه تصادفی قرآن را همراه با ترجمه فارسی نشان می‌دهد.
+
+انتخاب آیه با یک روش وزن‌دهی شده بر اساس عدد ۱۹ انجام می‌شود.
 
 <div class="quran-container">
   <div class="quoteBox">
-    <h1>Random Quran Ayat Generator</h1>
+    <h1 class="quran-title">آیه تصادفی قرآن</h1>
 
-```
-<div id="content">
-  <div id="arabicVerseText">Loading Quran data...</div>
-  <div id="verseText" class="mediumSize"></div>
-  <div id="surahAndAyah" class="mediumSize"></div>
-  <div id="randomMethod"></div>
-  <div id="errorMessage"></div>
-</div>
+    <div id="content">
+      <div id="arabicVerseText">در حال بارگذاری...</div>
+      <div id="verseText" class="mediumSize"></div>
+      <div id="surahAndAyah" class="mediumSize"></div>
+      <div id="randomMethod"></div>
+      <div id="errorMessage"></div>
+    </div>
 
-<input id="shuffle" type="button" value="New Ayat">
-<input id="tweet" type="button" value="Tweet">
-```
-
+    <input id="shuffle" type="button" value="آیه جدید">
+    <input id="tweet" type="button" value="اشتراک‌گذاری">
   </div>
 </div>
 
@@ -35,64 +42,70 @@ The random selection uses a weighted method based on factors related to the numb
   border-radius: 5px;
   position: relative;
   margin: 15px auto;
-  padding: 60px 50px;
+  padding: 40px 45px;
   background-color: #fff;
   border: 1px solid #ddd;
 }
 
-.quoteBox h1 {
+.quran-title {
+  font-family: Tahoma, Arial, sans-serif;
+  font-size: 120%;
+  font-weight: normal;
+  direction: rtl;
   text-align: center;
-  font-size: 250%;
-  margin-bottom: 40px;
+  margin-bottom: 25px;
+  color: #333;
 }
 
 #content {
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 #arabicVerseText {
   font-family: "Amiri", "Scheherazade New", "Traditional Arabic", serif;
-  font-size: 260%;
+  font-size: 240%;
   direction: rtl;
   text-align: center;
-  margin: 25px 0;
-  line-height: 2.2;
+  margin: 20px 0;
+  line-height: 2.1;
 }
 
 #verseText {
   direction: rtl;
-  text-align: right;
+  text-align: center;
   font-family: Tahoma, Arial, sans-serif;
   unicode-bidi: plaintext;
 }
 
 .mediumSize {
-  font-size: 150%;
-  margin: 20px 0;
+  font-size: 140%;
+  margin: 16px 0;
   line-height: 1.8;
 }
 
 #randomMethod {
-  font-size: 110%;
-  color: #555;
-  margin-top: 20px;
+  font-size: 85%;
+  color: #666;
+  margin-top: 18px;
+  direction: ltr;
 }
 
 #errorMessage {
-  font-size: 120%;
+  font-size: 110%;
   color: #b00020;
   margin-top: 20px;
 }
 
 input[type=button] {
   cursor: pointer;
-  padding: 12px 28px;
-  margin: 10px;
+  padding: 10px 22px;
+  margin: 8px;
   border: none;
   border-radius: 5px;
   background-color: #1192d3;
   color: white;
-  font-size: 18px;
+  font-size: 15px;
+  font-family: Tahoma, Arial, sans-serif;
 }
 
 input[type=button]:hover {
@@ -105,19 +118,19 @@ input[type=button]:hover {
   }
 
   .quoteBox {
-    padding: 30px 20px;
+    padding: 25px 18px;
   }
 
-  .quoteBox h1 {
-    font-size: 200%;
+  .quran-title {
+    font-size: 110%;
   }
 
   #arabicVerseText {
-    font-size: 220%;
+    font-size: 190%;
   }
 
   .mediumSize {
-    font-size: 130%;
+    font-size: 120%;
   }
 }
 </style>
@@ -135,11 +148,12 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   document.getElementById("tweet").addEventListener("click", function () {
     if (!faText || !surahAndAyah) {
-      alert("Please wait until the Ayah loads.");
+      alert("لطفاً صبر کنید تا آیه بارگذاری شود.");
       return;
     }
 
     const tweetText = arText + "\n\n" + faText + "\n" + surahAndAyah;
+    const tweetLink = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(tweetText);
     window.open(tweetLink, "_blank");
   });
 });
@@ -167,7 +181,7 @@ async function loadQuranData() {
     document.getElementById("surahAndAyah").textContent = "";
     document.getElementById("randomMethod").textContent = "";
     document.getElementById("errorMessage").textContent =
-      "The local Quran JSON file could not be loaded. Make sure quran_fa_ansarian.json is inside assets/data.";
+      "فایل قرآن پیدا نشد. مطمئن شوید quran_fa_ansarian.json داخل assets/data قرار دارد.";
 
     console.error(error);
   }
@@ -254,7 +268,7 @@ function showRandomAyah() {
   const ayah = getAdvanced19RandomAyah();
 
   if (!ayah) {
-    document.getElementById("arabicVerseText").textContent = "Loading Quran data...";
+    document.getElementById("arabicVerseText").textContent = "در حال بارگذاری...";
     return;
   }
 
@@ -266,6 +280,6 @@ function showRandomAyah() {
   document.getElementById("verseText").textContent = faText;
   document.getElementById("surahAndAyah").textContent = surahAndAyah;
   document.getElementById("randomMethod").textContent =
-    "Selected using advanced 19-based weighted random method. Global Ayah: " + ayah.globalAyah;
+    "روش انتخاب: وزن‌دهی بر اساس عدد ۱۹ | شماره جهانی آیه: " + ayah.globalAyah;
 }
 </script>
