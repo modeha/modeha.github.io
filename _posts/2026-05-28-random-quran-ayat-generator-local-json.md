@@ -1,12 +1,3 @@
----
-
-layout: post
-title: "Random Quran Ayat Generator"
-date: 2026-05-28
-categories: [javascript, web, quran]
-tags: [html, css, javascript, json, quran, farsi]
--------------------------------------------------
-
 The random selection uses a weighted method based on factors related to the number 19.
 
 <div class="quran-container">
