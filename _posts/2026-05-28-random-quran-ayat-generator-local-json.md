@@ -190,10 +190,10 @@ async function loadQuranData() {
 function fixFarsiBrackets(text) {
   return text
     .replace(/\[/g, "TEMP_OPEN_BRACKET")
-    .replace(/\]/g, "[")
-    .replace(/TEMP_OPEN_BRACKET/g, "]")
-    .replace(/([^\s])\[/g, "$1 [")
-    .replace(/\]([^\s،؛:.!؟])/g, "] $1");
+    .replace(/\]/g, "«")
+    .replace(/TEMP_OPEN_BRACKET/g, "»")
+    .replace(/([^\s])«/g, "$1 «")
+    .replace(/»([^\s،؛:.!؟])/g, "» $1");
 }
 
 function getAdvanced19RandomAyah() {
