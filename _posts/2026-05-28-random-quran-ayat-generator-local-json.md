@@ -30,6 +30,13 @@ The random selection uses a weighted method based on factors related to the numb
 </div>
 
 <style>
+@font-face {
+  font-family: 'UthmanicHafs';
+  src: url('{{ "/assets/fonts/UthmanicHafs1-Ver16.ttf" | relative_url }}') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .quran-container {
   text-align: center;
   border-radius: 5px;
@@ -60,15 +67,18 @@ The random selection uses a weighted method based on factors related to the numb
 }
 
 #arabicVerseText {
-  font-size: 220%;
+  font-family: 'UthmanicHafs', 'Scheherazade New', serif;
+  font-size: 260%;
   direction: rtl;
+  text-align: center;
   margin: 25px 0;
-  line-height: 1.8;
+  line-height: 2.2;
 }
 
 #verseText {
   direction: rtl;
   text-align: right;
+  font-family: Tahoma, Arial, sans-serif;
 }
 
 .mediumSize {
@@ -118,7 +128,7 @@ input[type=button]:hover {
   }
 
   #arabicVerseText {
-    font-size: 180%;
+    font-size: 220%;
   }
 
   .mediumSize {
