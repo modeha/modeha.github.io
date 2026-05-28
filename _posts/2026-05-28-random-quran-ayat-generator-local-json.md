@@ -1,14 +1,15 @@
 ---
+
 layout: post
 title: "Random Quran Ayat Generator"
 date: 2026-05-28
 categories: [javascript, web, quran]
 tags: [html, css, javascript, json, quran, farsi]
----
+-------------------------------------------------
 
 This small project shows a random Quran Ayah using HTML, CSS, JavaScript, and a local JSON file.
 
-It does not use any online Quran API. The Arabic text and Farsi translation are loaded from a local JSON file generated from the PDF translation by استاد حسین انصاریان.
+It does not use any online Quran API. The Arabic text and Farsi translation are loaded from a local JSON file.
 
 The random selection uses a weighted method based on factors related to the number 19.
 
@@ -16,27 +17,23 @@ The random selection uses a weighted method based on factors related to the numb
   <div class="quoteBox">
     <h1>Random Quran Ayat Generator</h1>
 
-    <div id="content">
-      <div id="arabicVerseText">Loading Quran data...</div>
-      <div id="verseText" class="mediumSize"></div>
-      <div id="surahAndAyah" class="mediumSize"></div>
-      <div id="randomMethod"></div>
-      <div id="errorMessage"></div>
-    </div>
+```
+<div id="content">
+  <div id="arabicVerseText">Loading Quran data...</div>
+  <div id="verseText" class="mediumSize"></div>
+  <div id="surahAndAyah" class="mediumSize"></div>
+  <div id="randomMethod"></div>
+  <div id="errorMessage"></div>
+</div>
 
-    <input id="shuffle" type="button" value="New Ayat">
-    <input id="tweet" type="button" value="Tweet">
+<input id="shuffle" type="button" value="New Ayat">
+<input id="tweet" type="button" value="Tweet">
+```
+
   </div>
 </div>
 
 <style>
-@font-face {
-  font-family: 'UthmanicHafs';
-  src: url('{{ "/assets/fonts/UthmanicHafs1-Ver16.ttf" | relative_url }}') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
 .quran-container {
   text-align: center;
   border-radius: 5px;
@@ -67,7 +64,7 @@ The random selection uses a weighted method based on factors related to the numb
 }
 
 #arabicVerseText {
-  font-family: 'UthmanicHafs', 'Scheherazade New', serif;
+  font-family: "Amiri", "Scheherazade New", "Traditional Arabic", serif;
   font-size: 260%;
   direction: rtl;
   text-align: center;
@@ -79,6 +76,7 @@ The random selection uses a weighted method based on factors related to the numb
   direction: rtl;
   text-align: right;
   font-family: Tahoma, Arial, sans-serif;
+  unicode-bidi: plaintext;
 }
 
 .mediumSize {
@@ -189,6 +187,15 @@ async function loadQuranData() {
   }
 }
 
+function fixFarsiBrackets(text) {
+  return text
+    .replace(/\[/g, "TEMP_OPEN_BRACKET")
+    .replace(/\]/g, "[")
+    .replace(/TEMP_OPEN_BRACKET/g, "]")
+    .replace(/([^\s])\[/g, "$1 [")
+    .replace(/\]([^\s،؛:.!؟])/g, "] $1");
+}
+
 function getAdvanced19RandomAyah() {
   if (!quranAyat.length) {
     return null;
@@ -266,7 +273,7 @@ function showRandomAyah() {
   }
 
   arText = ayah.arabic || "";
-  faText = ayah.farsi || "";
+  faText = fixFarsiBrackets(ayah.farsi || "");
   surahAndAyah = "سوره " + ayah.surahNameFarsi + "، آیه " + ayah.ayahNumber;
 
   document.getElementById("arabicVerseText").textContent = arText;
