@@ -7,10 +7,6 @@ categories: [javascript, web, quran]
 tags: [html, css, javascript, json, quran, farsi]
 -------------------------------------------------
 
-This small project shows a random Quran Ayah using HTML, CSS, JavaScript, and a local JSON file.
-
-It does not use any online Quran API. The Arabic text and Farsi translation are loaded from a local JSON file.
-
 The random selection uses a weighted method based on factors related to the number 19.
 
 <div class="quran-container">
@@ -153,7 +149,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
     const tweetText = arText + "\n\n" + faText + "\n" + surahAndAyah;
-    const tweetLink = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(tweetText);
     window.open(tweetLink, "_blank");
   });
 });
