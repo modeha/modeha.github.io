@@ -23,7 +23,6 @@ tags: [html, css, javascript, json, quran, farsi]
     </div>
 
     <input id="shuffle" type="button" value="آیه جدید">
-    <input id="tweet" type="button" value="اشتراک‌گذاری">
   </div>
 </div>
 
@@ -84,10 +83,12 @@ tags: [html, css, javascript, json, quran, farsi]
 }
 
 #randomMethod {
-  font-size: 85%;
+  font-family: Tahoma, Arial, sans-serif;
+  font-size: 95%;
   color: #666;
   margin-top: 18px;
-  direction: ltr;
+  direction: rtl;
+  text-align: center;
 }
 
 #errorMessage {
@@ -132,6 +133,10 @@ input[type=button]:hover {
   .mediumSize {
     font-size: 120%;
   }
+
+  #randomMethod {
+    font-size: 85%;
+  }
 }
 </style>
 
@@ -145,17 +150,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   await loadQuranData();
 
   document.getElementById("shuffle").addEventListener("click", showRandomAyah);
-
-  document.getElementById("tweet").addEventListener("click", function () {
-    if (!faText || !surahAndAyah) {
-      alert("لطفاً صبر کنید تا آیه بارگذاری شود.");
-      return;
-    }
-
-    const tweetText = arText + "\n\n" + faText + "\n" + surahAndAyah;
-    const tweetLink = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(tweetText);
-    window.open(tweetLink, "_blank");
-  });
 });
 
 async function loadQuranData() {
@@ -194,6 +188,129 @@ function fixFarsiBrackets(text) {
     .replace(/TEMP_OPEN_BRACKET/g, "»")
     .replace(/([^\s])«/g, "$1 «")
     .replace(/»([^\s،؛:.!؟])/g, "» $1");
+}
+
+function numberToPersianWords(n) {
+  const ones = ["", "یک", "دو", "سه", "چهار", "پنج", "شش", "هفت", "هشت", "نه"];
+
+  const teens = {
+    10: "ده",
+    11: "یازده",
+    12: "دوازده",
+    13: "سیزده",
+    14: "چهارده",
+    15: "پانزده",
+    16: "شانزده",
+    17: "هفده",
+    18: "هجده",
+    19: "نوزده"
+  };
+
+  const tens = {
+    20: "بیست",
+    30: "سی",
+    40: "چهل",
+    50: "پنجاه",
+    60: "شصت",
+    70: "هفتاد",
+    80: "هشتاد",
+    90: "نود"
+  };
+
+  const hundreds = {
+    100: "صد",
+    200: "دویست",
+    300: "سیصد",
+    400: "چهارصد",
+    500: "پانصد",
+    600: "ششصد",
+    700: "هفتصد",
+    800: "هشتصد",
+    900: "نهصد"
+  };
+
+  if (n < 10) {
+    return ones[n];
+  }
+
+  if (n < 20) {
+    return teens[n];
+  }
+
+  if (n < 100) {
+    const t = Math.floor(n / 10) * 10;
+    const r = n % 10;
+    return r === 0 ? tens[t] : tens[t] + " و " + ones[r];
+  }
+
+  if (n < 1000) {
+    const h = Math.floor(n / 100) * 100;
+    const r = n % 100;
+    return r === 0 ? hundreds[h] : hundreds[h] + " و " + numberToPersianWords(r);
+  }
+
+  const th = Math.floor(n / 1000);
+  const r = n % 1000;
+  const thText = th === 1 ? "هزار" : numberToPersianWords(th) + " هزار";
+
+  return r === 0 ? thText : thText + " و " + numberToPersianWords(r);
+}
+
+function toPersianOrdinal(n) {
+  const special = {
+    1: "اولین",
+    2: "دومین",
+    3: "سومین",
+    4: "چهارمین",
+    5: "پنجمین",
+    6: "ششمین",
+    7: "هفتمین",
+    8: "هشتمین",
+    9: "نهمین",
+    10: "دهمین",
+    20: "بیستمین",
+    30: "سی‌امین",
+    40: "چهلمین",
+    50: "پنجاهمین",
+    60: "شصتمین",
+    70: "هفتادمین",
+    80: "هشتادمین",
+    90: "نودمین",
+    100: "صدمین",
+    200: "دویستمین",
+    300: "سیصدمین",
+    400: "چهارصدمین",
+    500: "پانصدمین",
+    600: "ششصدمین",
+    700: "هفتصدمین",
+    800: "هشتصدمین",
+    900: "نهصدمین"
+  };
+
+  if (special[n]) {
+    return special[n];
+  }
+
+  if (n < 100) {
+    const t = Math.floor(n / 10) * 10;
+    const r = n % 10;
+    return numberToPersianWords(t) + " و " + toPersianOrdinal(r);
+  }
+
+  if (n < 1000) {
+    const h = Math.floor(n / 100) * 100;
+    const r = n % 100;
+    return numberToPersianWords(h) + " و " + toPersianOrdinal(r);
+  }
+
+  const th = Math.floor(n / 1000);
+  const r = n % 1000;
+
+  if (r === 0) {
+    return numberToPersianWords(th) + " هزارمین";
+  }
+
+  return numberToPersianWords(th) + " هزار و " + toPersianOrdinal(r);
 }
 
 function getAdvanced19RandomAyah() {
@@ -280,6 +397,6 @@ function showRandomAyah() {
   document.getElementById("verseText").textContent = faText;
   document.getElementById("surahAndAyah").textContent = surahAndAyah;
   document.getElementById("randomMethod").textContent =
-    "روش انتخاب: وزن‌دهی بر اساس عدد ۱۹ | شماره جهانی آیه: " + ayah.globalAyah;
+    "این آیه، " + toPersianOrdinal(ayah.globalAyah) + " آیه قرآن است.";
 }
 </script>
