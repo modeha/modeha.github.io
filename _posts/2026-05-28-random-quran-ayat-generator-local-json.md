@@ -62,7 +62,7 @@ tags: [html, css, javascript, json, quran, farsi]
 
 #arabicVerseText {
   font-family: "Amiri", "Scheherazade New", "Traditional Arabic", serif;
-  font-size: 240%;
+  font-size: 100%;
   direction: rtl;
   text-align: center;
   margin: 20px 0;
