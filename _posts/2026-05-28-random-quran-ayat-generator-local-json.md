@@ -52,7 +52,7 @@ tags: [html, css, javascript, json, quran, farsi]
   padding: 45px 45px;
   min-height: 620px;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0.42)),
+    linear-gradient(rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.72)),
     url('{{ "/assets/images/quran-background.jpeg" | relative_url }}');
   background-size: cover;
   background-position: center center;
@@ -77,11 +77,11 @@ tags: [html, css, javascript, json, quran, farsi]
 #content {
   margin: 0 auto 30px auto;
   max-width: 820px;
-  background: transparent;
-  border: none;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(46, 125, 50, 0.35);
   border-radius: 18px;
   padding: 24px 22px;
-  box-shadow: none;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.10);
 }
 
 #arabicVerseText {
@@ -92,7 +92,6 @@ tags: [html, css, javascript, json, quran, farsi]
   margin: 20px 0;
   line-height: 2.1;
   color: #0b3d1c;
-  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.75);
 }
 
 #verseText {
@@ -101,7 +100,6 @@ tags: [html, css, javascript, json, quran, farsi]
   text-align: center;
   unicode-bidi: plaintext;
   color: #1b5e20;
-  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.75);
 }
 
 .mediumSize {
