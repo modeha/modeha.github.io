@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "آیه تصادفی قرآن"
-date: 2026-05-28
+date: 2026-05-29
 categories: [javascript, web, quran]
 tags: [html, css, javascript, json, quran, farsi]
 ---
