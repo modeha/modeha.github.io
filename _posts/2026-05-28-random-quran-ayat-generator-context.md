@@ -44,7 +44,12 @@ tags: [html, css, javascript, json, quran, farsi]
   font-weight: normal;
   font-style: normal;
 }
-
+.intro-text {
+  text-align: center;
+  direction: rtl;
+  max-width: 700px;
+  margin: 30px auto;
+}
 .quran-container {
   text-align: center;
   border-radius: 5px;
