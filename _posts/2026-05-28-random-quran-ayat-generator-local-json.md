@@ -51,7 +51,9 @@ tags: [html, css, javascript, json, quran, farsi]
   margin: 15px auto;
   padding: 45px 45px;
   min-height: 620px;
-  background-image: url('{{ "/assets/images/quran-background.jpeg" | relative_url }}');
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0.42)),
+    url('{{ "/assets/images/quran-background.jpeg" | relative_url }}');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
