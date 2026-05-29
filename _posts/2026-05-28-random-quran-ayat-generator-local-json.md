@@ -37,21 +37,31 @@ tags: [html, css, javascript, json, quran, farsi]
 
 .quran-container {
   text-align: center;
-  border-radius: 5px;
+  border-radius: 18px;
   position: relative;
   margin: 15px auto;
-  width: 80%;
-  max-width: 900px;
-  background-color: #fff;
+  width: 85%;
+  max-width: 950px;
+  background-color: transparent;
 }
 
 .quoteBox {
-  border-radius: 5px;
+  border-radius: 22px;
   position: relative;
   margin: 15px auto;
-  padding: 40px 45px;
-  background-color: #fff;
-  border: 1px solid #ddd;
+  padding: 45px 45px;
+  min-height: 620px;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.72)),
+    url('{{ "/assets/images/quran-background.jpeg" | relative_url }}');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  border: 2px solid rgba(46, 125, 50, 0.55);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .quran-title {
@@ -61,11 +71,17 @@ tags: [html, css, javascript, json, quran, farsi]
   direction: rtl;
   text-align: center;
   margin-bottom: 25px;
-  color: #333;
+  color: #145a32;
 }
 
 #content {
-  margin-bottom: 30px;
+  margin: 0 auto 30px auto;
+  max-width: 820px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(46, 125, 50, 0.35);
+  border-radius: 18px;
+  padding: 24px 22px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.10);
 }
 
 #arabicVerseText {
@@ -75,6 +91,7 @@ tags: [html, css, javascript, json, quran, farsi]
   text-align: center;
   margin: 20px 0;
   line-height: 2.1;
+  color: #0b3d1c;
 }
 
 #verseText {
@@ -82,6 +99,7 @@ tags: [html, css, javascript, json, quran, farsi]
   direction: rtl;
   text-align: center;
   unicode-bidi: plaintext;
+  color: #1b5e20;
 }
 
 .mediumSize {
@@ -142,6 +160,8 @@ input[type=button]:hover {
 
   .quoteBox {
     padding: 25px 18px;
+    min-height: 520px;
+    background-position: center center;
   }
 
   .quran-title {
@@ -280,60 +300,56 @@ function numberToPersianWords(n) {
 }
 
 function toPersianOrdinal(n) {
-  const special = {
-    1: "اولین",
-    2: "دومین",
-    3: "سومین",
-    4: "چهارمین",
-    5: "پنجمین",
-    6: "ششمین",
-    7: "هفتمین",
-    8: "هشتمین",
-    9: "نهمین",
-    10: "دهمین",
-    20: "بیستمین",
-    30: "سی‌امین",
-    40: "چهلمین",
-    50: "پنجاهمین",
-    60: "شصتمین",
-    70: "هفتادمین",
-    80: "هشتادمین",
-    90: "نودمین",
-    100: "صدمین",
-    200: "دویستمین",
-    300: "سیصدمین",
-    400: "چهارصدمین",
-    500: "پانصدمین",
-    600: "ششصدمین",
-    700: "هفتصدمین",
-    800: "هشتصدمین",
-    900: "نهصدمین"
+  const ordinalWords = {
+    "یک": "اولین",
+    "دو": "دومین",
+    "سه": "سومین",
+    "چهار": "چهارمین",
+    "پنج": "پنجمین",
+    "شش": "ششمین",
+    "هفت": "هفتمین",
+    "هشت": "هشتمین",
+    "نه": "نهمین",
+    "ده": "دهمین",
+    "یازده": "یازدهمین",
+    "دوازده": "دوازدهمین",
+    "سیزده": "سیزدهمین",
+    "چهارده": "چهاردهمین",
+    "پانزده": "پانزدهمین",
+    "شانزده": "شانزدهمین",
+    "هفده": "هفدهمین",
+    "هجده": "هجدهمین",
+    "نوزده": "نوزدهمین",
+    "بیست": "بیستمین",
+    "سی": "سی‌امین",
+    "چهل": "چهلمین",
+    "پنجاه": "پنجاهمین",
+    "شصت": "شصتمین",
+    "هفتاد": "هفتادمین",
+    "هشتاد": "هشتادمین",
+    "نود": "نودمین",
+    "صد": "صدمین",
+    "دویست": "دویستمین",
+    "سیصد": "سیصدمین",
+    "چهارصد": "چهارصدمین",
+    "پانصد": "پانصدمین",
+    "ششصد": "ششصدمین",
+    "هفتصد": "هفتصدمین",
+    "هشتصد": "هشتصدمین",
+    "نهصد": "نهصدمین",
+    "هزار": "هزارمین"
   };
 
-  if (special[n]) {
-    return special[n];
+  const words = numberToPersianWords(n);
+  const parts = words.split(" و ");
+  const lastPart = parts[parts.length - 1];
+
+  if (ordinalWords[lastPart]) {
+    parts[parts.length - 1] = ordinalWords[lastPart];
+    return parts.join(" و ");
   }
 
-  if (n < 100) {
-    const t = Math.floor(n / 10) * 10;
-    const r = n % 10;
-    return numberToPersianWords(t) + " و " + toPersianOrdinal(r);
-  }
-
-  if (n < 1000) {
-    const h = Math.floor(n / 100) * 100;
-    const r = n % 100;
-    return numberToPersianWords(h) + " و " + toPersianOrdinal(r);
-  }
-
-  const th = Math.floor(n / 1000);
-  const r = n % 1000;
-
-  if (r === 0) {
-    return numberToPersianWords(th) + " هزارمین";
-  }
-
-  return numberToPersianWords(th) + " هزار و " + toPersianOrdinal(r);
+  return words + "مین";
 }
 
 function getAdvanced19RandomAyah() {
