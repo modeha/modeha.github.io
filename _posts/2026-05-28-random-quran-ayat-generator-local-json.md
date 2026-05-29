@@ -6,9 +6,10 @@ categories: [javascript, web, quran]
 tags: [html, css, javascript, json, quran, farsi]
 ---
 
-این پروژه یک آیه تصادفی قرآن را همراه با ترجمه فارسی نشان می‌دهد.
-
-انتخاب آیه با یک روش وزن‌دهی شده بر اساس عدد ۱۹ انجام می‌شود.
+<div class="intro-text">
+  <p>این پروژه یک آیه تصادفی قرآن را همراه با ترجمه فارسی نشان می‌دهد.</p>
+  <p>انتخاب آیه با یک روش وزن‌دهی شده بر اساس عدد ۱۹ انجام می‌شود.</p>
+</div>
 
 <div class="quran-container">
   <div class="quoteBox">
@@ -34,7 +35,12 @@ tags: [html, css, javascript, json, quran, farsi]
   font-weight: normal;
   font-style: normal;
 }
-
+.intro-text {
+  text-align: center;
+  direction: rtl;
+  max-width: 700px;
+  margin: 30px auto;
+}
 .quran-container {
   text-align: center;
   border-radius: 18px;
