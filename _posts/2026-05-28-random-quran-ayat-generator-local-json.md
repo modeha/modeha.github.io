@@ -19,6 +19,7 @@ tags: [html, css, javascript, json, quran, farsi]
       <div id="verseText" class="mediumSize"></div>
       <div id="surahAndAyah" class="mediumSize"></div>
       <div id="randomMethod"></div>
+      <div id="sourceNote"></div>
       <div id="errorMessage"></div>
     </div>
 
@@ -27,6 +28,13 @@ tags: [html, css, javascript, json, quran, farsi]
 </div>
 
 <style>
+@font-face {
+  font-family: "UthmanicHafs";
+  src: url('{{ "/assets/fonts/UthmanicHafs1%20Ver16.ttf" | relative_url }}') format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 .quran-container {
   text-align: center;
   border-radius: 5px;
@@ -47,7 +55,7 @@ tags: [html, css, javascript, json, quran, farsi]
 }
 
 .quran-title {
-  font-family: Tahoma, Arial, sans-serif;
+  font-family: "UthmanicHafs", Tahoma, Arial, sans-serif;
   font-size: 120%;
   font-weight: normal;
   direction: rtl;
@@ -61,8 +69,8 @@ tags: [html, css, javascript, json, quran, farsi]
 }
 
 #arabicVerseText {
-  font-family: "Amiri", "Scheherazade New", "Traditional Arabic", serif;
-  font-size: 100%;
+  font-family: "UthmanicHafs", "Amiri", "Scheherazade New", "Traditional Arabic", serif;
+  font-size: 220%;
   direction: rtl;
   text-align: center;
   margin: 20px 0;
@@ -70,20 +78,20 @@ tags: [html, css, javascript, json, quran, farsi]
 }
 
 #verseText {
+  font-family: "UthmanicHafs", Tahoma, Arial, sans-serif;
   direction: rtl;
   text-align: center;
-  font-family: Tahoma, Arial, sans-serif;
   unicode-bidi: plaintext;
 }
 
 .mediumSize {
-  font-size: 140%;
+  font-size: 135%;
   margin: 16px 0;
-  line-height: 1.8;
+  line-height: 1.9;
 }
 
 #randomMethod {
-  font-family: Tahoma, Arial, sans-serif;
+  font-family: "UthmanicHafs", Tahoma, Arial, sans-serif;
   font-size: 95%;
   color: #666;
   margin-top: 18px;
@@ -91,7 +99,21 @@ tags: [html, css, javascript, json, quran, farsi]
   text-align: center;
 }
 
+#sourceNote {
+  font-family: Tahoma, Arial, sans-serif;
+  font-size: 80%;
+  color: #777;
+  margin-top: 12px;
+  direction: rtl;
+  text-align: center;
+}
+
+#sourceNote a {
+  color: #555;
+}
+
 #errorMessage {
+  font-family: "UthmanicHafs", Tahoma, Arial, sans-serif;
   font-size: 110%;
   color: #b00020;
   margin-top: 20px;
@@ -106,7 +128,7 @@ input[type=button] {
   background-color: #1192d3;
   color: white;
   font-size: 15px;
-  font-family: Tahoma, Arial, sans-serif;
+  font-family: "UthmanicHafs", Tahoma, Arial, sans-serif;
 }
 
 input[type=button]:hover {
@@ -127,7 +149,7 @@ input[type=button]:hover {
   }
 
   #arabicVerseText {
-    font-size: 190%;
+    font-size: 185%;
   }
 
   .mediumSize {
@@ -174,6 +196,7 @@ async function loadQuranData() {
     document.getElementById("verseText").textContent = "";
     document.getElementById("surahAndAyah").textContent = "";
     document.getElementById("randomMethod").textContent = "";
+    document.getElementById("sourceNote").textContent = "";
     document.getElementById("errorMessage").textContent =
       "فایل قرآن پیدا نشد. مطمئن شوید quran_fa_ansarian.json داخل assets/data قرار دارد.";
 
@@ -398,5 +421,8 @@ function showRandomAyah() {
   document.getElementById("surahAndAyah").textContent = surahAndAyah;
   document.getElementById("randomMethod").textContent =
     "این آیه، " + toPersianOrdinal(ayah.globalAyah) + " آیه قرآن است.";
+
+  document.getElementById("sourceNote").innerHTML =
+    'متن عربی قرآن: <a href="https://tanzil.net" target="_blank" rel="noopener">Tanzil Project</a>';
 }
 </script>
