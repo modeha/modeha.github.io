@@ -13,6 +13,12 @@ I created a simple browser-based tool that helps users create interactive projec
 
 This tool is useful when a team wants to create a clean project overview, roadmap, pipeline explanation, validation plan, or handover page and share it as a standalone HTML file.
 
+## Open the builder
+
+You can open the tool here:
+
+[Open Project Roadmap HTML Builder](/tools/project-roadmap-builder.html)
+
 ## What this tool does
 
 The builder lets users fill out a form and generate an interactive HTML roadmap page.
@@ -42,12 +48,6 @@ This builder allows them to create a professional-looking HTML page using only a
 No Python is required.
 No installation is required.
 No coding is required.
-
-## Open the builder
-
-You can open the tool here:
-
-[Open Project Roadmap HTML Builder](/tools/project-roadmap-builder.html)
 
 ## How to use it
 
